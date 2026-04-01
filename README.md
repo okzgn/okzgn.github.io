@@ -47,7 +47,7 @@ Providing high-performance technological solutions for businesses and enterprise
 
 **Elías Francisco Alvarado Soshina**
 
-[**Contact Assistant on WhatsApp**](https://wa.me/593979522180)
+[**Contact Assistant**](https://wa.me/593979522180)
 
 ---
 
