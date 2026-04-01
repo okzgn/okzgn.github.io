@@ -81,7 +81,6 @@
     <path d="M 1070 160 L 1040 130 L 1040 80" />
     
     <!-- CURVES -->
-    <path d="M 680 110 A 50 50 0 0 1 780 110" />
     <path d="M 760 40 L 760 80 L 790 110 L 820 110" />
     <path d="M 800 60 L 850 60 L 880 90" />
   </g>
@@ -153,9 +152,9 @@
 
   <!-- ==================== BIG CIRLE ==================== -->
   <g>
-    <circle cx="600" cy="337.5" r="235" fill="none" stroke="rgba(255, 255, 255, 0.33)" stroke-width="6" opacity="0.3" filter="url(#glow)" />
-    <circle cx="600" cy="337.5" r="235" fill="none" stroke="rgba(255, 255, 255, 0.33)" stroke-width="1.5" opacity="0.9" />
-    <circle cx="600" cy="337.5" r="230" fill="rgba(255, 255, 255, 0.33)" opacity="0.03" />
+    <circle cx="600" cy="337.5" r="231" fill="none" stroke="rgba(255, 255, 255, 0.33)" stroke-width="6" opacity="0.3" filter="url(#glow)" />
+    <circle cx="600" cy="337.5" r="231" fill="none" stroke="rgba(255, 255, 255, 0.33)" stroke-width="1.5" opacity="0.9" />
+    <circle cx="600" cy="337.5" r="231" fill="rgba(255, 255, 255, 0.33)" opacity="0.03" />
   </g>
 
   <!-- ==================== DOTS ==================== -->
