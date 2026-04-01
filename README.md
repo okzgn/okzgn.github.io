@@ -1,5 +1,3 @@
-![Logo](okzgn.desktop.svg)
-
 # OKZGN | Platform Engineering & Software Development Solutions.
 
 Designing and architecting scalable, efficient software, web apps and systems. Building tools, frameworks, and core infrastructures.
@@ -10,7 +8,6 @@ Designing and architecting scalable, efficient software, web apps and systems. B
 Providing high-performance technological solutions for businesses and enterprises.
 
 ### Web & Mobile Development
-![Web & Mobile Development](web_and_mobile_development.png)
 
 *   **Custom Web Design:** Modern, consistent, and user-centric interfaces built from scratch or using frameworks like Tailwind.
 *   **High-Performance Frontend:** Fast, lightweight, and responsive interfaces (HTML5, CSS3, JavaScript, Angular).
@@ -24,7 +21,6 @@ Providing high-performance technological solutions for businesses and enterprise
 ---
 
 ### Infrastructure & Hosting
-![Infrastructure & Hosting](infrastructure_and_hosting.png)
 
 *   **Domain Management:** Full registration and configuration of your web address.
 *   **High-Performance Hosting:** Secure, fast, and reliable hosting for systems, applications, and websites.
@@ -37,7 +33,6 @@ Providing high-performance technological solutions for businesses and enterprise
 ---
 
 ### Optimization & DevOps
-![Optimization & DevOps](optimization_and_devops.png)
 
 *   **Server Administration:** End-to-end maintenance of Linux environments (Bash, SSH, Docker, Express, Echo, Nginx).
 *   **Data Access Control:** Secure management and access control for your servers, applications, and content.
@@ -55,4 +50,7 @@ Providing high-performance technological solutions for businesses and enterprise
 [**Contact Assistant on WhatsApp**](https://wa.me/593979522180)
 
 ---
+
+![Logo](okzgn.desktop.svg)
+
 *2026 © OKZGN. All rights reserved.*
