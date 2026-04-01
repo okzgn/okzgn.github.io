@@ -1,6 +1,6 @@
-# OKZGN | Platform Engineering & Software Development Solutions.
-
 ![Logo](okzgn.desktop.svg)
+
+# OKZGN | Platform Engineering & Software Development Solutions.
 
 Designing and architecting scalable, efficient software, web apps and systems. Building tools, frameworks, and core infrastructures.
 
