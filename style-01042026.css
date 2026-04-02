@@ -125,7 +125,7 @@ h2 {
 a {
     font-size: 1.125rem;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--accent) 25%, var(--accentDark));
+    background: linear-gradient(135deg, var(--accent) 50%, var(--accentDark));
     color: var(--white);
     text-decoration: none;
     border-radius: 1rem;
@@ -146,6 +146,7 @@ a b {
 a:hover,
 a:focus,
 a:active {
+    color: var(--realWhite);
     transform: scale(1.0125);
     box-shadow: 0 0.25rem 0.5rem var(--soft-silver);
 }
@@ -526,7 +527,7 @@ main aside.mobile::after {
     border-radius: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 0.25rem 0.25rem var(--shadow);
-    background: url("service-bg.svg") center no-repeat, linear-gradient(135deg, #c0efff, #aacaeb);
+    background: url("service-bg.svg") center no-repeat, linear-gradient(135deg, #c6e2ff 50%, #9fc2e6);
     background-size: auto 100%;
 }
 .service-category > img:hover,
