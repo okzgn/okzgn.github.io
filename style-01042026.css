@@ -12,6 +12,7 @@
     --accentDark: #c50;
     --black: #000;
     --white: #f0f0f0;
+    --almost-white: rgba(255, 255, 255, 0.66);
     --white-transparent: rgba(255, 255, 255, 0.5);
     --soft-white: rgba(255, 255, 255, 0.25);
     --realWhite: #fff;
@@ -124,8 +125,8 @@ h2 {
 a {
     font-size: 1.125rem;
     padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: var(--realWhite) !important;
+    background: linear-gradient(135deg, var(--accent) 25%, var(--accentDark));
+    color: var(--white);
     text-decoration: none;
     border-radius: 1rem;
     box-shadow: 0 0.25rem 0.5rem var(--shadow);
@@ -146,7 +147,6 @@ a:hover,
 a:focus,
 a:active {
     transform: scale(1.0125);
-    background: var(--accentDark);
     box-shadow: 0 0.25rem 0.5rem var(--soft-silver);
 }
 a:hover b,
@@ -195,16 +195,21 @@ address { font-style: normal; }
 .cta-button span { margin-right: 0.5rem; }
 .cta-button b {
     font-size: 0;
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.65rem;
+    height: 0.65rem;
     position: relative;
 }
 .cta-button b::after {
   content: "";
   display: block;
-  border-left: 0.75rem solid var(--themeColorLight);
-  border-top: 0.375rem solid transparent;
-  border-bottom: 0.375rem solid transparent;
+  border-left: 0.65rem solid var(--almost-white);
+  border-top: 0.325rem solid transparent;
+  border-bottom: 0.325rem solid transparent;
+}
+.cta-button:hover b::after,
+.cta-button:active b::after,
+.cta-button:focus b::after {
+  border-left-color: var(--themeColorLight);
 }
 .card {
     padding: 0;
