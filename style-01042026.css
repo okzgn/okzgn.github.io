@@ -489,7 +489,7 @@ main aside.mobile::after {
     z-index: 2;
 }
 #services::before {
-    background: linear-gradient(0deg, transparent, var(--white-transparent));
+    background: linear-gradient(0deg, transparent, var(--soft-white));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     box-shadow: 0 -0.25rem 0.25rem var(--soft-shadow);
