@@ -16,8 +16,8 @@
       fill: rgba(0, 78, 155, 0.4);
     }
   </style>
-  <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 1 1 1 <tspan class="c">1 0 1 0</tspan></text>
-  <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 S S H 0 0 1</text>
+  <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0</text>
+  <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0 0 1</text>
   <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 <tspan class="a">1 0</tspan></text>
   <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0 N P M 0 0 0 0 0</text>
   <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0 <tspan class="c">s c r i p t</tspan></text>
