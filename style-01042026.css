@@ -9,6 +9,7 @@
     --blue: #004e9b;
     --blueDark: #001b68;
     --accent: #f80;
+    --accentMiddle: #e66f00;
     --accentDark: #c50;
     --black: #000;
     --white: #f0f0f0;
@@ -125,7 +126,7 @@ h2 {
 a {
     font-size: 1.125rem;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, var(--accent) 50%, var(--accentDark));
+    background: linear-gradient(to right, var(--accent) 25%, var(--accentMiddle));
     color: var(--white);
     text-decoration: none;
     border-radius: 1rem;
@@ -390,15 +391,20 @@ main aside.mobile::after {
         height: 25% !important;
     }
     main aside > .big-logo {
-        width: 33%;
+        width: 40% !important;
     }
 }
 @media screen and (max-width: 480px) {
     main aside > .big-logo {
-        width: 40%;
+        width: 50% !important;
     }
     main aside.mobile {
         width: 100% !important;
+    }
+}
+@media screen and (max-width: 400px) {
+    main aside > .big-logo {
+        width: 60% !important;
     }
 }
 
@@ -495,7 +501,7 @@ main aside.mobile::after {
     box-shadow: 0 -0.25rem 0.25rem var(--soft-shadow);
 }
 #services::after {
-    background: linear-gradient(0deg, var(--shadow), transparent);
+    background: linear-gradient(0deg, var(--soft-shadow), transparent);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: 0 0.25rem 0.25rem var(--soft-shadow);
@@ -527,7 +533,7 @@ main aside.mobile::after {
     border-radius: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 0.25rem 0.25rem var(--shadow);
-    background: url("service-bg.svg") center no-repeat, linear-gradient(135deg, #c6e2ff 50%, #9fc2e6);
+    background: url("service-bg.svg") center no-repeat, linear-gradient(135deg, #c6e2ff 25%, #9fc2e6);
     background-size: auto 100%;
 }
 .service-category > img:hover,
