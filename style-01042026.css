@@ -346,7 +346,7 @@ main aside.mobile {
     border-bottom-right-radius: 0 !important;
     box-shadow: 0 -0.5rem 1rem var(--shadow);
 
-    background: linear-gradient(0deg, transparent, var(--almost-white)), url("code.svg");
+    background: radial-gradient(var(--white), transparent), url("code.svg");
     background-size: cover, 480px 480px;
     background-position: center, 0 0;
     animation: binaryScroll-480 25s linear alternate infinite;
@@ -535,7 +535,7 @@ main aside.mobile::after {
     border-radius: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 0.25rem 0.25rem var(--shadow);
-    background: url("service-bg.svg") center no-repeat, linear-gradient(135deg, #c6e2ff 25%, #9fc2e6);
+    background: url("service-bg.svg") center no-repeat, radial-gradient(var(--white), #9fc2e6);
     background-size: auto 100%;
 }
 .service-category > img:hover,
