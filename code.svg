@@ -9,6 +9,96 @@
     .a { fill: rgba(0, 78, 155, 0.6); }
     .b { fill: rgba(0, 78, 155, 0.5); }
     .c { fill: rgba(0, 78, 155, 0.4); }
+
+    @keyframes z {
+      100% { fill: #c50; }
+    }
+
+    @keyframes x {
+      100% { fill: #e66f00; }
+    }
+
+    @keyframes y {
+      100% { fill: #f80; }
+    }
+
+    .a:nth-child(1) { animation: z 20s infinite alternate 1.0s; }
+    .a:nth-child(2) { animation: z 20s infinite alternate 1.3s; }
+    .a:nth-child(3) { animation: z 20s infinite alternate 1.6s; }
+    .a:nth-child(4) { animation: z 20s infinite alternate 1.9s; }
+    .a:nth-child(5) { animation: z 20s infinite alternate 2.2s; }
+    .a:nth-child(6) { animation: z 20s infinite alternate 2.5s; }
+    .a:nth-child(7) { animation: z 20s infinite alternate 2.8s; }
+    .a:nth-child(8) { animation: z 20s infinite alternate 3.1s; }
+    .a:nth-child(9) { animation: z 20s infinite alternate 3.4s; }
+    .a:nth-child(10) { animation: z 20s infinite alternate 3.7s; }
+    .a:nth-child(11) { animation: z 20s infinite alternate 4.0s; }
+    .a:nth-child(12) { animation: z 20s infinite alternate 4.3s; }
+    .a:nth-child(13) { animation: z 20s infinite alternate 4.6s; }
+    .a:nth-child(14) { animation: z 20s infinite alternate 4.9s; }
+    .a:nth-child(15) { animation: z 20s infinite alternate 5.2s; }
+    .a:nth-child(16) { animation: z 20s infinite alternate 5.5s; }
+    .a:nth-child(17) { animation: z 20s infinite alternate 5.8s; }
+    .a:nth-child(18) { animation: z 20s infinite alternate 6.1s; }
+    .a:nth-child(19) { animation: z 20s infinite alternate 6.4s; }
+    .a:nth-child(20) { animation: z 20s infinite alternate 6.7s; }
+    .a:nth-child(21) { animation: z 20s infinite alternate 7.0s; }
+    .a:nth-child(22) { animation: z 20s infinite alternate 7.3s; }
+    .a:nth-child(23) { animation: z 20s infinite alternate 7.6s; }
+    .a:nth-child(24) { animation: z 20s infinite alternate 7.9s; }
+    .a:nth-child(25) { animation: z 20s infinite alternate 8.2s; }
+
+    .b:nth-child(1) { animation: y 10s infinite alternate 1.0s; }
+    .b:nth-child(2) { animation: y 10s infinite alternate 1.3s; }
+    .b:nth-child(3) { animation: y 10s infinite alternate 1.6s; }
+    .b:nth-child(4) { animation: y 10s infinite alternate 1.9s; }
+    .b:nth-child(5) { animation: y 10s infinite alternate 2.2s; }
+    .b:nth-child(6) { animation: y 10s infinite alternate 2.55s; }
+    .b:nth-child(7) { animation: y 10s infinite alternate 2.8s; }
+    .b:nth-child(8) { animation: y 10s infinite alternate 3.1s; }
+    .b:nth-child(9) { animation: y 10s infinite alternate 3.4s; }
+    .b:nth-child(10) { animation: y 10s infinite alternate 3.7s; }
+    .b:nth-child(11) { animation: y 10s infinite alternate 4.0s; }
+    .b:nth-child(12) { animation: y 10s infinite alternate 4.3s; }
+    .b:nth-child(13) { animation: y 10s infinite alternate 4.6s; }
+    .b:nth-child(14) { animation: y 10s infinite alternate 4.9s; }
+    .b:nth-child(15) { animation: y 10s infinite alternate 5.2s; }
+    .b:nth-child(16) { animation: y 10s infinite alternate 5.55s; }
+    .b:nth-child(17) { animation: y 10s infinite alternate 5.8s; }
+    .b:nth-child(18) { animation: y 10s infinite alternate 6.1s; }
+    .b:nth-child(19) { animation: y 10s infinite alternate 6.4s; }
+    .b:nth-child(20) { animation: y 10s infinite alternate 6.7s; }
+    .b:nth-child(21) { animation: y 10s infinite alternate 7.0s; }
+    .b:nth-child(22) { animation: y 10s infinite alternate 7.3s; }
+    .b:nth-child(23) { animation: y 10s infinite alternate 7.6s; }
+    .b:nth-child(24) { animation: y 10s infinite alternate 7.9s; }
+    .b:nth-child(25) { animation: y 10s infinite alternate 8.2s; }
+
+    .c:nth-child(1) { animation: x 15s infinite alternate 1.0s; }
+    .c:nth-child(2) { animation: x 15s infinite alternate 1.3s; }
+    .c:nth-child(3) { animation: x 15s infinite alternate 1.6s; }
+    .c:nth-child(4) { animation: x 15s infinite alternate 1.9s; }
+    .c:nth-child(5) { animation: x 15s infinite alternate 2.2s; }
+    .c:nth-child(6) { animation: x 15s infinite alternate 2.5s; }
+    .c:nth-child(7) { animation: x 15s infinite alternate 2.8s; }
+    .c:nth-child(8) { animation: x 15s infinite alternate 3.1s; }
+    .c:nth-child(9) { animation: x 15s infinite alternate 3.4s; }
+    .c:nth-child(10) { animation: x 15s infinite alternate 3.7s; }
+    .c:nth-child(11) { animation: x 15s infinite alternate 4.0s; }
+    .c:nth-child(12) { animation: x 15s infinite alternate 4.3s; }
+    .c:nth-child(13) { animation: x 15s infinite alternate 4.6s; }
+    .c:nth-child(14) { animation: x 15s infinite alternate 4.9s; }
+    .c:nth-child(15) { animation: x 15s infinite alternate 5.2s; }
+    .c:nth-child(16) { animation: x 15s infinite alternate 5.5s; }
+    .c:nth-child(17) { animation: x 15s infinite alternate 5.8s; }
+    .c:nth-child(18) { animation: x 15s infinite alternate 6.1s; }
+    .c:nth-child(19) { animation: x 15s infinite alternate 6.4s; }
+    .c:nth-child(20) { animation: x 15s infinite alternate 6.7s; }
+    .c:nth-child(21) { animation: x 15s infinite alternate 7.0s; }
+    .c:nth-child(22) { animation: x 15s infinite alternate 7.3s; }
+    .c:nth-child(23) { animation: x 15s infinite alternate 7.6s; }
+    .c:nth-child(24) { animation: x 15s infinite alternate 7.9s; }
+    .c:nth-child(25) { animation: x 15s infinite alternate 8.2s; }
   </style>
   <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0 1</text>
   <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0</text>
