@@ -5,14 +5,14 @@
     font-display: swap;
 }
 :root {
-    --bg: #f4f4f5;
+    --white: #f4f4f5;
+    --bg: var(--white);
     --blue: #004e9b;
     --blueDark: #001b68;
     --accent: #f26522;
     --accentMiddle: #d95a1e;
     --accentDark: #bf4d17;
     --black: #0f172a;
-    --white: #fff;
     --almost-white: rgba(255, 255, 255, 0.66);
     --white-transparent: rgba(255, 255, 255, 0.5);
     --soft-white: rgba(255, 255, 255, 0.25);
