@@ -346,7 +346,7 @@ main aside.mobile {
     border-bottom-right-radius: 0 !important;
     box-shadow: 0 -0.5rem 1rem var(--shadow);
 
-    background: linear-gradient(0deg, transparent, var(--white-transparent)), url("code.svg");
+    background: linear-gradient(0deg, transparent, var(--almost-white)), url("code.svg");
     background-size: cover, 480px 480px;
     background-position: center, 0 0;
     animation: binaryScroll-480 25s linear alternate infinite;
@@ -425,7 +425,7 @@ main aside.mobile::after {
     box-shadow: 1rem 0 1rem var(--shadow);
     width: 50%;
     margin-left: 50%;
-    background: linear-gradient(90deg, transparent, var(--white-transparent));
+    background: linear-gradient(90deg, transparent, var(--almost-white));
 }
 #contact aside.mobile {
     display: none;
@@ -434,7 +434,7 @@ main aside.mobile::after {
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
     box-shadow: 0 0.5rem 1rem var(--shadow);
-    background: linear-gradient(180deg, transparent, var(--white-transparent))
+    background: linear-gradient(180deg, transparent, var(--almost-white))
 }
 #contact aside.desktop::before {
     background-image: url(./elias.png);
@@ -512,9 +512,7 @@ main aside.mobile::after {
     width: 33%;
     padding-top: 2rem;
     text-align: center;
-    margin-left: 1rem;
 }
-#services .service-category:first-child { margin-left: 0; }
 #services h3 { font-size: 1.25rem; }
 #services h2 { padding: 0; }
 #services h2, #services h3, #services > p { text-align: center; }
@@ -550,7 +548,7 @@ main aside.mobile::after {
 .service-category li:active,
 .service-category li:focus {
     transform: scale(1.0075);
-    background: linear-gradient(90deg, var(--soft-white), var(--white-transparent), var(--soft-white));
+    background: linear-gradient(90deg, var(--soft-white), var(--almost-white), var(--soft-white));
     box-shadow: 0 0.125rem 0.125rem var(--soft-shadow);
 }
 #services li {
@@ -560,17 +558,29 @@ main aside.mobile::after {
     text-align: left;
     color: var(--blue);
 }
+#services li b {
+    margin-right: 1rem;
+}
 #services li span {
     color: var(--black);
     display: inline-block;
-    margin-right: 1rem;
 }
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 961px) {
     #services {
         margin: 2.5% 5%;
     }
+    #services .service-category {
+        margin-left: 1rem;
+    }
+    #services .service-category:first-child {
+        margin-left: 0;
+        padding-left: 1rem;
+    }
+    #services .service-category:last-child {
+        padding-right: 1rem;
+    }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     #services section {
         flex-flow: column;
     }
