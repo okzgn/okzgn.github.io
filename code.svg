@@ -6,34 +6,28 @@
       font-weight: bold;
       fill: rgba(0, 0, 0, 0.075);
     }
-    .a {
-      fill: rgba(0, 78, 155, 0.6);
-    }
-    .b {
-      fill: rgba(0, 78, 155, 0.5);
-    }
-    .c {
-      fill: rgba(0, 78, 155, 0.4);
-    }
+    .a { fill: rgba(0, 78, 155, 0.6); }
+    .b { fill: rgba(0, 78, 155, 0.5); }
+    .c { fill: rgba(0, 78, 155, 0.4); }
   </style>
-  <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0</text>
-  <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0 0 1</text>
-  <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 <tspan class="a">1 0</tspan></text>
-  <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0 N P M 0 0 0 0 0</text>
-  <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0 <tspan class="c">s c r i p t</tspan></text>
-  <text x="10" y="190">1 0 0 1 1 <tspan class="c">i o n i c</tspan> 0 1 A I 0 1 <tspan class="c">C S S</tspan> 1 1 0 t y p e s c r i p t 1 1 0 1 0</text>
-  <text x="10" y="222">1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 <tspan class="b">J S</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 1</text>
-  <text x="10" y="254">0 0 1 1 0 1 0 0 <tspan class="a">A I</tspan> 0 a s y n c 0 0 1 0 0 1 1 0 c l a s s</text>
-  <text x="10" y="286">0 1 &lt; a b b r &gt; 1 1 0 0 1 0 1 <tspan class="c">J S O N</tspan> 0 0 1 &lt; a b b r &gt; 1 1 0 0 1 0</text>
-  <text x="10" y="318">1 <tspan class="c">1</tspan> 0 D X 0 0 1 0 0 <tspan class="c">&lt; s c r i p t &gt;</tspan> 0 0 1 1 0 1 <tspan class="b">n o d e</tspan> 0 1 f u n c t i o n 0 0 1</text>
-  <text x="10" y="350">1 1 0 0 1 &lt; c o d e &gt; 1 1 0 0 1 0 1 1 <tspan class="c">g o</tspan> 0 1 &lt; c o d e &gt; 1 1 0 0 1</text>
-  <text x="10" y="382">0 0 1 1 0 s i g n a l s 1 0 <tspan class="a">a n g u l a r</tspan> f u n c t i o n 0 0 1 &lt; s c r i p t &gt;</text>
-  <text x="10" y="414">0 1 &lt; c o d e &gt; 1 1 0 0 &lt; h t m l &gt; 1 1 <tspan class="c">A P I</tspan> &lt; h t m l &gt;</text>
-  <text x="10" y="446">1 0 &lt; s c r i p t &gt; 0 <tspan class="c">l i n u x</tspan> 1 1 0 a w a i t 1 0 0 0 0 1 1 0 r e a c t i v e</text>
-  <text x="10" y="478">1 1 <tspan class="c">0</tspan> 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 <tspan class="c">b a s h</tspan> 1 &lt; c i t e &gt; 1 1</text>
-  <text x="10" y="510">0 0 1 1 0 s p a w n 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1 0 <tspan class="c">f u n c t i o n</tspan></text>
-  <text x="10" y="542">0 1 1 0 1 <tspan class="a">&lt; f o r m &gt;</tspan> 1 &lt; h e a d &gt; 1 1 0 0 1 &lt; h t m l &gt; 1 1 0</text>
-  <text x="10" y="574"><tspan class="c">1</tspan> 0 r e d i s 0 0 0 0 0 1 1 0 1 1 1 1 <tspan class="c">r u s t</tspan> 0 0 1 1 0 1</text>
-  <text x="10" y="606">1 1 0 0 1 &lt; h t m l &gt; 1 A I 0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">0 1</tspan></text>
-  <text x="10" y="638">0 0 1 1 0 <tspan class="c">d e v e l o p e r</tspan> 0 1 1 0 e x e c 1 1 A I 0 0 1 1 0 f u n c t i o n</text>
+  <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0 1</text>
+  <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0</text>
+  <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 1 0 1</text>
+  <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0</text>
+  <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+  <text x="10" y="190">1 0 0 1 1 <tspan class="c">i o n i c</tspan> 0 1 0 1 0 <tspan class="c">C S S</tspan> 1 t y p e s c r i p t</text>
+  <text x="10" y="222">1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 <tspan class="b">J S</tspan> &lt; h t m l &gt; 1 1 0 0 1</text>
+  <text x="10" y="254">0 0 1 1 0 1 0 0 <tspan class="a">A I</tspan> 0 a s y n c 0 0 1 0 0 1 1 0 c l a s s 1</text>
+  <text x="10" y="286">0 1 &lt; a b b r &gt; 1 1 0 0 1 0 1 <tspan class="c">J S O N</tspan> 0 0 1 &lt; a b b r &gt; 1 1</text>
+  <text x="10" y="318">1 <tspan class="c">1</tspan> 0 D X 0 0 1 0 0 <tspan class="c">&lt; s c r i p t &gt;</tspan> 0 0 1 1 0 1 <tspan class="b">n o d e</tspan> 0 1</text>
+  <text x="10" y="350">1 1 0 0 1 &lt; c o d e &gt; 1 1 0 0 1 0 1 1 <tspan class="c">g o</tspan> 0 1 &lt; c o d e &gt; 1</text>
+  <text x="10" y="382">0 0 1 1 0 s i g n a l s 1 0 <tspan class="a">a n g u l a r</tspan> f u n c t i o n 0</text>
+  <text x="10" y="414">0 1 &lt; c o d e &gt; 1 1 0 0 &lt; h t m l &gt; 1 1 <tspan class="c">A P I</tspan> &lt; h t m l &gt; 1 1</text>
+  <text x="10" y="446">1 0 &lt; s c r i p t &gt; 0 <tspan class="c">l i n u x</tspan> 1 1 0 a w a i t 1 0 0 0 0 1 1</text>
+  <text x="10" y="478">1 1 <tspan class="c">0</tspan> 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 <tspan class="c">b a s h</tspan> 1 &lt; c i t e &gt; 1</text>
+  <text x="10" y="510">0 0 1 1 0 s p a w n 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
+  <text x="10" y="542">0 1 1 0 1 <tspan class="a">&lt; f o r m &gt;</tspan> 1 &lt; h e a d &gt; 1 1 0 0 1 &lt; h t m l &gt; 1</text>
+  <text x="10" y="574"><tspan class="c">1</tspan> 0 r e d i s 0 0 0 0 0 1 1 0 1 1 1 1 <tspan class="c">r u s t</tspan> 0 0 1 1 0 1 1</text>
+  <text x="10" y="606">1 1 0 0 1 &lt; h t m l &gt; 1 A I 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+  <text x="10" y="638">0 0 1 1 0 <tspan class="c">d e v e l o p e r</tspan> 0 1 1 0 e x e c 1 1 A I 0 0 1 1</text>
 </svg>
