@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.icf{fill:#004e9b;stroke:none}</style>
+  <g transform="translate(4.0212,2.2222) scale(0.899471)"><path d="M40 6 L68 18 L68 44 Q68 66 40 78 Q12 66 12 44 L12 18 Z" class="ic"/>
+  <rect x="28" y="40" width="24" height="20" rx="3" class="ic"/>
+  <path d="M32 40 L32 34 Q32 26 40 26 Q48 26 48 34 L48 40" class="ic"/>
+  <circle cx="40" cy="50" r="3" class="icf"/>
+  <line x1="40" y1="53" x2="40" y2="57" class="ic" stroke-width="1.6"/>
+</g></svg>

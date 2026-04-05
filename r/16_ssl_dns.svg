@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.icf{fill:#004e9b;stroke:none}</style>
+  <g transform="translate(4.0212,7.6190) scale(0.899471)"><rect x="4" y="8" width="72" height="56" rx="5" class="ic"/>
+  <line x1="4" y1="22" x2="76" y2="22" class="ic"/>
+  <circle cx="14" cy="15" r="3" class="ic"/>
+  <circle cx="24" cy="15" r="3" class="ic"/>
+  <rect x="14" y="28" width="52" height="8" rx="2" class="ic"/>
+  <circle cx="36" cy="50" r="9" class="ic"/>
+  <polyline points="32,50 35,54 43,44" class="ic" stroke-width="2"/>
+  <line x1="50" y1="48" x2="64" y2="48" class="ic" stroke-width="1.4"/>
+  <line x1="50" y1="53" x2="62" y2="53" class="ic" stroke-width="1.4"/>
+</g></svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ic2{stroke-width:1.9;}</style>
+  <g transform="translate(0.3499,-1.1370)">
+    <path d="M40 57 L32 41 L36 25 Q40 -7 44 25 L48 41 Z" class="ic ic2"/>
+    <path d="M32 41 Q20 47 22 55 L36 51" class="ic ic2"/>
+    <path d="M48 41 Q60 47 58 55 L44 51" class="ic ic2"/>
+    <ellipse cx="40" cy="38" rx="4" ry="4" class="ic ic2"/>
+    <rect x="8" y="62" width="64" height="12" rx="3" class="ic"/>
+    <circle cx="16" cy="68" r="2.5" class="ic"/>
+    <line x1="24" y1="68" x2="32" y2="68" class="ic"/>
+  </g>
+</svg>

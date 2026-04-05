@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.83;stroke-linecap:round;stroke-linejoin:round}</style>
+  <circle cx="40" cy="40" r="30" class="ic"/>
+  <ellipse cx="40" cy="40" rx="14.83" ry="30" class="ic"/>
+  <line x1="13" y1="26.31" x2="67" y2="26.31" class="ic"/>
+  <line x1="13" y1="53.69" x2="67" y2="53.69" class="ic"/>
+  <circle cx="40" cy="40" r="4.56" class="ic"/>
+</svg>

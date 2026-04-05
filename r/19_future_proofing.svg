@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}</style>
+
+  <g transform="translate(5,7.1693) scale(0.899471)"><rect x="8" y="58" width="64" height="14" rx="3" class="ic"/>
+  <circle cx="17" cy="65" r="2.5" class="ic" stroke-width="1.2"/>
+  <line x1="24" y1="65" x2="66" y2="65" class="ic" stroke-width="1"/>
+
+  <rect x="8" y="38" width="64" height="14" rx="3" class="ic"/>
+  <circle cx="17" cy="45" r="2.5" class="ic" stroke-width="1.2"/>
+  <line x1="24" y1="45" x2="66" y2="45" class="ic" stroke-width="1"/>
+
+  <path d="M40,2 A16,16 0 1,1 24,18" class="ic" stroke-width="2.2"/>
+  <polyline points="18,21 24,16 30,22" class="ic" stroke-width="2.2"/>
+</g></svg>

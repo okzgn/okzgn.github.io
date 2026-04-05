@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.icf{fill:#004e9b;stroke:none}</style>
+  <g transform="translate(4.0212,4.9206) scale(0.899471)"><rect x="4" y="8" width="72" height="52" rx="4" class="ic"/>
+  <line x1="4" y1="22" x2="76" y2="22" class="ic"/>
+  <circle cx="14" cy="15" r="2.5" class="ic"/>
+  <circle cx="22" cy="15" r="2.5" class="ic"/>
+  <line x1="40" y1="60" x2="40" y2="70" class="ic"/>
+  <line x1="28" y1="70" x2="52" y2="70" class="ic"/>
+  <polygon points="43,23 33,41 41,41 37,57 50,35 42,35" fill="#004e9b"/>
+</g></svg>
