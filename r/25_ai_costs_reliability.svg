@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.icf{fill:#004e9b;stroke:none}</style>
+  <g transform="translate(9,10) scale(0.8)">
+    <path d="M40 6 L68 18 L68 44 C68 62 40 76 40 76 C40 76 12 62 12 44 L12 18 Z" class="ic" stroke-width="2"/>
+    <line x1="40" y1="20" x2="40" y2="57" class="ic" stroke-width="1.6"/>
+    <path d="M50 30 C50 26 45 22 40 23 C35 24 30 28 32 33 C34 38 50 37 50 43 C50 48 45 53 40 53 C35 53 30 50 30 47" class="ic" stroke-width="1.9"/>
+  </g>
+
+  <g transform="translate(1,-70)">
+    <path d="M22 84 C22 78 32 76 40 74" class="ic" stroke-width="1.6"/>
+    <path d="M58 84 C58 78 48 76 40 74" class="ic" stroke-width="1.6"/>
+    <polyline points="20,80 21,86 26,82" class="ic" stroke-width="1.6"/>
+    <polyline points="60,80 59,86 54,82" class="ic" stroke-width="1.6"/>
+  </g>
+</svg>

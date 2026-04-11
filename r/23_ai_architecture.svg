@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ic2{stroke-width:3.6;}</style>
+  <g transform="translate(-5,10) scale(0.85)">
+    <polygon points="44,6 26,42 40,42 24,76 58,34 42,34" class="ic" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(40,0) scale(0.5)">
+    <rect x="22" y="22" width="36" height="36" rx="4" class="ic2 ic"/>
+
+    <line x1="10" y1="32" x2="20" y2="32" class="ic2 ic"/>
+    <line x1="10" y1="40" x2="20" y2="40" class="ic2 ic"/>
+    <line x1="10" y1="48" x2="20" y2="48" class="ic2 ic"/>
+
+    <line x1="60" y1="32" x2="70" y2="32" class="ic2 ic"/>
+    <line x1="60" y1="40" x2="70" y2="40" class="ic2 ic"/>
+    <line x1="60" y1="48" x2="70" y2="48" class="ic2 ic"/>
+
+    <line x1="31" y1="10" x2="31" y2="20" class="ic2 ic"/>
+    <line x1="41" y1="10" x2="41" y2="20" class="ic2 ic"/>
+    <line x1="51" y1="10" x2="51" y2="20" class="ic2 ic"/>
+
+    <line x1="31" y1="60" x2="31" y2="70" class="ic2 ic"/>
+    <line x1="41" y1="60" x2="41" y2="70" class="ic2 ic"/>
+    <line x1="51" y1="60" x2="51" y2="70" class="ic2 ic"/>
+
+    <g transform="translate(9, 9) scale(0.75)">
+      <line x1="32" y1="50" x2="37" y2="32" class="ic ic2" />
+      <line x1="37" y1="32" x2="42" y2="50" class="ic ic2" />
+      <line x1="34" y1="44" x2="40" y2="44" class="ic ic2" />
+      <line x1="48" y1="32" x2="48" y2="50" class="ic ic2" />
+      <line x1="45" y1="32" x2="51" y2="32" class="ic ic2" />
+      <line x1="45" y1="50" x2="51" y2="50" class="ic ic2" />
+    </g>
+  </g>
+
+</svg>

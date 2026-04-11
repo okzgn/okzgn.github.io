@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ic2{stroke-width:2.2;}</style>
+
+  <line x1="40" y1="0" x2="40" y2="10" class="ic" stroke-dasharray="3,3"/>
+
+  <circle cx="40" cy="17" r="4" class="ic"/>
+
+  <!--<circle cx="40" cy="40" r="16" class="ic"/>-->
+  <g transform="translate(16, 16) scale(0.6)">
+    <path d="M40 12 C24 12 12 22 12 36 C12 46 18 54 28 58 L28 68 L52 68 L52 58 C62 54 68 46 68 36 C68 22 56 12 40 12 Z" class="ic ic2"/>
+  </g>
+  <g transform="translate(15, 15) scale(0.6)">
+    <line x1="32" y1="50" x2="37" y2="32" class="ic ic2" />
+    <line x1="37" y1="32" x2="42" y2="50" class="ic ic2" />
+    <line x1="34" y1="44" x2="40" y2="44" class="ic ic2" />
+    <line x1="48" y1="32" x2="48" y2="50" class="ic ic2" />
+    <line x1="45" y1="32" x2="51" y2="32" class="ic ic2" />
+    <line x1="45" y1="50" x2="51" y2="50" class="ic ic2" />
+  </g>
+
+  <circle cx="40" cy="63" r="4" class="ic"/>
+  <line x1="40" y1="70" x2="40" y2="80" class="ic" stroke-dasharray="3,3"/>
+
+  <circle cx="20" cy="50" r="4" class="ic"/>
+  <line x1="14" y1="53" x2="0" y2="60" class="ic" stroke-dasharray="3,3"/>
+
+  <circle cx="60" cy="50" r="4" class="ic"/>
+  <line x1="66" y1="53" x2="80" y2="60" class="ic" stroke-dasharray="3,3"/>
+</svg>
