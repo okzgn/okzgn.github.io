@@ -49,10 +49,19 @@ Providing high-performance technological solutions for businesses and enterprise
 ### Optimization, DevOps & FinOps
 *   **Server Administration**: End-to-end maintenance of Linux environments (Bash, SSH, K8s, Docker, Express, Echo, Nginx).
 *   **Data Access Control**: Secure management and access control for your servers, applications, and content.
-*   **Future-Proofing**: Periodic updates to migrate obsolete components to efficient, modern or serverless architectures.
-*   **Ongoing Support**: Technical assistance to ensure your systems remain fast and stable over time.
+*   **Future-Proofing**: Periodic updates to migrate obsolete components to efficient, cost-optimized, modern or serverless architectures.
+*   **Ongoing Support**: Comprehensive documentation and technical expertise to guarantee long-term system performance and stability.
 
 [Contact Support](https://wa.me/593979522180)
+
+---
+
+## Open Source Projects
+
+*   **[DX Server](https://npmjs.com/dx-server-js)**: A high-performance, lightweight development and production server and build tool for modern frontend applications, featuring Developer eXperience enhancements like hot-reloading, built-in SPA routing, automatic self-signed SSL generation, and a unique Build Ingestion system to monitor your build processes directly from the console or browser.
+*   **[Estructura](https://npmjs.com/estructura-js)**: A lightweight dependency-free JavaScript framework that lets you assign functions to be automatically attached to custom or extended data types, based on one or multiple arguments.
+*   **[Turbo](https://github.com/okzgn/turbo-go)**: A cross-platform, high-performance HTTP web server with a real-time, visual management interface. Manage unlimited domains and multi-level wildcard subdomains, SSL certificates, URI rewrites, request preprocessing, fine-grained request rate and size limiting, as well as custom aliases, headers, MIMEs, and indexes.
+*   **[Browse Ecosystem](https://github.com/okzgn)**: Explore the complete collection of open-source software, documentation, active projects, and development tools.
 
 ---
 
