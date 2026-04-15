@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <style>
+    .an {
+      will-change: transform;
+      animation: scroll 30s linear alternate infinite;
+      transform: translateY(-320px);
+    }
+    @keyframes scroll {
+        0% { transform: translateY(-640px); }
+        50% { transform: translateY(-320px); }
+        100% { transform: translateY(0); }
+    }
+    text {
+      font-family: monospace;
+      font-size: 20px;
+      font-weight: bold;
+      fill: rgba(255, 255, 255, 0.075);
+    }
+    .a { fill: rgba(0, 78, 155, 1); }
+    .b { fill: rgba(0, 78, 155, 0.85); }
+    .c { fill: rgba(0, 78, 155, 0.7); }
+
+    @keyframes z {
+      100% { fill: #c50; }
+    }
+
+    @keyframes x {
+      100% { fill: #e66f00; }
+    }
+
+    @keyframes y {
+      100% { fill: #f80; }
+    }
+
+    .a { animation: z 20s infinite alternate 1s; }
+    .b { animation: y 10s infinite alternate 1s; }
+    .c { animation: x 30s infinite alternate 1s; }
+
+    text:nth-child(3n) tspan   { animation-delay: 1s; }
+    text:nth-child(3n+1) tspan { animation-delay: 3.5s; }
+    text:nth-child(3n+2) tspan { animation-delay: 7s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .an { animation-duration: 90s; }
+    }
+  </style>
+  <g class="an">
+    <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0 1</text>
+    <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0</text>
+    <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 1 0 1</text>
+    <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0</text>
+    <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="190">1 0 0 1 1 <tspan class="c">i o n i c</tspan> 0 1 0 1 0 <tspan class="c">C S S</tspan> 1 t y p e s c r i p t</text>
+    <text x="10" y="222">1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 <tspan class="b">J S</tspan> &lt; h t m l &gt; 1 1 0 0 1</text>
+    <text x="10" y="254">0 0 1 1 0 1 0 0 <tspan class="a">A I</tspan> 0 a s y n c 0 0 1 0 0 1 1 0 c l a s s 1</text>
+    <text x="10" y="286">0 1 &lt; a b b r &gt; 1 1 0 0 1 0 1 <tspan class="c">J S O N</tspan> 0 0 1 &lt; a b b r &gt; 1 1</text>
+    <text x="10" y="318">1 <tspan class="c">1</tspan> 0 D X 0 0 1 0 0 <tspan class="c">&lt; s c r i p t &gt;</tspan> 0 0 1 1 0 1 <tspan class="b">n o d e</tspan> 0 1</text>
+    <text x="10" y="350">1 1 0 0 1 &lt; c o d e &gt; 1 1 0 0 1 0 1 1 <tspan class="c">g o</tspan> 0 1 &lt; c o d e &gt; 1</text>
+    <text x="10" y="382">0 0 1 1 0 s i g n a l s 1 0 <tspan class="a">a n g u l a r</tspan> f u n c t i o n 0</text>
+    <text x="10" y="414">0 1 &lt; c o d e &gt; 1 1 0 0 &lt; h t m l &gt; 1 1 <tspan class="c">A P I</tspan> &lt; h t m l &gt; 1 1</text>
+    <text x="10" y="446">1 0 &lt; s c r i p t &gt; 0 <tspan class="c">l i n u x</tspan> 1 1 0 a w a i t 1 0 0 0 0 1 1</text>
+    <text x="10" y="478">1 1 <tspan class="c">0</tspan> 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 <tspan class="c">b a s h</tspan> 1 &lt; c i t e &gt; 1</text>
+    <text x="10" y="510">0 0 1 1 0 s p a w n 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
+    <text x="10" y="542">0 1 1 0 1 <tspan class="a">&lt; f o r m &gt;</tspan> 1 &lt; h e a d &gt; 1 1 0 0 1 &lt; h t m l &gt; 1</text>
+    <text x="10" y="574"><tspan class="c">1</tspan> 0 r e d i s 0 0 0 0 0 1 1 0 1 1 1 1 <tspan class="c">r u s t</tspan> 0 0 1 1 0 1 1</text>
+    <text x="10" y="606">1 1 0 0 1 &lt; h t m l &gt; 1 A I 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="638">0 0 1 1 0 <tspan class="c">d e v e l o p m e n t</tspan> 1 0 e x e c 1 1 A I 0 0 1 1</text>
+    <!--2-->
+    <text x="10" y="670">0 <tspan class="c">U X</tspan> 1 0 <tspan class="c">G O</tspan> 1 0 1 p a c k a g e 0 0 1 <tspan class="c">f u n c</tspan> 0 1 0 1 1 1</text>
+    <text x="10" y="702">1 0 <tspan class="a">i n t e r f a c e</tspan> 0 0 1 1 0 a w a i t 1 0 1 0 0 1 0 1 0</text>
+    <text x="10" y="734">1 1 0 0 0 <tspan class="c">&lt; h e a d &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 1 0 1</text>
+    <text x="10" y="766">0 0 1 1 0 n a m e s p a c e 0 1 1 0 <tspan class="c">y i e l d</tspan> 1 1 0 0 1 1 0</text>
+    <text x="10" y="798">0 1 &lt; j s o n &gt; 1 1 0 0 1 <tspan class="b">A P I</tspan> &lt; j s o n &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="830">1 0 0 1 1 <tspan class="c">r e a c t</tspan> 0 1 0 1 0 <tspan class="c">S Q L</tspan> 1 j a v a s c r i p t</text>
+    <text x="10" y="862">1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 0 <tspan class="b">T S</tspan> &lt; h e a d &gt; 1 1 0 0 1</text>
+    <text x="10" y="894">0 0 1 1 0 1 0 0 <tspan class="a">I A</tspan> 0 a w a i t 0 0 1 0 0 1 1 0 0 1 1 0 1 1</text>
+    <text x="10" y="926">0 1 &lt; s p a n &gt; 1 1 0 0 1 0 1 <tspan class="c">Y A M L</tspan> 0 0 1 &lt; l a n g &gt; 1 1</text>
+    <text x="10" y="958">1 <tspan class="c">1</tspan> 0 U I 0 0 1 0 0 <tspan class="c">&lt; i m p o r t &gt;</tspan> 0 0 1 1 0 <tspan class="b">t u r b o</tspan> 0 1</text>
+    <text x="10" y="990">1 1 0 0 1 &lt; d a t a &gt; 1 1 0 0 1 0 <tspan class="c">i O S</tspan> 1 &lt; d a t a &gt; 1</text>
+    <text x="10" y="1022">0 0 1 1 0 s t r e a m s 1 0 <tspan class="a">n o d e . j s</tspan> m o d u l e s 1 0</text>
+    <text x="10" y="1054">0 1 &lt; h t m l &gt; 1 1 0 0 &lt; j s o n &gt; 1 1 <tspan class="c">D O M</tspan> &lt; 0 r a w &gt; 1 1</text>
+    <text x="10" y="1086">1 0 &lt; m o d u l e &gt; 0 <tspan class="c">a n d r o i d</tspan> 0 a s y n c 1 0 0 0 0 1 1 1 1</text>
+    <text x="10" y="1118">1 1 <tspan class="c">0</tspan> 0 1 &lt; y a m l &gt; 1 1 <tspan class="c">a n a l y t i c s</tspan> 1 &lt; c o d e &gt; 1</text>
+    <text x="10" y="1150">0 0 1 1 0 f o r k s 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
+    <text x="10" y="1182">0 1 1 0 1 <tspan class="a">m o n g o</tspan> &lt; 0 1 r e q u e s t &gt; 1 &lt; j s o n &gt; 1</text>
+    <text x="10" y="1214"><tspan class="c">1</tspan> D 1 K V 1 0 0 0 1 1 0 1 1 1 1 <tspan class="c">G O</tspan> 1 1 0 0 1 1 0 1 1 0 1</text>
+    <text x="10" y="1246">1 1 0 0 1 &lt; j s o n &gt; 1 I A 0 1 &lt; c l o u d &gt; 1 0 0 1 0 1 0</text>
+    <text x="10" y="1278">0 0 1 1 0 <tspan class="c">p r o g r a m m i n g</tspan> 1 0 s p a w n 1 I A 0 0 1 1</text>
+  </g>
+</svg>

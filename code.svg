@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
   <style>
+    .an {
+      will-change: transform;
+      animation: scroll 30s linear alternate infinite;
+      transform: translateY(-320px);
+    }
+    @keyframes scroll {
+        0% { transform: translateY(-640px); }
+        50% { transform: translateY(-320px); }
+        100% { transform: translateY(0); }
+    }
     text {
       font-family: monospace;
       font-size: 20px;
@@ -22,102 +32,59 @@
       100% { fill: #f80; }
     }
 
-    .a:nth-child(1) { animation: z 20s infinite alternate 1.0s; }
-    .a:nth-child(2) { animation: z 20s infinite alternate 1.3s; }
-    .a:nth-child(3) { animation: z 20s infinite alternate 1.6s; }
-    .a:nth-child(4) { animation: z 20s infinite alternate 1.9s; }
-    .a:nth-child(5) { animation: z 20s infinite alternate 2.2s; }
-    .a:nth-child(6) { animation: z 20s infinite alternate 2.5s; }
-    .a:nth-child(7) { animation: z 20s infinite alternate 2.8s; }
-    .a:nth-child(8) { animation: z 20s infinite alternate 3.1s; }
-    .a:nth-child(9) { animation: z 20s infinite alternate 3.4s; }
-    .a:nth-child(10) { animation: z 20s infinite alternate 3.7s; }
-    .a:nth-child(11) { animation: z 20s infinite alternate 4.0s; }
-    .a:nth-child(12) { animation: z 20s infinite alternate 4.3s; }
-    .a:nth-child(13) { animation: z 20s infinite alternate 4.6s; }
-    .a:nth-child(14) { animation: z 20s infinite alternate 4.9s; }
-    .a:nth-child(15) { animation: z 20s infinite alternate 5.2s; }
-    .a:nth-child(16) { animation: z 20s infinite alternate 5.5s; }
-    .a:nth-child(17) { animation: z 20s infinite alternate 5.8s; }
-    .a:nth-child(18) { animation: z 20s infinite alternate 6.1s; }
-    .a:nth-child(19) { animation: z 20s infinite alternate 6.4s; }
-    .a:nth-child(20) { animation: z 20s infinite alternate 6.7s; }
-    .a:nth-child(21) { animation: z 20s infinite alternate 7.0s; }
-    .a:nth-child(22) { animation: z 20s infinite alternate 7.3s; }
-    .a:nth-child(23) { animation: z 20s infinite alternate 7.6s; }
-    .a:nth-child(24) { animation: z 20s infinite alternate 7.9s; }
-    .a:nth-child(25) { animation: z 20s infinite alternate 8.2s; }
+    .a { animation: z 20s infinite alternate 1s; }
+    .b { animation: y 10s infinite alternate 1s; }
+    .c { animation: x 30s infinite alternate 1s; }
 
-    .b:nth-child(1) { animation: y 10s infinite alternate 1.0s; }
-    .b:nth-child(2) { animation: y 10s infinite alternate 1.3s; }
-    .b:nth-child(3) { animation: y 10s infinite alternate 1.6s; }
-    .b:nth-child(4) { animation: y 10s infinite alternate 1.9s; }
-    .b:nth-child(5) { animation: y 10s infinite alternate 2.2s; }
-    .b:nth-child(6) { animation: y 10s infinite alternate 2.55s; }
-    .b:nth-child(7) { animation: y 10s infinite alternate 2.8s; }
-    .b:nth-child(8) { animation: y 10s infinite alternate 3.1s; }
-    .b:nth-child(9) { animation: y 10s infinite alternate 3.4s; }
-    .b:nth-child(10) { animation: y 10s infinite alternate 3.7s; }
-    .b:nth-child(11) { animation: y 10s infinite alternate 4.0s; }
-    .b:nth-child(12) { animation: y 10s infinite alternate 4.3s; }
-    .b:nth-child(13) { animation: y 10s infinite alternate 4.6s; }
-    .b:nth-child(14) { animation: y 10s infinite alternate 4.9s; }
-    .b:nth-child(15) { animation: y 10s infinite alternate 5.2s; }
-    .b:nth-child(16) { animation: y 10s infinite alternate 5.55s; }
-    .b:nth-child(17) { animation: y 10s infinite alternate 5.8s; }
-    .b:nth-child(18) { animation: y 10s infinite alternate 6.1s; }
-    .b:nth-child(19) { animation: y 10s infinite alternate 6.4s; }
-    .b:nth-child(20) { animation: y 10s infinite alternate 6.7s; }
-    .b:nth-child(21) { animation: y 10s infinite alternate 7.0s; }
-    .b:nth-child(22) { animation: y 10s infinite alternate 7.3s; }
-    .b:nth-child(23) { animation: y 10s infinite alternate 7.6s; }
-    .b:nth-child(24) { animation: y 10s infinite alternate 7.9s; }
-    .b:nth-child(25) { animation: y 10s infinite alternate 8.2s; }
+    text:nth-child(3n) tspan   { animation-delay: 1s; }
+    text:nth-child(3n+1) tspan { animation-delay: 3.5s; }
+    text:nth-child(3n+2) tspan { animation-delay: 7s; }
 
-    .c:nth-child(1) { animation: x 30s infinite alternate 1.0s; }
-    .c:nth-child(2) { animation: x 30s infinite alternate 1.3s; }
-    .c:nth-child(3) { animation: x 30s infinite alternate 1.6s; }
-    .c:nth-child(4) { animation: x 30s infinite alternate 1.9s; }
-    .c:nth-child(5) { animation: x 30s infinite alternate 2.2s; }
-    .c:nth-child(6) { animation: x 30s infinite alternate 2.5s; }
-    .c:nth-child(7) { animation: x 30s infinite alternate 2.8s; }
-    .c:nth-child(8) { animation: x 30s infinite alternate 3.1s; }
-    .c:nth-child(9) { animation: x 30s infinite alternate 3.4s; }
-    .c:nth-child(10) { animation: x 30s infinite alternate 3.7s; }
-    .c:nth-child(11) { animation: x 30s infinite alternate 4.0s; }
-    .c:nth-child(12) { animation: x 30s infinite alternate 4.3s; }
-    .c:nth-child(13) { animation: x 30s infinite alternate 4.6s; }
-    .c:nth-child(14) { animation: x 30s infinite alternate 4.9s; }
-    .c:nth-child(30) { animation: x 30s infinite alternate 5.2s; }
-    .c:nth-child(16) { animation: x 30s infinite alternate 5.5s; }
-    .c:nth-child(17) { animation: x 30s infinite alternate 5.8s; }
-    .c:nth-child(18) { animation: x 30s infinite alternate 6.1s; }
-    .c:nth-child(19) { animation: x 30s infinite alternate 6.4s; }
-    .c:nth-child(20) { animation: x 30s infinite alternate 6.7s; }
-    .c:nth-child(21) { animation: x 30s infinite alternate 7.0s; }
-    .c:nth-child(22) { animation: x 30s infinite alternate 7.3s; }
-    .c:nth-child(23) { animation: x 30s infinite alternate 7.6s; }
-    .c:nth-child(24) { animation: x 30s infinite alternate 7.9s; }
-    .c:nth-child(25) { animation: x 30s infinite alternate 8.2s; }
+    @media (prefers-reduced-motion: reduce) {
+      .an { animation-duration: 90s; }
+    }
   </style>
-  <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0 1</text>
-  <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0</text>
-  <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 1 0 1</text>
-  <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0</text>
-  <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
-  <text x="10" y="190">1 0 0 1 1 <tspan class="c">i o n i c</tspan> 0 1 0 1 0 <tspan class="c">C S S</tspan> 1 t y p e s c r i p t</text>
-  <text x="10" y="222">1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 <tspan class="b">J S</tspan> &lt; h t m l &gt; 1 1 0 0 1</text>
-  <text x="10" y="254">0 0 1 1 0 1 0 0 <tspan class="a">A I</tspan> 0 a s y n c 0 0 1 0 0 1 1 0 c l a s s 1</text>
-  <text x="10" y="286">0 1 &lt; a b b r &gt; 1 1 0 0 1 0 1 <tspan class="c">J S O N</tspan> 0 0 1 &lt; a b b r &gt; 1 1</text>
-  <text x="10" y="318">1 <tspan class="c">1</tspan> 0 D X 0 0 1 0 0 <tspan class="c">&lt; s c r i p t &gt;</tspan> 0 0 1 1 0 1 <tspan class="b">n o d e</tspan> 0 1</text>
-  <text x="10" y="350">1 1 0 0 1 &lt; c o d e &gt; 1 1 0 0 1 0 1 1 <tspan class="c">g o</tspan> 0 1 &lt; c o d e &gt; 1</text>
-  <text x="10" y="382">0 0 1 1 0 s i g n a l s 1 0 <tspan class="a">a n g u l a r</tspan> f u n c t i o n 0</text>
-  <text x="10" y="414">0 1 &lt; c o d e &gt; 1 1 0 0 &lt; h t m l &gt; 1 1 <tspan class="c">A P I</tspan> &lt; h t m l &gt; 1 1</text>
-  <text x="10" y="446">1 0 &lt; s c r i p t &gt; 0 <tspan class="c">l i n u x</tspan> 1 1 0 a w a i t 1 0 0 0 0 1 1</text>
-  <text x="10" y="478">1 1 <tspan class="c">0</tspan> 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 <tspan class="c">b a s h</tspan> 1 &lt; c i t e &gt; 1</text>
-  <text x="10" y="510">0 0 1 1 0 s p a w n 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
-  <text x="10" y="542">0 1 1 0 1 <tspan class="a">&lt; f o r m &gt;</tspan> 1 &lt; h e a d &gt; 1 1 0 0 1 &lt; h t m l &gt; 1</text>
-  <text x="10" y="574"><tspan class="c">1</tspan> 0 r e d i s 0 0 0 0 0 1 1 0 1 1 1 1 <tspan class="c">r u s t</tspan> 0 0 1 1 0 1 1</text>
-  <text x="10" y="606">1 1 0 0 1 &lt; h t m l &gt; 1 A I 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
-  <text x="10" y="638">0 0 1 1 0 <tspan class="c">d e v e l o p m e n t</tspan> 1 0 e x e c 1 1 A I 0 0 1 1</text>
+  <g class="an">
+    <text x="10" y="30">0 <tspan class="c">D X</tspan> 1 0 <tspan class="c">&lt; h t m l &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 0 1 1 <tspan class="c">S S H</tspan> 0 1</text>
+    <text x="10" y="62">1 0 <tspan class="a">p r o t o t y p e</tspan> 0 0 1 1 0 a s y n c 1 0 1 0 0 1 0 1 0</text>
+    <text x="10" y="94">1 1 0 0 0 <tspan class="c">&lt; b o d y &gt;</tspan> 1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 1 0 1</text>
+    <text x="10" y="126">0 0 1 1 0 p r o t o t y p e 0 1 1 0 <tspan class="c">m u t e x</tspan> 1 1 0 0 1 1 0</text>
+    <text x="10" y="158">0 1 &lt; h t m l &gt; 1 1 0 0 1 <tspan class="b">D O M</tspan> &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="190">1 0 0 1 1 <tspan class="c">i o n i c</tspan> 0 1 0 1 0 <tspan class="c">C S S</tspan> 1 t y p e s c r i p t</text>
+    <text x="10" y="222">1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 <tspan class="b">J S</tspan> &lt; h t m l &gt; 1 1 0 0 1</text>
+    <text x="10" y="254">0 0 1 1 0 1 0 0 <tspan class="a">A I</tspan> 0 a s y n c 0 0 1 0 0 1 1 0 c l a s s 1</text>
+    <text x="10" y="286">0 1 &lt; a b b r &gt; 1 1 0 0 1 0 1 <tspan class="c">J S O N</tspan> 0 0 1 &lt; a b b r &gt; 1 1</text>
+    <text x="10" y="318">1 <tspan class="c">1</tspan> 0 D X 0 0 1 0 0 <tspan class="c">&lt; s c r i p t &gt;</tspan> 0 0 1 1 0 1 <tspan class="b">n o d e</tspan> 0 1</text>
+    <text x="10" y="350">1 1 0 0 1 &lt; c o d e &gt; 1 1 0 0 1 0 1 1 <tspan class="c">g o</tspan> 0 1 &lt; c o d e &gt; 1</text>
+    <text x="10" y="382">0 0 1 1 0 s i g n a l s 1 0 <tspan class="a">a n g u l a r</tspan> f u n c t i o n 0</text>
+    <text x="10" y="414">0 1 &lt; c o d e &gt; 1 1 0 0 &lt; h t m l &gt; 1 1 <tspan class="c">A P I</tspan> &lt; h t m l &gt; 1 1</text>
+    <text x="10" y="446">1 0 &lt; s c r i p t &gt; 0 <tspan class="c">l i n u x</tspan> 1 1 0 a w a i t 1 0 0 0 0 1 1</text>
+    <text x="10" y="478">1 1 <tspan class="c">0</tspan> 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 <tspan class="c">b a s h</tspan> 1 &lt; c i t e &gt; 1</text>
+    <text x="10" y="510">0 0 1 1 0 s p a w n 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
+    <text x="10" y="542">0 1 1 0 1 <tspan class="a">&lt; f o r m &gt;</tspan> 1 &lt; h e a d &gt; 1 1 0 0 1 &lt; h t m l &gt; 1</text>
+    <text x="10" y="574"><tspan class="c">1</tspan> 0 r e d i s 0 0 0 0 0 1 1 0 1 1 1 1 <tspan class="c">r u s t</tspan> 0 0 1 1 0 1 1</text>
+    <text x="10" y="606">1 1 0 0 1 &lt; h t m l &gt; 1 A I 0 1 &lt; h t m l &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="638">0 0 1 1 0 <tspan class="c">d e v e l o p m e n t</tspan> 1 0 e x e c 1 1 A I 0 0 1 1</text>
+    <!--2-->
+    <text x="10" y="670">0 <tspan class="c">U X</tspan> 1 0 <tspan class="c">G O</tspan> 1 0 1 p a c k a g e 0 0 1 <tspan class="c">f u n c</tspan> 0 1 0 1 1 1</text>
+    <text x="10" y="702">1 0 <tspan class="a">i n t e r f a c e</tspan> 0 0 1 1 0 a w a i t 1 0 1 0 0 1 0 1 0</text>
+    <text x="10" y="734">1 1 0 0 0 <tspan class="c">&lt; h e a d &gt;</tspan> 1 1 0 0 1 &lt; h t m l &gt; 1 1 0 0 1 1 0 1</text>
+    <text x="10" y="766">0 0 1 1 0 n a m e s p a c e 0 1 1 0 <tspan class="c">y i e l d</tspan> 1 1 0 0 1 1 0</text>
+    <text x="10" y="798">0 1 &lt; j s o n &gt; 1 1 0 0 1 <tspan class="b">A P I</tspan> &lt; j s o n &gt; 1 1 0 0 1 0 1 0</text>
+    <text x="10" y="830">1 0 0 1 1 <tspan class="c">r e a c t</tspan> 0 1 0 1 0 <tspan class="c">S Q L</tspan> 1 j a v a s c r i p t</text>
+    <text x="10" y="862">1 1 0 0 1 &lt; b o d y &gt; 1 1 0 0 1 0 <tspan class="b">T S</tspan> &lt; h e a d &gt; 1 1 0 0 1</text>
+    <text x="10" y="894">0 0 1 1 0 1 0 0 <tspan class="a">I A</tspan> 0 a w a i t 0 0 1 0 0 1 1 0 0 1 1 0 1 1</text>
+    <text x="10" y="926">0 1 &lt; s p a n &gt; 1 1 0 0 1 0 1 <tspan class="c">Y A M L</tspan> 0 0 1 &lt; l a n g &gt; 1 1</text>
+    <text x="10" y="958">1 <tspan class="c">1</tspan> 0 U I 0 0 1 0 0 <tspan class="c">&lt; i m p o r t &gt;</tspan> 0 0 1 1 0 <tspan class="b">t u r b o</tspan> 0 1</text>
+    <text x="10" y="990">1 1 0 0 1 &lt; d a t a &gt; 1 1 0 0 1 0 <tspan class="c">i O S</tspan> 1 &lt; d a t a &gt; 1</text>
+    <text x="10" y="1022">0 0 1 1 0 s t r e a m s 1 0 <tspan class="a">n o d e . j s</tspan> m o d u l e s 1 0</text>
+    <text x="10" y="1054">0 1 &lt; h t m l &gt; 1 1 0 0 &lt; j s o n &gt; 1 1 <tspan class="c">D O M</tspan> &lt; 0 r a w &gt; 1 1</text>
+    <text x="10" y="1086">1 0 &lt; m o d u l e &gt; 0 <tspan class="c">a n d r o i d</tspan> 0 a s y n c 1 0 0 0 0 1 1 1 1</text>
+    <text x="10" y="1118">1 1 <tspan class="c">0</tspan> 0 1 &lt; y a m l &gt; 1 1 <tspan class="c">a n a l y t i c s</tspan> 1 &lt; c o d e &gt; 1</text>
+    <text x="10" y="1150">0 0 1 1 0 f o r k s 0 0 0 0 0 1 1 0 d x - c o r e 0 0 0 1 1</text>
+    <text x="10" y="1182">0 1 1 0 1 <tspan class="a">m o n g o</tspan> &lt; 0 1 r e q u e s t &gt; 1 &lt; j s o n &gt; 1</text>
+    <text x="10" y="1214"><tspan class="c">1</tspan> D 1 K V 1 0 0 0 1 1 0 1 1 1 1 <tspan class="c">G O</tspan> 1 1 0 0 1 1 0 1 1 0 1</text>
+    <text x="10" y="1246">1 1 0 0 1 &lt; j s o n &gt; 1 I A 0 1 &lt; c l o u d &gt; 1 0 0 1 0 1 0</text>
+    <text x="10" y="1278">0 0 1 1 0 <tspan class="c">p r o g r a m m i n g</tspan> 1 0 s p a w n 1 I A 0 0 1 1</text>
+  </g>
 </svg>
