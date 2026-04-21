@@ -576,7 +576,7 @@ main {
 .category .icon img {
     padding: 0.75rem;
     object-fit: cover;
-    filter: drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
+    filter: brightness(66%) drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
     width: 100%;
     height: 100%;
 }
@@ -870,11 +870,15 @@ footer {
         opacity: 0.03;
     }
 
+    .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
+
     .card li b { 
         color: var(--themeColor); 
     }
 
-    .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
+    .category .icon img {
+        filter: brightness(33%) drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
+    }
 
     .relate a .cta-text,
     .relate a:hover .cta-text,
@@ -983,11 +987,6 @@ footer {
     .category li:active .icon,
     .category li:focus .icon {
         box-shadow: inset 0 -0.25rem 1.5rem var(--themeColor0), 0 0.25rem 0.25rem var(--ghostBlueWhite3);
-    }
-
-    #services .icon img,
-    #projects .icon img {
-        filter: brightness(33%) drop-shadow(0 0px var(--gray)) drop-shadow(0 1px var(--white));
     }
 
     #contact aside.desktop:before {
