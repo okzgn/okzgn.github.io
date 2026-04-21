@@ -20,8 +20,8 @@
     --blueLightDarkTheme: #0075ea;
     --blueLight2: #8ac4ff;
     --blueDark: var(--realBlueDark);
-    --blueDark2: #003b75;
-    --blueDark3: #0052a3;
+    --blueDark2: #0052a3;
+    --blueDark3: #003b75;
 
     --accent: #f26522;
     --accentDark: #d95a1e;
@@ -43,6 +43,7 @@
     --ghostBlueWhite4: rgba(208, 213, 255, 0.05);
     --ghostBlueWhite5: rgba(208, 213, 255, 0.04);
 
+    --softShadow0: rgba(1, 2, 24, 0.075);
     --softShadow: rgba(1, 2, 24, 0.05);
     --softShadow2: rgba(1, 2, 24, 0.033);
     --shadow: rgba(1, 2, 24, 0.125);
@@ -124,10 +125,9 @@ body {
   z-index: 99;
 }
 .skip-link:focus { top: 1rem; }
-/*body { background: var(--themeColor3); }*/
 .bg {
     animation: slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-45deg, var(--themeColor) 50%, var(--themeColor2) 50%);/*linear-gradient(-45deg, var(--accentDark2) 50%, var(--accent) 50%);*/
+    background: linear-gradient(-45deg, var(--themeColor) 49.9%, var(--themeColor2) 50.1%);
     bottom: 0;
     left: -50%;
     opacity: 0.2;
@@ -136,7 +136,7 @@ body {
     top: 0;
     z-index: -1;
     will-change: transform;
-    contain: layout paint style;
+    contain: content;
 }
 .bg-2 {
     animation-direction: alternate-reverse;
@@ -219,7 +219,7 @@ a:focus::after {
 .cta-button {
     font-size: 1.125rem;
     padding: 0.5rem 0;
-    background: linear-gradient(to right, var(--accentDark) 50%, var(--accent));
+    background: linear-gradient(to right, var(--accentDark2) 50%, var(--accentDark));
     color: var(--white);
     border-radius: 1.125rem;
     box-shadow: 0 0.125rem 0.25rem var(--shadow);
@@ -230,7 +230,7 @@ a:focus::after {
 .cta-button:focus,
 .cta-button:active {
     transform: scale(1.0125);
-    box-shadow: 0 0.25rem 0.5rem var(--shadow2), inset -2.75rem 0 0.25rem var(--accent);
+    box-shadow: 0 0.25rem 0.5rem var(--shadow2), inset -2.75rem 0 0.25rem var(--accentDark);
 }
 .cta-button::before { margin-left: 1rem; }
 .cta-button::after { margin-right: 1rem; }
@@ -241,16 +241,16 @@ a:focus::after {
 .cta-button:active,
 .cta-button:focus {
     color: var(--white);
-    background: linear-gradient(to right, var(--accentDark) 50%, var(--accent));
+    background: linear-gradient(to right, var(--accentDark2), var(--accentDark2) 50%, var(--accentDark));
 }
 .cta-blue-button {
-    background: linear-gradient(to right, var(--blue) 50%, var(--blueLight));
+    background: linear-gradient(to right, var(--blueDark3) 50%, var(--blue));
 }
 .cta-blue-button:hover,
 .cta-blue-button:active,
 .cta-blue-button:focus {
     box-shadow: 0 0.25rem 0.5rem var(--softSilver), inset -2.75rem 0 0.25rem var(--blueLight);
-    background: linear-gradient(to right, var(--blue) 50%, var(--blueLight));
+    background: linear-gradient(to right, var(--blueDark3), var(--blue) 50%, var(--blueLight));
 }
 @media screen and (max-width: 640px) {
     a.cta-button {
@@ -276,7 +276,6 @@ a:focus::after {
 .container aside.mobile {
     display: none;
     width: 100%;
-    height: 50%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
 }
@@ -333,16 +332,20 @@ a:focus::after {
     .container {
         flex-flow: column;
     }
-    .desktop {
+    .container aside.desktop {
         display: none !important;
     }
-    .mobile {
+    .container aside.mobile {
         display: flex !important;
-        height: 40%;
+    }
+    .container aside.mobile,
+    .container aside.mobile::before, 
+    .container aside.mobile::after {
+        height: 25%;
     }
     .container > div {
         width: 100%;
-        height: 60%;
+        height: 50%;
         text-align: center;
     }
     .container aside > .logo {
@@ -373,15 +376,15 @@ main {
     margin-top: 1.25rem;
     display: flex;
     justify-content: flex-start;
-}
-#main ul + ul {
-    margin-top: 0;
+    gap: 1.25rem;
 }
 #main a {
     padding: 0.75rem 0;
     border-radius: 1rem;
     display: flex;
-    color: var(--accentDark);
+    color: var(--accentDark3);
+    background: var(--almostWhite);
+    outline: 2px solid var(--whiteTransparent2);
 }
 #main a:hover,
 #main a:active,
@@ -397,7 +400,7 @@ main {
     border-left-color: transparent;
 }
 #main a::before {
-    border-left-color: var(--accentDark);
+    border-left-color: var(--accentDark3);
 }
 #main a:hover::after,
 #main a:active::after,
@@ -408,6 +411,7 @@ main {
     width: 50%;
     filter: drop-shadow(0 0.25rem 0.25rem var(--shadow));
     transition: all 0.25s;
+    z-index: 9;
 }
 #main aside > .big-logo:hover,
 #main aside > .big-logo:active,
@@ -427,7 +431,6 @@ main {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     box-shadow: 0 0 2rem var(--softShadow2);
-    backdrop-filter: blur(10px);
 }
 #main aside.mobile {
     padding: 0 2rem;
@@ -440,22 +443,20 @@ main {
     background-position: center, 0 0;
 }
 #main aside.mobile::before {
-    border-radius: 50%;
     width: 75%;
-    height: 30%;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    box-shadow: 0 -1rem 1rem var(--softShadow);
-    background: linear-gradient(0deg, transparent, var(--softWhite)) !important;
+    z-index: 8;
 }
 #main aside.mobile::after {
-    border-radius: 50%;
     width: 50%;
-    height: 30%;
+    z-index: 7;
+}
+#main aside.mobile::before,
+#main aside.mobile::after {
+    border-radius: 50%;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     box-shadow: 0 -1rem 1rem var(--softShadow);
-    background: linear-gradient(0deg, transparent, var(--softWhite)) !important;
+    background: linear-gradient(0deg, transparent, var(--softWhite));
 }
 @media screen and (max-width: 1280px) {
     #main aside.desktop {
@@ -472,12 +473,9 @@ main {
         content: '';
         display: flex;
         width: 100%;
-        height: 30%;
+        height: 10%;
     }
-    #main ul {
-        justify-content: center;
-        margin-top: 1.5rem;
-    }
+    #main ul { justify-content: center; }
     #main a {
         padding: 0.5rem 0;
     }
@@ -488,9 +486,6 @@ main {
     }
     #main > div {
         flex-grow: 1;
-    }
-    #main aside.mobile {
-        height: 40%;
     }
     #main aside > .big-logo {
         width: 40%;
@@ -515,6 +510,7 @@ main {
     margin: 0;
     background: var(--softWhite);
     border-radius: 2rem;
+    contain: style;
 }
 .card::before, .card::after {
     content: '';
@@ -544,7 +540,7 @@ main {
     gap: 1rem;
 }
 .card .category {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     text-align: center;
 }
 .card h3 {
@@ -633,12 +629,6 @@ main {
     .card section {
         padding: 0 0.5rem;
     }
-    .card section {
-        flex-flow: column;
-    }
-    .card .category {
-        width: 100%;
-    }
 }
 @media screen and (max-width: 640px) {
     .card::before {
@@ -676,9 +666,6 @@ main {
     margin-bottom: 2rem;
     justify-content: flex-start;
 }
-#contact aside {
-    backdrop-filter: blur(10px);
-}
 #contact aside > .logo { align-self: flex-end; }
 #contact aside.desktop {
     box-shadow: 0 0 2rem var(--softSilver2);
@@ -693,6 +680,7 @@ main {
 }
 #contact aside.desktop::before {
     background-image: url(./elias.png);
+    background-size: auto 100%;
     border-top-right-radius: 100%;
     border-bottom-right-radius: 100%;
 }
@@ -706,19 +694,20 @@ main {
     background: linear-gradient(180deg, transparent, var(--white));
 }
 #contact aside.mobile::before {
-    border-radius: 50%;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    box-shadow: 0 1rem 1rem var(--softShadow);
     width: 75%;
 }
 #contact aside.mobile::after {
-    background-image: url(./elias.png);
+    width: 50%;
+}
+#contact aside.mobile::before,
+#contact aside.mobile::after {
     border-radius: 50%;
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
-    box-shadow: 0 1rem 1rem var(--softShadow);
-    width: 50%;
+    box-shadow: 0 1rem 1rem var(--softShadow0);
+}
+#contact aside.mobile::after {
+    background-image: url(./elias.png);
 }
 #contact aside img { opacity: 0.66; }
 #contact aside::before, #contact aside.mobile::after { opacity: 0.9; }
@@ -739,6 +728,10 @@ main {
     #contact > div { justify-content: flex-end; }
     #contact .auto-y-padding { text-align: center; }
     #contact address { align-items: center; }
+    #contact aside.mobile::before,
+    #contact aside.mobile::after {
+        height: 100%;
+    }
 }
 @media screen and (max-width: 480px) {
     #contact aside.mobile {
@@ -781,9 +774,9 @@ main {
     height: 1.75rem;
     position: relative;
     top: -1.75rem;
-    padding-top: 1.75rem;
+    padding: 1.75rem 1rem 0 0;
     line-height: 2.25;
-    color: var(--accentDark2);
+    color: var(--accentDark3);
     transition: all 0.25s;
     font-weight: bold;
     text-align: right;
@@ -795,7 +788,7 @@ main {
 .relate a:hover .cta-text,
 .relate a:active .cta-text,
 .relate a:focus .cta-text {
-    color: var(--accentDark);
+    color: var(--accentDark2);
 }
 @media screen and (max-width: 480px) {
     .relate a span {
@@ -814,7 +807,6 @@ main {
 }
 
 .color-1-category .icon {
-    /*clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);*/
     background: linear-gradient(to bottom, var(--white), var(--color1b));
     box-shadow: inset 0 -0.125rem 1.5rem var(--color1b), 0 0.25rem 0.25rem var(--softShadow);
 }
@@ -874,7 +866,7 @@ footer {
     }
 
     .bg {
-        background-image: linear-gradient(-45deg, var(--realBlueDark) 50%, var(--realBlue) 50%);
+        background: linear-gradient(-45deg, var(--realBlueDark) 49.9%, var(--realBlue) 50.1%);
         opacity: 0.03;
     }
 
@@ -884,15 +876,15 @@ footer {
 
     .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
 
-    .relate a div i,
-    .relate a:hover div i,
-    .relate a:active div i,
-    .relate a:focus div i {
+    .relate a .cta-text,
+    .relate a:hover .cta-text,
+    .relate a:active .cta-text,
+    .relate a:focus .cta-text {
         color: var(--accent);
     }
 
     @media screen and (max-width: 480px) {
-        .relate a div i {
+        .relate a .cta-text {
             background: linear-gradient(to bottom, transparent, var(--ghostBlueWhite3));
         }
     }
@@ -919,6 +911,16 @@ footer {
         color: var(--white);
     }
 
+    #main a {
+        color: var(--accentDark);
+        background: var(--ghostBlueWhite4);
+        outline: 2px solid var(--ghostBlueWhite5);
+    }
+
+    #main a::before {
+        border-left-color: var(--accentDark);
+    }
+
     #main a:hover,
     #main a:active,
     #main a:focus {
@@ -929,6 +931,12 @@ footer {
         outline-color: var(--accent);
     }
 
+    #main a:hover::before,
+    #main a:active::before,
+    #main a:focus::before {
+        border-left-color: transparent;
+    }
+
     #main a:hover::after,
     #main a:active::after,
     #main a:focus::after {
@@ -937,14 +945,14 @@ footer {
 
     #main aside.desktop,
     #main aside.mobile {
-        box-shadow: 0 0 3rem var(--ghostBlueWhite3);
+        box-shadow: 0 0 3rem var(--ghostBlueWhite2);
     }
 
     #main aside.desktop { 
         background: radial-gradient(var(--ghostBlueWhite0), transparent), url("code_night.svg"); 
     }
     
-    #main aside.mobile { 
+    #main aside.mobile {
         background: radial-gradient(var(--ghostBlueWhite), transparent), url("code_night.svg"); 
         background-size: cover, 480px 480px;
         background-position: center, 0 0;
@@ -952,7 +960,7 @@ footer {
 
     #main aside.mobile:before,
     #main aside.mobile:after {
-        box-shadow: 0 -1rem 1rem var(--ghostBlueWhite3);
+        box-shadow: 0 -1rem 1rem var(--ghostBlueWhite4);
         background: linear-gradient(0deg, transparent, var(--ghostBlueWhite));
     }
 
@@ -983,7 +991,7 @@ footer {
     }
 
     #contact aside.desktop:before {
-        box-shadow: 0 0 1rem var(--realSoftWhite);
+        box-shadow: 0 0 2rem var(--ghostBlueWhite);
     }
 
     #contact aside.desktop:after {
@@ -991,14 +999,13 @@ footer {
     }
 
     #contact aside.mobile {
-        background: linear-gradient(180deg, transparent, var(--realSoftWhite));
+        background: linear-gradient(180deg, transparent, var(--ghostBlueWhite));
     }
     
     #contact aside.mobile:after,
     #contact aside.mobile:before {
-        box-shadow: 0 1rem 1rem var(--ghostBlueWhite2);
+        box-shadow: 0 1rem 1rem var(--ghostBlueWhite3);
     }
-
 
     .cta-button {
         background: linear-gradient(to right, var(--accentDark3), var(--accentDark2));
@@ -1008,19 +1015,25 @@ footer {
     .cta-button:hover,
     .cta-button:focus,
     .cta-button:active {
-        background: linear-gradient(to right, var(--accentDark2) 50%, var(--accentDark));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--accent);
+        background: linear-gradient(to right, var(--accentDark3), var(--accentDark2) 50%, var(--accentDark));
+        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--accentDark);
     }
 
     .cta-blue-button {
-        background: linear-gradient(to right, var(--blueDark2), var(--blueDark3));
+        background: linear-gradient(to right, var(--blueDark3), var(--blueDark2));
         box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite4);
     }
 
     .cta-blue-button:hover,
     .cta-blue-button:active,
     .cta-blue-button:focus {
-        background: linear-gradient(to right, var(--realBlue) 50%, var(--blueLightDarkTheme));
+        background: linear-gradient(to right, var(--blueDark3), var(--realBlue) 50%, var(--blueLightDarkTheme));
         box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--blueLightDarkTheme);
+    }
+}
+@supports (backdrop-filter: blur(1px)){
+    #main aside.desktop,
+    #contact aside {
+        backdrop-filter: blur(5px);
     }
 }
