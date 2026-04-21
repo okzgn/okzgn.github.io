@@ -249,8 +249,8 @@ a:focus::after {
 .cta-blue-button:hover,
 .cta-blue-button:active,
 .cta-blue-button:focus {
-    box-shadow: 0 0.25rem 0.5rem var(--softSilver), inset -2.75rem 0 0.25rem var(--blueLight);
-    background: linear-gradient(to right, var(--blueDark3), var(--blue) 50%, var(--blueLight));
+    box-shadow: 0 0.25rem 0.5rem var(--softSilver), inset -2.75rem 0 0.25rem var(--blue);
+    background: linear-gradient(to right, var(--blueDark3) 50%, var(--blue));
 }
 @media screen and (max-width: 640px) {
     a.cta-button {
@@ -1027,8 +1027,8 @@ footer {
     .cta-blue-button:hover,
     .cta-blue-button:active,
     .cta-blue-button:focus {
-        background: linear-gradient(to right, var(--blueDark3), var(--realBlue) 50%, var(--blueLightDarkTheme));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--blueLightDarkTheme);
+        background: linear-gradient(to right, var(--blueDark3) 50%, var(--blueDark2));
+        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--blueDark2);
     }
 }
 @supports (backdrop-filter: blur(1px)){
