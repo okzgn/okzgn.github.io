@@ -67,7 +67,7 @@
     padding: 0;
     box-sizing: border-box;
 
-    scrollbar-color: var(--accent) var(--accentDark2);
+    scrollbar-color: var(--accent) var(--accentDark3);
     scrollbar-width: thin;
 
     font-family: "Inter", -apple-system, BlinkMacSystemFont,
@@ -103,7 +103,7 @@ a *:not(.icon):active, button *:not(.icon):active { outline: 1px dashed transpar
     height: 0.5rem;
 }
 ::-webkit-scrollbar-thumb { background: var(--accent); }
-::-webkit-scrollbar-track { background: var(--accentDark2); }
+::-webkit-scrollbar-track { background: var(--accentDark3); }
 html, body {
     width: 100%;
     min-height: 100vh;
@@ -843,6 +843,13 @@ footer {
         --softShadow2: var(--ghostBlueWhite3);
         --softSilver: var(--white);
     }
+
+    *, ::after, ::before {
+        scrollbar-color: var(--realBlue) var(--realBlueDark);
+    }
+
+    ::-webkit-scrollbar-thumb { background: var(--realBlue); }
+    ::-webkit-scrollbar-track { background: var(--realBlueDark); }
 
     :active, :focus {
         outline-color: var(--ghostBlueWhite);
