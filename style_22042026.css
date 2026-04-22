@@ -372,6 +372,10 @@ main {
     padding-top: 1rem;
     font-weight: bold;
 }
+#main p i {
+    color: var(--blue);
+    font-style: normal;
+}
 #main ul {
     margin-top: 1.25rem;
     display: flex;
@@ -379,7 +383,7 @@ main {
     gap: 1.25rem;
 }
 #main a {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
     border-radius: 1rem;
     display: flex;
     color: var(--accentDark3);
@@ -476,9 +480,6 @@ main {
         height: 10%;
     }
     #main ul { justify-content: center; }
-    #main a {
-        padding: 0.5rem 0;
-    }
     #main a::before, #main a::after {
         border-left-width: 0.75rem;
         border-top-width: 0.375rem;
@@ -560,6 +561,7 @@ main {
 .category .icon,
 .category li {
     transition: all 0.25s;
+    cursor: pointer;
 }
 .list {
     margin: 1rem 0;
