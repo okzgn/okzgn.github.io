@@ -86,7 +86,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 a:focus, button:focus, input:focus { outline-color: transparent; }
-a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--blueDark); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--blueDark);
+    outline-offset: 2px;
+}
 a *:not(.icon):focus, button *:not(.icon):focus,
 a *:not(.icon):active, button *:not(.icon):active { outline: 1px dashed transparent; }
 ::selection {
@@ -388,7 +391,6 @@ main {
     display: flex;
     color: var(--accentDark3);
     background: var(--almostWhite);
-    outline: 2px solid var(--whiteTransparent2);
 }
 #main a:hover,
 #main a:active,
