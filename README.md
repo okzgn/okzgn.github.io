@@ -1,4 +1,4 @@
-![OKZGN Logo](okzgn.desktop.svg)
+![OKZGN Logo](okzgn_logo_mobile.svg)
 
 # Applied AI, Platform & Software Engineering
 
