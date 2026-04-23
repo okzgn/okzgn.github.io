@@ -17,18 +17,21 @@
     --realBlueDark: #002447;
     --blue: var(--realBlue);
     --blueLight: var(--realBlueLight);
-    --blueLightDarkTheme: #0075ea;
+    --blueLight0: #5cadff;
     --blueLight2: #8ac4ff;
+    --blueLight3: #b8dbff;
     --blueDark: var(--realBlueDark);
     --blueDark2: #0052a3;
     --blueDark3: #003b75;
 
     --accent: #f26522;
+    --accent2: #f37439;
     --accentDark: #d95a1e;
     --accentDark2: #c6460c;
     --accentDark3: #9a3709;
 
     --almostWhite: rgba(255, 255, 255, 0.66);
+    --almostWhite2: rgba(255, 255, 255, 0.6);
     --whiteTransparent: rgba(255, 255, 255, 0.5);
     --whiteTransparent2: rgba(255, 255, 255, 0.33);
     --realSoftWhite: rgba(255, 255, 255, 0.25);
@@ -43,15 +46,18 @@
     --ghostBlueWhite4: rgba(208, 213, 255, 0.05);
     --ghostBlueWhite5: rgba(208, 213, 255, 0.04);
 
-    --softShadow0: rgba(1, 2, 24, 0.075);
+    --softShadow0: rgba(1, 2, 24, 0.066);
     --softShadow: rgba(1, 2, 24, 0.05);
     --softShadow2: rgba(1, 2, 24, 0.033);
     --shadow: rgba(1, 2, 24, 0.125);
     --shadow2: rgba(1, 2, 24, 0.175);
     --silver: rgba(1, 2, 24, 0.33);
-    --softSilver: rgba(1, 2, 24, 0.25);
+    --realSoftSilver: rgba(1, 2, 24, 0.25);
+    --softSilver: var(--realSoftSilver);
     --softSilver2: rgba(1, 2, 24, 0.2);
-    --gray: rgba(1, 2, 24, 0.66);
+    --realGray: rgba(1, 2, 24, 0.66);
+    --gray: var(--realGray);
+
 
     --themeColor0: #ff962e;
     --themeColor: #ffb164;
@@ -133,7 +139,7 @@ body {
     background: linear-gradient(-45deg, var(--themeColor) 49.9%, var(--themeColor2) 50.1%);
     bottom: 0;
     left: -50%;
-    opacity: 0.2;
+    opacity: 0.1;
     position: fixed;
     right: -50%;
     top: 0;
@@ -162,11 +168,9 @@ hr {
 }
 h1, h2, h3 { text-shadow: 0 0 0.25rem var(--whiteTransparent2), 0 0 0.5rem var(--whiteTransparent2); }
 h1 { color: var(--blue); }
-#main p { color: var(--blueDark); }
 h2 { color: var(--blue); }
 h3 { color: var(--blue); }
 h4 { color: var(--blueDark); }
-.card li { color: var(--blueDark); }
 a { color: var(--blue); }
 a, a * {
     display: inline-block;
@@ -368,6 +372,7 @@ main {
     justify-content: flex-end;
     align-items: center;
 }
+#main p { color: var(--blueDark); }
 #main h1 {
     padding-bottom: 1rem;
 }
@@ -436,7 +441,7 @@ main {
     border-bottom-left-radius: 50%;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    box-shadow: 0 0 2rem var(--softShadow2);
+    box-shadow: 0 0 2rem var(--softShadow0);
 }
 #main aside.mobile {
     padding: 0 2rem;
@@ -546,6 +551,7 @@ main {
     padding-top: 1.5rem;
     text-align: center;
 }
+.card li { color: var(--blueDark); }
 .card h3 {
     min-height: 4rem;
     display: flex;
@@ -606,7 +612,7 @@ main {
 .category li:active,
 .category li:focus {
     transform: scale(1.0075);
-    background: linear-gradient(90deg, var(--softWhite), var(--almostWhite), var(--softWhite));
+    background: linear-gradient(90deg, var(--softWhite), var(--whiteTransparent), var(--softWhite));
     box-shadow: 0 0.25rem 0.25rem var(--softShadow);
     color: var(--blue);
 }
@@ -753,7 +759,7 @@ main {
 }
 
 #projects a {
-    color: var(--blueDark);
+    color: var(--accentDark3);
 }
 
 #projects a::after, #projects a::before {
@@ -763,7 +769,7 @@ main {
 #projects a:hover,
 #projects a:focus,
 #projects a:active {
-    color: var(--blue);
+    color: var(--accentDark2);
 }
 #projects a:focus {
     background: linear-gradient(90deg, var(--softWhite), var(--almostWhite), var(--softWhite));
@@ -780,7 +786,7 @@ main {
     top: -1.75rem;
     padding: 1.75rem 1rem 0 0;
     line-height: 2.25;
-    color: var(--accentDark3);
+    color: var(--blueDark);
     transition: all 0.25s;
     font-weight: bold;
     text-align: right;
@@ -792,7 +798,7 @@ main {
 .relate a:hover .cta-text,
 .relate a:active .cta-text,
 .relate a:focus .cta-text {
-    color: var(--accentDark2);
+    color: var(--blue);
 }
 @media screen and (max-width: 480px) {
     .relate a span {
@@ -810,23 +816,6 @@ main {
     }
 }
 
-.color-1-category .icon {
-    background: linear-gradient(to bottom, var(--white), var(--color1b));
-    box-shadow: inset 0 -0.125rem 1.5rem var(--color1b), 0 0.25rem 0.25rem var(--softShadow);
-}
-
-.color-1-category li:hover,
-.color-1-category li:active,
-.color-1-category li:focus {
-    background: linear-gradient(90deg, var(--softWhite), var(--almostWhite), var(--softWhite));
-    box-shadow: 0 0.25rem 0.25rem var(--softShadow);
-}
-.color-1-category li:hover .icon,
-.color-1-category li:active .icon,
-.color-1-category li:focus .icon {
-    box-shadow: inset 0 -0.25rem 1.5rem var(--color1a), 0 0.5rem 0.5rem var(--shadow);
-}
-
 footer {
     padding: 2rem;
     align-self: center;
@@ -839,7 +828,7 @@ footer {
         --bg: var(--black);
         --gray: var(--almostWhite);
         --black: var(--white);
-        --blue: var(--blueLight2);
+        --blue: var(--blueLight3);
         --blueDark: var(--almostWhite);
         --whiteTransparent2: var(--ghostBlueWhite3);
         --softWhite: var(--ghostBlueWhite2);
@@ -883,25 +872,28 @@ footer {
 
     .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
 
-    .card li b { 
-        color: var(--themeColor); 
+    .card li { 
+        color: var(--blueLight2); 
+    }
+
+    .card li:hover,
+    .card li:active,
+    .card li:focus { 
+        color: var(--blueLight3); 
     }
 
     .category .icon img {
         filter: brightness(33%) drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
     }
 
-    .relate a .cta-text,
-    .relate a:hover .cta-text,
-    .relate a:active .cta-text,
-    .relate a:focus .cta-text {
-        color: var(--accent);
+    #projects a { 
+        color: var(--themeColor); 
     }
 
-    @media screen and (max-width: 480px) {
-        .relate a .cta-text {
-            background: linear-gradient(to bottom, transparent, var(--ghostBlueWhite3));
-        }
+    #projects a:hover,
+    #projects a:focus, 
+    #projects a:active {
+        color: var(--themeColor2);
     }
 
     .category li:hover,
@@ -910,14 +902,23 @@ footer {
     #projects a:hover,
     #projects a:focus, 
     #projects a:active {
-        background: linear-gradient(90deg, var(--ghostBlueWhite3), var(--ghostBlueWhite), var(--ghostBlueWhite3));
+        background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
     }
 
-    .color-1-category li:hover,
-    .color-1-category li:active,
-    .color-1-category li:focus {
-        background: none;
-        color: var(--white);
+    .relate a .cta-text {
+        color: var(--blueLight2);
+    }
+
+    .relate a:hover .cta-text,
+    .relate a:active .cta-text,
+    .relate a:focus .cta-text {
+        color: var(--blueLight3);
+    }
+
+    @media screen and (max-width: 480px) {
+        .relate a .cta-text {
+            background: linear-gradient(to bottom, transparent, var(--ghostBlueWhite3));
+        }
     }
     
     .category li:hover span,
@@ -926,24 +927,25 @@ footer {
         color: var(--white);
     }
 
+    #main p i { color: var(--white); }
+
     #main a {
-        color: var(--accentDark);
-        background: var(--ghostBlueWhite4);
-        outline: 2px solid var(--ghostBlueWhite5);
+        color: var(--accent2);
+        background: var(--realGray);
     }
 
     #main a::before {
-        border-left-color: var(--accentDark);
+        border-left-color: var(--accent2);
     }
 
     #main a:hover,
     #main a:active,
     #main a:focus {
-        color: var(--accent);
+        color: var(--themeColor);
     }
 
     #main a:focus {
-        outline-color: var(--accent);
+        outline-color: var(--themeColor);
     }
 
     #main a:hover::before,
@@ -955,8 +957,9 @@ footer {
     #main a:hover::after,
     #main a:active::after,
     #main a:focus::after {
-        border-left-color: var(--accent);
+        border-left-color: var(--themeColor);
     }
+
 
     #main aside.desktop,
     #main aside.mobile {
@@ -991,13 +994,6 @@ footer {
 
     .category .icon {
         background: linear-gradient(to bottom, var(--themeColor3), var(--themeColor0));
-        box-shadow: inset 0 0 1.5rem var(--themeColor0), 0 0.25rem 0.25rem var(--ghostBlueWhite4);
-    }
-
-    .category li:hover .icon,
-    .category li:active .icon,
-    .category li:focus .icon {
-        box-shadow: inset 0 -0.25rem 1.5rem var(--themeColor0), 0 0.25rem 0.25rem var(--ghostBlueWhite3);
     }
 
     #contact aside.desktop::before {
@@ -1019,26 +1015,23 @@ footer {
 
     .cta-button {
         background: linear-gradient(to right, var(--accentDark3), var(--accentDark2));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite4);
     }
 
     .cta-button:hover,
     .cta-button:focus,
     .cta-button:active {
         background: linear-gradient(to right, var(--accentDark3), var(--accentDark2) 50%, var(--accentDark));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--accentDark);
     }
 
     .cta-blue-button {
         background: linear-gradient(to right, var(--blueDark3), var(--blueDark2));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite4);
     }
 
     .cta-blue-button:hover,
     .cta-blue-button:active,
     .cta-blue-button:focus {
-        background: linear-gradient(to right, var(--blueDark3) 50%, var(--blueDark2));
-        box-shadow: 0 0.25rem 0.5rem var(--ghostBlueWhite3), inset -2.75rem 0 0.25rem var(--blueDark2);
+        background: linear-gradient(to right, var(--blueDark3), var(--blueDark2) 50%, var(--realBlueLight));
+        box-shadow: 0 0.25rem 0.5rem var(--realSoftSilver), inset -2.75rem 0 0.25rem var(--realBlueLight);
     }
 }
 @supports (backdrop-filter: blur(1px)){
