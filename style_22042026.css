@@ -886,6 +886,12 @@ footer {
         filter: brightness(33%) drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
     }
 
+    .category li:hover span,
+    .category li:active span,
+    .category li:focus span {
+        color: var(--white);
+    }
+
     #projects a { 
         color: var(--themeColor); 
     }
@@ -905,6 +911,12 @@ footer {
         background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
     }
 
+    #projects li:hover,
+    #projects li:active,
+    #projects li:focus {
+        background: none;
+    }  
+
     .relate a .cta-text {
         color: var(--blueLight2);
     }
@@ -921,12 +933,6 @@ footer {
         }
     }
     
-    .category li:hover span,
-    .category li:active span,
-    .category li:focus span {
-        color: var(--white);
-    }
-
     #main p i { color: var(--white); }
 
     #main a {
