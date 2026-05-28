@@ -638,18 +638,18 @@ main {
 .category li:focus span {
     color: var(--blueDark);
 }
-/* start */
+
 #services.card li,
 #services.card li a,
 #services.card li b,
 #services.card li span,
-#services.card li .icon,
-#services.card li .description {
+#services.card li .icon/*,
+#services.card li .description*/ {
     transition: all 0.5s;
 }
-#services.card li .price {
+/*#services.card li .price {
     transition: all 0.125s;
-}
+}*/
 #services.card li > a {
     padding: 0.5rem 1rem;
     justify-content: center;
@@ -754,7 +754,7 @@ main {
     max-height: 10rem;
     opacity: 1;
 }
-/* end */
+
 .category .icon {
     width: 4rem;
     height: 4rem;
