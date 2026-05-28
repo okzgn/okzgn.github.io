@@ -135,7 +135,6 @@ body {
 }
 .skip-link:focus { top: 1rem; }
 .bg {
-    animation: slide 3s ease-in-out infinite alternate;
     background: linear-gradient(-45deg, var(--themeColor) 49.9%, var(--themeColor2) 50.1%);
     bottom: 0;
     left: -50%;
@@ -146,13 +145,7 @@ body {
     z-index: -1;
     will-change: transform;
     contain: content;
-}
-.bg-2 {
-    animation-direction: alternate-reverse;
-    animation-duration: 3.5s;
-}
-.bg-3 {
-    animation-duration: 7s;
+    animation: slide 3s ease-in-out infinite alternate;
 }
 @keyframes slide {
     0% {
@@ -161,6 +154,13 @@ body {
     100% {
         transform: translateX(25%);
     }
+}
+.bg-2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 3.5s;
+}
+.bg-3 {
+    animation-duration: 7s;
 }
 hr {
     border: 1px solid var(--shadow);
@@ -575,29 +575,41 @@ main {
     margin: 1rem 0;
 }
 .category .icon {
-    width: 5rem;
-    height: 5rem;
     overflow: hidden;
     border-radius: 50%;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     background: linear-gradient(to bottom, var(--white), var(--themeColor));
     box-shadow: inset 0 0 1.5rem var(--themeColor2), 0 0.25rem 0.25rem var(--softShadow);
 }
+.category .icon,
+.category .price {
+    flex-shrink: 0;
+}
+.category .price {
+    align-self: center;
+}
 .category .icon img {
-    padding: 0.75rem;
+    padding: 0.5rem;
     object-fit: cover;
     filter: brightness(66%) drop-shadow(0 0px var(--softShadow)) drop-shadow(0 1px var(--whiteTransparent));
     width: 100%;
     height: 100%;
 }
 .card li, .card li > a {
-    padding: 1rem;
     border-radius: 1rem;
+}
+.card li > a {
+    padding: 1rem;
     text-align: left;
     display: flex;
 }
+.card li > a::before, .card li > a::after { display: none; }
+.card li > a:focus {
+    background: linear-gradient(90deg, var(--softWhite), var(--almostWhite), var(--softWhite));
+    box-shadow: 0 0.25rem 0.25rem var(--softShadow);
+}
 .card li *:not(a,.icon):focus, .card li *:not(a,.icon):active { outline: 1px dashed transparent; }
-.card li div {
+.card li .description {
     width: 75%;
 }
 .card li b {
@@ -640,6 +652,127 @@ main {
         padding: 0 0.5rem;
     }
 }
+/* start */
+#services.card li,
+#services.card li a,
+#services.card li b,
+#services.card li span,
+#services.card li .icon,
+#services.card li .description {
+    transition: all 0.5s;
+}
+#services.card li .price {
+    transition: all 0.125s;
+}
+#services.card li > a {
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    font-size: 1.125rem;
+    color: var(--blueDark);
+}
+#services.card li > a:not(.cta-button):hover,
+#services.card li > a:not(.cta-button):active,
+#services.card li > a:not(.cta-button):focus {
+    padding: 1rem;
+    color: var(--blue);
+    flex-wrap: wrap;
+}
+#services.card li .description {
+    width: 50%;
+}
+#services.card li > a:hover .description,
+#services.card li > a:active .description,
+#services.card li > a:focus .description {
+    width: calc(100% - 6rem);
+}
+#services.card li .price {
+    width: 20%;
+    height: 3.5rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accentDark3);
+    overflow: hidden;
+    background: var(--almostWhite);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+}
+#services.card li > a:hover .price,
+#services.card li > a:active .price,
+#services.card li > a:focus .price {
+    margin-left: 0rem;
+    text-align: center;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    animation: show 0.25s linear 1 forwards;
+    animation-delay: 0.75s;
+}
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        width: 50%;
+        opacity: 0;
+    }
+    100% {
+        width: 50%;
+        height: 2.25rem;
+        opacity: 1;
+        padding: 0.5rem;
+    }
+}
+#services.card li b, #services.card li .price {
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+}
+#services.card a:hover div,
+#services.card a:active div,
+#services.card a:focus div {
+    align-self: flex-start;
+}
+#services.card a:hover .icon,
+#services.card a:active .icon,
+#services.card a:focus .icon {
+    margin-left: 0rem;
+}
+#services.card a:hover b,
+#services.card a:active b,
+#services.card a:focus b {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+#services.card li span {
+    display: inline-block;
+    max-width: 100%;
+    height: 0;
+    max-height: 1.25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--black);
+    opacity: 0;
+    font-size: 1rem;
+}
+#services.card a:not(.cta-button):hover span,
+#services.card a:not(.cta-button):active span,
+#services.card a:not(.cta-button):focus span {
+    color: var(--blueDark);
+    white-space: normal;
+    height: auto;
+    max-height: 10rem;
+    opacity: 1;
+}
+/* end */
+.category .icon {
+    width: 4rem;
+    height: 4rem;
+}
 @media screen and (max-width: 640px) {
     .card::before {
         background: linear-gradient(0deg, transparent, var(--softWhite));
@@ -653,20 +786,79 @@ main {
         padding: 0 0.25rem;
     }
     .category .icon {
-        width: 5.5rem;
-        height: 5.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: 1rem;
+    }
+    #services.card li > a:hover .description,
+    #services.card li > a:active .description,
+    #services.card li > a:focus .description {
+        width: calc(100% - 4.5rem);
+    }
+    #services.card li:hover .icon,
+    #services.card li:active .icon,
+    #services.card li:focus .icon {
+        margin-left: 0;
+    }
+    #services.card li span {
+        max-height: 1.25rem;
+    }
+    #services.card li > a {
+        font-size: 1rem;
+    }
+    #services.card li b, #services.card li .price {
+        margin-top: 1rem;
     }
 }
 @media screen and (max-width: 480px) {
     .category .icon {
-        width: 4.5rem;
-        height: 4.5rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    #services.card li > a:hover .description,
+    #services.card li > a:active .description,
+    #services.card li > a:focus .description {
+        width: calc(100% - 4rem);
+    }
+    #services.card li b {
+        margin-top: 0.75rem;
+    }
+    #services.card li .price {
+        margin-top: 0;
+        margin-left: 0.5rem;
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+    #services.card li > a:hover .price,
+    #services.card li > a:active .price,
+    #services.card li > a:focus .price {
+        font-size: 1rem;
     }
 }
 @media screen and (max-width: 320px) {
     .category .icon {
-        width: 3.5rem;
-        height: 3.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    #services.card li > a:hover .description,
+    #services.card li > a:active .description,
+    #services.card li > a:focus .description {
+        width: calc(100% - 3.5rem);
+    }
+    #services.card li b {
+        margin-top: 0.5rem;
+    }
+    #services.card li .price {
+        width: 25%;
+        margin-top: 0;
+        margin-left: 0.5rem;
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+    #services.card li > a:hover .price,
+    #services.card li > a:active .price,
+    #services.card li > a:focus .price {
+        font-size: 1rem;
     }
 }
 
@@ -755,15 +947,10 @@ main {
 
 #projects .list li {
     display: block;
-    padding: 0;
 }
 
 #projects a {
     color: var(--accentDark3);
-}
-
-#projects a::after, #projects a::before {
-    display: none;
 }
 
 #projects a:hover,
@@ -771,10 +958,7 @@ main {
 #projects a:active {
     color: var(--accentDark2);
 }
-#projects a:focus {
-    background: linear-gradient(90deg, var(--softWhite), var(--almostWhite), var(--softWhite));
-    box-shadow: 0 0.25rem 0.25rem var(--softShadow);
-}
+
 .relate a {
     justify-content: center;
 }
@@ -911,6 +1095,12 @@ footer {
         background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
     }
 
+    #services.card li a:hover,
+    #services.card li a:active,
+    #services.card li a:focus {
+        background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
+    }
+
     #projects li:hover,
     #projects li:active,
     #projects li:focus {
@@ -938,6 +1128,11 @@ footer {
     #main a {
         color: var(--accent2);
         background: var(--realGray);
+    }
+
+    #services.card li .price {
+        color: var(--accent2);
+        background: var(--realBlack);
     }
 
     #main a::before {
