@@ -638,20 +638,6 @@ main {
 .category li:focus span {
     color: var(--blueDark);
 }
-@media screen and (min-width: 1025px) {
-    .card {
-        margin: 4rem 1rem;
-        width: calc(100% - 2rem);
-    }
-}
-@media screen and (max-width: 1024px) {
-    .card {
-        margin: 2rem 0;
-    }
-    .card section {
-        padding: 0 0.5rem;
-    }
-}
 /* start */
 #services.card li,
 #services.card li a,
@@ -686,7 +672,7 @@ main {
     width: calc(100% - 6rem);
 }
 #services.card li .price {
-    width: 20%;
+    width: 22.5%;
     height: 3.5rem;
     margin-left: 1rem;
     font-size: 1rem;
@@ -773,6 +759,23 @@ main {
     width: 4rem;
     height: 4rem;
 }
+@media screen and (min-width: 1025px) {
+    .card {
+        margin: 4rem 1rem;
+        width: calc(100% - 2rem);
+    }
+}
+@media screen and (max-width: 1024px) {
+    .card {
+        margin: 2rem 0;
+    }
+    .card section {
+        padding: 0 0.5rem;
+    }
+    #services.card li .price {
+        width: 30%;
+    }
+}
 @media screen and (max-width: 640px) {
     .card::before {
         background: linear-gradient(0deg, transparent, var(--softWhite));
@@ -809,6 +812,9 @@ main {
     #services.card li b, #services.card li .price {
         margin-top: 1rem;
     }
+    #services.card li .price {
+        width: 30%;
+    }
 }
 @media screen and (max-width: 480px) {
     .category .icon {
@@ -824,6 +830,7 @@ main {
         margin-top: 0.75rem;
     }
     #services.card li .price {
+        width: 25%;
         margin-top: 0;
         margin-left: 0.5rem;
         font-size: 0.85rem;
