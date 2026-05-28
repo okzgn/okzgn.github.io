@@ -117,11 +117,11 @@ html, body {
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
+    overflow-x: hidden;
 }
 body {
     display: flex;
     flex-flow: column;
-    overflow-x: hidden;
     justify-content: center;
     align-items: center;
     scroll-behavior: smooth;
