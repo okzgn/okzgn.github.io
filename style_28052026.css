@@ -685,6 +685,8 @@ main {
     flex-flow: column;
     justify-content: center;
     padding: 0.5rem 1rem;
+}
+#main a, #services.card li .price {
     box-shadow: 0 0.125rem 0.25rem var(--shadow);
 }
 #services.card li > a:hover .price,
