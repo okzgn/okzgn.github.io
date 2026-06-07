@@ -401,6 +401,7 @@ main {
 #main a:active,
 #main a:focus {
     color: var(--accentDark2);
+    cursor: crosshair;
 }
 #main a:focus {
     outline-color: var(--accentDark2);
@@ -662,6 +663,7 @@ main {
     padding: 1rem;
     color: var(--blue);
     flex-wrap: wrap;
+    cursor: crosshair;
 }
 #services.card li .description {
     width: 50%;
@@ -966,6 +968,7 @@ main {
 #projects a:focus,
 #projects a:active {
     color: var(--accentDark2);
+    cursor: crosshair;
 }
 
 .relate a {
