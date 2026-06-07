@@ -346,7 +346,7 @@ a:focus::after {
         display: flex !important;
     }
     .container aside.mobile,
-    .container aside.mobile::before, 
+    .container aside.mobile::before,
     .container aside.mobile::after {
         height: 25%;
     }
@@ -432,7 +432,7 @@ main {
 }
 #main aside.desktop,
 #main aside.mobile {
-    background: radial-gradient(var(--white), transparent), url("code.svg");
+    background: radial-gradient(var(--white), transparent), url("bg_code.svg");
 }
 #main aside.desktop {
     width: 50%;
@@ -544,7 +544,7 @@ main {
 .card section {
     padding: 0 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
 .card .category {
@@ -1043,8 +1043,8 @@ footer {
 
     body { background: var(--realBlack); }
 
-    a:focus-visible, button:focus-visible, input:focus-visible { 
-        outline-color: var(--white); 
+    a:focus-visible, button:focus-visible, input:focus-visible {
+        outline-color: var(--white);
     }
 
     ::selection {
@@ -1065,14 +1065,14 @@ footer {
 
     .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
 
-    .card li { 
-        color: var(--blueLight2); 
+    .card li {
+        color: var(--blueLight2);
     }
 
     .card li:hover,
     .card li:active,
-    .card li:focus { 
-        color: var(--blueLight3); 
+    .card li:focus {
+        color: var(--blueLight3);
     }
 
     .category .icon img {
@@ -1085,12 +1085,12 @@ footer {
         color: var(--white);
     }
 
-    #projects a { 
-        color: var(--themeColor); 
+    #projects a {
+        color: var(--themeColor);
     }
 
     #projects a:hover,
-    #projects a:focus, 
+    #projects a:focus,
     #projects a:active {
         color: var(--themeColor2);
     }
@@ -1099,7 +1099,7 @@ footer {
     .category li:active,
     .category li:focus,
     #projects a:hover,
-    #projects a:focus, 
+    #projects a:focus,
     #projects a:active {
         background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
     }
@@ -1114,7 +1114,7 @@ footer {
     #projects li:active,
     #projects li:focus {
         background: none;
-    }  
+    }
 
     .relate a .cta-text {
         color: var(--blueLight2);
@@ -1131,7 +1131,7 @@ footer {
             background: linear-gradient(to bottom, transparent, var(--ghostBlueWhite3));
         }
     }
-    
+
     #main p i { color: var(--white); }
 
     #main a {
@@ -1176,12 +1176,12 @@ footer {
         box-shadow: 0 0 3rem var(--ghostBlueWhite2);
     }
 
-    #main aside.desktop { 
-        background: radial-gradient(var(--ghostBlueWhite0), transparent), url("code_night.svg"); 
+    #main aside.desktop {
+        background: radial-gradient(var(--ghostBlueWhite0), transparent), url("bg_code_night.svg");
     }
-    
+
     #main aside.mobile {
-        background: radial-gradient(var(--ghostBlueWhite), transparent), url("code_night.svg"); 
+        background: radial-gradient(var(--ghostBlueWhite), transparent), url("bg_code_night.svg");
         background-size: cover, 480px 480px;
         background-position: center, 0 0;
     }
@@ -1195,7 +1195,7 @@ footer {
     #main aside > .big-logo {
         filter: brightness(0) grayscale(1) invert() drop-shadow(0 0.25rem 0.25rem var(--silver));
     }
-    
+
     #main aside > .big-logo:hover,
     #main aside > .big-logo:active,
     #main aside > .big-logo:focus {
@@ -1217,7 +1217,7 @@ footer {
     #contact aside.mobile {
         background: linear-gradient(180deg, transparent, var(--ghostBlueWhite));
     }
-    
+
     #contact aside.mobile::after,
     #contact aside.mobile::before {
         box-shadow: 0 1rem 1rem var(--ghostBlueWhite3);
