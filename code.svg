@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
   <style>
+    @font-face {
+        font-family: 'A';
+        src: url('ibm_plex_mono.ttf');
+    }
     .an {
       will-change: transform;
       animation: scroll 30s linear alternate infinite;
@@ -11,7 +15,7 @@
         100% { transform: translateY(0); }
     }
     text {
-      font-family: monospace;
+      font-family: 'A', monospace;
       font-size: 20px;
       font-weight: bold;
       fill: rgba(0, 0, 0, 0.075);
