@@ -350,7 +350,7 @@ a:focus::after {
     .container aside.mobile,
     .container aside.mobile::before,
     .container aside.mobile::after {
-        height: 20%;
+        height: 22.5%;
     }
     .container > div {
         width: 100%;
