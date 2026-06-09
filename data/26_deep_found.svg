@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>.ic{fill:none;stroke:#004e9b;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round}.ic2{stroke-width:3;}.ic3{stroke-width:2.5;}</style>
 
-    <line x1="20" y1="0" x2="65" y2="0" class="ic" stroke-dasharray="20,5" />
+
     <line x1="10" y1="9" x2="75" y2="9" class="ic" stroke-dasharray="30,5" />
     <line x1="5" y1="19" x2="25" y2="19" class="ic" />
 
@@ -21,5 +21,5 @@
     </g>
 
     <line x1="10" y1="71" x2="75" y2="71" class="ic" stroke-dasharray="30,5" />
-    <line x1="20" y1="80" x2="65" y2="80" class="ic" stroke-dasharray="20,5" />
+
 </svg>
