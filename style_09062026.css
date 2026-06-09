@@ -350,7 +350,7 @@ a:focus::after {
     .container aside.mobile,
     .container aside.mobile::before,
     .container aside.mobile::after {
-        height: 25%;
+        height: 20%;
     }
     .container > div {
         width: 100%;
@@ -489,7 +489,7 @@ main {
         content: '';
         display: flex;
         width: 100%;
-        height: 10%;
+        height: 5%;
     }
     #main ul { justify-content: center; }
     #main a::before, #main a::after {
