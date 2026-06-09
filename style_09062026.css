@@ -117,7 +117,7 @@ a *:not(.icon):active, button *:not(.icon):active { outline: 1px dashed transpar
 html, body {
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: 100svh;
     overflow-x: hidden;
 }
 body {
@@ -1030,6 +1030,7 @@ footer {
     right: 1.25rem;
     background-color: var(--accentDark3);
     color:  var(--white);
+    outline: 2px solid var(--whiteTransparent);
     border: none;
     border-radius: 50%;
     width: 2.5rem;
