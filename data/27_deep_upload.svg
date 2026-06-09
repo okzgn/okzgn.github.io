@@ -5,11 +5,12 @@
             <path d="M 32 22 C 24 22 22 19 22 15 C 22 9 30 7 35 10 C 38 2 52 2 55 10 C 60 7 68 9 68 15 C 68 19 66 22 58 22 Z" class="ic ic2"/>
         </g>
     </g>
-    <line x1="42" y1="30" x2="42" y2="60" class="ic" />
-    <polyline points="30,40 42,30 54,40" class="ic"/>
 
-    <line x1="20" y1="60" x2="65" y2="60" class="ic ic2" stroke-dasharray="5,5" />
-    <line x1="18" y1="65" x2="67" y2="65" class="ic ic2" stroke-dasharray="6,5" />
-    <line x1="16" y1="70" x2="69" y2="70" class="ic ic2" stroke-dasharray="7,5" />
-    <line x1="14" y1="75" x2="71" y2="75" class="ic ic2" stroke-dasharray="8,5" />
+    <line x1="41" y1="30" x2="41" y2="55" class="ic" />
+    <polyline points="30,40 41,30 54,40" class="ic"/>
+
+    <line x1="18" y1="60" x2="65" y2="60" class="ic ic2" stroke-dasharray="5,5" />
+    <line x1="16" y1="65" x2="67" y2="65" class="ic ic2" stroke-dasharray="6,5" />
+    <line x1="14" y1="70" x2="69" y2="70" class="ic ic2" stroke-dasharray="7,5" />
+    <line x1="12" y1="75" x2="71" y2="75" class="ic ic2" stroke-dasharray="8,5" />
 </svg>
