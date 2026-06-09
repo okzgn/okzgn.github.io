@@ -402,6 +402,7 @@ main {
 #main a:focus {
     color: var(--accentDark2);
     cursor: crosshair;
+    box-shadow: 0 0.25rem 0.5rem var(--shadow2);
 }
 #main a:focus {
     outline-color: var(--accentDark2);
@@ -700,16 +701,19 @@ main {
     height: 0;
     opacity: 0;
     padding: 0;
+    font-size: 0;
     animation: show 0.25s linear 1 forwards;
     animation-delay: 2s;
 }
 @keyframes show {
     0% {
         opacity: 0;
+        font-size: 0.5rem;
     }
     50% {
         width: 50%;
         opacity: 0;
+        font-size: 1rem;
     }
     100% {
         width: 50%;
@@ -717,6 +721,7 @@ main {
         opacity: 1;
         padding: 0.5rem;
         margin-top: 0.5rem;
+        font-size: 1rem;
     }
 }
 #services.card li b {
