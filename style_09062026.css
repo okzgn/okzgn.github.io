@@ -4,6 +4,7 @@
     font-weight: normal bold;
     font-display: swap;
 }
+
 :root {
     --realBlack: #000d1a;
     --realWhite: #f4f4f5;
@@ -1024,6 +1025,38 @@ footer {
     text-align: center;
 }
 
+#menu {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    background-color: var(--accentDark3);
+    color:  var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.5rem 1rem var(--shadow2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.125s;
+    z-index: 99;
+}
+
+#menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#menu:hover,
+#menu:active,
+#menu:focus {
+    transform: translateY(-3px);
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: var(--black);
@@ -1064,6 +1097,10 @@ footer {
     ::placeholder {
         color: var(--white);
         opacity: 0.5;
+    }
+
+    #menu {
+        background-color: var(--blueDark3);
     }
 
     .bg {
