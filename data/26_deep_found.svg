@@ -2,14 +2,14 @@
   <style>.ic{fill:none;stroke:#004e9b;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:round}.ic2{stroke-width:3;}.ic3{stroke-width:2.5;}</style>
 
 
-    <line x1="10" y1="9" x2="75" y2="9" class="ic" stroke-dasharray="30,5" />
-    <line x1="5" y1="19" x2="25" y2="19" class="ic" />
+    <line x1="15" y1="0" x2="70" y2="0" class="ic" stroke-dasharray="30,5" />
+    <line x1="10" y1="10" x2="20" y2="10" class="ic" />
 
-    <line x1="0" y1="30" x2="15" y2="30" class="ic" />
-    <line x1="0" y1="40" x2="10" y2="40" class="ic" />
-    <line x1="0" y1="50" x2="5" y2="50" class="ic" />
+    <line x1="5" y1="20" x2="15" y2="20" class="ic" />
+    <line x1="0" y1="30" x2="10" y2="30" class="ic" />
+    <line x1="0" y1="40" x2="5" y2="40" class="ic" />
 
-    <g transform="translate(19, 12) scale(0.8)">
+    <g transform="translate(19, 4) scale(0.8)">
         <g transform="translate(15, -5)">
             <circle cx="34" cy="34" r="24" class="ic ic2" />
             <line x1="51" y1="52" x2="67" y2="67" class="ic ic2" />
@@ -20,6 +20,6 @@
         <line x1="-3" y1="65" x2="45" y2="60" class="ic ic2" />
     </g>
 
-    <line x1="10" y1="71" x2="75" y2="71" class="ic" stroke-dasharray="30,5" />
-
+    <line x1="10" y1="65" x2="75" y2="65" class="ic" stroke-dasharray="30,5" />
+    <line x1="15" y1="75" x2="70" y2="75" class="ic" stroke-dasharray="20,5" />
 </svg>
