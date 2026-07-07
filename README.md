@@ -16,7 +16,7 @@ Providing high-performance technological solutions for businesses and enterprise
 *   **Custom Model Deployment**: Secure, low-latency serving of open-source models on GPU environments.
 *   **AI Costs & Reliability**: Implementing dynamic strategies and techniques to optimize or control costs, maximize ROI, and maintain profitability.
 
-[Discuss AI Solutions](https://wa.me/593979522180)
+[Discuss AI Solutions](https://wa.me/593980670720)
 
 ### Platform Development & Architecture
 *   **System Design**: Architecture planning for scalable, maintainable platforms — from monoliths to microservices.
@@ -25,7 +25,7 @@ Providing high-performance technological solutions for businesses and enterprise
 *   **CI/CD Pipelines**: Design and implementation of automated build, test, and deployment workflows.
 *   **Internal Tooling**: Custom developer tools, CLIs, and frameworks designed to accelerate team velocity/productivity.
 
-[Book a Consult](https://wa.me/593979522180)
+[Book a Consult](https://wa.me/593980670720)
 
 ### Web & Mobile Development
 *   **Custom Web Design**: Modern, consistent, and user-centric interfaces built from scratch, using frameworks or utilities like Tailwind.
@@ -35,7 +35,7 @@ Providing high-performance technological solutions for businesses and enterprise
 *   **Mobile Apps**: Cost-effective, high-quality mobile solutions (Ionic, PWA) for Android and iOS.
 *   **Feature Integration**: CDN implementation, GPS, databases (Parse, Redis, SQLite, D1, KV), secure authentication, custom APIs and SEO optimization.
 
-[Get a Quote](https://wa.me/593979522180)
+[Get a Quote](https://wa.me/593980670720)
 
 ### Infrastructure & Hosting
 *   **Domain Management**: Full registration and configuration of your web address.
@@ -44,7 +44,7 @@ Providing high-performance technological solutions for businesses and enterprise
 *   **Security First**: Advanced protection against DDoS and brute-force attacks included, mitigating top OWASP security vulnerabilities.
 *   **SSL & DNS**: Expert management of certificates and DNS records to ensure trust and connectivity.
 
-[Learn More](https://wa.me/593979522180)
+[Learn More](https://wa.me/593980670720)
 
 ### Optimization, DevOps & FinOps
 *   **Server Administration**: End-to-end maintenance of Linux environments (Bash, SSH, K8s, Docker, Express, Echo, Nginx).
@@ -52,7 +52,7 @@ Providing high-performance technological solutions for businesses and enterprise
 *   **Future-Proofing**: Periodic updates to migrate obsolete components to efficient, cost-optimized, modern or serverless architectures.
 *   **Ongoing Support**: Comprehensive documentation and technical expertise to guarantee long-term system performance and stability.
 
-[Contact Support](https://wa.me/593979522180)
+[Contact Support](https://wa.me/593980670720)
 
 ---
 
@@ -67,7 +67,7 @@ Providing high-performance technological solutions for businesses and enterprise
 
 ## Get in Touch
 
-*   **[Contact AI Assistant (WhatsApp)](https://wa.me/593979522180)**
+*   **[Contact AI Assistant (WhatsApp)](https://wa.me/593980670720)**
 *   **[hello@okzgn.com](mailto:hello@okzgn.com)**
 
 ---
