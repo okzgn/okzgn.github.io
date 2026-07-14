@@ -4,7 +4,7 @@
   https://github.com/okzgn
   hello@okzgn.com
 
-  Psalm 73:25... I used to think so, but not at this moment, I find that I'm not that good.
+  Psalm 73:25... I used to think so, but I found out that I'm not that good.
 */
 
 document.addEventListener('DOMContentLoaded', function () {

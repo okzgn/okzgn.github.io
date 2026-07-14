@@ -424,7 +424,7 @@ main {
     border-left-color: var(--accentDark2);
 }
 #main aside > .big-logo {
-    width: 50%;
+    width: 45%;
     filter: drop-shadow(0 0.25rem 0.25rem var(--shadow));
     transition: all 0.25s;
     z-index: 9;
@@ -501,12 +501,12 @@ main {
         flex-grow: 1;
     }
     #main aside > .big-logo {
-        width: 40%;
+        width: 50%;
     }
 }
 @media screen and (max-width: 480px) {
     #main aside > .big-logo {
-        width: 50%;
+        width: 55%;
     }
     #main aside.mobile {
         width: 100%;
@@ -1146,7 +1146,10 @@ footer {
     .category li:focus,
     #projects a:hover,
     #projects a:focus,
-    #projects a:active {
+    #projects a:active,
+    #articles a:hover,
+    #articles a:focus,
+    #articles a:active {
         background: linear-gradient(90deg, var(--ghostBlueWhite4), var(--ghostBlueWhite2), var(--ghostBlueWhite4));
     }
 
