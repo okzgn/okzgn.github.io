@@ -344,7 +344,7 @@ header, footer, h1, h1 a, .slash {
 }
 header, footer {
     width: 100%;
-    height: 3rem;
+    height: 2.5rem;
     flex-shrink: 0;
 }
 
@@ -392,16 +392,7 @@ footer a:hover, footer a:active, footer a:focus {
     transform: rotate(15deg)
 }
 
-main {
-    width: 60%;
-    overflow-y: auto;
-}
-
-main.collapsed {
-    height: calc(100% - 6rem); /* If footer isn't display none, this value must be higher. */
-}
-
-.paragraphs {
+main, .paragraphs {
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -436,13 +427,26 @@ main.collapsed {
     overflow: hidden;
 }
 
+main {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+main .container {
+    align-self: center;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 960px) {
-    main {
+    main .container {
         width: 80%;
     }
 }
 @media screen and (max-width: 640px) {
-    main {
+    main .container {
         width: 100%;
     }
 }

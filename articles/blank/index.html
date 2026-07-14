@@ -17,7 +17,7 @@
 	<meta name="theme-color" content="#000d1a" media="(prefers-color-scheme: dark)">
 
 	<meta name="format-detection" content="telephone=no">
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; style-src 'self'; script-src 'self'">
 
 	<meta property="og:title" content="Blank | OKZGN">
 	<meta property="og:description" content="Blank description.">
@@ -33,9 +33,9 @@
 	<meta name="twitter:image" content="https://okzgn.com/landscape.png">
 
 	<link rel="preload" href="../../inter_variable.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="../../style_boilerplate.css" as="style">
+	<link rel="preload" href="../../style_commons.css" as="style">
 
-	<link rel="stylesheet" href="../../style_boilerplate.css">
+	<link rel="stylesheet" href="../../style_commons.css">
 	<script src="./main.js"></script>
 </head>
 <body>
@@ -44,13 +44,13 @@
 		<div class="slash auto-font-size-4"><a class="no-default-arrow" href="https://okzgn.com/#articles">Articles</a></div>
 	</header>
 
-	<main class="auto-y-small-padding">
-		<section class="auto-x-tiny-padding">
+	<main class="auto-y-tiny-padding">
+		<div class="container auto-x-tiny-padding">
 		    <h2 class="auto-font-size-2 auto-tiny-padding">Title</h2>
             <article class="card">
                 <div class="auto-x-padding">Content</div>
             </article>
-		</section>
+		</div>
 	</main>
 
 	<footer>
