@@ -67,8 +67,22 @@
                 </div>
                 <br>
                 <p class="auto-x-padding"><b>This article is not</b> a call to switch your framework or dismiss other techniques—after all, standards have to start somewhere. It also doesn't ignore the massive challenges, serious business and enterprise needs, or the real value of today's tools or methods.</p>
-                <p class="auto-x-padding"><b>This article's perspective is shaped by this:</b> as Wasm continues to emerge—and having written code close to the metal (XDP, shared memory, C), delved into low-level systems (protocol flows, RAM interactions, Go), focused on optimizing fundamental operations (BM25, djb2, HNSW), and compared the performance of various runtimes (PHP, Node, Lua, Rust)—I analyzed some modern frontend principles through the same lens.</p>
-                <hr><p class="auto-x-padding">Coming soon...</p>
+                <p class="auto-x-padding"><b>This article's perspective is shaped by this:</b> as Wasm continues to emerge—and having written code close to the metal (XDP, shared memory, C), delved into low-level systems (protocol flows, RAM interactions, Go), focused on optimizing fundamental operations (BM25, djb2, HNSW), and compared the performance of various runtimes (PHP, Node, Lua, Rust)—<b>I analyzed some modern frontend principles</b> through the same lens.</p>
+
+                <p class="auto-x-padding"><b>From this viewpoint, to put it simply:</b> What was mentioned in the first line (regarding what is possible) could be solved, if most modern browsers or JavaScript engines updated to a recent ECMAScript specification with native TypeScript and backward compatibility support.<br> But the proprietary or custom syntaxes that have been invented are not standard JS or TS; they require transpilers, optimizers, compilers, bundlers, and so on (understanding their inner workings and mechanisms is indeed fascinating).</p>
+
+                <p class="auto-x-padding"><b>Proposition:</b> there are several steps that can be bypassed between the scripting language, the framework, development, bundling, the interpreter, and the end user. Steps that do not require updating any ES/TS specifications.</p>
+
+                <p class="auto-x-padding"><b>The focus will be on these key points:</b></p>
+                <div class="auto-x-padding">
+                    <ul class="lines">
+                        <li><b>Point 1:</b> JavaScript/TypeScript as the scripting language that does the actual work.</li>
+                        <li><b>Point 2:</b> The framework, which helps avoid repetitive boilerplate, making the work with the scripting language easier and more efficient.</li>
+                        <li><b>Point 3:</b> Developing interrelated or independent components using the framework to further abstract logic, reduce repetitive code, and reuse processes.</li>
+                    </ul>
+                </div>
+                <hr>
+                <p class="auto-x-padding"><b>Coming soon...</b></p>
             </article>
 		</div>
 	</main>
