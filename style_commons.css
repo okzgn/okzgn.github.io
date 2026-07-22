@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Inter';
-    src: url('/inter_variable.woff2') format('woff2');
+    src: url('./inter_variable.woff2') format('woff2');
     font-weight: normal bold;
     font-display: swap;
 }
@@ -337,7 +337,7 @@ button:hover, button:active, button:focus {
     border-top-right-radius: 0;
 }
 
-header, footer, h1, h1 a, .slash {
+header, footer, .logo, .logo a, .slash {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -354,11 +354,11 @@ header {
     border-bottom: 1px solid var(--shadow);
 }
 
-header h1, header h1 img {
+header .logo, header .logo img {
     height: 100%;
 }
 
-header h1 a {
+header .logo a {
     height: 1.5rem;
 }
 
@@ -398,8 +398,13 @@ main, .paragraphs {
     justify-content: flex-start;
 }
 
-.paragraphs p {
+.paragraphs p, .paragraphs p + div {
     margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.paragraphs h4, .paragraphs h5, .paragraphs h6 {
+    display: block;
 }
 
 .lines {
@@ -496,7 +501,7 @@ main .container {
         box-shadow: 0 0.25rem 0.5rem var(--realSoftSilver), inset -2.75rem 0 0.25rem var(--realBlueLight);
     }
 
-    header h1 img {
+    header .logo img {
         filter: brightness(0) invert();
     }
 }
