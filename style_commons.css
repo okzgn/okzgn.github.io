@@ -5,6 +5,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Plex";
+    src: url('./ibm_plex_mono.ttf');
+    font-weight: normal;
+    font-display: swap;
+}
+
 :root {
     /* Base Colors */
     --realBlack: #000d1a;
@@ -198,7 +205,7 @@ button, input[type="submit"] { cursor: pointer; }
     .bg-2 { animation-duration: 35s; }
 }
 
-a {
+a, code {
     color: var(--blue);
     user-select: none;
     text-decoration: none;
@@ -207,6 +214,13 @@ a {
     border-radius: 1rem;
     padding: 0.5rem 0;
     justify-content: center;
+}
+code {
+    font-family: "Plex";
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    color: var(--black);
+    text-indent: 0;
 }
 a, input, textarea, button, input[type="submit"] {
     transition: all 0.25s;
@@ -398,7 +412,7 @@ main, .paragraphs {
     justify-content: flex-start;
 }
 
-.paragraphs p, .paragraphs p + div {
+.paragraphs p, .paragraphs p + div, .paragraphs div + div, .paragraphs div + p {
     margin-bottom: 1rem;
     line-height: 1.5;
 }
@@ -488,7 +502,7 @@ main .container {
         opacity: 0.03;
     }
 
-    a { background: var(--softWhite); }
+    a, code { background: var(--softWhite); }
 
     .card::after { background: linear-gradient(0deg, var(--softShadow), transparent); }
 
