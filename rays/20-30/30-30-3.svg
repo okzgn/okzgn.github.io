@@ -4,344 +4,377 @@ text {
    font-family: monospace;
    font-size: 20px;
    letter-spacing: 21px;
-}
+  }
 
-tspan {
+  tspan {
    color: rgba(0, 0, 0, 0.075);
-}
+  }
 
-.an {
-   will-change: transform, opacity;
-   transform-origin: center;
-}
+  .an {
+    will-change: transform;
+    transform-origin: center;
+    --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0;
+  }
 
-/* --- ROTACIÓN EN 4 CAPAS (2.0s total: 0.5s por estado) --- */
-.an1 {
-   transform: translateY(0);
-   animation: change1 2.0s linear infinite;
-   opacity: 1;
-   animation-delay: 1s;
-}
+  /* --- ROTACIÓN CONTINUA EN 3 CAPAS (Ciclo de 1.5s) --- */
+  .an1 {
+    transform: translateY(0);
+    animation: change1 1.5s linear infinite, timeline 2s forwards;
+    opacity: 1;
+    animation-delay: 1s, 0s;
+  }
 
-@keyframes change1 {
-   0%, 23% { opacity: 1; }
-   25%, 98% { opacity: 0; }
-   100% { opacity: 1; }
-}
+  @keyframes change1 {
+    0%, 30% { opacity: 1; }
+    33%, 97% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
-.an3 {
-   transform: translateY(-1920px);
-   animation: change3 2.0s linear infinite;
-   opacity: 0;
-   animation-delay: 1s;
-}
+  .an2 {
+    transform: translateY(-960px);
+    animation: change2 1.5s linear infinite, timeline 2s forwards;
+    opacity: 0;
+    animation-delay: 1s, 0s;
+  }
 
-@keyframes change3 {
-   0%, 23% { opacity: 0; }
-   25%, 48% { opacity: 1; }
-   50%, 100% { opacity: 0; }
-}
+  @keyframes change2 {
+    0%, 30% { opacity: 0; }
+    33%, 63% { opacity: 1; }
+    66%, 100% { opacity: 0; }
+  }
 
-.an2 {
-   transform: translateY(-960px);
-   animation: change2 2.0s linear infinite;
-   opacity: 0;
-   animation-delay: 1s;
-}
+  .an3 {
+    transform: translateY(-1920px);
+    animation: changeLayer3 1.5s linear infinite, timeline 2s forwards;
+    opacity: 0;
+    animation-delay: 1s, 0s;
+  }
 
-@keyframes change2 {
-   0%, 48% { opacity: 0; }
-   50%, 73% { opacity: 1; }
-   75%, 100% { opacity: 0; }
-}
+  @keyframes changeLayer3 {
+    0%, 63% { opacity: 0; }
+    66%, 97% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 
-.an4 {
-   transform: translateY(-2880px);
-   animation: change4 2.0s linear infinite;
-   opacity: 0;
-   animation-delay: 1s;
-}
+  /* ------ LINEA DE TIEMPO (Letras O K Z G N) ------ */
+  @keyframes timeline {
+       0%, 16.66% { --timeO: 1; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0; }
+       16.67%, 33.33% { --timeO: 0; --timeK: 1; --timeZ: 0; --timeG: 0; --timeN: 0; }
+       33.34%, 50.00% { --timeO: 0; --timeK: 0; --timeZ: 1; --timeG: 0; --timeN: 0; }
+       50.01%, 66.66% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 1; --timeN: 0; }
+       66.67%, 83.33% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 1; }
+       83.34%, 100% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0; }
+  }
 
-@keyframes change4 {
-   0%, 73% { opacity: 0; }
-   75%, 98% { opacity: 1; }
-   100% { opacity: 0; }
-}
+  text tspan.z {
+       --isO: 0; --isK: 0; --isZ: 0; --isG: 0; --isN: 0;
+       --isBlack: calc( (var(--isO) * var(--timeO)) + (var(--isK) * var(--timeK)) + (var(--isZ) * var(--timeZ)) + (var(--isG) * var(--timeG)) + (var(--isN) * var(--timeN)) );
+       fill: color-mix(in srgb, #000 calc(100% * var(--isBlack)), currentColor) !important;
+  }
 
-text tspan.z {
-   fill: currentColor;
-}
+  /* =========================================================
+     PULSOS ALEATORIOS Y CONTINUOS
+     ========================================================= */
 
-/* =========================================================
-   PULSOS LUMINOSOS CONTINUOS
-   ========================================================= */
+  @keyframes pulse-a {
+    0%, 100% { color: #00f0ff; }
+    25%      { color: #ff007f; }
+    50%      { color: rgba(0, 0, 0, 0.075); }
+    75%      { color: #00ff66; }
+  }
 
-@keyframes pulse-a {
-   0%, 100% { color: #00f0ff; }
-   25%      { color: #ff007f; }
-   50%      { color: rgba(0, 0, 0, 0.075); }
-   75%      { color: #00ff66; }
-}
+  @keyframes pulse-b {
+    0%, 100% { color: rgba(0, 0, 0, 0.075); }
+    25%      { color: #ffe600; }
+    50%      { color: #ff5500; }
+    75%      { color: #bd00ff; }
+  }
 
-@keyframes pulse-b {
-   0%, 100% { color: rgba(0, 0, 0, 0.075); }
-   25%      { color: #ffe600; }
-   50%      { color: #ff5500; }
-   75%      { color: #bd00ff; }
-}
+  @keyframes pulse-c {
+    0%, 100% { color: #ff007f; }
+    30%      { color: rgba(0, 0, 0, 0.075); }
+    60%      { color: #00f0ff; }
+    80%      { color: #ffe600; }
+  }
 
-@keyframes pulse-c {
-   0%, 100% { color: #ff007f; }
-   30%      { color: rgba(0, 0, 0, 0.075); }
-   60%      { color: #00f0ff; }
-   80%      { color: #ffe600; }
-}
+  @keyframes pulse-d {
+    0%, 100% { color: rgba(0, 0, 0, 0.075); }
+    30%      { color: #00ff66; }
+    55%      { color: #00f0ff; }
+    80%      { color: #ff007f; }
+  }
 
-@keyframes pulse-d {
-   0%, 100% { color: rgba(0, 0, 0, 0.075); }
-   30%      { color: #00ff66; }
-   55%      { color: #00f0ff; }
-   80%      { color: #ff007f; }
-}
+  @keyframes pulse-e {
+    0%, 100% { color: #ff6b00; }
+    25%      { color: rgba(0, 0, 0, 0.075); }
+    50%      { color: #bd00ff; }
+    75%      { color: #00ff66; }
+  }
 
-@keyframes pulse-e {
-   0%, 100% { color: #ff6b00; }
-   25%      { color: rgba(0, 0, 0, 0.075); }
-   50%      { color: #bd00ff; }
-   75%      { color: #00ff66; }
-}
+  @keyframes pulse-f {
+    0%, 100% { color: rgba(0, 0, 0, 0.075); }
+    20%      { color: #bd00ff; }
+    45%      { color: #00f0ff; }
+    70%      { color: rgba(0, 0, 0, 0.075); }
+    85%      { color: #ffe600; }
+  }
 
-@keyframes pulse-f {
-   0%, 100% { color: rgba(0, 0, 0, 0.075); }
-   20%      { color: #bd00ff; }
-   45%      { color: #00f0ff; }
-   70%      { color: rgba(0, 0, 0, 0.075); }
-   85%      { color: #ffe600; }
-}
+  /* =========================================================
+     MAPEO QUIRÚRGICO DE PALABRAS (SELECCIÓN EXACTA)
+     ========================================================= */
 
-/* --- ASIGNACIÓN DE PULSOS SINCRONIZADOS (PAREJAS 1-3 Y 2-4) --- */
-.an1 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an3 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an2 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+7),
-.an4 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+7),
-text:nth-child(6) tspan.z:nth-child(n+20):nth-child(-n+29),
-text:nth-child(11) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an1 text:nth-child(15) tspan.z:nth-child(n+18):nth-child(-n+21),
-.an3 text:nth-child(15) tspan.z:nth-child(n+18):nth-child(-n+21),
-text:nth-child(20) tspan.z:nth-child(n+6):nth-child(-n+16),
-.an1 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+10),
-.an3 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+10),
-.an2 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an4 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+11),
-text:nth-child(28) tspan.z:nth-child(n+4):nth-child(-n+9) {
-    animation: pulse-a 2.8s infinite ease-in-out -0.4s;
-}
+  /* --- CICLO A (2.8s) --- */
+  .an1 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an3 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an2 text:nth-child(1) tspan.z:nth-child(n+6):nth-child(-n+7),
+  text:nth-child(6) tspan.z:nth-child(n+20):nth-child(-n+29),
+  text:nth-child(11) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an1 text:nth-child(15) tspan.z:nth-child(n+18):nth-child(-n+21),
+  .an3 text:nth-child(15) tspan.z:nth-child(n+18):nth-child(-n+21),
+  text:nth-child(20) tspan.z:nth-child(n+6):nth-child(-n+16),
+  .an1 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+10),
+  .an3 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+10),
+  .an2 text:nth-child(24) tspan.z:nth-child(n+6):nth-child(-n+11),
+  text:nth-child(28) tspan.z:nth-child(n+4):nth-child(-n+9) {
+      animation: pulse-a 2.8s infinite ease-in-out -0.4s;
+  }
 
-text:nth-child(2) tspan.z:nth-child(n+3):nth-child(-n+11),
-text:nth-child(7) tspan.z:nth-child(n+6):nth-child(-n+11),
-text:nth-child(12) tspan.z:nth-child(n+6):nth-child(-n+12),
-text:nth-child(16) tspan.z:nth-child(n+19):nth-child(-n+25),
-.an1 text:nth-child(21) tspan.z:nth-child(n+5):nth-child(-n+10),
-.an3 text:nth-child(21) tspan.z:nth-child(n+5):nth-child(-n+10),
-.an2 text:nth-child(21) tspan.z:nth-child(n+3):nth-child(-n+7),
-.an4 text:nth-child(21) tspan.z:nth-child(n+3):nth-child(-n+7),
-.an1 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+20),
-.an3 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+20),
-.an2 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+19),
-.an4 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+19),
-.an2 text:nth-child(15) tspan.z:nth-child(n+14):nth-child(-n+22),
-.an4 text:nth-child(15) tspan.z:nth-child(n+14):nth-child(-n+22),
-text:nth-child(29) tspan.z:nth-child(n+11):nth-child(-n+16) {
-    animation: pulse-b 3.2s infinite ease-in-out -1.2s;
-}
+  /* --- CICLO B (3.2s) - Incluye corrección de analytics --- */
+  text:nth-child(2) tspan.z:nth-child(n+3):nth-child(-n+11),
+  text:nth-child(7) tspan.z:nth-child(n+6):nth-child(-n+11),
+  text:nth-child(12) tspan.z:nth-child(n+6):nth-child(-n+12),
+  text:nth-child(16) tspan.z:nth-child(n+19):nth-child(-n+25),
+  .an1 text:nth-child(21) tspan.z:nth-child(n+5):nth-child(-n+10),
+  .an3 text:nth-child(21) tspan.z:nth-child(n+5):nth-child(-n+10),
+  .an2 text:nth-child(21) tspan.z:nth-child(n+3):nth-child(-n+7),
+  .an1 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+20),
+  .an3 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+20),
+  .an2 text:nth-child(25) tspan.z:nth-child(n+15):nth-child(-n+19),
+  /* 👇 ANALYTICS CORREGIDO (Exactamente columnas 14 a 22 en capa 2) */
+  .an2 text:nth-child(15) tspan.z:nth-child(n+14):nth-child(-n+22),
+  text:nth-child(29) tspan.z:nth-child(n+11):nth-child(-n+16) {
+      animation: pulse-b 3.2s infinite ease-in-out -1.2s;
+  }
 
-text:nth-child(3) tspan.z:nth-child(n+6):nth-child(-n+11),
-text:nth-child(8) tspan.z:nth-child(n+12):nth-child(-n+16),
-text:nth-child(13) tspan.z:nth-child(n+3):nth-child(-n+8),
-.an1 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an3 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an2 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+10),
-.an4 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+10),
-.an1 text:nth-child(21) tspan.z:nth-child(n+23):nth-child(-n+25),
-.an3 text:nth-child(21) tspan.z:nth-child(n+23):nth-child(-n+25),
-.an1 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+11),
-.an3 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+11),
-.an2 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+10),
-.an4 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+10),
-text:nth-child(30) tspan.z:nth-child(n+12):nth-child(-n+17) {
-    animation: pulse-c 3.9s infinite ease-in-out -2.1s;
-}
+  /* --- CICLO C (3.9s) --- */
+  text:nth-child(3) tspan.z:nth-child(n+6):nth-child(-n+11),
+  text:nth-child(8) tspan.z:nth-child(n+12):nth-child(-n+16),
+  text:nth-child(13) tspan.z:nth-child(n+3):nth-child(-n+8),
+  .an1 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an3 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an2 text:nth-child(17) tspan.z:nth-child(n+6):nth-child(-n+10),
+  .an1 text:nth-child(21) tspan.z:nth-child(n+23):nth-child(-n+25),
+  .an3 text:nth-child(21) tspan.z:nth-child(n+23):nth-child(-n+25),
+  .an1 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+11),
+  .an3 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+11),
+  .an2 text:nth-child(26) tspan.z:nth-child(n+5):nth-child(-n+10),
+  text:nth-child(30) tspan.z:nth-child(n+12):nth-child(-n+17) {
+      animation: pulse-c 3.9s infinite ease-in-out -2.1s;
+  }
 
-text:nth-child(4) tspan.z:nth-child(n+6):nth-child(-n+14),
-.an1 text:nth-child(8) tspan.z:nth-child(n+25):nth-child(-n+29),
-.an3 text:nth-child(8) tspan.z:nth-child(n+25):nth-child(-n+29),
-.an1 text:nth-child(10) tspan.z:nth-child(n+25):nth-child(-n+28),
-.an3 text:nth-child(10) tspan.z:nth-child(n+25):nth-child(-n+28),
-.an2 text:nth-child(10) tspan.z:nth-child(n+24):nth-child(-n+28),
-.an4 text:nth-child(10) tspan.z:nth-child(n+24):nth-child(-n+28),
-.an1 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+16),
-.an3 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+16),
-.an2 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+18),
-.an4 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+18),
-.an1 text:nth-child(18) tspan.z:nth-child(n+20):nth-child(-n+23),
-.an3 text:nth-child(18) tspan.z:nth-child(n+20):nth-child(-n+23),
-.an2 text:nth-child(18) tspan.z:nth-child(n+17):nth-child(-n+18),
-.an4 text:nth-child(18) tspan.z:nth-child(n+17):nth-child(-n+18),
-text:nth-child(22) tspan.z:nth-child(n+3):nth-child(-n+8),
-.an1 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+8),
-.an3 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+8),
-.an2 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+11),
-.an4 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+11),
-text:nth-child(30) tspan.z:nth-child(n+4):nth-child(-n+9) {
-    animation: pulse-d 3.5s infinite ease-in-out -0.8s;
-}
+  /* --- CICLO D (3.5s) --- */
+  text:nth-child(4) tspan.z:nth-child(n+6):nth-child(-n+14),
+  .an1 text:nth-child(8) tspan.z:nth-child(n+25):nth-child(-n+29),
+  .an3 text:nth-child(8) tspan.z:nth-child(n+25):nth-child(-n+29),
+  .an1 text:nth-child(10) tspan.z:nth-child(n+25):nth-child(-n+28),
+  .an3 text:nth-child(10) tspan.z:nth-child(n+25):nth-child(-n+28),
+  .an2 text:nth-child(10) tspan.z:nth-child(n+24):nth-child(-n+28),
+  .an1 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+16),
+  .an3 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+16),
+  .an2 text:nth-child(14) tspan.z:nth-child(n+12):nth-child(-n+18),
+  .an1 text:nth-child(18) tspan.z:nth-child(n+20):nth-child(-n+23),
+  .an3 text:nth-child(18) tspan.z:nth-child(n+20):nth-child(-n+23),
+  .an2 text:nth-child(18) tspan.z:nth-child(n+17):nth-child(-n+18),
+  text:nth-child(22) tspan.z:nth-child(n+3):nth-child(-n+8),
+  .an1 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+8),
+  .an3 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+8),
+  .an2 text:nth-child(27) tspan.z:nth-child(n+4):nth-child(-n+11),
+  text:nth-child(30) tspan.z:nth-child(n+4):nth-child(-n+9) {
+      animation: pulse-d 3.5s infinite ease-in-out -0.8s;
+  }
 
-.an1 text:nth-child(1) tspan.z:nth-child(n+26):nth-child(-n+28),
-.an3 text:nth-child(1) tspan.z:nth-child(n+26):nth-child(-n+28),
-text:nth-child(5) tspan.z:nth-child(n+3):nth-child(-n+8),
-text:nth-child(9) tspan.z:nth-child(n+16):nth-child(-n+19),
-text:nth-child(14) tspan.z:nth-child(n+20):nth-child(-n+24),
-.an1 text:nth-child(18) tspan.z:nth-child(n+3):nth-child(-n+7),
-.an3 text:nth-child(18) tspan.z:nth-child(n+3):nth-child(-n+7),
-.an2 text:nth-child(18) tspan.z:nth-child(n+4):nth-child(-n+5),
-.an4 text:nth-child(18) tspan.z:nth-child(n+4):nth-child(-n+5),
-.an1 text:nth-child(22) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an3 text:nth-child(22) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an2 text:nth-child(22) tspan.z:nth-child(n+13):nth-child(-n+19),
-.an4 text:nth-child(22) tspan.z:nth-child(n+13):nth-child(-n+19),
-.an1 text:nth-child(26) tspan.z:nth-child(n+16):nth-child(-n+20),
-.an3 text:nth-child(26) tspan.z:nth-child(n+16):nth-child(-n+20),
-.an2 text:nth-child(26) tspan.z:nth-child(n+13):nth-child(-n+19),
-.an4 text:nth-child(26) tspan.z:nth-child(n+13):nth-child(-n+19),
-.an1 text:nth-child(30) tspan.z:nth-child(n+20):nth-child(-n+22),
-.an3 text:nth-child(30) tspan.z:nth-child(n+20):nth-child(-n+22),
-.an2 text:nth-child(30) tspan.z:nth-child(n+19):nth-child(-n+21),
-.an4 text:nth-child(30) tspan.z:nth-child(n+19):nth-child(-n+21) {
-    animation: pulse-e 4.4s infinite ease-in-out -2.7s;
-}
+  /* --- CICLO E (4.4s) --- */
+  .an1 text:nth-child(1) tspan.z:nth-child(n+26):nth-child(-n+28),
+  .an3 text:nth-child(1) tspan.z:nth-child(n+26):nth-child(-n+28),
+  text:nth-child(5) tspan.z:nth-child(n+3):nth-child(-n+8),
+  text:nth-child(9) tspan.z:nth-child(n+16):nth-child(-n+19),
+  text:nth-child(14) tspan.z:nth-child(n+20):nth-child(-n+24),
+  .an1 text:nth-child(18) tspan.z:nth-child(n+3):nth-child(-n+7),
+  .an3 text:nth-child(18) tspan.z:nth-child(n+3):nth-child(-n+7),
+  .an2 text:nth-child(18) tspan.z:nth-child(n+4):nth-child(-n+5),
+  .an1 text:nth-child(22) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an3 text:nth-child(22) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an2 text:nth-child(22) tspan.z:nth-child(n+13):nth-child(-n+19),
+  .an1 text:nth-child(26) tspan.z:nth-child(n+16):nth-child(-n+20),
+  .an3 text:nth-child(26) tspan.z:nth-child(n+16):nth-child(-n+20),
+  .an2 text:nth-child(26) tspan.z:nth-child(n+13):nth-child(-n+19),
+  .an1 text:nth-child(30) tspan.z:nth-child(n+20):nth-child(-n+22),
+  .an3 text:nth-child(30) tspan.z:nth-child(n+20):nth-child(-n+22),
+  .an2 text:nth-child(30) tspan.z:nth-child(n+19):nth-child(-n+21) {
+      animation: pulse-e 4.4s infinite ease-in-out -2.7s;
+  }
 
-text:nth-child(2) tspan.z:nth-child(n+17):nth-child(-n+21),
-text:nth-child(5) tspan.z:nth-child(n+14):nth-child(-n+16),
-text:nth-child(6) tspan.z:nth-child(n+6):nth-child(-n+10),
-text:nth-child(7) tspan.z:nth-child(n+18):nth-child(-n+19),
-text:nth-child(10) tspan.z:nth-child(n+11):nth-child(-n+18),
-text:nth-child(13) tspan.z:nth-child(n+21):nth-child(-n+23),
-text:nth-child(19) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an1 text:nth-child(23) tspan.z:nth-child(n+13):nth-child(-n+16),
-.an3 text:nth-child(23) tspan.z:nth-child(n+13):nth-child(-n+16),
-.an2 text:nth-child(23) tspan.z:nth-child(n+11):nth-child(-n+14),
-.an4 text:nth-child(23) tspan.z:nth-child(n+11):nth-child(-n+14),
-text:nth-child(27) tspan.z:nth-child(n+13):nth-child(-n+16) {
-    animation: pulse-f 3.1s infinite ease-in-out -1.6s;
-}
+  /* --- CICLO F (3.1s) - Incluye corrección exacta de JS / TS --- */
+  text:nth-child(2) tspan.z:nth-child(n+17):nth-child(-n+21),
+  text:nth-child(5) tspan.z:nth-child(n+14):nth-child(-n+16),
+  text:nth-child(6) tspan.z:nth-child(n+6):nth-child(-n+10),
+  /* 👇 JS y TS CORREGIDOS (Solo columnas 18 y 19, no toma el cero de la 17) */
+  text:nth-child(7) tspan.z:nth-child(n+18):nth-child(-n+19),
+  text:nth-child(10) tspan.z:nth-child(n+11):nth-child(-n+18),
+  text:nth-child(13) tspan.z:nth-child(n+21):nth-child(-n+23),
+  text:nth-child(19) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an1 text:nth-child(23) tspan.z:nth-child(n+13):nth-child(-n+16),
+  .an3 text:nth-child(23) tspan.z:nth-child(n+13):nth-child(-n+16),
+  .an2 text:nth-child(23) tspan.z:nth-child(n+11):nth-child(-n+14),
+  text:nth-child(27) tspan.z:nth-child(n+13):nth-child(-n+16) {
+      animation: pulse-f 3.1s infinite ease-in-out -1.6s;
+  }
 
-text:nth-child(1) tspan.z:nth-child(n+2):nth-child(-n+3),
-.an1 text:nth-child(1) tspan.z:nth-child(n+17):nth-child(-n+22),
-.an3 text:nth-child(1) tspan.z:nth-child(n+17):nth-child(-n+22),
-.an2 text:nth-child(1) tspan.z:nth-child(n+11):nth-child(-n+17),
-.an4 text:nth-child(1) tspan.z:nth-child(n+11):nth-child(-n+17),
-.an2 text:nth-child(1) tspan.z:nth-child(n+21):nth-child(-n+24),
-.an4 text:nth-child(1) tspan.z:nth-child(n+21):nth-child(-n+24),
-text:nth-child(3) tspan.z:nth-child(n+17):nth-child(-n+22),
-text:nth-child(4) tspan.z:nth-child(n+19):nth-child(-n+23),
-text:nth-child(5) tspan.z:nth-child(n+17):nth-child(-n+22),
-text:nth-child(6) tspan.z:nth-child(n+16):nth-child(-n+18),
-text:nth-child(7) tspan.z:nth-child(n+20):nth-child(-n+25),
-text:nth-child(8) tspan.z:nth-child(n+9):nth-child(-n+10) {
-    animation: pulse-c 4.1s infinite ease-in-out -0.6s;
-}
+  /* --- GRUPO SECUNDARIO (Desfases adicionales) --- */
+  text:nth-child(1) tspan.z:nth-child(n+2):nth-child(-n+3),
+  .an1 text:nth-child(1) tspan.z:nth-child(n+17):nth-child(-n+22),
+  .an3 text:nth-child(1) tspan.z:nth-child(n+17):nth-child(-n+22),
+  .an2 text:nth-child(1) tspan.z:nth-child(n+11):nth-child(-n+17),
+  .an2 text:nth-child(1) tspan.z:nth-child(n+21):nth-child(-n+24),
+  text:nth-child(3) tspan.z:nth-child(n+17):nth-child(-n+22),
+  text:nth-child(4) tspan.z:nth-child(n+19):nth-child(-n+23),
+  text:nth-child(5) tspan.z:nth-child(n+17):nth-child(-n+22),
+  text:nth-child(6) tspan.z:nth-child(n+16):nth-child(-n+18),
+  text:nth-child(7) tspan.z:nth-child(n+20):nth-child(-n+25),
+  text:nth-child(8) tspan.z:nth-child(n+9):nth-child(-n+10) {
+      animation: pulse-c 4.1s infinite ease-in-out -0.6s;
+  }
 
-text:nth-child(9) tspan.z:nth-child(n+3):nth-child(-n+8),
-text:nth-child(9) tspan.z:nth-child(n+23):nth-child(-n+28),
-text:nth-child(10) tspan.z:nth-child(n+4):nth-child(-n+5),
-.an1 text:nth-child(11) tspan.z:nth-child(n+20):nth-child(-n+21),
-.an3 text:nth-child(11) tspan.z:nth-child(n+20):nth-child(-n+21),
-.an2 text:nth-child(11) tspan.z:nth-child(n+18):nth-child(-n+20),
-.an4 text:nth-child(11) tspan.z:nth-child(n+18):nth-child(-n+20),
-.an1 text:nth-child(11) tspan.z:nth-child(n+24):nth-child(-n+29),
-.an3 text:nth-child(11) tspan.z:nth-child(n+24):nth-child(-n+29),
-.an2 text:nth-child(11) tspan.z:nth-child(n+22):nth-child(-n+27),
-.an4 text:nth-child(11) tspan.z:nth-child(n+22):nth-child(-n+27),
-text:nth-child(12) tspan.z:nth-child(n+15):nth-child(-n+21),
-.an1 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+29),
-.an3 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+29),
-.an2 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+28),
-.an4 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+28) {
-    animation: pulse-a 3.7s infinite ease-in-out -2.3s;
-}
+  text:nth-child(9) tspan.z:nth-child(n+3):nth-child(-n+8),
+  text:nth-child(9) tspan.z:nth-child(n+23):nth-child(-n+28),
+  text:nth-child(10) tspan.z:nth-child(n+4):nth-child(-n+5),
+  .an1 text:nth-child(11) tspan.z:nth-child(n+20):nth-child(-n+21),
+  .an3 text:nth-child(11) tspan.z:nth-child(n+20):nth-child(-n+21),
+  .an2 text:nth-child(11) tspan.z:nth-child(n+18):nth-child(-n+20),
+  .an1 text:nth-child(11) tspan.z:nth-child(n+24):nth-child(-n+29),
+  .an3 text:nth-child(11) tspan.z:nth-child(n+24):nth-child(-n+29),
+  .an2 text:nth-child(11) tspan.z:nth-child(n+22):nth-child(-n+27),
+  text:nth-child(12) tspan.z:nth-child(n+15):nth-child(-n+21),
+  .an1 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+29),
+  .an3 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+29),
+  .an2 text:nth-child(12) tspan.z:nth-child(n+22):nth-child(-n+28) {
+      animation: pulse-a 3.7s infinite ease-in-out -2.3s;
+  }
 
-text:nth-child(13) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an1 text:nth-child(13) tspan.z:nth-child(n+24):nth-child(-n+29),
-.an3 text:nth-child(13) tspan.z:nth-child(n+24):nth-child(-n+29),
-.an2 text:nth-child(13) tspan.z:nth-child(n+26):nth-child(-n+28),
-.an4 text:nth-child(13) tspan.z:nth-child(n+26):nth-child(-n+28),
-text:nth-child(14) tspan.z:nth-child(n+3):nth-child(-n+10),
-.an1 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an3 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an2 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an4 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
-.an1 text:nth-child(15) tspan.z:nth-child(n+23):nth-child(-n+28),
-.an3 text:nth-child(15) tspan.z:nth-child(n+23):nth-child(-n+28),
-.an2 text:nth-child(15) tspan.z:nth-child(n+24):nth-child(-n+29),
-.an4 text:nth-child(15) tspan.z:nth-child(n+24):nth-child(-n+29),
-text:nth-child(16) tspan.z:nth-child(n+6):nth-child(-n+10),
-.an1 text:nth-child(17) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an3 text:nth-child(17) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an2 text:nth-child(17) tspan.z:nth-child(n+15):nth-child(-n+21),
-.an4 text:nth-child(17) tspan.z:nth-child(n+15):nth-child(-n+21),
-text:nth-child(17) tspan.z:nth-child(n+24):nth-child(-n+29) {
-    animation: pulse-e 4.6s infinite ease-in-out -1.9s;
-}
+  text:nth-child(13) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an1 text:nth-child(13) tspan.z:nth-child(n+24):nth-child(-n+29),
+  .an3 text:nth-child(13) tspan.z:nth-child(n+24):nth-child(-n+29),
+  .an2 text:nth-child(13) tspan.z:nth-child(n+26):nth-child(-n+28),
+  text:nth-child(14) tspan.z:nth-child(n+3):nth-child(-n+10),
+  .an1 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an3 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an2 text:nth-child(15) tspan.z:nth-child(n+6):nth-child(-n+11),
+  .an1 text:nth-child(15) tspan.z:nth-child(n+23):nth-child(-n+28),
+  .an3 text:nth-child(15) tspan.z:nth-child(n+23):nth-child(-n+28),
+  .an2 text:nth-child(15) tspan.z:nth-child(n+24):nth-child(-n+29),
+  text:nth-child(16) tspan.z:nth-child(n+6):nth-child(-n+10),
+  .an1 text:nth-child(17) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an3 text:nth-child(17) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an2 text:nth-child(17) tspan.z:nth-child(n+15):nth-child(-n+21),
+  text:nth-child(17) tspan.z:nth-child(n+24):nth-child(-n+29) {
+      animation: pulse-e 4.6s infinite ease-in-out -1.9s;
+  }
 
-text:nth-child(19) tspan.z:nth-child(n+13):nth-child(-n+14),
-.an1 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+22),
-.an3 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+22),
-.an2 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+23),
-.an4 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+23),
-text:nth-child(20) tspan.z:nth-child(n+19):nth-child(-n+23),
-text:nth-child(20) tspan.z:nth-child(n+25):nth-child(-n+26),
-.an1 text:nth-child(21) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an3 text:nth-child(21) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an2 text:nth-child(21) tspan.z:nth-child(n+11):nth-child(-n+19),
-.an4 text:nth-child(21) tspan.z:nth-child(n+11):nth-child(-n+19),
-.an1 text:nth-child(23) tspan.z:nth-child(n+4):nth-child(-n+8),
-.an3 text:nth-child(23) tspan.z:nth-child(n+4):nth-child(-n+8),
-.an2 text:nth-child(23) tspan.z:nth-child(n+3):nth-child(-n+9),
-.an4 text:nth-child(23) tspan.z:nth-child(n+3):nth-child(-n+9),
-.an1 text:nth-child(23) tspan.z:nth-child(n+21):nth-child(-n+25),
-.an3 text:nth-child(23) tspan.z:nth-child(n+21):nth-child(-n+25),
-.an2 text:nth-child(23) tspan.z:nth-child(n+17):nth-child(-n+23),
-.an4 text:nth-child(23) tspan.z:nth-child(n+17):nth-child(-n+23),
-.an1 text:nth-child(24) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an3 text:nth-child(24) tspan.z:nth-child(n+13):nth-child(-n+18),
-.an2 text:nth-child(24) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an4 text:nth-child(24) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an1 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+6),
-.an3 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+6),
-.an2 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+11),
-.an4 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+11),
-.an1 text:nth-child(27) tspan.z:nth-child(n+19):nth-child(-n+23),
-.an3 text:nth-child(27) tspan.z:nth-child(n+19):nth-child(-n+23),
-.an2 text:nth-child(27) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an4 text:nth-child(27) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an2 text:nth-child(28) tspan.z:nth-child(n+11):nth-child(-n+13),
-.an4 text:nth-child(28) tspan.z:nth-child(n+11):nth-child(-n+13),
-.an1 text:nth-child(28) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an3 text:nth-child(28) tspan.z:nth-child(n+14):nth-child(-n+19),
-.an2 text:nth-child(28) tspan.z:nth-child(n+16):nth-child(-n+21),
-.an4 text:nth-child(28) tspan.z:nth-child(n+16):nth-child(-n+21),
-text:nth-child(29) tspan.z:nth-child(n+3):nth-child(-n+8),
-.an1 text:nth-child(29) tspan.z:nth-child(n+19):nth-child(-n+24),
-.an3 text:nth-child(29) tspan.z:nth-child(n+19):nth-child(-n+24),
-.an2 text:nth-child(29) tspan.z:nth-child(n+18):nth-child(-n+23),
-.an4 text:nth-child(29) tspan.z:nth-child(n+18):nth-child(-n+23) {
-    animation: pulse-b 3.3s infinite ease-in-out -0.5s;
-}
+  text:nth-child(19) tspan.z:nth-child(n+13):nth-child(-n+14),
+  .an1 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+22),
+  .an3 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+22),
+  .an2 text:nth-child(19) tspan.z:nth-child(n+17):nth-child(-n+23),
+  text:nth-child(20) tspan.z:nth-child(n+19):nth-child(-n+23),
+  text:nth-child(20) tspan.z:nth-child(n+25):nth-child(-n+26),
+  .an1 text:nth-child(21) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an3 text:nth-child(21) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an2 text:nth-child(21) tspan.z:nth-child(n+11):nth-child(-n+19),
+  .an1 text:nth-child(23) tspan.z:nth-child(n+4):nth-child(-n+8),
+  .an3 text:nth-child(23) tspan.z:nth-child(n+4):nth-child(-n+8),
+  .an2 text:nth-child(23) tspan.z:nth-child(n+3):nth-child(-n+9),
+  .an1 text:nth-child(23) tspan.z:nth-child(n+21):nth-child(-n+25),
+  .an3 text:nth-child(23) tspan.z:nth-child(n+21):nth-child(-n+25),
+  .an2 text:nth-child(23) tspan.z:nth-child(n+17):nth-child(-n+23),
+  .an1 text:nth-child(24) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an3 text:nth-child(24) tspan.z:nth-child(n+13):nth-child(-n+18),
+  .an2 text:nth-child(24) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an1 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+6),
+  .an3 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+6),
+  .an2 text:nth-child(25) tspan.z:nth-child(n+3):nth-child(-n+11),
+  .an1 text:nth-child(27) tspan.z:nth-child(n+19):nth-child(-n+23),
+  .an3 text:nth-child(27) tspan.z:nth-child(n+19):nth-child(-n+23),
+  .an2 text:nth-child(27) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an2 text:nth-child(28) tspan.z:nth-child(n+11):nth-child(-n+13),
+  .an1 text:nth-child(28) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an3 text:nth-child(28) tspan.z:nth-child(n+14):nth-child(-n+19),
+  .an2 text:nth-child(28) tspan.z:nth-child(n+16):nth-child(-n+21),
+  text:nth-child(29) tspan.z:nth-child(n+3):nth-child(-n+8),
+  .an1 text:nth-child(29) tspan.z:nth-child(n+19):nth-child(-n+24),
+  .an3 text:nth-child(29) tspan.z:nth-child(n+19):nth-child(-n+24),
+  .an2 text:nth-child(29) tspan.z:nth-child(n+18):nth-child(-n+23) {
+      animation: pulse-b 3.3s infinite ease-in-out -0.5s;
+  }
+
+  /* =========================================================
+     MASCARAS (FILAS 5 A 26 - APLICADAS A TODAS LAS CAPAS)
+     ========================================================= */
+
+  /* --- LETRA O --- */
+  text:nth-child(n+5):nth-child(-n+8) tspan.z:nth-child(n+10):nth-child(-n+21),
+  text:nth-child(n+23):nth-child(-n+26) tspan.z:nth-child(n+10):nth-child(-n+21),
+  text:nth-child(n+7):nth-child(-n+24) tspan.z:nth-child(n+7):nth-child(-n+10),
+  text:nth-child(n+7):nth-child(-n+24) tspan.z:nth-child(n+21):nth-child(-n+24) {
+      --isO: 1;
+  }
+
+  /* --- LETRA K --- */
+  text:nth-child(n+5):nth-child(-n+26) tspan.z:nth-child(n+7):nth-child(-n+10),
+  text:nth-child(n+14):nth-child(-n+17) tspan.z:nth-child(n+11):nth-child(-n+13),
+  text:nth-child(n+11):nth-child(-n+14) tspan.z:nth-child(n+13):nth-child(-n+16),
+  text:nth-child(n+8):nth-child(-n+11) tspan.z:nth-child(n+16):nth-child(-n+19),
+  text:nth-child(n+5):nth-child(-n+8) tspan.z:nth-child(n+19):nth-child(-n+24),
+  text:nth-child(n+17):nth-child(-n+20) tspan.z:nth-child(n+13):nth-child(-n+16),
+  text:nth-child(n+20):nth-child(-n+23) tspan.z:nth-child(n+16):nth-child(-n+19),
+  text:nth-child(n+23):nth-child(-n+26) tspan.z:nth-child(n+19):nth-child(-n+24) {
+      --isK: 1;
+  }
+
+  /* --- LETRA Z --- */
+  text:nth-child(n+5):nth-child(-n+8) tspan.z:nth-child(n+7):nth-child(-n+24),
+  text:nth-child(n+23):nth-child(-n+26) tspan.z:nth-child(n+7):nth-child(-n+24),
+  text:nth-child(n+8):nth-child(-n+11) tspan.z:nth-child(n+19):nth-child(-n+22),
+  text:nth-child(n+11):nth-child(-n+14) tspan.z:nth-child(n+16):nth-child(-n+19),
+  text:nth-child(n+14):nth-child(-n+17) tspan.z:nth-child(n+13):nth-child(-n+16),
+  text:nth-child(n+17):nth-child(-n+20) tspan.z:nth-child(n+10):nth-child(-n+13),
+  text:nth-child(n+20):nth-child(-n+23) tspan.z:nth-child(n+7):nth-child(-n+10) {
+      --isZ: 1;
+  }
+
+  /* --- LETRA G --- */
+  text:nth-child(n+5):nth-child(-n+8) tspan.z:nth-child(n+10):nth-child(-n+24),
+  text:nth-child(n+5):nth-child(-n+26) tspan.z:nth-child(n+7):nth-child(-n+10),
+  text:nth-child(n+23):nth-child(-n+26) tspan.z:nth-child(n+10):nth-child(-n+24),
+  text:nth-child(n+8):nth-child(-n+11) tspan.z:nth-child(n+21):nth-child(-n+24),
+  text:nth-child(n+15):nth-child(-n+23) tspan.z:nth-child(n+21):nth-child(-n+24),
+  text:nth-child(n+15):nth-child(-n+18) tspan.z:nth-child(n+15):nth-child(-n+20) {
+      --isG: 1;
+  }
+
+  /* --- LETRA N --- */
+  text:nth-child(n+5):nth-child(-n+26) tspan.z:nth-child(n+7):nth-child(-n+10),
+  text:nth-child(n+5):nth-child(-n+26) tspan.z:nth-child(n+21):nth-child(-n+24),
+  text:nth-child(n+5):nth-child(-n+11) tspan.z:nth-child(n+10):nth-child(-n+13),
+  text:nth-child(n+11):nth-child(-n+15) tspan.z:nth-child(n+12):nth-child(-n+15),
+  text:nth-child(n+15):nth-child(-n+18) tspan.z:nth-child(n+15):nth-child(-n+18),
+  text:nth-child(n+18):nth-child(-n+21) tspan.z:nth-child(n+17):nth-child(-n+20),
+  text:nth-child(n+21):nth-child(-n+26) tspan.z:nth-child(n+19):nth-child(-n+21) {
+      --isN: 1;
+  }
 </style>
 
-<g class="an an1">
-    <text x="0" y="30"><tspan class="z">0</tspan><tspan class="z">D</tspan><tspan class="z">X</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">S</tspan><tspan class="z">S</tspan><tspan class="z">H</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="62"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">p</tspan><tspan class="z">r</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">y</tspan><tspan class="z">p</tspan><tspan class="z">e</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">a</tspan><tspan class="z">s</tspan><tspan class="z">y</tspan><tspan class="z">n</tspan><tspan class="z">c</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
+ <g class="an an1">
+    <text x="0" dy="30"><tspan class="z">0</tspan><tspan class="z">D</tspan><tspan class="z">X</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">S</tspan><tspan class="z">S</tspan><tspan class="z">H</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
+    <text x="0" dy="62"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">p</tspan><tspan class="z">r</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">y</tspan><tspan class="z">p</tspan><tspan class="z">e</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">a</tspan><tspan class="z">s</tspan><tspan class="z">y</tspan><tspan class="z">n</tspan><tspan class="z">c</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
     <text x="0" y="94"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">b</tspan><tspan class="z">o</tspan><tspan class="z">d</tspan><tspan class="z">y</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">b</tspan><tspan class="z">o</tspan><tspan class="z">d</tspan><tspan class="z">y</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
     <text x="0" y="126"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">p</tspan><tspan class="z">r</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">o</tspan><tspan class="z">t</tspan><tspan class="z">y</tspan><tspan class="z">p</tspan><tspan class="z">e</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">m</tspan><tspan class="z">u</tspan><tspan class="z">t</tspan><tspan class="z">e</tspan><tspan class="z">x</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
     <text x="0" y="158"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">D</tspan><tspan class="z">O</tspan><tspan class="z">M</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
@@ -435,38 +468,4 @@ text:nth-child(29) tspan.z:nth-child(n+3):nth-child(-n+8),
     <text x="0" y="2846"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">b</tspan><tspan class="z">4</tspan><tspan class="z">s</tspan><tspan class="z">3</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">c</tspan><tspan class="z">1</tspan><tspan class="z">p</tspan><tspan class="z">h</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">b</tspan><tspan class="z">4</tspan><tspan class="z">s</tspan><tspan class="z">3</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
     <text x="0" y="2878"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">b</tspan><tspan class="z">u</tspan><tspan class="z">f</tspan><tspan class="z">f</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">t</tspan><tspan class="z">h</tspan><tspan class="z">r</tspan><tspan class="z">3</tspan><tspan class="z">4</tspan><tspan class="z">d</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">C</tspan><tspan class="z">P</tspan><tspan class="z">U</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
 </g>
-<g class="an an4">
-    <text x="0" y="2910"><tspan class="z">0</tspan><tspan class="z">U</tspan><tspan class="z">X</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">G</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">p</tspan><tspan class="z">4</tspan><tspan class="z">c</tspan><tspan class="z">k</tspan><tspan class="z">4</tspan><tspan class="z">g</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">f</tspan><tspan class="z">u</tspan><tspan class="z">n</tspan><tspan class="z">c</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="2942"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">n</tspan><tspan class="z">t</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">f</tspan><tspan class="z">4</tspan><tspan class="z">c</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">4</tspan><tspan class="z">w</tspan><tspan class="z">4</tspan><tspan class="z">1</tspan><tspan class="z">t</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="2974"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">3</tspan><tspan class="z">4</tspan><tspan class="z">d</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">|</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3006"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">4</tspan><tspan class="z">m</tspan><tspan class="z">3</tspan><tspan class="z">s</tspan><tspan class="z">p</tspan><tspan class="z">4</tspan><tspan class="z">c</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">y</tspan><tspan class="z">1</tspan><tspan class="z">3</tspan><tspan class="z">l</tspan><tspan class="z">d</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3038"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">4</tspan><tspan class="z">P</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3070"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">r</tspan><tspan class="z">3</tspan><tspan class="z">4</tspan><tspan class="z">c</tspan><tspan class="z">t</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">$</tspan><tspan class="z">Q</tspan><tspan class="z">L</tspan><tspan class="z">1</tspan><tspan class="z">j</tspan><tspan class="z">4</tspan><tspan class="z">v</tspan><tspan class="z">4</tspan><tspan class="z">s</tspan><tspan class="z">c</tspan><tspan class="z">r</tspan><tspan class="z">1</tspan><tspan class="z">p</tspan><tspan class="z">t</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3102"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">b</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">y</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">T</tspan><tspan class="z">$</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">3</tspan><tspan class="z">4</tspan><tspan class="z">d</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3134"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">A</tspan><tspan class="z">0</tspan><tspan class="z">4</tspan><tspan class="z">w</tspan><tspan class="z">4</tspan><tspan class="z">1</tspan><tspan class="z">t</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3166"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">s</tspan><tspan class="z">p</tspan><tspan class="z">4</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">Y</tspan><tspan class="z">4</tspan><tspan class="z">M</tspan><tspan class="z">L</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">l</tspan><tspan class="z">4</tspan><tspan class="z">n</tspan><tspan class="z">g</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3198"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">U</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">1</tspan><tspan class="z">m</tspan><tspan class="z">p</tspan><tspan class="z">0</tspan><tspan class="z">r</tspan><tspan class="z">t</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">t</tspan><tspan class="z">u</tspan><tspan class="z">r</tspan><tspan class="z">b</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3230"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">d</tspan><tspan class="z">4</tspan><tspan class="z">t</tspan><tspan class="z">4</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">S</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">d</tspan><tspan class="z">4</tspan><tspan class="z">t</tspan><tspan class="z">4</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3262"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">s</tspan><tspan class="z">t</tspan><tspan class="z">r</tspan><tspan class="z">3</tspan><tspan class="z">4</tspan><tspan class="z">m</tspan><tspan class="z">s</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">3</tspan><tspan class="z">.</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">m</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">u</tspan><tspan class="z">l</tspan><tspan class="z">3</tspan><tspan class="z">s</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3294"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">h</tspan><tspan class="z">t</tspan><tspan class="z">m</tspan><tspan class="z">|</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">D</tspan><tspan class="z">0</tspan><tspan class="z">M</tspan><tspan class="z">&lt;</tspan><tspan class="z">0</tspan><tspan class="z">r</tspan><tspan class="z">4</tspan><tspan class="z">w</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3326"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">m</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">u</tspan><tspan class="z">l</tspan><tspan class="z">3</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">4</tspan><tspan class="z">n</tspan><tspan class="z">d</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">d</tspan><tspan class="z">0</tspan><tspan class="z">4</tspan><tspan class="z">s</tspan><tspan class="z">y</tspan><tspan class="z">n</tspan><tspan class="z">c</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3358"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">y</tspan><tspan class="z">4</tspan><tspan class="z">m</tspan><tspan class="z">l</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">4</tspan><tspan class="z">n</tspan><tspan class="z">4</tspan><tspan class="z">l</tspan><tspan class="z">y</tspan><tspan class="z">t</tspan><tspan class="z">1</tspan><tspan class="z">c</tspan><tspan class="z">s</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">c</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">3</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3390"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">f</tspan><tspan class="z">0</tspan><tspan class="z">r</tspan><tspan class="z">k</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">d</tspan><tspan class="z">x</tspan><tspan class="z">-</tspan><tspan class="z">c</tspan><tspan class="z">0</tspan><tspan class="z">r</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3422"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">m</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">g</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">r</tspan><tspan class="z">3</tspan><tspan class="z">q</tspan><tspan class="z">u</tspan><tspan class="z">3</tspan><tspan class="z">s</tspan><tspan class="z">t</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3454"><tspan class="z">1</tspan><tspan class="z">D</tspan><tspan class="z">1</tspan><tspan class="z">K</tspan><tspan class="z">V</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">G</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3486"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">j</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">A</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">c</tspan><tspan class="z">l</tspan><tspan class="z">0</tspan><tspan class="z">u</tspan><tspan class="z">d</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3518"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">p</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">g</tspan><tspan class="z">r</tspan><tspan class="z">4</tspan><tspan class="z">m</tspan><tspan class="z">m</tspan><tspan class="z">1</tspan><tspan class="z">n</tspan><tspan class="z">g</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">s</tspan><tspan class="z">p</tspan><tspan class="z">4</tspan><tspan class="z">w</tspan><tspan class="z">n</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">A</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3550"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">s</tspan><tspan class="z">w</tspan><tspan class="z">1</tspan><tspan class="z">f</tspan><tspan class="z">t</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">s</tspan><tspan class="z">3</tspan><tspan class="z">c</tspan><tspan class="z">t</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">n</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3582"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">k</tspan><tspan class="z">0</tspan><tspan class="z">t</tspan><tspan class="z">l</tspan><tspan class="z">1</tspan><tspan class="z">n</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">w</tspan><tspan class="z">3</tspan><tspan class="z">b</tspan><tspan class="z">h</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">k</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3614"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">v</tspan><tspan class="z">1</tspan><tspan class="z">d</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">&gt;</tspan><tspan class="z">0</tspan><tspan class="z">g</tspan><tspan class="z">R</tspan><tspan class="z">P</tspan><tspan class="z">C</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">4</tspan><tspan class="z">u</tspan><tspan class="z">d</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3646"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">u</tspan><tspan class="z">t</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">s</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">v</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3678"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">4</tspan><tspan class="z">r</tspan><tspan class="z">t</tspan><tspan class="z">1</tspan><tspan class="z">c</tspan><tspan class="z">l</tspan><tspan class="z">3</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">c</tspan><tspan class="z">4</tspan><tspan class="z">c</tspan><tspan class="z">h</tspan><tspan class="z">3</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3710"><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">c</tspan><tspan class="z">l</tspan><tspan class="z">1</tspan><tspan class="z">3</tspan><tspan class="z">n</tspan><tspan class="z">t</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">p</tspan><tspan class="z">r</tspan><tspan class="z">0</tspan><tspan class="z">m</tspan><tspan class="z">1</tspan><tspan class="z">s</tspan><tspan class="z">3</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3742"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">&lt;</tspan><tspan class="z">f</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">t</tspan><tspan class="z">3</tspan><tspan class="z">r</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">c</tspan><tspan class="z">r</tspan><tspan class="z">y</tspan><tspan class="z">p</tspan><tspan class="z">t</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3774"><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">w</tspan><tspan class="z">3</tspan><tspan class="z">b</tspan><tspan class="z">g</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">R</tspan><tspan class="z">4</tspan><tspan class="z">M</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">c</tspan><tspan class="z">4</tspan><tspan class="z">n</tspan><tspan class="z">v</tspan><tspan class="z">4</tspan><tspan class="z">s</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-    <text x="0" y="3806"><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">m</tspan><tspan class="z">3</tspan><tspan class="z">t</tspan><tspan class="z">4</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">4</tspan><tspan class="z">u</tspan><tspan class="z">t</tspan><tspan class="z">h</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">&lt;</tspan><tspan class="z">m</tspan><tspan class="z">3</tspan><tspan class="z">t</tspan><tspan class="z">4</tspan><tspan class="z">&gt;</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan></text>
-    <text x="0" y="3838"><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">l</tspan><tspan class="z">4</tspan><tspan class="z">m</tspan><tspan class="z">b</tspan><tspan class="z">d</tspan><tspan class="z">4</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">q</tspan><tspan class="z">u</tspan><tspan class="z">3</tspan><tspan class="z">u</tspan><tspan class="z">3</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">$</tspan><tspan class="z">D</tspan><tspan class="z">K</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan><tspan class="z">0</tspan><tspan class="z">1</tspan><tspan class="z">1</tspan><tspan class="z">0</tspan></text>
-</g>
-
-
 </svg>
