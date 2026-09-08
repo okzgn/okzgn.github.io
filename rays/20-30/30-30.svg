@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" width="960" height="960">
  <style>
-
-text {
+  text {
    font-family: monospace;
    font-size: 20px;
    fill: rgba(0, 0, 0, 0.99);
@@ -10,13 +9,12 @@ text {
   .an {
     will-change: transform;
     transform-origin: center;
-    --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0;
   }
   .an1 {
     transform: translateY(0);
-    animation: change1 1s linear alternate infinite, timeline 2s forwards;
+    animation: change1 1s linear alternate infinite;
     opacity: 1;
-    animation-delay: 1s, 0s;
+    animation-delay: 1s;
   }
   @keyframes change1 {
     0% { opacity: 0; }
@@ -26,11 +24,10 @@ text {
   }
   .an2 {
     transform: translateY(-960px);
-    animation: change2 1s linear alternate infinite, timeline 2s forwards;
+    animation: change2 1s linear alternate infinite;
     opacity: 0;
-    animation-delay: 1s, 0s;
+    animation-delay: 1s;
   }
-
   @keyframes change2 {
     0% { opacity: 1; }
     49% { opacity: 1; }
@@ -38,114 +35,286 @@ text {
     100% { opacity: 0; }
   }
 
+  text tspan.z:nth-child(30n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 1s; }
+  text tspan.z:nth-child(29n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 2s; }
+  text tspan.z:nth-child(28n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 3s; }
+  text tspan.z:nth-child(27n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 4s; }
+  text tspan.z:nth-child(26n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 5s; }
+  text tspan.z:nth-child(25n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 6s; }
+  text tspan.z:nth-child(24n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 7s; }
+  text tspan.z:nth-child(23n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 8s; }
+  text tspan.z:nth-child(22n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 9s; }
+  text tspan.z:nth-child(21n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 10s; }
+  text tspan.z:nth-child(20n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 11s; }
+  text tspan.z:nth-child(19n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 12s; }
+  text tspan.z:nth-child(18n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 13s; }
+  text tspan.z:nth-child(17n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 14s; }
+  text tspan.z:nth-child(16n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 15s; }
+  text tspan.z:nth-child(15n + 1) { fill: yellow; animation: change8 1s linear alternate infinite; animation-delay: 16s; }
+
+  @keyframes change8 {
+    100% { fill: orange; }
+  }
+
+  /*text:nth-child(odd) tspan.z:nth-child(19n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 12s; }
+  text:nth-child(even) tspan.z:nth-child(18n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 13s; }
+  text:nth-child(odd) tspan.z:nth-child(17n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 14s; }
+  text:nth-child(even) tspan.z:nth-child(16n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 15s; }
+  text:nth-child(odd) tspan.z:nth-child(15n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 16s; }
+  text:nth-child(even) tspan.z:nth-child(14n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 17s; }
+  text:nth-child(odd) tspan.z:nth-child(13n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 18s; }
+  text:nth-child(even) tspan.z:nth-child(12n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 19s; }
+  text:nth-child(odd) tspan.z:nth-child(11n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 20s; }
+  text:nth-child(even) tspan.z:nth-child(10n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 21s; }
+
+  text:nth-child(odd) tspan.z:nth-child(9n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 22s; }
+  text:nth-child(even) tspan.z:nth-child(8n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 23s; }
+  text:nth-child(odd) tspan.z:nth-child(7n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 24s; }
+  text:nth-child(even) tspan.z:nth-child(6n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 25s; }
+  text:nth-child(odd) tspan.z:nth-child(5n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 26s; }
+  text:nth-child(even) tspan.z:nth-child(4n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 27s; }
+  text:nth-child(odd) tspan.z:nth-child(3n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 28s; }
+  text:nth-child(even) tspan.z:nth-child(2n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 29s; }
+  text:nth-child(odd) tspan.z:nth-child(1n + 1) { fill: yellow; animation: change7 1s linear alternate infinite; animation-delay: 30s; }
+*/
+
+  @keyframes change7 {
+    100% { fill: orange; }
+  }
+
+  @keyframes change8 {
+    100% { fill: orange; }
+  }
+
+  /*text:nth-child(odd) > tspan.z:nth-child(odd) { fill: yellow; animation: change3 1s linear alternate infinite; }
+  text:nth-child(odd) > tspan.z:nth-child(even) { fill: magenta; animation: change4 1s linear alternate infinite; }
+
+  text:nth-child(even) > tspan.z:nth-child(odd) { fill: cyan; animation: change5 1s linear alternate infinite; }
+  text:nth-child(even) > tspan.z:nth-child(even) { fill: lime; animation: change6 1s linear alternate infinite; }*/
+
   @keyframes change3 {
-    100% { color: orange; }
+    100% { fill: orange; }
   }
 
-  text tspan.z:nth-child(30n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 1s; }
-  text tspan.z:nth-child(29n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 2s; }
-  text tspan.z:nth-child(28n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 3s; }
-  text tspan.z:nth-child(27n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 4s; }
-  text tspan.z:nth-child(26n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 5s; }
-  text tspan.z:nth-child(25n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 6s; }
-  text tspan.z:nth-child(24n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 7s; }
-  text tspan.z:nth-child(23n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 8s; }
-  text tspan.z:nth-child(22n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 9s; }
-  text tspan.z:nth-child(21n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 10s; }
-  text tspan.z:nth-child(20n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 11s; }
-  text tspan.z:nth-child(19n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 12s; }
-  text tspan.z:nth-child(18n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 13s; }
-  text tspan.z:nth-child(17n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 14s; }
-  text tspan.z:nth-child(16n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 15s; }
-  text tspan.z:nth-child(15n + 1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 16s; }
-
-  text tspan.z:nth-child(1) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 1s; }
-  text tspan.z:nth-child(2) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 2s; }
-  text tspan.z:nth-child(3) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 3s; }
-  text tspan.z:nth-child(4) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 4s; }
-  text tspan.z:nth-child(5) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 5s; }
-  text tspan.z:nth-child(6) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 6s; }
-  text tspan.z:nth-child(7) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 7s; }
-  text tspan.z:nth-child(8) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 8s; }
-  text tspan.z:nth-child(9) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 9s; }
-  text tspan.z:nth-child(10) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 10s; }
-  text tspan.z:nth-child(11) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 11s; }
-  text tspan.z:nth-child(12) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 12s; }
-  text tspan.z:nth-child(13) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 13s; }
-  text tspan.z:nth-child(14) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 14s; }
-  text tspan.z:nth-child(15) { color: yellow; animation: change3 1s linear alternate infinite; animation-delay: 15s; }
-
-  /* ------ LINEA DE TIEMPO (1s por letra, luego desaparece) ------ */
-  @keyframes timeline {
-       0%, 16.66% { --timeO: 1; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0; }
-       16.67%, 33.33% { --timeO: 0; --timeK: 1; --timeZ: 0; --timeG: 0; --timeN: 0; }
-       33.34%, 50.00% { --timeO: 0; --timeK: 0; --timeZ: 1; --timeG: 0; --timeN: 0; }
-       50.01%, 66.66% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 1; --timeN: 0; }
-       66.67%, 83.33% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 1; }
-       83.34%, 100% { --timeO: 0; --timeK: 0; --timeZ: 0; --timeG: 0; --timeN: 0; }
+  @keyframes change4 {
+    100% { fill: purple; }
   }
 
-  text tspan.z {
-       --isO: 0; --isK: 0; --isZ: 0; --isG: 0; --isN: 0;
-       --isBlack: calc( (var(--isO) * var(--timeO)) + (var(--isK) * var(--timeK)) + (var(--isZ) * var(--timeZ)) + (var(--isG) * var(--timeG)) + (var(--isN) * var(--timeN)) );
-       fill: color-mix(in srgb, #000 calc(100% * var(--isBlack)), currentColor) !important;
+  @keyframes change5 {
+    100% { fill: blue; }
   }
 
-  /* =========================================
-     MASCARAS GRUESAS Y GRANDES (Filas 6 a 27)
-     ========================================= */
-
-  /* --- LETRA O --- */
-  text:nth-child(n+6):nth-child(-n+9) tspan.z:nth-child(n+10):nth-child(-n+21),
-  text:nth-child(n+24):nth-child(-n+27) tspan.z:nth-child(n+10):nth-child(-n+21),
-  text:nth-child(n+8):nth-child(-n+25) tspan.z:nth-child(n+7):nth-child(-n+10),
-  text:nth-child(n+8):nth-child(-n+25) tspan.z:nth-child(n+21):nth-child(-n+24) {
-      --isO: 1;
+  @keyframes change6 {
+    100% { fill: green; }
   }
 
-  /* --- LETRA K --- */
-  text:nth-child(n+6):nth-child(-n+27) tspan.z:nth-child(n+7):nth-child(-n+10),
-  text:nth-child(n+15):nth-child(-n+18) tspan.z:nth-child(n+11):nth-child(-n+13),
-  text:nth-child(n+12):nth-child(-n+15) tspan.z:nth-child(n+13):nth-child(-n+16),
-  text:nth-child(n+9):nth-child(-n+12) tspan.z:nth-child(n+16):nth-child(-n+19),
-  text:nth-child(n+6):nth-child(-n+9) tspan.z:nth-child(n+19):nth-child(-n+24),
-  text:nth-child(n+18):nth-child(-n+21) tspan.z:nth-child(n+13):nth-child(-n+16),
-  text:nth-child(n+21):nth-child(-n+24) tspan.z:nth-child(n+16):nth-child(-n+19),
-  text:nth-child(n+24):nth-child(-n+27) tspan.z:nth-child(n+19):nth-child(-n+24) {
-      --isK: 1;
-  }
+  /*text:nth-child(1) > tspan.z:nth-child(1) ~ .z { fill: red; }
+  text:nth-child(2) > tspan.z:nth-child(2) ~ .z { fill: red; }
+  text:nth-child(3) > tspan.z:nth-child(3) ~ .z { fill: red; }
+  text:nth-child(4) > tspan.z:nth-child(4) ~ .z { fill: red; }
+  text:nth-child(5) > tspan.z:nth-child(5) ~ .z { fill: red; }
+  text:nth-child(6) > tspan.z:nth-child(6) ~ .z { fill: red; }
+  text:nth-child(7) > tspan.z:nth-child(7) ~ .z { fill: red; }
+  text:nth-child(8) > tspan.z:nth-child(8) ~ .z { fill: red; }
+  text:nth-child(9) > tspan.z:nth-child(9) ~ .z { fill: red; }
+  text:nth-child(10) > tspan.z:nth-child(10) ~ .z { fill: red; }
+  text:nth-child(11) > tspan.z:nth-child(11) ~ .z { fill: red; }
+  text:nth-child(12) > tspan.z:nth-child(12) ~ .z { fill: red; }
+  text:nth-child(13) > tspan.z:nth-child(13) ~ .z { fill: red; }
+  text:nth-child(14) > tspan.z:nth-child(14) ~ .z { fill: red; }
+  text:nth-child(15) > tspan.z:nth-child(15) ~ .z { fill: red; }
+  text:nth-child(16) > tspan.z:nth-child(16) ~ .z { fill: red; }
+  text:nth-child(17) > tspan.z:nth-child(17) ~ .z { fill: red; }
+  text:nth-child(18) > tspan.z:nth-child(18) ~ .z { fill: red; }
+  text:nth-child(19) > tspan.z:nth-child(19) ~ .z { fill: red; }
+  text:nth-child(20) > tspan.z:nth-child(20) ~ .z { fill: red; }
+  text:nth-child(21) > tspan.z:nth-child(21) ~ .z { fill: red; }
+  text:nth-child(22) > tspan.z:nth-child(22) ~ .z { fill: red; }
+  text:nth-child(23) > tspan.z:nth-child(23) ~ .z { fill: red; }
+  text:nth-child(24) > tspan.z:nth-child(24) ~ .z { fill: red; }
+  text:nth-child(25) > tspan.z:nth-child(25) ~ .z { fill: red; }
+  text:nth-child(26) > tspan.z:nth-child(26) ~ .z { fill: red; }
+  text:nth-child(27) > tspan.z:nth-child(27) ~ .z { fill: red; }
+  text:nth-child(28) > tspan.z:nth-child(28) ~ .z { fill: red; }
+  text:nth-child(29) > tspan.z:nth-child(29) ~ .z { fill: red; }
+  text:nth-child(30) > tspan.z:nth-child(30) ~ .z { fill: red; }
 
-  /* --- LETRA Z --- */
-  text:nth-child(n+6):nth-child(-n+9) tspan.z:nth-child(n+7):nth-child(-n+24),
-  text:nth-child(n+24):nth-child(-n+27) tspan.z:nth-child(n+7):nth-child(-n+24),
-  text:nth-child(n+9):nth-child(-n+12) tspan.z:nth-child(n+19):nth-child(-n+22),
-  text:nth-child(n+12):nth-child(-n+15) tspan.z:nth-child(n+16):nth-child(-n+19),
-  text:nth-child(n+15):nth-child(-n+18) tspan.z:nth-child(n+13):nth-child(-n+16),
-  text:nth-child(n+18):nth-child(-n+21) tspan.z:nth-child(n+10):nth-child(-n+13),
-  text:nth-child(n+21):nth-child(-n+24) tspan.z:nth-child(n+7):nth-child(-n+10) {
-      --isZ: 1;
-  }
 
-  /* --- LETRA G --- */
-  text:nth-child(n+6):nth-child(-n+9) tspan.z:nth-child(n+10):nth-child(-n+24),
-  text:nth-child(n+6):nth-child(-n+27) tspan.z:nth-child(n+7):nth-child(-n+10),
-  text:nth-child(n+24):nth-child(-n+27) tspan.z:nth-child(n+10):nth-child(-n+24),
-  text:nth-child(n+9):nth-child(-n+12) tspan.z:nth-child(n+21):nth-child(-n+24),
-  text:nth-child(n+16):nth-child(-n+24) tspan.z:nth-child(n+21):nth-child(-n+24),
-  text:nth-child(n+16):nth-child(-n+19) tspan.z:nth-child(n+15):nth-child(-n+20) {
-      --isG: 1;
-  }
+  text:nth-child(1) > tspan.z:nth-child(30) ~ .z { fill: cyan; }
+  text:nth-child(2) > tspan.z:nth-child(29) ~ .z { fill: cyan; }
+  text:nth-child(3) > tspan.z:nth-child(28) ~ .z { fill: cyan; }
+  text:nth-child(4) > tspan.z:nth-child(27) ~ .z { fill: cyan; }
+  text:nth-child(5) > tspan.z:nth-child(26) ~ .z { fill: cyan; }
+  text:nth-child(6) > tspan.z:nth-child(25) ~ .z { fill: cyan; }
+  text:nth-child(7) > tspan.z:nth-child(24) ~ .z { fill: cyan; }
+  text:nth-child(8) > tspan.z:nth-child(23) ~ .z { fill: cyan; }
+  text:nth-child(9) > tspan.z:nth-child(22) ~ .z { fill: cyan; }
+  text:nth-child(10) > tspan.z:nth-child(21) ~ .z { fill: cyan; }
+  text:nth-child(11) > tspan.z:nth-child(20) ~ .z { fill: cyan; }
+  text:nth-child(12) > tspan.z:nth-child(19) ~ .z { fill: cyan; }
+  text:nth-child(13) > tspan.z:nth-child(18) ~ .z { fill: cyan; }
+  text:nth-child(14) > tspan.z:nth-child(17) ~ .z { fill: cyan; }
+  text:nth-child(15) > tspan.z:nth-child(16) ~ .z { fill: cyan; }
+  text:nth-child(16) > tspan.z:nth-child(15) ~ .z { fill: cyan; }
+  text:nth-child(17) > tspan.z:nth-child(14) ~ .z { fill: cyan; }
+  text:nth-child(18) > tspan.z:nth-child(13) ~ .z { fill: cyan; }
+  text:nth-child(19) > tspan.z:nth-child(12) ~ .z { fill: cyan; }
+  text:nth-child(20) > tspan.z:nth-child(11) ~ .z { fill: cyan; }
+  text:nth-child(21) > tspan.z:nth-child(10) ~ .z { fill: cyan; }
+  text:nth-child(22) > tspan.z:nth-child(9) ~ .z { fill: cyan; }
+  text:nth-child(23) > tspan.z:nth-child(8) ~ .z { fill: cyan; }
+  text:nth-child(24) > tspan.z:nth-child(7) ~ .z { fill: cyan; }
+  text:nth-child(25) > tspan.z:nth-child(6) ~ .z { fill: cyan; }
+  text:nth-child(26) > tspan.z:nth-child(5) ~ .z { fill: cyan; }
+  text:nth-child(27) > tspan.z:nth-child(4) ~ .z { fill: cyan; }
+  text:nth-child(28) > tspan.z:nth-child(3) ~ .z { fill: cyan; }
+  text:nth-child(29) > tspan.z:nth-child(2) ~ .z { fill: cyan; }
+  text:nth-child(30) > tspan.z:nth-child(1) ~ .z { fill: cyan; }
 
-  /* --- LETRA N --- */
-  text:nth-child(n+6):nth-child(-n+27) tspan.z:nth-child(n+7):nth-child(-n+10),
-  text:nth-child(n+6):nth-child(-n+27) tspan.z:nth-child(n+21):nth-child(-n+24),
-  text:nth-child(n+6):nth-child(-n+12) tspan.z:nth-child(n+10):nth-child(-n+13),
-  text:nth-child(n+12):nth-child(-n+16) tspan.z:nth-child(n+12):nth-child(-n+15),
-  text:nth-child(n+16):nth-child(-n+19) tspan.z:nth-child(n+15):nth-child(-n+18),
-  text:nth-child(n+19):nth-child(-n+22) tspan.z:nth-child(n+17):nth-child(-n+20),
-  text:nth-child(n+22):nth-child(-n+27) tspan.z:nth-child(n+19):nth-child(-n+21) {
-      --isN: 1;
-  }
+  text:nth-child(15) > tspan.z:nth-child(-n+15) { fill: orange !important; }
+  text:nth-child(16) > tspan.z:nth-child(-n+16) { fill: orange !important; }
+  text:nth-child(17) > tspan.z:nth-child(-n+17) { fill: orange !important; }
+  text:nth-child(18) > tspan.z:nth-child(-n+18) { fill: orange !important; }
+  text:nth-child(19) > tspan.z:nth-child(-n+19) { fill: orange !important; }
+  text:nth-child(20) > tspan.z:nth-child(-n+20) { fill: orange !important; }
+  text:nth-child(21) > tspan.z:nth-child(-n+21) { fill: orange !important; }
+  text:nth-child(22) > tspan.z:nth-child(-n+22) { fill: orange !important; }
+  text:nth-child(23) > tspan.z:nth-child(-n+23) { fill: orange !important; }
+  text:nth-child(24) > tspan.z:nth-child(-n+24) { fill: orange !important; }
+  text:nth-child(25) > tspan.z:nth-child(-n+25) { fill: orange !important; }
+  text:nth-child(26) > tspan.z:nth-child(-n+26) { fill: orange !important; }
+  text:nth-child(27) > tspan.z:nth-child(-n+27) { fill: orange !important; }
+  text:nth-child(28) > tspan.z:nth-child(-n+28) { fill: orange !important; }
+  text:nth-child(29) > tspan.z:nth-child(-n+29) { fill: orange !important; }
+  text:nth-child(30) > tspan.z:nth-child(-n+30) { fill: orange !important; }
+
+  text:nth-child(1) > tspan.z:nth-child(-n+1) { fill: lime; }
+  text:nth-child(2) > tspan.z:nth-child(-n+2) { fill: lime; }
+  text:nth-child(3) > tspan.z:nth-child(-n+3) { fill: lime; }
+  text:nth-child(4) > tspan.z:nth-child(-n+4) { fill: lime; }
+  text:nth-child(5) > tspan.z:nth-child(-n+5) { fill: lime; }
+  text:nth-child(6) > tspan.z:nth-child(-n+6) { fill: lime; }
+  text:nth-child(7) > tspan.z:nth-child(-n+7) { fill: lime; }
+  text:nth-child(8) > tspan.z:nth-child(-n+8) { fill: lime; }
+  text:nth-child(9) > tspan.z:nth-child(-n+9) { fill: lime; }
+  text:nth-child(10) > tspan.z:nth-child(-n+10) { fill: lime; }
+  text:nth-child(11) > tspan.z:nth-child(-n+11) { fill: lime; }
+  text:nth-child(12) > tspan.z:nth-child(-n+12) { fill: lime; }
+  text:nth-child(13) > tspan.z:nth-child(-n+13) { fill: lime; }
+  text:nth-child(14) > tspan.z:nth-child(-n+14) { fill: lime; }
+  text:nth-child(15) > tspan.z:nth-child(-n+15) { fill: lime !important; }
+  text:nth-child(16) > tspan.z:nth-child(-n+15) { fill: lime !important; }
+  text:nth-child(17) > tspan.z:nth-child(-n+14) { fill: lime !important; }
+  text:nth-child(18) > tspan.z:nth-child(-n+13) { fill: lime !important; }
+  text:nth-child(19) > tspan.z:nth-child(-n+12) { fill: lime !important; }
+  text:nth-child(20) > tspan.z:nth-child(-n+11) { fill: lime !important; }
+  text:nth-child(21) > tspan.z:nth-child(-n+10) { fill: lime !important; }
+  text:nth-child(22) > tspan.z:nth-child(-n+9) { fill: lime !important; }
+  text:nth-child(23) > tspan.z:nth-child(-n+8) { fill: lime !important; }
+  text:nth-child(24) > tspan.z:nth-child(-n+7) { fill: lime !important; }
+  text:nth-child(25) > tspan.z:nth-child(-n+6) { fill: lime !important; }
+  text:nth-child(26) > tspan.z:nth-child(-n+5) { fill: lime !important; }
+  text:nth-child(27) > tspan.z:nth-child(-n+4) { fill: lime !important; }
+  text:nth-child(28) > tspan.z:nth-child(-n+3) { fill: lime !important; }
+  text:nth-child(29) > tspan.z:nth-child(-n+2) { fill: lime !important; }
+  text:nth-child(30) > tspan.z:nth-child(-n+1) { fill: lime !important; }*/
+
+  /*text:nth-child(1) > tspan.z:nth-child(1) { fill: red; }
+  text:nth-child(2) > tspan.z:nth-child(2) { fill: red; }
+  text:nth-child(3) > tspan.z:nth-child(3) { fill: red; }
+  text:nth-child(4) > tspan.z:nth-child(4) { fill: red; }
+  text:nth-child(5) > tspan.z:nth-child(5) { fill: red; }
+  text:nth-child(6) > tspan.z:nth-child(6) { fill: red; }
+  text:nth-child(7) > tspan.z:nth-child(7) { fill: red; }
+  text:nth-child(8) > tspan.z:nth-child(8) { fill: red; }
+  text:nth-child(9) > tspan.z:nth-child(9) { fill: red; }
+  text:nth-child(10) > tspan.z:nth-child(10) { fill: red; }
+  text:nth-child(11) > tspan.z:nth-child(11) { fill: red; }
+  text:nth-child(12) > tspan.z:nth-child(12) { fill: red; }
+  text:nth-child(13) > tspan.z:nth-child(13) { fill: red; }
+  text:nth-child(14) > tspan.z:nth-child(14) { fill: red; }
+  text:nth-child(15) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(16) > tspan.z:nth-child(16) { fill: red; }
+  text:nth-child(17) > tspan.z:nth-child(17) { fill: red; }
+  text:nth-child(18) > tspan.z:nth-child(18) { fill: red; }
+  text:nth-child(19) > tspan.z:nth-child(19) { fill: red; }
+  text:nth-child(20) > tspan.z:nth-child(20) { fill: red; }
+  text:nth-child(21) > tspan.z:nth-child(21) { fill: red; }
+  text:nth-child(22) > tspan.z:nth-child(22) { fill: red; }
+  text:nth-child(23) > tspan.z:nth-child(23) { fill: red; }
+  text:nth-child(24) > tspan.z:nth-child(24) { fill: red; }
+  text:nth-child(25) > tspan.z:nth-child(25) { fill: red; }
+  text:nth-child(26) > tspan.z:nth-child(26) { fill: red; }
+  text:nth-child(27) > tspan.z:nth-child(27) { fill: red; }
+  text:nth-child(28) > tspan.z:nth-child(28) { fill: red; }
+  text:nth-child(29) > tspan.z:nth-child(29) { fill: red; }
+  text:nth-child(30) > tspan.z:nth-child(30) { fill: red; }
+
+
+  text:nth-child(1) > tspan.z:nth-child(30) { fill: red; }
+  text:nth-child(2) > tspan.z:nth-child(29) { fill: red; }
+  text:nth-child(3) > tspan.z:nth-child(28) { fill: red; }
+  text:nth-child(4) > tspan.z:nth-child(27) { fill: red; }
+  text:nth-child(5) > tspan.z:nth-child(26) { fill: red; }
+  text:nth-child(6) > tspan.z:nth-child(25) { fill: red; }
+  text:nth-child(7) > tspan.z:nth-child(24) { fill: red; }
+  text:nth-child(8) > tspan.z:nth-child(23) { fill: red; }
+  text:nth-child(9) > tspan.z:nth-child(22) { fill: red; }
+  text:nth-child(10) > tspan.z:nth-child(21) { fill: red; }
+  text:nth-child(11) > tspan.z:nth-child(20) { fill: red; }
+  text:nth-child(12) > tspan.z:nth-child(19) { fill: red; }
+  text:nth-child(13) > tspan.z:nth-child(18) { fill: red; }
+  text:nth-child(14) > tspan.z:nth-child(17) { fill: red; }
+  text:nth-child(15) > tspan.z:nth-child(16) { fill: red; }
+  text:nth-child(16) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(17) > tspan.z:nth-child(14) { fill: red; }
+  text:nth-child(18) > tspan.z:nth-child(13) { fill: red; }
+  text:nth-child(19) > tspan.z:nth-child(12) { fill: red; }
+  text:nth-child(20) > tspan.z:nth-child(11) { fill: red; }
+  text:nth-child(21) > tspan.z:nth-child(10) { fill: red; }
+  text:nth-child(22) > tspan.z:nth-child(9) { fill: red; }
+  text:nth-child(23) > tspan.z:nth-child(8) { fill: red; }
+  text:nth-child(24) > tspan.z:nth-child(7) { fill: red; }
+  text:nth-child(25) > tspan.z:nth-child(6) { fill: red; }
+  text:nth-child(26) > tspan.z:nth-child(5) { fill: red; }
+  text:nth-child(27) > tspan.z:nth-child(4) { fill: red; }
+  text:nth-child(28) > tspan.z:nth-child(3) { fill: red; }
+  text:nth-child(29) > tspan.z:nth-child(2) { fill: red; }
+  text:nth-child(30) > tspan.z:nth-child(1) { fill: red; }
+
+  text:nth-child(15) > tspan.z { fill: red; }
+
+  text:nth-child(1) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(2) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(3) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(4) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(5) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(6) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(7) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(8) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(9) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(10) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(11) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(12) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(13) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(14) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(15) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(16) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(17) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(18) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(19) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(20) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(21) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(22) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(23) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(24) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(25) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(26) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(27) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(28) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(29) > tspan.z:nth-child(15) { fill: red; }
+  text:nth-child(30) > tspan.z:nth-child(15) { fill: red; }*/
+
   </style>
 
  <g class="an an1">

@@ -17,7 +17,7 @@
 	<meta name="theme-color" content="#000d1a" media="(prefers-color-scheme: dark)">
 
 	<meta name="format-detection" content="telephone=no">
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none';">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; script-src 'self' https://inquiry.okzgn.com; connect-src 'self' https://inquiry.okzgn.com">
 
 	<meta property="og:title" content="Applied AI, Platform & Software Engineering | OKZGN">
 	<meta property="og:description" content="High-performance scalable tech for businesses and enterprises: AI automation, agents, architecture, cloud, software, web systems, mobile apps, DevSecOps, FinOps">
@@ -233,10 +233,11 @@
 				</div>
 			</section>
 
-			<h2 class="auto-padding auto-font-size-2">On Demand</h2>
-			<p>Engage specialized services on demand, each with transparent pricing.</p>
+			<h2 class="auto-padding auto-font-size-2"><span class="billing-switch" role="group" aria-label="Billing mode"><button type="button" class="billing-opt selected" data-billing="ondemand" aria-pressed="true">On Demand</button><button type="button" class="billing-opt" data-billing="retainer" aria-pressed="false">Retainer</button></span></h2>
+			<p data-billing-copy="ondemand">Engage specialized services on demand, each with transparent pricing.</p>
+			<p data-billing-copy="retainer" hidden>Dedicated monthly engineering capacity: priority response, predictable costs, and continuous optimization, billed at a flat monthly rate.</p>
 
-			<section>
+			<section class="ondemand">
 				<div class="category">
 					<h3 class="auto-font-size-3">Applied Artificial Intelligence</h3>
 					<p>Integrate scalable AI systems, autonomous multimodal workflows, and low-latency model inference. <span data-nosnippet>Select to add to cart.</span></p>
@@ -292,7 +293,7 @@
 					<a href="#contact" class="cta-button" aria-label="Schedule a consultation on WhatsApp"><span>Book a Consult</span></a>
 				</div>
 			</section>
-			<section>
+			<section class="ondemand">
 				<div class="category">
 					<h3 class="auto-font-size-3">Web & Mobile Development</h3>
 					<p>Full-stack engineering for mission-critical web platforms and cross-platform applications. <span data-nosnippet>Select to add to cart.</span></p>
@@ -380,6 +381,66 @@
 					<a href="mailto:hello@okzgn.com" target="_blank" rel="noopener noreferrer" class="cta-button" aria-label="Contact Through Email"><span>hello@okzgn.com</span></a>
 				</address>
 			</div>
+		</section>
+		<section class="contact-inquiry auto-y-padding">
+			<h2 class="auto-font-size-2">Project Inquiry</h2>
+			<p class="form-lead">A concise brief is mapped to the appropriate engagement model and pricing plan.</p>
+			<form class="contact-form" id="contact-form" action="/api/contact" method="post">
+					<div class="form-grid">
+						<div class="form-field">
+							<label for="cf-name">Full Name<span class="req" aria-hidden="true">*</span></label>
+							<input id="cf-name" name="name" type="text" autocomplete="name" maxlength="48" placeholder="Full name" spellcheck="false" required>
+						</div>
+						<div class="form-field">
+							<label for="cf-email">Work Email<span class="req" aria-hidden="true">*</span></label>
+							<input id="cf-email" name="email" type="email" autocomplete="email" maxlength="96" placeholder="contact@company.com" spellcheck="false" required>
+						</div>
+						<div class="form-field">
+							<label for="cf-company">Company</label>
+							<input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="96" placeholder="Company name" spellcheck="false">
+						</div>
+						<div class="form-field">
+							<label for="cf-phone">Phone</label>
+							<input id="cf-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="(+1) 555 000 0000">
+						</div>
+						<div class="form-field">
+							<label for="cf-service">Service of Interest<span class="req" aria-hidden="true">*</span></label>
+							<select id="cf-service" name="service" required>
+								<option value="" selected disabled>Select service</option>
+								<option>Applied Artificial Intelligence</option>
+								<option>Platform Development & Architecture</option>
+								<option>Web & Mobile Development</option>
+								<option>Infrastructure & Hosting</option>
+								<option>Optimization, DevOps & FinOps</option>
+								<option>Managed Subscription</option>
+								<option>SaaS Subscription</option>
+								<option>Other</option>
+							</select>
+						</div>
+						<div class="form-field">
+							<label for="cf-model">Engagement Model<span class="req" aria-hidden="true">*</span></label>
+							<select id="cf-model" name="model" required>
+								<option value="" selected disabled>Select model</option>
+								<option value="ondemand">On Demand</option>
+								<option value="retainer">Retainer</option>
+								<option value="subscription">Subscription</option>
+								<option value="unsure">Not sure yet</option>
+							</select>
+						</div>
+						<div class="form-field full">
+							<label for="cf-message">Project Details<span class="req" aria-hidden="true">*</span></label>
+							<textarea id="cf-message" name="message" rows="5" maxlength="2000" placeholder="Scope, goals, timeline, current stack..." required></textarea>
+						</div>
+					</div>
+					<div class="form-hp" aria-hidden="true">
+						<label for="cf-website">Website</label>
+						<input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="cta-button" id="cf-submit"><span>Send Inquiry</span></button>
+						<span class="form-status" id="cf-status" role="status" aria-live="polite"></span>
+					</div>
+			</form>
 		</section>
 	</main>
 	<footer>&copy; 2026  OKZGN · <a class="no-default-arrow" href="/privacy/">Privacy Statement</a></footer>
