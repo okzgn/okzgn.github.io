@@ -32,19 +32,24 @@ document.addEventListener('DOMContentLoaded', function () {
         var price = li.querySelector('.price');
         if (!price) { return; }
         var base = price.textContent;
+        var retainer = price.getAttribute('data-retainer') || base.replace('/hr', '/mo');
         li._billingPrices = {
             ondemand: base,
-            retainer: base.replace('/hr', '/mo'),
+            retainer: retainer,
             subscription: base
         };
-    });
-
-    Array.prototype.forEach.call(document.querySelectorAll('#services section.ondemand'), function (section) {
-        Array.prototype.forEach.call(section.querySelectorAll('.price sub'), function (sub) {
-            if (sub.textContent.trim() === '/hr') {
-                billingMap.push({ el: sub, ondemand: '/hr', retainer: '/mo' });
-            }
-        });
+        if (retainer !== base) {
+            var hours = price.getAttribute('data-retainer-hours');
+            var name = li.querySelector('b');
+            if (hours && name) { name.dataset.retainerHours = hours; }
+            billingMap.push({
+                price: price,
+                textNode: price.firstChild,
+                sub: price.querySelector('sub'),
+                ondemand: base,
+                retainer: retainer
+            });
+        }
     });
 
     function refreshStaleModes() {
@@ -56,12 +61,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function applyUnits() {
         billingMap.forEach(function (item) {
-            var li = item.el.closest('li');
-            var unit = billingMode;
-            if (li && li.classList.contains('mode-stale') && item[li.getAttribute('data-billing')]) {
-                unit = li.getAttribute('data-billing');
-            }
-            item.el.textContent = item[unit];
+            var li = item.price.closest('li');
+            var stale = li && li.classList.contains('mode-stale') ? li.getAttribute('data-billing') : '';
+            var mode = item[stale] ? stale : billingMode;
+            var text = item[mode];
+            var sep = text.lastIndexOf('/');
+            item.textNode.nodeValue = text.slice(0, sep);
+            item.sub.textContent = text.slice(sep);
         });
     }
 
@@ -72,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function applyBilling(mode) {
         billingMode = mode;
+        if (services) { services.classList.toggle('billing-retainer', mode === 'retainer'); }
         Array.prototype.forEach.call(billingCopies, function (p) {
             p.hidden = p.getAttribute('data-billing-copy') !== mode;
         });
@@ -127,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', function () {
         toggleMenu();
         updateUp();
-    });
+    }, { passive: true });
     toggleMenu();
     updateUp();
 
@@ -196,6 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var icon = li.querySelector('.icon img');
             var mode = li.getAttribute('data-billing') || '';
             var modeLabel = BILLING_LABELS[mode] || '';
+            if (mode === 'retainer' && name && name.dataset.retainerHours) {
+                modeLabel += ' · ' + name.dataset.retainerHours + ' hrs/mo';
+            }
             var priceText = (li._billingPrices && li._billingPrices[mode]) || (price ? price.textContent : '');
 
             var row = document.createElement('li');
@@ -431,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 service: data.get('service'),
                 model: data.get('model'),
                 message: data.get('message').trim(),
-                order: { id: newOrderId(), items: (selectedItems().length > 0 ? lastOrderLines.slice() : ['Without items']) }
+                order: { id: currentOrderId || newOrderId(), items: (selectedItems().length > 0 ? lastOrderLines.slice() : ['Without items']) }
             };
             contactSubmit.disabled = true;
             setFormStatus('info', 'Sending...');
