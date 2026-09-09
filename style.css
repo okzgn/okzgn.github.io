@@ -1,11 +1,22 @@
 @font-face {
-    font-family: "Inter";
-    src: url('/inter_variable.woff2') format('woff2');
-    font-weight: normal bold;
+    font-family: "IBM-Plex-Sans";
+    src: url('/ibm_plex_sans_regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM-Plex-Sans";
+    src: url('/ibm_plex_sans_bold.woff2') format('woff2');
+    font-weight: bold;
     font-display: swap;
 }
 
 :root {
+    --mainFont: "IBM-Plex-Sans";
+    --wordSpacing: 0.15rem;
+    --lineHeight: 1.25;
+
     --realBlack: #000d1a;
     --realWhite: #f4f4f5;
     --black: var(--realBlack);
@@ -57,13 +68,14 @@
     --softSilver: var(--realSoftSilver);
     --softSilver2: rgba(1, 2, 24, 0.2);
     --realGray: rgba(1, 2, 24, 0.66);
+    --realSilver: #ccc;
     --gray: var(--realGray);
 
 
     --themeColor0: #ff962e;
     --themeColor: #ffb164;
-    --themeColor2:#ffc482;
-    --themeColor3:#ffdbb8;
+    --themeColor2: #ffc482;
+    --themeColor3: #ffdbb8;
 
     --color1a: var(--themeColor);
     --color1b: var(--themeColor2);
@@ -77,13 +89,13 @@
     scrollbar-color: var(--accent) var(--accentDark3);
     scrollbar-width: thin;
 
-    font-family: "Inter", -apple-system, BlinkMacSystemFont,
+    font-family: var(--mainFont), -apple-system, BlinkMacSystemFont,
     "Segoe UI", system-ui, Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     "Helvetica Neue", sans-serif;
 
     font-size: inherit;
-    word-spacing: 0.15rem;
-    line-height: 1.25;
+    word-spacing: var(--wordSpacing);
+    line-height: var(--lineHeight);
     accent-color: var(--accent);
     outline: 1px dashed transparent;
     color-scheme: light dark;
@@ -187,22 +199,6 @@ address { font-style: normal; }
 .auto-font-size { font-size: clamp(1.25rem, 1vw + 1.25rem, 2rem); }
 .auto-font-size-2 { font-size: clamp(1.125rem, 1vw + 1.125rem, 1.5rem); }
 .auto-font-size-3 { font-size: clamp(1rem, 1vw + 1rem, 1.25rem); }
-@media (prefers-reduced-motion: reduce) and (min-width: 641px) {
-    .bg { animation-duration: 17.5s; }
-    .bg-2 { animation-duration: 35s; }
-    #main aside.desktop { animation-duration: 60s; }
-    #main aside.mobile { animation-duration: 50s; }
-    #checkout.show::after { animation-duration: 5s; }
-    html { scroll-behavior: auto; }
-}
-@media (prefers-reduced-motion: reduce) and (max-width: 640px) {
-    .bg { animation-duration: 10.5s; }
-    .bg-2 { animation-duration: 21s; }
-    #main aside.desktop { animation-duration: 90s; }
-    #main aside.mobile { animation-duration: 75s; }
-    #checkout.show::after { animation-duration: 5s; }
-    html { scroll-behavior: auto; }
-}
 a::before,
 a::after,
 button.cta-button::before,
@@ -291,30 +287,29 @@ button.cta-button:focus::after {
     display: none;
 }
 
-
 .container {
     padding: 0;
     margin: 0;
     display: flex;
 }
-.container aside.desktop {
+.container .desktop:not(.desktop-logo) {
     width: 50%;
     height: 100%;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
 }
-.container aside.desktop::before {
+.container .desktop:not(.desktop-logo)::before {
     background: center no-repeat;
     background-size: auto 100%;
 }
-.container aside.mobile {
+.container .mobile {
     display: none;
     width: 100%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
 }
-.container aside.mobile::before,
-.container aside.mobile::after {
+.container .mobile::before,
+.container .mobile::after {
     background: center no-repeat;
     background-size: auto 100%;
 }
@@ -344,6 +339,22 @@ button.cta-button:focus::after {
     flex-flow: column;
     justify-content: center;
 }
+@media (prefers-reduced-motion: reduce) and (min-width: 641px) {
+    .bg { animation-duration: 17.5s; }
+    .bg-2 { animation-duration: 35s; }
+    #main aside.desktop::before { animation-duration: 60s; }
+    #main aside.mobile { animation-duration: 50s; }
+    #checkout.show::after { animation-duration: 5s; }
+    html { scroll-behavior: auto; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 640px) {
+    .bg { animation-duration: 10.5s; }
+    .bg-2 { animation-duration: 21s; }
+    #main aside.desktop::before { animation-duration: 90s; }
+    #main aside.mobile { animation-duration: 75s; }
+    #checkout.show::after { animation-duration: 5s; }
+    html { scroll-behavior: auto; }
+}
 @media screen and (min-width: 960px) {
     .container aside > .logo {
         height: 1.125rem;
@@ -366,15 +377,15 @@ button.cta-button:focus::after {
     .container {
         flex-flow: column;
     }
-    .container aside.desktop {
+    .container .desktop {
         display: none !important;
     }
-    .container aside.mobile {
+    .container .mobile {
         display: flex !important;
     }
-    .container aside.mobile,
-    .container aside.mobile::before,
-    .container aside.mobile::after {
+    .container .mobile,
+    .container .mobile::before,
+    .container .mobile::after {
         height: 22.5%;
     }
     .container > div {
@@ -422,16 +433,16 @@ main {
     padding: 0.5rem 0;
     border-radius: 1.25rem;
     display: flex;
-    color: var(--accentDark3);
+    color: var(--accentDark2);
     background: var(--almostWhite);
 }
 #main a:hover,
 #main a:active,
 #main a:focus {
-    color: var(--accentDark2);
+    color: var(--accentDark3);
 }
 #main a:focus {
-    outline-color: var(--accentDark2);
+    outline-color: var(--accentDark3);
 }
 #main a:hover::before,
 #main a:active::before,
@@ -439,37 +450,79 @@ main {
     border-left-color: transparent;
 }
 #main a::before {
-    border-left-color: var(--accentDark3);
+    border-left-color: var(--accentDark2);
 }
 #main a:hover::after,
 #main a:active::after,
 #main a:focus::after {
-    border-left-color: var(--accentDark2);
+    border-left-color: var(--accentDark3);
 }
-#main aside > .big-logo {
+.big-logo {
     width: 45%;
-    filter: drop-shadow(0 0.25rem 0.25rem var(--shadow));
+    max-height: 3rem;
+    align-self: center;
+    filter: drop-shadow(0 0.125rem 0.125rem var(--shadow));
     transition: all 0.25s;
     z-index: 9;
 }
-#main aside > .big-logo:hover,
-#main aside > .big-logo:active,
-#main aside > .big-logo:focus{
+.big-logo:hover,
+.big-logo:active,
+.big-logo:focus{
     transform: scale(1.0125);
-    filter: drop-shadow(0 0.5rem 0.5rem var(--shadow));
+    filter: drop-shadow(0 0.25rem 0.25rem var(--shadow));
 }
+
 #main aside.desktop,
 #main aside.mobile {
-    background: radial-gradient(var(--white), transparent), url("bg_code.svg");
+    pointer-events: none;
+}
+
+#main .left-side {
+    width: 60%;
+    margin-right: auto;
+    align-self: center;
+    padding-bottom: 3.1rem;
 }
 #main aside.desktop {
-    width: 50%;
+    align-self: flex-end;
+    position: absolute;
+    width: 100%;
     height: 100%;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    box-shadow: 0 0 2rem var(--softShadow0);
+    border-radius: 0;
+    justify-content: flex-end;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+#main aside.desktop::before {
+    align-self: flex-end;
+
+    width: 100%;
+    height: 100%;
+    background-image: url('bg_code/production-0-light.svg');
+    mask-image: linear-gradient(-45deg, black 25%, transparent 30%);
+    box-shadow: inset 0 0 3rem var(--shadow);
+    background-repeat: repeat;
+}
+
+#main aside.desktop::after {
+    align-self: flex-end;
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    border: 0.175rem solid var(--themeColor3);
+    background: radial-gradient(var(--softWhite), transparent)
+}
+
+.desktop-logo {
+    margin-bottom: 0.75rem;
+}
+.desktop-logo .big-logo {
+    width: auto;
+    height: 2.35rem;
+}
+
+#main aside.movile {
+    background: radial-gradient(var(--white), transparent);
 }
 #main aside.mobile {
     padding: 0 2rem;
@@ -478,6 +531,7 @@ main {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     box-shadow: 0 -0.5rem 1rem var(--softShadow2);
+    background-image: url("bg_code/production-0-light.svg");
     background-size: cover, 480px 480px;
     background-position: center, 0 0;
 }
@@ -498,16 +552,34 @@ main {
     background: linear-gradient(0deg, transparent, var(--softWhite));
 }
 @media screen and (max-width: 1280px) {
-    #main aside.desktop {
-        height: 75%;
+    #main .left-side {
+        width: 65%;
     }
 }
 @media screen and (max-width: 1024px) {
-    #main aside.desktop {
-        height: 50%;
+    #main .left-side {
+        width: 75%;
+    }
+}
+@media screen and (max-width: 960px) {
+    #main .left-side {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 800px) {
+    #main .left-side {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 700px) {
+    #main .left-side {
+        width: 95%;
     }
 }
 @media screen and (max-width: 640px) {
+    #main .left-side {
+        width: 100%;
+    }
     #main::before {
         content: '';
         display: flex;
@@ -523,12 +595,12 @@ main {
     #main > div {
         flex-grow: 1;
     }
-    #main aside > .big-logo {
+    .big-logo {
         width: 50%;
     }
 }
 @media screen and (max-width: 480px) {
-    #main aside > .big-logo {
+    .big-logo {
         width: 55%;
     }
     #main aside.mobile {
@@ -536,7 +608,7 @@ main {
     }
 }
 @media screen and (max-width: 400px) {
-    #main aside > .big-logo {
+    .big-logo {
         width: 60%;
     }
 }
@@ -615,11 +687,12 @@ main {
     flex-shrink: 0;
 }
 .category .price {
+    color: var(--accentDark2);
     align-self: center;
 }
 .category .price sub {
     font-size: 0.8rem;
-    opacity: 0.75;
+    color: var(--accentDark3);
     letter-spacing: 1px;
     align-self: flex-end;
 }
@@ -879,7 +952,6 @@ main {
     margin-left: 1rem;
     font-size: 1rem;
     font-weight: bold;
-    color: var(--accentDark3);
     overflow: hidden;
     background: var(--almostWhite);
     border-radius: 0.5rem;
@@ -890,12 +962,12 @@ main {
     padding: 0.5rem 1rem;
 }
 #main a, #services.card li .price {
-    box-shadow: 0 0.125rem 0.25rem var(--shadow), inset 0 -0.375rem 0.75rem 0 var(--softShadow0);
+    box-shadow: 0 0.125rem 0.25rem var(--shadow), inset 0 -0.375rem 0.75rem 0 var(--softShadow2);
 }
 #main a:hover,
 #main a:active,
 #main a:focus {
-    box-shadow: 0 0.25rem 0.5rem var(--shadow2), inset 0 -0.375rem 0.75rem 0 var(--softShadow0);
+    box-shadow: 0 0.25rem 0.5rem var(--shadow2), inset 0 -0.375rem 0.75rem 0 var(--softShadow);
 }
 #services.card li > a:hover .price,
 #services.card li > a:active .price,
@@ -1381,7 +1453,7 @@ footer {
     position: fixed;
     bottom: 1.25rem;
     right: 1.25rem;
-    background-color: var(--accentDark3);
+    background-color: var(--accentDark2);
     color:  var(--white);
     outline: 2px solid var(--whiteTransparent);
     border: none;
@@ -1671,10 +1743,10 @@ footer {
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: var(--black);
-        --gray: var(--almostWhite);
+        --gray: var(--realSilver);
         --black: var(--white);
         --blue: var(--blueLight3);
-        --blueDark: var(--almostWhite);
+        --blueDark: var(--realSilver);
         --whiteTransparent2: var(--ghostBlueWhite3);
         --softWhite: var(--ghostBlueWhite2);
         --ghostWhite: var(--ghostBlueWhite5);
@@ -1825,13 +1897,16 @@ footer {
     #main p i { color: var(--white); }
 
     #main a, #services.card li .price {
-        color: var(--accent2);
         background: var(--realGray);
         box-shadow: 0 0.125rem 0.25rem var(--silver), inset 0 0.375rem 0.75rem 0 var(--realBlueDark);
     }
 
+    #main a {
+        color: var(--themeColor);
+    }
+
     #main a::before {
-        border-left-color: var(--accent2);
+        border-left-color: var(--themeColor);
     }
 
     #main a:hover,
@@ -1840,12 +1915,12 @@ footer {
     #services.card li a:hover .price,
     #services.card li a:active .price,
     #services.card li a:focus .price {
-        color: var(--themeColor);
+        color: var(--themeColor0);
         box-shadow: 0 0.25rem 0.5rem var(--silver), inset 0 0.375rem 0.75rem 0 var(--realBlueDark);
     }
 
     #main a:focus {
-        outline-color: var(--themeColor);
+        outline-color: var(--themeColor0);
     }
 
     #main a:hover::before,
@@ -1857,7 +1932,7 @@ footer {
     #main a:hover::after,
     #main a:active::after,
     #main a:focus::after {
-        border-left-color: var(--themeColor);
+        border-left-color: var(--themeColor0);
     }
 
     .billing-switch {
@@ -1885,18 +1960,19 @@ footer {
         box-shadow: 0 0.125rem 0.25rem var(--silver), inset 0 -0.375rem 0.75rem 0 var(--realSoftSilver);
     }
 
-
-    #main aside.desktop,
+    #main aside.desktop::before {
+        box-shadow: inset 0 0 3rem var(--ghostBlueWhite5);
+        background-image: url("bg_code/production-0-dark.svg");
+    }
+    #main aside.desktop::after {
+        border-color: var(--ghostBlueWhite5);
+    }
     #main aside.mobile {
         box-shadow: 0 0 3rem var(--ghostBlueWhite2);
     }
 
-    #main aside.desktop {
-        background: radial-gradient(var(--ghostBlueWhite0), transparent), url("bg_code_night.svg");
-    }
-
     #main aside.mobile {
-        background: radial-gradient(var(--ghostBlueWhite), transparent), url("bg_code_night.svg");
+        background: radial-gradient(var(--ghostBlueWhite), transparent), url("bg_code/production-0-dark.svg");
         background-size: cover, 480px 480px;
         background-position: center, 0 0;
     }
@@ -1907,14 +1983,14 @@ footer {
         background: linear-gradient(0deg, transparent, var(--ghostBlueWhite));
     }
 
-    #main aside > .big-logo {
-        filter: brightness(0) grayscale(1) invert() drop-shadow(0 0.25rem 0.25rem var(--silver));
+    .big-logo {
+        filter: brightness(0) grayscale(1) invert() drop-shadow(0 0.125rem 0.125rem var(--silver));
     }
 
-    #main aside > .big-logo:hover,
-    #main aside > .big-logo:active,
-    #main aside > .big-logo:focus {
-        filter: brightness(0) grayscale(1) invert() drop-shadow(0 0.5rem 0.5rem var(--silver));
+    .big-logo:hover,
+    .big-logo:active,
+    .big-logo:focus {
+        filter: brightness(0) grayscale(1) invert() drop-shadow(0 0.25rem 0.25rem var(--silver));
     }
 
     .category .icon {
@@ -1924,6 +2000,9 @@ footer {
     .category .icon::after {
         background: linear-gradient(135deg, var(--accent2) 0%, var(--accentDark) 100%);
     }
+
+    .category .price { color: var(--themeColor); }
+    .category .price sub { color: var(--themeColor0); }
 
     #checkout::after {
         background: var(--accentDark3);
@@ -2005,7 +2084,6 @@ footer {
     }
 }
 @supports (backdrop-filter: blur(1px)){
-    #main aside.desktop,
     #contact aside {
         backdrop-filter: blur(5px);
     }
