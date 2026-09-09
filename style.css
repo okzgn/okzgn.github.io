@@ -645,7 +645,7 @@ main {
     padding: 0 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
+    gap: 2rem;
 }
 .card .category {
     padding-top: 1.5rem;
