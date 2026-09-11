@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var cartOrder = document.getElementById('cart-order');
     var cartContact = document.getElementById('cart-contact');
     var clientInput = document.getElementById('cart-client-name');
-    var WHATSAPP_URL = 'https://wa.me/593980670720';
+    var WHATSAPP_URL = 'https://wa.me/593979522180';
     var currentOrderId = null;
     var lastOrderLines = [];
     var services = document.getElementById('services');

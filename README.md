@@ -8,7 +8,7 @@
 
 ## Get in Touch
 
-*   **[Contact Assistant (WhatsApp)](https://wa.me/593980670720)**
+*   **[Contact Assistant (WhatsApp)](https://wa.me/593979522180)**
 *   **[hello@okzgn.com](mailto:hello@okzgn.com)**
 
 ---
