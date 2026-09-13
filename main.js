@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var WHATSAPP_URL = 'https://wa.me/593979522180';
     var currentOrderId = null;
     var lastOrderLines = [];
-    var services = document.getElementById('services');
+    var services = document.querySelectorAll('.services');
 
     var billingSwitch = document.querySelector('.billing-switch');
     var billingOpts = document.querySelectorAll('.billing-opt');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var billingMode = 'ondemand';
     var BILLING_LABELS = { ondemand: 'On Demand', retainer: 'Retainer', subscription: 'Subscription' };
 
-    Array.prototype.forEach.call(services ? services.querySelectorAll('.list li') : [], function (li) {
+    Array.prototype.forEach.call(services ? document.querySelectorAll('.services .list li') : [], function (li) {
         var price = li.querySelector('.price');
         if (!price) { return; }
         var base = price.textContent;
@@ -76,9 +76,10 @@ document.addEventListener('DOMContentLoaded', function () {
         applyUnits();
     }
 
-    function applyBilling(mode) {
+    function applyBilling(btn, mode) {
         billingMode = mode;
-        if (services) { services.classList.toggle('billing-retainer', mode === 'retainer'); }
+        var _services = btn.closest('.services');
+        if (services) { _services.classList.toggle('billing-retainer', mode === 'retainer'); }
         Array.prototype.forEach.call(billingCopies, function (p) {
             p.hidden = p.getAttribute('data-billing-copy') !== mode;
         });
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         billingSwitch.addEventListener('click', function (event) {
             var btn = event.target.closest('.billing-opt');
             if (!btn) { return; }
-            applyBilling(btn.getAttribute('data-billing'));
+            applyBilling(btn, btn.getAttribute('data-billing'));
         });
     }
 
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function selectedItems() {
         return Array.prototype.slice.call(
-            services ? services.querySelectorAll('.list li.selected') : []
+            services ? document.querySelectorAll('.services .list li.selected') : []
         );
     }
 
@@ -284,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var revealParagraphs = document.querySelectorAll('#services > p, #services .category > p, #articles > p, #projects > p');
+    var revealParagraphs = document.querySelectorAll('.services > p, .services .category > p, #articles > p, #projects > p');
     var HINT_GAP = 650;
     var HINT_HOLD = 1400;
     var hintQueueTail = 0;
@@ -352,8 +353,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (services) {
-        services.addEventListener('click', function (event) {
-            var link = event.target.closest('#services .list li > a');
+      services.forEach(function(_services) {
+        _services.addEventListener('click', function (event) {
+            var link = event.target.closest('.services .list li > a');
             if (!link) { return; }
 
             event.preventDefault();
@@ -371,6 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
             syncCount();
             if (isCartOpen()) { renderCart(); }
         });
+      });
     }
 
     checkoutButton.addEventListener('click', function () {
@@ -392,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('keydown', function (event) {
-        var link = event.target.closest('#services .list li > a');
+        var link = event.target.closest('.services .list li > a');
         if (link && (event.key === 'Enter' || event.key === ' ')) {
           event.preventDefault();
           link.click();
