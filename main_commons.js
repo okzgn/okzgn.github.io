@@ -356,6 +356,13 @@ document.addEventListener('DOMContentLoaded', function () {
       var element = iterateByCond(anchors, function () { return this.getAttribute('href') === hash; });
       if (element) {
         element.current.click();
+        var target = document.getElementById(element.current.getAttribute('href').slice(1));
+        if (target) {
+          var details = target.closest('details');
+          if (details) {
+            details.open = true;
+          }
+        }
       }
     }
   }

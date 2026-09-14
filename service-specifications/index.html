@@ -1,0 +1,472 @@
+﻿<!DOCTYPE html>
+<html spellcheck="false" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Service Specifications & Delivery Scope | OKZGN</title>
+	<link rel="icon" href="../icon.png">
+	<link rel="apple-touch-icon" href="../icon.png">
+	<link rel="canonical" href="https://okzgn.com/specifications/">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all OKZGN services.">
+	<meta name="robots" content="index, follow, max-image-preview:large">
+	<meta name="author" content="OKZGN">
+
+	<meta name="theme-color" content="#ffdbb8" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#000d1a" media="(prefers-color-scheme: dark)">
+
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; style-src 'self'; script-src 'self'">
+
+	<meta property="og:title" content="Service Specifications & Delivery Scope | OKZGN">
+	<meta property="og:description" content="Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all OKZGN services.">
+	<meta property="og:image" content="https://okzgn.com/landscape.png">
+	<meta property="og:url" content="https://okzgn.com/specifications/">
+	<meta property="og:site_name" content="OKZGN">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="en_US">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Service Specifications & Delivery Scope | OKZGN">
+	<meta name="twitter:description" content="Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all OKZGN services.">
+	<meta name="twitter:image" content="https://okzgn.com/landscape.png">
+
+	<link rel="preload" href="../style_commons.css" as="style">
+
+	<link rel="stylesheet" href="../style_commons.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="../main_commons.js" defer></script>
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"name": "Service Specifications & Delivery Scope",
+		"headline": "Service Specifications & Delivery Scope | OKZGN",
+		"description": "Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all OKZGN services.",
+		"url": "https://okzgn.com/specifications/",
+		"publisher": {
+			"@type": "Organization",
+			"name": "OKZGN",
+			"url": "https://okzgn.com",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://okzgn.com/icon.png"
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<header data-nosnippet>
+		<div class="logo"><a class="no-default arrow-reverse" href="https://okzgn.com"><img src="../icon.png" alt="OKZGN Isotype"></a></div>
+	</header>
+	<nav data-nosnippet>
+		<div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
+		<button id="menu" class="no-arrow" aria-label="Open menu" aria-expanded="false"></button>
+		<div class="menu-list menu-list-levels"><ol class="container auto-x-padding"></ol></div>
+	</nav>
+	<main class="auto-y-tiny-padding">
+		<div class="container auto-x-tiny-padding">
+			<h1 class="main-title auto-font-size auto-padding">Service Specifications</h1>
+			<article class="card">
+				<div class="auto-x-padding paragraphs">
+					<p>This document details the operational scope, required client inputs, technical delivery standards, handoff formats, realistic turnaround times, and known edge-case constraints across the OKZGN service catalog. Every engagement is executed under strict software engineering principles: reproducible environments, deterministic delivery, and hardened infrastructure.</p>
+
+					<h2 class="auto-font-size-2">Standard Engagement Protocol</h2>
+					<p>To avoid scope creep, technical friction, and operational bottlenecks, all projects follow an established four-stage intake and delivery lifecycle:</p>
+					<ul class="lines">
+						<li><b>1. Discovery & Technical Pre-flight:</b> Before sending credentials, source code, or payments, consultation is conducted directly via official channels. Exact milestones are defined, system compatibility is verified, and mutual NDAs are executed if proprietary data is involved.</li>
+						<li><b>2. Zero-Trust Access Provisioning:</b> Root credentials, shared master passwords, or personal account tokens must never be transmitted over plain chat. Public SSH keys, GPG keys, or specific IAM permission scopes (least-privilege model) are provisioned for staging and production environments.</li>
+						<li><b>3. Iterative Execution & Staging:</b> Implementations are executed in isolated staging branches or dedicated sandboxes with verifiable benchmarks and reproducible build pipelines.</li>
+						<li><b>4. Final Handoff & Knowledge Transfer:</b> Production sign-off includes tagged Git repositories, infrastructure-as-code manifests, architecture documentation (Markdown), and direct handover support.</li>
+					</ul>
+
+					<h2 class="auto-font-size-2">1. Subscription Services (Managed & SaaS)</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Storage Search</h3></summary>
+						<p><b>Scope of Work:</b> Deployment and maintenance of high-throughput indexing engines capable of parsing, vectorizing, and searching across multi-terabyte unorganized document archives, databases, and media repositories.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Bucket access (S3/Cloudflare R2/GCS read-only credentials), target file extensions (.pdf, .docx, .json, .csv, media), search parameter requirements (full-text lexical vs. dense vector semantic), and estimated monthly query frequency.</li>
+							<li><b>Deliverables & Formats:</b> Private REST/gRPC search API endpoint, secure Web Dashboard for team queries, API documentation (OpenAPI 3.0), and index telemetry health checks.</li>
+							<li><b>Contact Point:</b> Coordinate with the lead engineer to calculate initial ingestion time and required worker node sizing based on dataset entropy.</li>
+							<li><b>Estimated Timelines:</b> Initial cluster provisioning: 2–3 business days. Full index ingestion: 12 to 72 hours per terabyte, subject to upstream read limits.</li>
+							<li><b>Caveats & Operational Constraints:</b> Corrupted or password-protected files fail silently into an error log. Ingestion speed is directly throttled by the client's cloud egress limits.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Storage Link</h3></summary>
+						<p><b>Scope of Work:</b> High-capacity, cost-controlled cloud and edge storage architecture optimized for continuous file archiving, asset distribution, and multi-terabyte data preservation.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Desired storage quota (TB), regional residency requirements (US/EU/LATAM), retention and lifecycle policies, and custom domain/subdomain pointers (CNAME records).</li>
+							<li><b>Deliverables & Formats:</b> High-speed S3-compatible API credentials, authenticated Web portal access, automated backup lifecycle scripts, and bandwidth consumption reporting.</li>
+							<li><b>Contact Point:</b> Contact via WhatsApp/Email to finalize egress allowances and backup replication frequency.</li>
+							<li><b>Estimated Timelines:</b> Dedicated tenant provisioning and DNS certificate propagation: 24 to 48 hours.</li>
+							<li><b>Caveats & Operational Constraints:</b> Bandwidth is metered on excess bursts beyond agreed allocation tiers; cold-storage tiers may exhibit 2–5 minute latency spikes for archival retrieval.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Point of Sale (POS)</h3></summary>
+						<p><b>Scope of Work:</b> Provisioning, configuration, and maintenance of a real-time cloud-synchronized point of sale system with offline transactional durability, inventory control, and multi-terminal sync.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Inventory catalog in structured format (CSV, Excel, or JSON), tax brackets and local fiscal requirements, cashier privilege levels, and hardware specs (thermal receipt printers, barcode scanners, cash drawers).</li>
+							<li><b>Deliverables & Formats:</b> Cloud tenant URL, PWA client for mobile/desktop, offline sync service worker configuration, raw SQL/CSV catalog import, and staff training documentation.</li>
+							<li><b>Contact Point:</b> Submit inventory sample files to the lead engineer to verify SKU formatting and relational category schemas.</li>
+							<li><b>Estimated Timelines:</b> Tenant configuration and data ingestion: 3–5 business days. On-premise hardware pairing: 1–2 business days.</li>
+							<li><b>Caveats & Operational Constraints:</b> Thermal printer integration relies on standard ESC/POS or network drivers; offline transactions resolve deterministically upon reconnection using vector clocks, which may require manual resolution if two registers sell the identical last physical unit simultaneously.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Timed-Rate Tickets</h3></summary>
+						<p><b>Scope of Work:</b> Deployment of an automated, schedule-based rate calculation and access ticketing platform for venues, parking facilities, timed rentals, and coworking spaces.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Mathematical fee schedules (grace periods, tiered hourly rates, overnight penalties, holiday exceptions), physical terminal count, gate controller webhook endpoints (if hardware-coupled).</li>
+							<li><b>Deliverables & Formats:</b> Real-time administrative dashboard, operator terminal view, printable QR/Barcode layout templates, automated end-of-day revenue audit reports.</li>
+							<li><b>Contact Point:</b> Review pricing tables with OKZGN engineering to identify cyclical edge cases (such as daylight saving shifts or midnight roll-overs).</li>
+							<li><b>Estimated Timelines:</b> Rate engine configuration and staging validation: 3–6 business days.</li>
+							<li><b>Caveats & Operational Constraints:</b> Lost ticket handling requires administrative override privileges; physical barriers require dry-contact relay controllers with reliable local network connectivity.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">2. Applied Artificial Intelligence</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Advanced Prompt Engineering</h3></summary>
+						<p><b>Scope of Work:</b> Empirical optimization of system prompts, meta-instructions, context windows, and output guardrails to achieve deterministic structure, zero evasion, and high fidelity from foundation LLMs.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Minimum 50–100 real-world input examples with desired ground-truth outputs, failure logs from existing prompts, and target LLM vendor/version constraints (OpenAI, Anthropic, Gemini, Llama).</li>
+							<li><b>Deliverables & Formats:</b> Version-controlled prompt engineering suite (Markdown/YAML files), JSON Schema output definitions, automated eval test harness (Python/TypeScript), and precision benchmark report.</li>
+							<li><b>Contact Point:</b> Schedule a technical intake call with the lead engineer to review edge cases and domain-specific terminology.</li>
+							<li><b>Estimated Timelines:</b> 3 to 7 business days depending on dataset volume and heuristic complexity.</li>
+							<li><b>Caveats & Operational Constraints:</b> Upstream foundation model updates by vendors may introduce minor behavioral drift; prompts are tuned against fixed model checkpoints to guarantee stability.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Autonomous Multimodal Agents</h3></summary>
+						<p><b>Scope of Work:</b> Engineering autonomous task-oriented agents capable of parsing text, PDFs, audio, and visual data, equipped with secure external tool invocation (APIs, databases, headless web browsers).</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> End-to-end procedural workflow map, sandboxed API credentials for all external tools the agent must invoke, explicit boundary conditions (what the agent is strictly prohibited from doing), and communication channels (WhatsApp, Slack, Webhooks).</li>
+							<li><b>Deliverables & Formats:</b> Full agent application source code (Node.js, Python, or Go), containerized deployment setup (Docker), persistent conversational memory layer, and real-time execution audit logs.</li>
+							<li><b>Contact Point:</b> Technical consultation with the lead engineer to specify state-machine states and fallback routing before writing agent runtime code.</li>
+							<li><b>Estimated Timelines:</b> Simple single-tool agents: 5–10 business days. Complex multi-step, multi-agent swarms: 3–6 weeks.</li>
+							<li><b>Caveats & Operational Constraints:</b> Autonomous execution requires strict loop-breaker mechanisms and maximum budget token caps to avoid recursive runaways caused by malformed third-party API payloads.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">High-Throughput AI Architecture</h3></summary>
+						<p><b>Scope of Work:</b> Design and implementation of high-concurrency inference proxies, queuing systems, and asynchronous pipelines designed to handle hundreds or thousands of concurrent model requests without dropping connections.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Peak concurrent user projections (RPS/QPS), payload profiles (average token length, image dimensions), latency SLAs (Time to First Token, total request duration), and cloud/hardware infrastructure budgets.</li>
+							<li><b>Deliverables & Formats:</b> Reverse proxy and worker pool architecture (Go, Redis, RabbitMQ, or Celery), Server-Sent Events (SSE) streaming infrastructure, Locust/k6 benchmark load scripts, and Prometheus/Grafana metric collectors.</li>
+							<li><b>Contact Point:</b> Direct architecture review with OKZGN platform engineering to evaluate edge vs. centralized compute topology.</li>
+							<li><b>Estimated Timelines:</b> 2 to 4 weeks for architecture design, stress testing, and staging rollout.</li>
+							<li><b>Caveats & Operational Constraints:</b> Total system throughput is fundamentally governed by hardware GPU VRAM bounds or external API provider rate limits (TPM/RPM tiers).</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Custom Model Deployment</h3></summary>
+						<p><b>Scope of Work:</b> Production-ready deployment of open-source models (Llama, Mistral, Whisper, Stable Diffusion) on private cloud GPU instances or dedicated bare-metal servers using optimized inference runtimes.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Model identifier (HuggingFace repository or fine-tuned checkpoint weights), target hardware access (AWS EC2, RunPod, Lambda Labs, Hetzner GPU, or on-premise CUDA servers), and internal networking/VPC specifications.</li>
+							<li><b>Deliverables & Formats:</b> Hardened vLLM, TGI, or Triton inference container, OpenAI-compatible HTTP/gRPC endpoint, systemd service units, and automatic warm-up health-check scripts.</li>
+							<li><b>Contact Point:</b> Consult with the lead engineer to calculate exact VRAM sizing, quantization tradeoffs (FP16 vs. AWQ/GPTQ 4-bit), and context window allocation.</li>
+							<li><b>Estimated Timelines:</b> 3 to 7 business days per model architecture.</li>
+							<li><b>Caveats & Operational Constraints:</b> Dedicated GPU hardware availability is volatile across public cloud providers; instances must be secured and provisioned prior to contract start.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">AI Costs & Reliability</h3></summary>
+						<p><b>Scope of Work:</b> Implementation of cost-reduction layers, semantic prompt/response caching, fallback routing, and token usage governance to minimize vendor billing while eliminating downstream downtime.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> 30–60 days of itemized billing records, API gateway request logs, and acceptable quality degradation thresholds for fallback models.</li>
+							<li><b>Deliverables & Formats:</b> Dynamic semantic caching layer (Redis / vector index), dynamic multi-vendor fallback gateway, cost attribution telemetry dashboards, and optimization audit report.</li>
+							<li><b>Contact Point:</b> Share anonymized request/response telemetry with OKZGN to project quantifiable return on investment.</li>
+							<li><b>Estimated Timelines:</b> 1 to 2 weeks for audit, proxy deployment, and cache tuning.</li>
+							<li><b>Caveats & Operational Constraints:</b> Semantic cache hit rates are directly correlated with prompt uniformity; high-entropy, completely unique queries bypass cache layers as intended.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">3. Platform Development & Architecture</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">System Design</h3></summary>
+						<p><b>Scope of Work:</b> Comprehensive engineering planning for distributed systems, event-driven architectures, monolithic modularization, or microservice topologies designed for horizontal scalability.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Business domain model, entity relationship diagrams (if existing), 1–3 year transaction growth targets, and regulatory/data jurisdiction constraints.</li>
+							<li><b>Deliverables & Formats:</b> Formal Architecture Decision Records (ADRs), C4 model architectural diagrams (Context, Container, Component, Code), database schema specifications, and interface contracts (OpenAPI/Protobuf).</li>
+							<li><b>Contact Point:</b> In-depth architectural discovery sessions directly with lead engineer Elías Alvarado Soshina.</li>
+							<li><b>Estimated Timelines:</b> 1 to 3 weeks depending on domain complexity and legacy system coupling.</li>
+							<li><b>Caveats & Operational Constraints:</b> System design delivers engineering blueprints; implementation velocity depends on client team execution or concurrent OKZGN development contracts.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Technical Audits</h3></summary>
+						<p><b>Scope of Work:</b> Exhaustive code quality assessment, static security vulnerability scanning, architecture bottleneck diagnosis, and performance profiling across existing applications and cloud infrastructure.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Read-only access to source code repositories (Git), sanitized staging database access, architecture overview documents, and a summary of current pain points or outages.</li>
+							<li><b>Deliverables & Formats:</b> Comprehensive Technical Audit Report (PDF/Markdown) categorizing findings by severity (Critical, High, Medium, Low), concrete code diffs demonstrating fixes, and a prioritized remediation roadmap.</li>
+							<li><b>Contact Point:</b> Transmit repository access via GitHub/GitLab permissions directly to account <code>okzgn</code>.</li>
+							<li><b>Estimated Timelines:</b> 3 to 7 business days per codebase (up to 50,000 LOC).</li>
+							<li><b>Caveats & Operational Constraints:</b> Audits identify static flaws and dynamic bottlenecks observable within the staging environment; transient production network faults require live telemetry access.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Tech Stack Advisory</h3></summary>
+						<p><b>Scope of Work:</b> Strategic evaluation and selection of programming languages, web frameworks, persistence layers, and cloud infrastructure tailored to specific throughput, team talent, and budgetary constraints.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Problem statement, current engineering team skillset matrix, hardware/cloud budget, and anticipated system longevity requirements.</li>
+							<li><b>Deliverables & Formats:</b> Comparative Stack Matrix document detailing performance benchmarks, licensing risks, hiring market viability, and Proof-of-Concept (PoC) starter templates.</li>
+							<li><b>Contact Point:</b> Consult via WhatsApp or schedule a structured consultation call.</li>
+							<li><b>Estimated Timelines:</b> 2 to 5 business days.</li>
+							<li><b>Caveats & Operational Constraints:</b> Recommendations prioritize long-term stability and minimal external dependencies over transient developer fads.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">CI/CD Pipelines</h3></summary>
+						<p><b>Scope of Work:</b> Design and implementation of fully automated continuous integration and continuous delivery workflows, incorporating automated testing, linting, security audits, container builds, and zero-downtime deployments.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Repository admin access, deployment target credentials (SSH keys, cloud service account JSON, or container registry tokens), and defined release branching strategy (Gitflow, Trunk-based).</li>
+							<li><b>Deliverables & Formats:</b> Pipeline workflow configuration files (<code>.github/workflows</code>, GitLab CI, or Cloudflare build scripts), Dockerfiles, automated artifact caching, and rollback procedures.</li>
+							<li><b>Contact Point:</b> Review target environment access keys and secrets with lead engineering before pipeline provisioning.</li>
+							<li><b>Estimated Timelines:</b> 3 to 5 business days per application environment pipeline.</li>
+							<li><b>Caveats & Operational Constraints:</b> Build runners hosted on shared public infrastructure may suffer queue delays; self-hosted runners can be configured on dedicated servers upon request.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Internal Tooling</h3></summary>
+						<p><b>Scope of Work:</b> Development of high-performance developer CLIs, operational consoles, migration scripts, and administrative dashboards engineered to eliminate manual human error and accelerate internal developer velocity.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Detailed description of the manual operational routine, target operating systems (Linux, macOS, Windows), access to internal APIs, and required permission roles.</li>
+							<li><b>Deliverables & Formats:</b> Standalone compiled binaries (Go/Rust), cross-platform executable scripts, internal web admin interface, and comprehensive manual with usage flags.</li>
+							<li><b>Contact Point:</b> Coordinate directly with the engineering lead to clarify CLI interface specifications and flag conventions.</li>
+							<li><b>Estimated Timelines:</b> 1 to 3 weeks based on interface scope.</li>
+							<li><b>Caveats & Operational Constraints:</b> CLI tools require local system execution permissions; internal web dashboards must be protected behind corporate VPN or zero-trust access tunnels.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">4. Web & Mobile Development</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Custom Web Design</h3></summary>
+						<p><b>Scope of Work:</b> Design of responsive, user-centric interfaces crafted with clean aesthetic hierarchy, accessible color contrast (WCAG 2.1 AA), responsive layouts, and zero CSS framework bloat.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Brand assets (logos in SVG/vector, typography files, color palettes), site structural outline, competitor references, and finalized page copy text.</li>
+							<li><b>Deliverables & Formats:</b> Interactive UI prototypes, design token sheets (CSS variables), optimized SVG icons and illustrations, production-ready style architecture.</li>
+							<li><b>Contact Point:</b> Send visual assets via zip file or secure drive link to the project lead.</li>
+							<li><b>Estimated Timelines:</b> 1 to 3 weeks for complete multipage designs.</li>
+							<li><b>Caveats & Operational Constraints:</b> Revisions must occur during the design approval milestone; changes requested after frontend code generation begins may require supplementary hours.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">High-Performance Frontend</h3></summary>
+						<p><b>Scope of Work:</b> Development of lightning-fast web applications using native web standards (HTML5, CSS3, ESNext) or modern reactive frameworks (Angular, React) optimized for perfect Google Core Web Vitals (95+ score).</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Approved UI designs (Figma or static specs), target browser support requirements, API endpoints/contracts, and localization dictionary files (if multilingual).</li>
+							<li><b>Deliverables & Formats:</b> Modular, dependency-minimal source code repository, minified production assets, Lighthouse/Core Web Vitals audit verification, and deployment documentation.</li>
+							<li><b>Contact Point:</b> Review frontend state complexity and API contracts with the lead engineer.</li>
+							<li><b>Estimated Timelines:</b> 1 to 4 weeks depending on page count and reactive state complexity.</li>
+							<li><b>Caveats & Operational Constraints:</b> Supporting legacy browsers (such as Internet Explorer or outdated iOS Safari versions) requires heavier polyfills that inherently degrade maximum performance metrics.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Scalable Backend</h3></summary>
+						<p><b>Scope of Work:</b> Engineering resilient server-side architectures, microservices, and APIs (Go, Rust, Node.js, PHP) built to handle variable workloads, concurrent database pooling, and secure transactions.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Functional requirements specification, data domain models, expected concurrent user counts, and external integration requirements.</li>
+							<li><b>Deliverables & Formats:</b> Production server source code, automated unit/integration test suites, database migration scripts, Dockerfile/container specifications, and OpenAPI/Swagger documentation.</li>
+							<li><b>Contact Point:</b> Architectural discovery session with OKZGN engineering to define database selection and API paradigms (REST vs. gRPC).</li>
+							<li><b>Estimated Timelines:</b> 2 to 6 weeks for standard application backends.</li>
+							<li><b>Caveats & Operational Constraints:</b> Database queries must be properly indexed to prevent table lockups under peak concurrency; performance under stress requires adequate server hardware provisioning.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Cross-Device Compatibility</h3></summary>
+						<p><b>Scope of Work:</b> Optimization and refactoring of existing web properties to guarantee consistent visual rendering, responsive layouts, and functional parity across all viewport resolutions and operating systems.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Staging URL or code repository of the existing application, prioritized list of defective viewports or devices, and analytics data regarding user device distribution.</li>
+							<li><b>Deliverables & Formats:</b> Corrected CSS/JS patches, cross-device QA validation report across real hardware, and automated responsive test suites.</li>
+							<li><b>Contact Point:</b> Provide URL and bug documentation directly via WhatsApp or email.</li>
+							<li><b>Estimated Timelines:</b> 2 to 5 business days.</li>
+							<li><b>Caveats & Operational Constraints:</b> Mobile OS-specific browser quirks (e.g., dynamic viewport height shifting on iOS Safari address bar collapse) require defensive CSS techniques.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Mobile Apps</h3></summary>
+						<p><b>Scope of Work:</b> Cross-platform mobile application development (PWA, React Native, Ionic) for iOS and Android, delivering native performance, push notifications, offline persistence, and secure device feature integration.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Apple Developer Program and Google Play Console access, UI/UX designs or wireframes, backend API specifications, and privacy policy URLs for store compliance.</li>
+							<li><b>Deliverables & Formats:</b> Production application source code, signed application bundles (<code>.aab</code> for Android, <code>.ipa</code> for iOS), store asset packages, and automated build scripts.</li>
+							<li><b>Contact Point:</b> In-depth project scoping with the lead engineer to select native vs. hybrid runtime approaches.</li>
+							<li><b>Estimated Timelines:</b> 4 to 12 weeks from initial prototype to store deployment.</li>
+							<li><b>Caveats & Operational Constraints:</b> App Store and Google Play review approval cycles are subject to external platform guidelines and may take 3–7 days per submission beyond engineering or operational control.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Feature Integration</h3></summary>
+						<p><b>Scope of Work:</b> Implementation of targeted platform modules: third-party payment gateways (Stripe, PayPal), authentication flows (OAuth2, Passkeys, JWT), search engines, geolocation/mapping, and database integrations (SQLite, Redis, Cloudflare D1/KV).</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Staging codebase access, sandbox/testing API keys for third-party providers, and business logic workflow specifications.</li>
+							<li><b>Deliverables & Formats:</b> Integrated code modules, isolated unit tests covering edge cases, secret configuration documentation, and production cutover verification.</li>
+							<li><b>Contact Point:</b> Discuss integration mechanics and security parameters with lead engineering.</li>
+							<li><b>Estimated Timelines:</b> 3 to 7 business days per standalone feature module.</li>
+							<li><b>Caveats & Operational Constraints:</b> Third-party API outages or deprecated webhook protocols from external vendors fall under the provider's external SLA.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">5. Infrastructure & Hosting</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Domain Management</h3></summary>
+						<p><b>Scope of Work:</b> End-to-end domain lifecycle administration: registration, registrar transfers, DNSSEC enforcement, nameserver routing, and enterprise mail authentication records (SPF, DKIM, DMARC).</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Registrar access or authorization transfer codes (EPP keys), required mail host destinations, and domain mapping records.</li>
+							<li><b>Deliverables & Formats:</b> Fully configured DNS zone file, verified DNSSEC cryptographic signing, 100% email deliverability test score (SPF/DKIM/DMARC pass), and renewal calendar.</li>
+							<li><b>Contact Point:</b> Provide temporary delegated access to registrar directly to lead engineer.</li>
+							<li><b>Estimated Timelines:</b> DNS configuration: 1–2 hours. Global root DNS propagation: up to 24–48 hours depending on registry TTL.</li>
+							<li><b>Caveats & Operational Constraints:</b> Registrar domain transfer locks and mandatory 60-day ICANN post-registration holds cannot be bypassed.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">High-Performance Hosting</h3></summary>
+						<p><b>Scope of Work:</b> Provisioning and operational tuning of bare-metal and dedicated VPS instances engineered for zero-overhead, sub-50ms server response times (TTFB), and hardened Linux environments.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Web application technology stack, projected monthly unique visitors, geographic distribution of traffic, and raw database storage sizing.</li>
+							<li><b>Deliverables & Formats:</b> Dedicated server environment, custom web server config (Nginx/Turbo/Caddy), automated database backup pipelines, and server health monitoring hooks.</li>
+							<li><b>Contact Point:</b> Contact the lead engineer to calculate memory, NVMe disk, and compute core allocations.</li>
+							<li><b>Estimated Timelines:</b> 1 to 3 business days for full server provisioning and migration.</li>
+							<li><b>Caveats & Operational Constraints:</b> Hardware configurations require scheduled maintenance windows for kernel updates, coordinated during off-peak traffic hours.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Professional Server Solutions</h3></summary>
+						<p><b>Scope of Work:</b> Enterprise cloud infrastructure architecture on AWS, GCP, Azure, Hetzner, or private data centers, including Virtual Private Clouds (VPC), private subnets, bastion gateways, and automated elasticity.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Cloud provider account root/organization access, budget constraints, security compliance mandates (HIPAA, SOC2, GDPR), and architectural topology requirements.</li>
+							<li><b>Deliverables & Formats:</b> Infrastructure as Code (Terraform or OpenTofu scripts), network topology diagrams, automated backup replication systems, and environment access credentials.</li>
+							<li><b>Contact Point:</b> Direct engineering consultation to review infrastructure cost modeling and high-availability architecture.</li>
+							<li><b>Estimated Timelines:</b> 1 to 3 weeks for full cloud infrastructure provisioning.</li>
+							<li><b>Caveats & Operational Constraints:</b> Cloud platform service quotas (e.g., initial vCPU limits on new AWS/GCP accounts) require advance provider ticket requests.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Security First</h3></summary>
+						<p><b>Scope of Work:</b> Defense-in-depth platform hardening: Web Application Firewall (WAF) deployment, automated DDoS mitigation, brute-force IP throttling (Fail2ban/iptables), and remediation of top OWASP vulnerabilities.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Target domain names, server IP addresses, ingress traffic schemas, and list of any known prior security incidents or ongoing attack vectors.</li>
+							<li><b>Deliverables & Formats:</b> Hardened firewall rulesets, edge proxy WAF configuration, rate-limiting rules, SSL/TLS cipher suites (A+ SSL Labs rating), and post-hardening penetration verification report.</li>
+							<li><b>Contact Point:</b> Urgent or active incident remediation must be signaled immediately via WhatsApp for expedited triage.</li>
+							<li><b>Estimated Timelines:</b> Standard hardening: 2–5 business days. Emergency DDoS mitigation: immediate deployment within hours.</li>
+							<li><b>Caveats & Operational Constraints:</b> Aggressive WAF rules require an initial 24–48 hour passive observation mode to eliminate false-positive blocks on legitimate user API calls.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">SSL & DNS</h3></summary>
+						<p><b>Scope of Work:</b> Enterprise TLS/SSL certificate lifecycle automation, wildcard certificate deployments, HSTS preloading, and ultra-low-latency Anycast DNS architecture.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> DNS control panel credentials or zone delegation authority, list of all apex domains and subdomains requiring encryption.</li>
+							<li><b>Deliverables & Formats:</b> Automated ACME certificate issuance scripts (Let's Encrypt / ZeroSSL), auto-renewing systemd timers, HSTS configuration, and zero-downtime DNS routing.</li>
+							<li><b>Contact Point:</b> Transmit domain access securely to lead engineering.</li>
+							<li><b>Estimated Timelines:</b> 1 business day.</li>
+							<li><b>Caveats & Operational Constraints:</b> ACME certificate issuance relies on public CA verification challenges; rapid consecutive failed renewals can trigger temporary 168-hour Let's Encrypt rate limits.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">6. Optimization, DevOps & FinOps</h2>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Server Administration</h3></summary>
+						<p><b>Scope of Work:</b> Continuous systems administration for Linux distributions (Debian, Ubuntu, AlmaLinux, Alpine), managing kernel parameters, daemon process control, container orchestration, and automated storage snapshots.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Dedicated SSH access with sudo privileges (public key only), server hardware provider panel access, and an inventory of all hosted background processes.</li>
+							<li><b>Deliverables & Formats:</b> Monthly administrative maintenance log, system security patch reports, automated disk cleanup crons, and direct incident response SLA.</li>
+							<li><b>Contact Point:</b> Assign dedicated server permissions to the lead engineer.</li>
+							<li><b>Estimated Timelines:</b> Initial server audit and stabilization: 2–4 business days. Ongoing retainer execution on a monthly recurring basis.</li>
+							<li><b>Caveats & Operational Constraints:</b> Unpatched legacy software with broken package dependencies may require recompilation or container encapsulation to avoid breaking changes during OS updates.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Data Access Control</h3></summary>
+						<p><b>Scope of Work:</b> Implementation of strict Identity and Access Management (IAM), Role-Based Access Control (RBAC), SSH key rotation pipelines, zero-trust overlay networks (WireGuard/Tailscale), and internal audit trails.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Personnel roster, required organizational permission tiers, list of sensitive production resources, and corporate email authentication domains.</li>
+							<li><b>Deliverables & Formats:</b> Configured IAM policies, private WireGuard VPN mesh configuration, audit logging pipeline, and access governance documentation.</li>
+							<li><b>Contact Point:</b> Consult with the lead engineer to establish organizational permission hierarchies.</li>
+							<li><b>Estimated Timelines:</b> 3 to 7 business days.</li>
+							<li><b>Caveats & Operational Constraints:</b> Transitioning to least-privilege access requires strict compliance from internal staff; temporary exceptions must be revoked through automated expiry timers.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Future-Proofing</h3></summary>
+						<p><b>Scope of Work:</b> Systematic refactoring of legacy codebases, modernization of outdated runtimes, and migration of monolithic components to modern, cost-efficient, or serverless architectures without business interruption.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Legacy source code, historical architecture documentation, test coverage reports (if existing), and defined business goals for the migration.</li>
+							<li><b>Deliverables & Formats:</b> Modernized source code repository, automated test suites verifying functional parity, containerized legacy transition layers, and step-by-step rollout plan.</li>
+							<li><b>Contact Point:</b> Deep technical discovery with OKZGN engineering to map legacy dependencies and third-party lock-ins.</li>
+							<li><b>Estimated Timelines:</b> 2 to 8 weeks depending on codebase scale and technical debt.</li>
+							<li><b>Caveats & Operational Constraints:</b> Legacy systems often contain undocumented business rules embedded in edge-case code; thorough integration testing is required before traffic cutover.</li>
+						</ul>
+					</details>
+
+					<details>
+						<summary><h3 class="auto-font-size-2">Ongoing Support</h3></summary>
+						<p><b>Scope of Work:</b> Retainer-based engineering support, proactive infrastructure monitoring, guaranteed incident triage SLA, minor feature enhancements, and continuous architectural consultation.</p>
+						<ul class="lines">
+							<li><b>Required Client Inputs:</b> Designated internal technical representative, access to internal communications (WhatsApp group, Slack, or email), and active production environment credentials.</li>
+							<li><b>Deliverables & Formats:</b> Guaranteed priority response time, monthly hours accounting statement, ongoing codebase updates, and direct access to lead engineering.</li>
+							<li><b>Contact Point:</b> Engage directly via WhatsApp or email under your active Retainer agreement.</li>
+							<li><b>Estimated Timelines:</b> Priority response within agreed SLA window (typically under 2 hours for critical incidents).</li>
+							<li><b>Caveats & Operational Constraints:</b> Requests outside the allocated monthly retainer hours are billed at the standard On-Demand hourly rate upon explicit client approval.</li>
+						</ul>
+					</details>
+
+					<h2 class="auto-font-size-2">Consultation & Project Initiation</h2>
+					<p>To initiate a service engagement or request an architectural pre-flight review, prepare high-level requirements and initiate contact directly through official channels:</p>
+					<ul class="lines">
+						<li><b>Assistant:</b> <a class="no-default-arrow" href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">James Smith</a></li>
+						<li><b>Email:</b> <a class="no-default-arrow" href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
+						<li><b>Inquiries:</b> <a class="no-default-arrow" href="https://okzgn.com/#contact">https://okzgn.com/#contact</a></li>
+					</ul>
+				</div>
+			</article>
+		</div>
+	</main>
+
+	<footer>
+		&copy; 2026 <a class="no-default-arrow" href="https://okzgn.com">OKZGN</a>
+	</footer>
+
+	<a id="up" href="#" aria-label="Back to top">
+		<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+			<line x1="12" y1="19" x2="12" y2="5"></line>
+			<polyline points="5 12 12 5 19 12"></polyline>
+		</svg>
+	</a>
+
+	<div class="bg"></div>
+	<div class="bg bg-2"></div>
+	<div class="bg bg-3"></div>
+</body>
+</html>

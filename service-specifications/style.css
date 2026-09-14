@@ -1,0 +1,73 @@
+/* Services page custom styles */
+
+/* Hide default summary marker */
+summary {
+    list-style: none;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+summary::-moz-list-numbering {
+    list-style: none;
+}
+
+/* Summary base styles */
+summary {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    padding: 0.45rem 0;
+    user-select: none;
+}
+
+/* Custom +/- indicator */
+summary::before {
+    content: '+';
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.5rem;
+    background: var(--softShadow);
+    color: var(--blue);
+    flex-shrink: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    summary::before {
+        background: var(--whiteTransparent2);
+        color: var(--white);
+    }
+}
+
+/* Open state */
+details[open] summary::before {
+    content: '−';
+}
+
+/* Content spacing */
+details p,
+details ul {
+    margin-top: 0.6rem;
+}
+details p:last-child,
+details ul:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure h3 inside summary has no extra margin */
+summary h3 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional: subtle content fade-in */
+details > * {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+details[open] > :not(summary) {
+    opacity: 1;
+}
