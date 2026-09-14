@@ -666,7 +666,6 @@ main {
 .card h2 { padding: 0; }
 .card h2, .card h3, .card > p { text-align: center; }
 .card > p {
-
     padding: 0 1rem;
     color: var(--gray);
 }
@@ -907,7 +906,7 @@ main {
 }
 .services .category > p {
     padding: 0 1rem;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
 }
 .services .category > p span {
     color: var(--blue);
@@ -2027,8 +2026,8 @@ footer {
         background: linear-gradient(135deg, var(--accent2) 0%, var(--accentDark) 100%);
     }
 
-    .category .price { color: var(--themeColor0); }
-    .category .price sub { color: var(--themeColor); }
+    .category .price { color: var(--themeColor2); }
+    .category .price sub { color: var(--themeColor3); }
 
     #checkout::after {
         background: var(--accentDark3);
