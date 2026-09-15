@@ -190,7 +190,7 @@ a, a * {
     user-select: none;
     transition: all 0.25s;
     text-decoration: none;
-    cursor: crosshair;
+    cursor: pointer;
 }
 ul, ol { list-style: none; }
 address { font-style: normal; }
@@ -836,7 +836,7 @@ main {
     align-items: center;
     text-align: center;
     user-select: none;
-    cursor: crosshair;
+    cursor: pointer;
     color: var(--gray);
     background: transparent;
     transition: all 0.25s;

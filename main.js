@@ -8,6 +8,8 @@
 */
 
 document.addEventListener('DOMContentLoaded', function () {
+    var STORAGE_KEY = 'okzgn_cart_session';
+
     var menuButton = document.getElementById('menu');
     var checkoutButton = document.getElementById('checkout');
     var cart = document.getElementById('cart');
@@ -91,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (modelSelect && !modelTouched && BILLING_LABELS[mode]) { modelSelect.value = mode; }
         syncBillingVisuals();
         if (selectedItems().length > 0) { renderCart(); }
+        saveCartState();
     }
 
     if (billingSwitch) {
@@ -184,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (count === 0 && isCartOpen()) {
             closeCart();
         }
+        saveCartState();
     }
 
     function deselect(li) {
@@ -282,6 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (clientInput) {
         clientInput.addEventListener('input', function () {
             updateCheckoutLink();
+            saveCartState();
         });
     }
 
@@ -456,7 +461,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!res.ok) { throw new Error('HTTP ' + res.status); }
                 contactForm.reset();
                 modelTouched = false;
-                setFormStatus('ok', 'Inquiry sent. A response typically arrives within 7 business days.');
+
+                try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) {}
+                Array.prototype.forEach.call(selectedItems(), deselect);
+                syncCount();
+
+                setFormStatus('ok', 'Inquiry sent. A response typically arrives within 1-2 business days.');
             }).catch(function () {
                 setFormStatus('err', 'Connection failed. Retry, or use WhatsApp or email.');
             }).then(function () {
@@ -465,5 +475,82 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    restoreCartState();
+    syncBillingVisuals();
     syncCount();
+    if (selectedItems().length > 0) {
+        renderCart();
+    }
+
+    function saveCartState() {
+      try {
+        var items = selectedItems().map(function (li) {
+            var nameEl = li.querySelector('b');
+            return {
+                title: nameEl ? nameEl.textContent.trim() : '',
+                billing: li.getAttribute('data-billing') || billingMode
+            };
+        });
+
+        var clientName = clientInput ? clientInput.value.trim() : '';
+
+        if (items.length === 0 && !clientName) {
+            sessionStorage.removeItem(STORAGE_KEY);
+            return;
+        }
+
+        var payload = {
+            orderId: currentOrderId,
+            billingMode: billingMode,
+            clientName: clientName,
+            items: items
+        };
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      } catch (e) {
+      }
+    }
+
+    function restoreCartState() {
+      try {
+        var raw = sessionStorage.getItem(STORAGE_KEY);
+        if (!raw) { return; }
+        var state = JSON.parse(raw);
+        if (!state) { return; }
+
+        if (state.clientName && clientInput) {
+            clientInput.value = state.clientName;
+        }
+
+        if (state.orderId) {
+            currentOrderId = state.orderId;
+        }
+
+        if (state.billingMode && state.billingMode !== billingMode) {
+            var btn = document.querySelector('.billing-opt[data-billing="' + state.billingMode + '"]');
+            if (btn) {
+                applyBilling(btn, state.billingMode);
+            }
+        }
+
+        if (Array.isArray(state.items) && state.items.length > 0) {
+            var allLis = document.querySelectorAll('.services .list li');
+            var map = {};
+            state.items.forEach(function (it) {
+                if (it.title) { map[it.title] = it.billing; }
+            });
+
+            Array.prototype.forEach.call(allLis, function (li) {
+                var nameEl = li.querySelector('b');
+                var title = nameEl ? nameEl.textContent.trim() : '';
+                if (map[title]) {
+                    li.classList.add('selected');
+                    li.setAttribute('data-billing', map[title]);
+                    var link = li.querySelector('a');
+                    if (link) { link.setAttribute('aria-pressed', 'true'); }
+                }
+            });
+        }
+      } catch (e) {
+      }
+    }
 });
