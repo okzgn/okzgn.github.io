@@ -360,7 +360,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (services) {
       services.forEach(function(_services) {
         _services.addEventListener('click', function (event) {
-            var link = event.target.closest('.services .list li > a');
+            if (event.target.closest('.spec-link')) { return; }
+            var link = event.target.closest('.services .list li > a:not(.spec-link)');
             if (!link) { return; }
 
             event.preventDefault();
@@ -400,7 +401,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('keydown', function (event) {
-        var link = event.target.closest('.services .list li > a');
+        if (event.target.closest && event.target.closest('.spec-link')) { return; }
+        var link = event.target.closest('.services .list li > a:not(.spec-link)');
         if (link && (event.key === 'Enter' || event.key === ' ')) {
           event.preventDefault();
           link.click();
