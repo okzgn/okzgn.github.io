@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Blank Ready.');
-
   var descriptions = document.querySelectorAll('.projects-container .description');
   descriptions.forEach(function (description) {
     description.addEventListener('click', toggleDescription);
@@ -8,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   var
-    currentDate = Date.now(),
     projectsContainer = document.querySelector('.projects-container'),
     projectsResponseContainer = document.querySelector('.projects-response'),
     alreadyRequestedProjects = localStorage.getItem('all-oss-projects'),
@@ -21,10 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
     projectsResponseContainer.classList.add('loading');
     projectsResponseContainer.textContent = 'Updating...';
 
-    var projectsRequest = _http({
+    _http({
       url: 'https://api.github.com/users/okzgn/repos?sort=pushed&per_page=30',
       onSuccess: function (r) {
-        console.info('New Github request.');
         projectsContent = r;
         localStorage.setItem('all-oss-projects', projectsContent);
         localStorage.setItem('all-oss-projects-date', Date.now() + 86400000);
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   else if (alreadyRequestedProjects) {
     setTimeout(function () {
-      console.log('Cached Github request.');
       showProjects(projectsContainer, projectsResponseContainer, alreadyRequestedProjects);
     }, 2345);
   }

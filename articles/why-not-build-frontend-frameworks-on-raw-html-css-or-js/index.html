@@ -36,7 +36,9 @@
 	<meta name="twitter:image" content="https://okzgn.com/landscape.png">
 
 	<link rel="preload" href="../../style_commons.css" as="style">
+	<link rel="preload" href="../../subpages.css" as="style">
 	<link rel="stylesheet" href="../../style_commons.css">
+	<link rel="stylesheet" href="../../subpages.css">
 
 	<script src="../../main_commons.js" defer></script>
 	<script src="./main.js" defer></script>
@@ -83,7 +85,7 @@
 	</header>
 	<nav data-nosnippet>
 	    <div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
-		<button id="menu" class="no-arrow" aria-label="Open menu" aria-expanded="false"></button>
+		<button id="menu" class="round-button" aria-label="Open menu" aria-expanded="false"></button>
 		<div class="menu-list menu-list-levels auto-x-tiny-padding"><ol class="container auto-x-padding"></ol></div>
 	</nav>
 	<main>
@@ -440,7 +442,7 @@ CompC.ok.then((r) =&gt; {
                                           <code>...</code>
                                         </div>
                                         <h5>Minimal Implementation</h5>
-                                        <strong>Observable deep state tree with granular mutation hooks and identity preservation (<a class="no-default-arrow" rel="noopener noreferrer" href="#steps-to-bypass-between-point-2-and-3-synchronized-granular-dom-updates-minimal-implementation">view demonstration combined with synchronized DOM updates</a>).</strong>
+                                        <strong>Observable deep state tree with granular mutation hooks and identity preservation (<a class="no-default-arrow" rel="noopener noreferrer" href="#steps-to-bypass-between-points-2-and-3-synchronized-granular-dom-updates-minimal-implementation">view demonstration combined with synchronized DOM updates</a>).</strong>
                                         <div class="rounded-box">
 <pre tabindex="0"><code class="language-javascript">const StateHandlers = (options, path, cache) =&gt; {
   return {
@@ -1651,7 +1653,7 @@ app.listen(currentPathDirname);</code><button class="cta-button no-default-arrow
 	    &copy; 2026 <a class="no-default-arrow" href="https://okzgn.com">OKZGN</a>
 	</footer>
 
-	<a id="up" href="#" aria-label="Back to top">
+	<a id="up" class="round-button" href="#" aria-label="Back to top">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>

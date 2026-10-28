@@ -78,10 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Usual thresholds:
-    // var _thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
-
-    // Advanced thresholds:
+    // Thresholds every 2% of the visible ratio.
     var _thresholds = [];
     for (var threshold = 0; threshold <= 1; threshold += 0.02) {
       _thresholds.push(Number(threshold.toFixed(2)));
@@ -240,8 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var code = element.querySelector('code'), btn = element.querySelector('button.copy');
         if (!code) { return; }
 
-        console.log('Copy:', code.textContent);
-
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(code.textContent);
           if (btn) {
@@ -296,11 +291,10 @@ document.addEventListener('DOMContentLoaded', function () {
   points.forEach(setPoints);
 
   var anchors = document.querySelectorAll('nav .menu-list a');
-  if (!anchors.length) { return console.error('There is no anchors.'); }
+  if (!anchors.length) { return; }
 
   function show(scrollXDirection, scrollYDirection, visibleRatio) {
     var id = this.id;
-    //console.log('show', scrollXDirection, scrollYDirection, id);
 
     clearTimeout(observerShow);
     observerShow = setTimeout(function () {
@@ -317,7 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function hide(scrollXDirection, scrollYDirection, intersectionEntry) {
     var id = this.id;
-    //console.log('hide', scrollXDirection, scrollYDirection, id);
 
     clearTimeout(observerHide);
     observerHide = setTimeout(function () {
