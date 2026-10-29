@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
-  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.11);stroke-linecap:round;stroke-linejoin:round}
-  </style>
+  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.1236);stroke-linecap:round;stroke-linejoin:round}
+  </style><g transform="translate(-0.1,2.5)">
+  
 
   <g transform="translate(4.5, 4.5693) scale(0.89)"><rect x="8" y="58" width="64" height="14" rx="3" class="ic"/>
   <circle cx="17" cy="65" r="2.5" class="ic" stroke-width="1.2"/>
@@ -13,4 +14,5 @@
 
   <path d="M40,2 A16,16 0 1,1 24,18" class="ic" stroke-width="2.2"/>
   <polyline points="18,21 24,16 30,22" class="ic" stroke-width="2.2"/>
-</g></svg>
+</g></g>
+</svg>

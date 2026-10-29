@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
-  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.03);stroke-linecap:round;stroke-linejoin:round}
+  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.0309);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
-  </style>
+  </style><g transform="translate(-0.7,-0.7)">
+  
   <g transform="translate(-2.0115,-0.0575) scale(0.97)">
   <circle cx="22" cy="28" r="10" class="ic"/>
   <circle cx="22" cy="28" r="4" class="ic"/>
@@ -12,4 +13,5 @@
   <rect x="50" y="44" width="26" height="22" rx="3" class="ic"/>
   <path d="M55 44 L55 38 Q55 32 63 32 Q71 32 71 38 L71 44" class="ic"/>
   <circle cx="63" cy="55" r="3" class="icf"/>
-</g></svg>
+</g></g>
+</svg>

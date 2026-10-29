@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-  <style>.ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}</style>
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.0591);stroke-linecap:round;stroke-linejoin:round}</style><g transform="translate(1.9485,1.2876) scale(0.9442)">
+  
     <ellipse cx="40" cy="15" rx="7" ry="7" class="ic"/>
     <g transform="translate(0.3499, 34)">
         <path d="M40 40 L32 35 L33 0 Q40 -5 47 0 L48 35 Z" class="ic"/>
     </g>
+</g>
 </svg>

@@ -16,11 +16,11 @@
 	<meta property="article:published_time" content="2026-09-01T12:00:00Z">
 	<meta property="article:author" content="Elías Francisco Alvarado Soshina">
 
-	<meta name="theme-color" content="#ffdbb8" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#000d1a" media="(prefers-color-scheme: dark)">
 
 	<meta name="format-detection" content="telephone=no">
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; style-src 'self' https://cdn.jsdelivr.net/; script-src 'self' https://cdn.jsdelivr.net/">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; child-src 'none'; style-src 'self'; script-src 'self' https://cdn.jsdelivr.net/">
 
 	<meta property="og:title" content="Why not build frontend frameworks on raw HTML, CSS or JS? | OKZGN">
 	<meta property="og:description" content="It is possible: No endless dependencies, no dev environment setup, no build step, no Web Components required, minimal boilerplate, minimal lock-in. Raw HTML, CSS and JS have everything needed and are web standards, unlike custom syntaxes.">
@@ -79,24 +79,38 @@
 
 </head>
 <body>
-	<header data-nosnippet>
-	    <div class="logo"><a class="arrow-reverse no-default" href="https://okzgn.com"><img src="../../icon.png" alt="OKZGN Isotype"></a></div>
-		<div class="slash auto-font-size-4"><a class="no-default-arrow" href="https://okzgn.com/#articles">Articles</a></div>
+	<a href="#content" class="cta-button skip-link">Skip to content</a>
+	<header class="site-header" data-nosnippet>
+		<div class="container site-header-inner">
+			<a class="brand" href="/" aria-label="OKZGN home"><img src="../../okzgn_logo_desktop.svg" width="299" height="71" alt="OKZGN logotype"></a>
+			<nav class="site-nav" id="site-nav" aria-label="Main">
+				<a href="/#articles">Articles</a>
+				<a href="/#services">Services</a>
+				<a href="/#projects">Projects</a>
+				<a href="/#contact">Contact</a>
+			</nav>
+			<a class="cta-button btn-sm site-cta" href="/#contact"><span>Book a Consult</span></a>
+			<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"></button>
+		</div>
 	</header>
-	<nav data-nosnippet>
-	    <div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
-		<button id="menu" class="round-button" aria-label="Open menu" aria-expanded="false"></button>
-		<div class="menu-list menu-list-levels auto-x-tiny-padding"><ol class="container auto-x-padding"></ol></div>
-	</nav>
-	<main>
-		<div class="container auto-x-tiny-padding">
-		    <h1 class="main-title auto-font-size auto-padding">Why not build frontend frameworks on raw HTML, CSS or JS?</h1>
+	<main id="content" class="page">
+		<div class="container page-hero">
+			<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/#articles">Articles</a></nav>
+			<h1 class="main-title display">Why not build frontend frameworks on raw HTML, CSS or JS?</h1>
+			<p class="lead">It is possible: No endless dependencies, no dev environment setup, no build step, no Web Components required, minimal boilerplate, minimal lock-in. Raw HTML, CSS and JS have everything needed and are web standards, unlike custom syntaxes.</p>
+		</div>
+		<div class="container page-layout">
+			<nav class="toc" data-nosnippet aria-label="Table of contents">
+				<div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
+				<button id="menu" type="button" aria-label="Open menu" aria-expanded="false"></button>
+				<div class="menu-list"><ol></ol></div>
+			</nav>
             <article class="card">
-                <div class="auto-x-padding paragraphs">
-                    <h2 class="auto-font-size-2">It Is Possible</h2>
+                <div class="paragraphs">
+                    <h2>It Is Possible</h2>
                     <p>No endless dependencies, no dev environment setup, no build step, no Web Components required, minimal boilerplate, minimal lock-in.</p>
                     <p><strong>Raw HTML, CSS and JS have everything needed and are web standards, unlike custom syntaxes.</strong></p>
-                    <h2 class="auto-font-size-2">Key Benefits</h2>
+                    <h2>Key Benefits</h2>
                     <div>
                         <ul role="list" class="lines lines-condensed">
                             <li>Bundle size proportional to the logic.</li>
@@ -109,15 +123,15 @@
                             <li>No niches, transferable web standards learned.</li>
                         </ul>
                     </div>
-                    <h2 class="auto-font-size-2">What This Article Is Not</h2>
+                    <h2>What This Article Is Not</h2>
                     <p>A call to switch your framework or dismiss other techniques; after all, today's custom syntaxes may be tomorrow's standards. It also doesn't ignore the massive challenges, serious business and enterprise needs, or the real value of today's tools or methods.</p>
-                    <h2 class="auto-font-size-2">Perspective</h2>
+                    <h2>Perspective</h2>
                     <p><strong>Modern frontend fundamentals were analyzed from this viewpoint:</strong> having written code close to the metal (XDP, shared memory, C), delved into low-level systems (protocol flows, RAM interactions, Go), focused on optimizing core operations and identifying high-performance algorithms (BM25, HNSW, djb2), and compared the performance of various runtimes (PHP, Lua, Node, Wasm, Rust).</p>
-                    <h2 class="auto-font-size-2">Simplified Solution</h2>
+                    <h2>Simplified Solution</h2>
                     <p>What was mentioned at the beginning (regarding what is possible) could be solved if most modern browsers or JavaScript engines updated to a recent ECMAScript specification with native Type Annotations and backward compatibility support.<br> But the proprietary or custom syntaxes that have been invented are not standard JS or TS; they require transpilers, optimizers, compilers, bundlers, and so on (understanding their inner workings and mechanisms is indeed fascinating).</p>
-                    <h2 class="auto-font-size-2">The Proposition</h2>
+                    <h2>The Proposition</h2>
                     <p><strong>There are several steps that can be bypassed between the scripting language, the framework, and development</strong> (covered up to here in this article, without requiring any updates to ES/TS specifications), and bundling, the interpreter, and the end user (which follow in an upcoming article, where additional tooling is optional).</p>
-                    <h2 class="auto-font-size-2">Focus Points</h2>
+                    <h2>Focus Points</h2>
                     <div>
                         <ul role="list" class="lines">
                             <li><strong>Point 1:</strong> JavaScript/TypeScript as the scripting language that does the actual work and creates the upper framework.</li>
@@ -126,14 +140,14 @@
                             <li><strong>Point 4:</strong> Preparation and bundling of frontend assets into optimized output for production.</li>
                         </ul>
                     </div>
-                    <h2 class="auto-font-size-2">Steps to Bypass</h2>
-                    <i class="auto-font-size-5"><strong>Note:</strong> links marked <a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a>, along with the GitHub repositories referenced throughout as <a class="no-default-arrow" href="#POC"><sup>POC</sup></a> or <a class="no-default-arrow" href="#GIT"><sup>GIT</sup></a>, point to implementations shown as evidence the approach works rather than endorsements of third-party tools, all developed by this article's author.</i>
-                    <h3 class="auto-font-size-3">Between Points 1 and 2</h3>
+                    <h2>Steps to Bypass</h2>
+                    <i><strong>Note:</strong> links marked <a href="#EXT"><sup>EXT</sup></a>, along with the GitHub repositories referenced throughout as <a href="#POC"><sup>POC</sup></a> or <a href="#GIT"><sup>GIT</sup></a>, point to implementations shown as evidence that the approach works rather than endorsements of third-party tools, all developed by this article's author.</i>
+                    <h3>Between Points 1 and 2</h3>
                     <div>
                         <ul role="list" class="lines">
                             <li>
                                 <strong>Context:</strong><br>
-                                <span>For a framework to build dynamic, real-time, or interconnected frontends and UIs, it requires state, reactivity, components, routing, event handling, DOM manipulation, HTTP capabilities, and so on. To achieve this, ECMAScript and Web APIs natively provide these features since ES5, ES6, ES2016+ and DOM Level 1-4.</span>
+                                <span>For a framework to build dynamic, real-time, or interconnected frontends and UIs, it requires state, reactivity, components, routing, event handling, DOM manipulation, HTTP capabilities, and so on. To achieve this, ECMAScript and Web APIs have natively provided these features since ES5, ES6, ES2016+ and DOM Level 1–4.</span>
                             </li>
                             <li>
                                 <strong>Bypass:</strong><br>
@@ -141,66 +155,66 @@
                                 <ul role="list">
                                     <li><h4>State & Reactivity</h4><br>
                                         <div class="rounded-box">
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener noreferrer">Symbol</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank" rel="noopener noreferrer">WeakSet</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Map</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Set</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener noreferrer">Object.create</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener noreferrer">Object.defineProperty</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener noreferrer">Symbol</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank" rel="noopener noreferrer">WeakSet</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Map</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Set</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener noreferrer">Object.create</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener noreferrer">Object.defineProperty</a></code>,
                                             <code>...</code>
                                         </div>
-                                        <em>Implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/reactive/"><strong>Reactive</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
+                                        <em>Implemented in <a href="https://estructura.okzgn.com/extensions/reactive/"><strong>Reactive</strong></a><a href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
                                     </li>
                                     <li><h4>DOM, Events & Templating</h4><br>
                                         <div class="rounded-box">
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank" rel="noopener noreferrer">MutationObserver</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver" target="_blank" rel="noopener noreferrer">IntersectionObserver</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment" target="_blank" rel="noopener noreferrer">DocumentFragment</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement" target="_blank" rel="noopener noreferrer">HTMLTemplateElement</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker" target="_blank" rel="noopener noreferrer">TreeWalker</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeFilter" target="_blank" rel="noopener noreferrer">NodeFilter</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="noopener noreferrer">Node</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer">EventTarget</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="noopener noreferrer">getComputedStyle</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank" rel="noopener noreferrer">MutationObserver</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver" target="_blank" rel="noopener noreferrer">IntersectionObserver</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment" target="_blank" rel="noopener noreferrer">DocumentFragment</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement" target="_blank" rel="noopener noreferrer">HTMLTemplateElement</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker" target="_blank" rel="noopener noreferrer">TreeWalker</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeFilter" target="_blank" rel="noopener noreferrer">NodeFilter</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="noopener noreferrer">Node</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer">EventTarget</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle" target="_blank" rel="noopener noreferrer">getComputedStyle</a></code>,
                                             <code>...</code>
                                         </div>
-                                        <em>Implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/dom/"><strong>DOM</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a>, <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/events/"><strong>Events</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> & <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/handlers/"><strong>Handlers</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
+                                        <em>Implemented in <a href="https://estructura.okzgn.com/extensions/dom/"><strong>DOM</strong></a><a href="#EXT"><sup>EXT</sup></a>, <a href="https://estructura.okzgn.com/extensions/events/"><strong>Events</strong></a><a href="#EXT"><sup>EXT</sup></a> & <a href="https://estructura.okzgn.com/extensions/handlers/"><strong>Handlers</strong></a><a href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
                                     </li>
                                     <li><h4>Routing & Navigation</h4><br>
                                         <div class="rounded-box">
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank" rel="noopener noreferrer">History API</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank" rel="noopener noreferrer">Location</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank" rel="noopener noreferrer">URLSearchParams</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event" target="_blank" rel="noopener noreferrer">popstate</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="noopener noreferrer">decodeURIComponent</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone" target="_blank" rel="noopener noreferrer">structuredClone</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank" rel="noopener noreferrer">History API</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location" target="_blank" rel="noopener noreferrer">Location</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank" rel="noopener noreferrer">URLSearchParams</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/popstate_event" target="_blank" rel="noopener noreferrer">popstate</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="noopener noreferrer">decodeURIComponent</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone" target="_blank" rel="noopener noreferrer">structuredClone</a></code>,
                                             <code>...</code>
                                         </div>
-                                        <em>Implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/routing/"><strong>Routing</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
+                                        <em>Implemented in <a href="https://estructura.okzgn.com/extensions/routing/"><strong>Routing</strong></a><a href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
                                     </li>
                                     <li><h4>Asynchronous & Orchestration</h4><br>
                                         <div class="rounded-box">
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="noopener noreferrer">requestAnimationFrame</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreferrer">fetch</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener noreferrer">AbortController</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Blob" target="_blank" rel="noopener noreferrer">Blob</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
-                                            <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener noreferrer">XMLHttpRequest</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="noopener noreferrer">requestAnimationFrame</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreferrer">fetch</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener noreferrer">AbortController</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob" target="_blank" rel="noopener noreferrer">Blob</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
+                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" target="_blank" rel="noopener noreferrer">XMLHttpRequest</a></code>,
                                             <code>...</code>
                                         </div>
-                                        <em>Implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/http/"><strong>HTTP</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> & <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/components/"><strong>Components</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
+                                        <em>Implemented in <a href="https://estructura.okzgn.com/extensions/http/"><strong>HTTP</strong></a><a href="#EXT"><sup>EXT</sup></a> & <a href="https://estructura.okzgn.com/extensions/components/"><strong>Components</strong></a><a href="#EXT"><sup>EXT</sup></a> using ES6+.</em>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
-                    <h3 class="auto-font-size-3">Between Points 2 and 3</h3>
+                    <h3>Between Points 2 and 3</h3>
                     <div>
                         <ul role="list" class="lines">
                             <li><strong>Context:</strong><br> Recurring UI development problems are solved through well-organized, reusable components; efficient centralized or decentralized state management; synchronized, granular DOM updates; routing control without page reloads, coordinated with the UI; and conventions that facilitate interoperable collaboration.<br><strong>That can be achieved seamlessly using:</strong> native HTML, in-memory JS-scoped data, batched event-based DOM reactivity, isolated and complete routing lifecycle interfaces, and standards-compliant HTML, CSS, and JS conventions with minimal guidelines.</li>
@@ -214,24 +228,24 @@
                                         <strong>Bypass:</strong><br>
                                         <span>HTML natively provides traditional, broadly compatible mechanisms to load components, which is often sufficient for many scenarios, like <code>script</code> tag attributes <code>defer</code>, <code>async</code>, <code>type="module"</code> (deferred), as well as standard synchronous execution:</span>
                                         <div class="rounded-box">
-                                            <pre tabindex="0"><code class="language-html">&lt;script src="./main.sync.js"&gt;&lt;/script&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
-                                            <pre tabindex="0"><code class="language-html">&lt;script defer src="./html.complete.js"&gt;&lt;/script&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
-                                            <pre tabindex="0"><code class="language-html">&lt;script type="module" src="./html.complete.2.js"&gt;&lt;/script&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
-                                            <pre tabindex="0"><code class="language-html">&lt;script async src="./independent.load.js"&gt;&lt;/script&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
-                                            <pre tabindex="0"><code class="language-html">&lt;script async type="module" src="./independent.load.2.js"&gt;&lt;/script&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+                                            <pre tabindex="0"><code class="language-html">&lt;script src="./main.sync.js"&gt;&lt;/script&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
+                                            <pre tabindex="0"><code class="language-html">&lt;script defer src="./html.complete.js"&gt;&lt;/script&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
+                                            <pre tabindex="0"><code class="language-html">&lt;script type="module" src="./html.complete.2.js"&gt;&lt;/script&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
+                                            <pre tabindex="0"><code class="language-html">&lt;script async src="./independent.load.js"&gt;&lt;/script&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
+                                            <pre tabindex="0"><code class="language-html">&lt;script async type="module" src="./independent.load.2.js"&gt;&lt;/script&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <span>When precise component synchronization is required (such as managing execution order or inter-component dependencies), patterns like "Shared Resource Resolution System with Barrier/Completion Conditions" can be implemented using ES6+:</span>
                                         <div class="rounded-box">
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class" target="_blank" rel="noopener noreferrer">class</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" rel="noopener noreferrer">Promise.all</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener noreferrer">Array</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener noreferrer">Object.defineProperty</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class" target="_blank" rel="noopener noreferrer">class</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank" rel="noopener noreferrer">Promise.all</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener noreferrer">Array</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener noreferrer">Object.defineProperty</a></code>,
                                           <code>...</code>
                                         </div>
                                         <h5>Minimal Implementation</h5>
-                                        <strong>Coordinated asynchronous component execution, dependency chaining, and error propagation (<a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.component.html">view demonstration</a>).</strong>
+                                        <strong>Coordinated asynchronous component execution, dependency chaining, and error propagation (<a target="_blank" rel="noopener noreferrer" href="./test.component.html">view demonstration</a>).</strong>
                                         <div class="rounded-box">
 <pre tabindex="0"><code class="language-javascript">const Queue = {
   state: false,
@@ -365,7 +379,7 @@ class Component {
           configurable: false
         });
     }
-}</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+}</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <span>Note that the previous minimal implementation resolves the asynchronous dependency synchronization problem, since each component typically requires logic (JS), markup (HTML), and styling (CSS), which can be loaded via <code>import()</code>, <code>fetch()</code>, or <code>XMLHttpRequest</code> inside of <code>new Component()</code> logic and then wrapped in a <code>Web Component</code> to inject the HTML and CSS via <code>&lt;template&gt;</code> and <code>&lt;style&gt;</code> with <code>Shadow DOM</code> in modern JavaScript.</span>
                                         <strong>Although this can be achieved just as well with ES6, see the additional patterns at the end of the following usage examples.</strong>
@@ -416,9 +430,9 @@ CompC.ok.then((r) =&gt; {
 })
 .catch((e) =&gt; {
     console.error('Error C:', e);
-});</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+});</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
-                                        <span>Optionally, view the "Asynchronous Proxy-Based Synchronization" pattern used where components are declared in HTML index via <code>data-*</code> attributes, and automatically fetched on demand from self-hosted endpoints or CDNs, structured in dedicated directories (<code>name/style.css</code>, <code>name/component.html</code>, <code>name/functionality.js</code>), and automatically synchronized, orchestrated and injected by the prototype framework implemented in <a class="no-default-arrow" rel="noopener noreferrer" target="_blank" href="https://github.com/okzgn/componentes-prototype-2025-js"><strong>Components Prototype</strong></a><a class="no-default-arrow" href="#POC"><sup>POC</sup></a> (ES6+). Or explore advanced patterns with another implementation in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/components/"><strong>Components</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> (RC2, ES6+).</span>
+                                        <span>Optionally, view the "Asynchronous Proxy-Based Synchronization" pattern used where components are declared in HTML index via <code>data-*</code> attributes, and automatically fetched on demand from self-hosted endpoints or CDNs, structured in dedicated directories (<code>name/style.css</code>, <code>name/component.html</code>, <code>name/functionality.js</code>), and automatically synchronized, orchestrated and injected by the prototype framework implemented in <a rel="noopener noreferrer" target="_blank" href="https://github.com/okzgn/componentes-prototype-2025-js"><strong>Components Prototype</strong></a><a href="#POC"><sup>POC</sup></a> (ES6+). Or explore advanced patterns with another implementation in <a href="https://estructura.okzgn.com/extensions/components/"><strong>Components</strong></a><a href="#EXT"><sup>EXT</sup></a> (RC2, ES6+).</span>
                                         <br>
                                     </li>
                                 </ul>
@@ -433,16 +447,16 @@ CompC.ok.then((r) =&gt; {
                                         <strong>Bypass:</strong><br>
                                         <span><code>Proxy</code> provides everything needed to establish a complete, predictable state lifecycle while avoiding unnecessary object recreation during mutations. Deeply observable state trees, lifecycle interceptors (<code>onGet</code>, <code>onSet</code>, <code>onDelete</code>), and reference caching can be implemented natively using ES6+:</span>
                                         <div class="rounded-box">
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener noreferrer">Object.create</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener noreferrer">Object.assign</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener noreferrer">Symbol</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener noreferrer">Proxy</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener noreferrer">Object.create</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener noreferrer">Object.assign</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener noreferrer">Symbol</a></code>,
                                           <code>...</code>
                                         </div>
                                         <h5>Minimal Implementation</h5>
-                                        <strong>Observable deep state tree with granular mutation hooks and identity preservation (<a class="no-default-arrow" rel="noopener noreferrer" href="#steps-to-bypass-between-points-2-and-3-synchronized-granular-dom-updates-minimal-implementation">view demonstration combined with synchronized DOM updates</a>).</strong>
+                                        <strong>Observable deep state tree with granular mutation hooks and identity preservation (<a rel="noopener noreferrer" href="#steps-to-bypass-between-points-2-and-3-synchronized-granular-dom-updates-minimal-implementation">view demonstration combined with synchronized DOM updates</a>).</strong>
                                         <div class="rounded-box">
 <pre tabindex="0"><code class="language-javascript">const StateHandlers = (options, path, cache) =&gt; {
   return {
@@ -497,7 +511,7 @@ function State(options = {}, path = [], cache = new WeakMap()) {
     const proxy = new Proxy(data, StateHandlers(options, path, cache));
     cache.set(data, proxy);
     return proxy;
-}</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+}</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <span>Combining this previous minimal implementation with <code>CustomEvent</code>, <code>EventTarget</code>, and <code>dispatchEvent()</code> in the state-change hooks natively achieves the Publisher/Subscriber pattern in modern JavaScript.</span>
                                         <h5>Usage Example</h5>
@@ -517,9 +531,9 @@ state.name = 'John';
 
 delete state.name;
 // delete (1)["name"] undefined John
-</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
-                                        <span>Or explore other patterns like "Safe Auto-Vivification", with prototype pollution guards, array mutator tracking, and depth limits implementation in <a class="no-default-arrow" rel="noopener noreferrer" target="_blank" href="https://github.com/okzgn/dx-object-js"><strong>DXObject</strong></a><a class="no-default-arrow" href="#GIT"><sup>GIT</sup></a> (RC3, ESM, ES6+), and reactivity store patterns implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/reactive/"><strong>Reactive</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> (RC1, ES6+).</span>
+                                        <span>Or explore other patterns like "Safe Auto-Vivification", with prototype pollution guards, array mutator tracking, and depth limits implementation in <a rel="noopener noreferrer" target="_blank" href="https://github.com/okzgn/dx-object-js"><strong>DXObject</strong></a><a href="#GIT"><sup>GIT</sup></a> (RC3, ESM, ES6+), and reactivity store patterns implemented in <a href="https://estructura.okzgn.com/extensions/reactive/"><strong>Reactive</strong></a><a href="#EXT"><sup>EXT</sup></a> (RC1, ES6+).</span>
                                     </li>
                                 </ul>
                             </li>
@@ -533,19 +547,19 @@ delete state.name;
                                         <strong>Bypass:</strong><br>
                                         <span><code>MutationObserver</code> can be used to scan the initial HTML, parse, and map nodes, as it does not rely on <code>DOMContentLoaded</code> and makes it possible to capture the creation phase of all nodes across the <code>document</code>. And with the necessary adjustments and optimizations, it can precisely control everything happening in the DOM asynchronously, yet synchronously for batched updates with <code>queueMicrotask</code> or <code>requestAnimationFrame</code> depending on the type of update. This can be implemented natively (<strong>for HTML only</strong>) using ES6+:</span>
                                         <div class="rounded-box">
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank" rel="noopener noreferrer">MutationObserver</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="noopener noreferrer">requestAnimationFrame</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="noopener noreferrer">Node</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank" rel="noopener noreferrer">WeakSet</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Map</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Set</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver" target="_blank" rel="noopener noreferrer">MutationObserver</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" target="_blank" rel="noopener noreferrer">requestAnimationFrame</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask" target="_blank" rel="noopener noreferrer">queueMicrotask</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" rel="noopener noreferrer">Node</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" target="_blank" rel="noopener noreferrer">Reflect</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" target="_blank" rel="noopener noreferrer">WeakMap</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" target="_blank" rel="noopener noreferrer">WeakSet</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Map</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Set</a></code>,
                                           <code>...</code>
                                         </div>
                                         <h5>Minimal Implementation</h5>
-                                        <strong>Granular DOM node mapping, state binding, and content updates batching (<a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.html">view demonstration</a>).</strong>
+                                        <strong>Granular DOM node mapping, state binding, and content updates batching (<a target="_blank" rel="noopener noreferrer" href="./test.updater.html">view demonstration</a>).</strong>
                                         <div class="rounded-box">
 <pre tabindex="0"><code class="language-javascript">const UpdaterExcludedNodes = new Set([
     '#document-fragment',
@@ -767,12 +781,12 @@ function UpdaterStart(targetNode, handlers) {
     catch (e) {
         throw new Error('UpdaterStart &gt; Observer &gt; Initialization: ' + e.message);
     }
-}</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+}</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
-                                        <span>Note that <strong>the previous minimal implementation is mainly intended for initial DOM parsing, mapping, and binding</strong>, followed by a <code>disconnect()</code> call upon full application load. If handling tens of thousands of node-bound reactive variables, <strong>refer to these other demos to evaluate its viability: <a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.x100.html">x100</a>, <a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.x1000.html">x1000</a>, <a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.x5000.html">x5000</a>, <a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.x10000.html">x10000</a>, <a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.updater.x50000.html">x50000</a>.</strong> <strong>Successfully tested up to x10000 without UI jank</strong> on entry-level and legacy hardware (e.g., Samsung A12 and AMD A8 APU notebooks).</span>
+                                        <span>Note that <strong>the previous minimal implementation is mainly intended for initial DOM parsing, mapping, and binding</strong>, followed by a <code>disconnect()</code> call upon full application load. If handling tens of thousands of node-bound reactive variables, <strong>refer to these other demos to evaluate its viability: <a target="_blank" rel="noopener noreferrer" href="./test.updater.x100.html">x100</a>, <a target="_blank" rel="noopener noreferrer" href="./test.updater.x1000.html">x1000</a>, <a target="_blank" rel="noopener noreferrer" href="./test.updater.x5000.html">x5000</a>, <a target="_blank" rel="noopener noreferrer" href="./test.updater.x10000.html">x10000</a>, <a target="_blank" rel="noopener noreferrer" href="./test.updater.x50000.html">x50000</a>.</strong> <strong>Successfully tested up to x10000 without UI jank</strong> on entry-level and legacy hardware (e.g., Samsung A12 and AMD A8 APU notebooks).</span>
                                         <h5>Usage Example</h5>
                                         <div class="rounded-box">
-                                            <strong class="auto-x-padding">JavaScript</strong>
+                                            <strong class="code-label">JavaScript</strong>
 <pre tabindex="0"><code class="language-javascript">const XVars_prefix = '${';
 const XVars_postfix = '}';
 const XVarsNamesRE = /[^a-z_0-9]/i;
@@ -918,10 +932,10 @@ function XStateBatchExecution() {
 
         XStateBatch.clear();
     });
-}</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+}</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <div class="rounded-box">
-                                            <strong class="auto-x-padding">HTML</strong>
+                                            <strong class="code-label">HTML</strong>
 <pre tabindex="0"><code class="language-html">&lt;head&gt;
   &lt;!-- [Previous STATE Minimal Implementation JavaScript Code File] --&gt;
   &lt;script src="./test/State.js"&gt;&lt;/script&gt;
@@ -945,9 +959,9 @@ function XStateBatchExecution() {
     &lt;p&gt;&lt;b&gt;Another reactive value:&lt;/b&gt; ${VALUE_3}&lt;/p&gt;
   &lt;/div&gt;
 &lt;/body&gt;
-</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
-                                        <span>Or explore the "Declarative HTML-First DOM Pipelines & Lifecycle Orchestrator Pattern" implementation in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/handlers/"><strong>Handlers</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> (ES6+), providing an event-delegated, middleware-enabled, clear abstraction between nodes and update logic, and classic direct handling of nodes with utilities implemented in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/dom/"><strong>DOM</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> (ES5+).</span>
+                                        <span>Or explore the "Declarative HTML-First DOM Pipelines & Lifecycle Orchestrator Pattern" implementation in <a href="https://estructura.okzgn.com/extensions/handlers/"><strong>Handlers</strong></a><a href="#EXT"><sup>EXT</sup></a> (ES6+), providing an event-delegated, middleware-enabled, clear abstraction between nodes and update logic, and classic direct handling of nodes with utilities implemented in <a href="https://estructura.okzgn.com/extensions/dom/"><strong>DOM</strong></a><a href="#EXT"><sup>EXT</sup></a> (ES5+).</span>
                                     </li>
                                 </ul>
                             </li>
@@ -961,17 +975,17 @@ function XStateBatchExecution() {
                                         <strong>Bypass:</strong><br>
                                         <span>Through an agnostic, declarative routing engine that leverages <code>window.location.hash</code> alongside ID-based anchors for native scroll restoration, pure CSS transitions (<code>transition</code> or <code>animation</code>), inter-route middleware patterns, support for both synchronous and asynchronous loading depending on the handler, intelligent server-side caching, and standard HTML for accessibility (<code>role</code>, <code>tabindex</code>, <code>aria-*</code>), most routing requirements are effectively resolved.<br><br>Furthermore, UI restoration upon reload and cross-view state management can be handled programmatically through various approaches, such as conditional nested route chaining, user activity tracking with <code>localStorage</code> or <code>sessionStorage</code> persistence, and declarative route configuration via JS or data-bound HTML—all of which can be implemented natively using ES6+ and standard Web APIs, including:</span>
                                         <div class="rounded-box">
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank" rel="noopener noreferrer">History API</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener noreferrer">RegExp</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer">EventTarget</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="noopener noreferrer">decodeURIComponent</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
-                                          <code><a class="no-default-arrow" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener noreferrer">Object.assign</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank" rel="noopener noreferrer">History API</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreferrer">URL</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener noreferrer">RegExp</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer">EventTarget</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="noopener noreferrer">decodeURIComponent</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">Promise</a></code>,
+                                          <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener noreferrer">Object.assign</a></code>,
                                           <code>...</code>
                                         </div>
                                         <h5>Minimal Implementation</h5>
-                                        <strong>Prioritized route matching, sync/async middleware pipelines, History API orchestration, and native link interception (<a class="no-default-arrow" target="_blank" rel="noopener noreferrer" href="./test.router.html">view demonstration</a>)</strong>
+                                        <strong>Prioritized route matching, sync/async middleware pipelines, History API orchestration, and native link interception (<a target="_blank" rel="noopener noreferrer" href="./test.router.html">view demonstration</a>).</strong>
                                         <div class="rounded-box">
 <pre tabindex="0"><code class="language-javascript">class Router {
   constructor() {
@@ -1455,12 +1469,12 @@ function RouterStart(options = {}) {
   };
 
   return router;
-}</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+}</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <span>Note that <strong>the previous minimal implementation relies on regular expressions for route matching</strong>, which is well-suited for most SPAs. However, when registering over 250 routes, implementing route-matching patterns such as a <code>Radix Tree (Trie)</code> inside the <code>find()</code> function and omitting properties like <code>route.regex</code> and <code>regexSource</code> from <code>_register()</code> (or using alternative algorithms) is recommended to ensure maximum performance.</span>
                                         <h5>Usage Example</h5>
                                         <div class="rounded-box">
-                                            <strong class="auto-x-padding">JavaScript</strong>
+                                            <strong class="code-label">JavaScript</strong>
 <pre tabindex="0"><code class="language-javascript">const app = RouterStart({ async: false/*true*/ });
 
 app.use((ctx, next) =&gt; {
@@ -1508,10 +1522,10 @@ app.add('/dashboard', (ctx) =&gt; {
 const lastSlash = (window.location.pathname.lastIndexOf('/') + 1);
 const currentPathDirname = (lastSlash ? window.location.pathname.substring(0, lastSlash) : window.location.pathname);
 
-app.listen(currentPathDirname);</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+app.listen(currentPathDirname);</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
                                         <div class="rounded-box">
-                                            <strong class="auto-x-padding">HTML</strong>
+                                            <strong class="code-label">HTML</strong>
 <pre tabindex="0"><code class="language-html">&lt;head&gt;
   &lt;!-- [Previous ROUTER Minimal Implementation JavaScript Code File] --&gt;
   &lt;script src="./test/Router.js"&gt;&lt;/script&gt;
@@ -1550,9 +1564,9 @@ app.listen(currentPathDirname);</code><button class="cta-button no-default-arrow
   &lt;div id="last-view"&gt;
     Last view.
   &lt;/div&gt;
-&lt;/body&gt;</code><button class="cta-button no-default-arrow copy" aria-live="polite">Copy</button></pre>
+&lt;/body&gt;</code><button class="tag copy" aria-live="polite">Copy</button></pre>
                                         </div>
-                                        <span>Or view a more comprehensive implementation that includes error handling and query parameter parsing in <a class="no-default-arrow" href="https://estructura.okzgn.com/extensions/routing/"><strong>Routing</strong></a><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a> (ES6+).</span>
+                                        <span>Or view a more comprehensive implementation that includes error handling and query parameter parsing in <a href="https://estructura.okzgn.com/extensions/routing/"><strong>Routing</strong></a><a href="#EXT"><sup>EXT</sup></a> (ES6+).</span>
                                     </li>
                                 </ul>
                             </li>
@@ -1571,100 +1585,129 @@ app.listen(currentPathDirname);</code><button class="cta-button no-default-arrow
                             </li>
                         </ul>
                     </div>
-                    <h2 class="auto-font-size-2">Conclusion</h2>
+                    <h2>Conclusion</h2>
                     <strong>To achieve this native decoupling across all the previously mentioned layers (Components, State, DOM, Routing, and Interoperable Conventions) and replace custom abstractions, modern browsers provide a robust foundation of widely available Web Platform Baseline features:</strong>
-                    <div class="auto-x-small-padding">
+                    <div>
                         <ul role="list" class="lines-condensed">
                             <li>
-                                <h3 class="auto-font-size-3">CSS Baseline</h3>
+                                <h3>CSS Baseline</h3>
                                 <ul role="list" class="lines lines-condensed">
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>min()</code></a> (2020, Safe)<br><i>Sets the smallest value from a comma-separated list of expressions.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>max()</code></a> (2020, Safe)<br><i>Sets the largest value from a comma-separated list of expressions.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>clamp()</code></a> (2020, Safe)<br><i>Clamps a flexible value between a defined minimum and maximum threshold.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>::part()</code></a> (2020, Safe)<br><i>Styles exposed internal elements of a Shadow DOM tree from the host page.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>::slotted()</code></a> (2020, Safe)<br><i>Styles elements projected inside a Shadow DOM slot from the component stylesheet.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>aspect-ratio</code></a> (2021, Safe)<br><i>Sets a preferred aspect ratio (width/height) for an element box.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>:is()</code></a> (2021, Safe)<br><i>Matches any selector in a list, adopting the highest specificity within the group.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>:where()</code></a> (2021, Safe)<br><i>Matches any selector in a list while applying zero (0) specificity for easy overrides.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>@layer</code></a> (2022, Safe)<br><i>Declares cascade layers to explicitly control rule precedence and style evaluation order.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>CSS Nesting</code></a> (2023)<br><i>Enables native nesting of style rules inside one another without preprocessors.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@container" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>@container</code></a> (2023)<br><i>Applies styles conditionally based on the size or query of an ancestor container.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>subgrid</code></a> (2023)<br><i>Allows a grid item to inherit and align directly with its parent grid track definitions.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>color-mix()</code></a> (2023)<br><i>Mixes two color values in a specified color space and percentage.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>:has()</code></a> (2023)<br><i>Relational pseudo-class that styles a parent based on its descendant or sibling conditions.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>@starting-style</code></a> (2024)<br><i>Defines initial property values to enable entry transitions when an element first renders.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>transition-behavior</code></a> (2024)<br><i>Enables transitions for discrete properties such as display and content-visibility.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min" target="_blank" rel="noopener noreferrer"><code>min()</code></a> (2020, Safe)<br><i>Sets the smallest value from a comma-separated list of expressions.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max" target="_blank" rel="noopener noreferrer"><code>max()</code></a> (2020, Safe)<br><i>Sets the largest value from a comma-separated list of expressions.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp" target="_blank" rel="noopener noreferrer"><code>clamp()</code></a> (2020, Safe)<br><i>Clamps a flexible value between a defined minimum and maximum threshold.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part" target="_blank" rel="noopener noreferrer"><code>::part()</code></a> (2020, Safe)<br><i>Styles exposed internal elements of a Shadow DOM tree from the host page.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted" target="_blank" rel="noopener noreferrer"><code>::slotted()</code></a> (2020, Safe)<br><i>Styles elements projected inside a Shadow DOM slot from the component stylesheet.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio" target="_blank" rel="noopener noreferrer"><code>aspect-ratio</code></a> (2021, Safe)<br><i>Sets a preferred aspect ratio (width/height) for an element box.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is" target="_blank" rel="noopener noreferrer"><code>:is()</code></a> (2021, Safe)<br><i>Matches any selector in a list, adopting the highest specificity within the group.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where" target="_blank" rel="noopener noreferrer"><code>:where()</code></a> (2021, Safe)<br><i>Matches any selector in a list while applying zero (0) specificity for easy overrides.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" target="_blank" rel="noopener noreferrer"><code>@layer</code></a> (2022, Safe)<br><i>Declares cascade layers to explicitly control rule precedence and style evaluation order.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting" target="_blank" rel="noopener noreferrer"><code>CSS Nesting</code></a> (2023)<br><i>Enables native nesting of style rules inside one another without preprocessors.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@container" target="_blank" rel="noopener noreferrer"><code>@container</code></a> (2023)<br><i>Applies styles conditionally based on the size or query of an ancestor container.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid" target="_blank" rel="noopener noreferrer"><code>subgrid</code></a> (2023)<br><i>Allows a grid item to inherit and align directly with its parent grid track definitions.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix" target="_blank" rel="noopener noreferrer"><code>color-mix()</code></a> (2023)<br><i>Mixes two color values in a specified color space and percentage.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank" rel="noopener noreferrer"><code>:has()</code></a> (2023)<br><i>Relational pseudo-class that styles a parent based on its descendant or sibling conditions.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style" target="_blank" rel="noopener noreferrer"><code>@starting-style</code></a> (2024)<br><i>Defines initial property values to enable entry transitions when an element first renders.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior" target="_blank" rel="noopener noreferrer"><code>transition-behavior</code></a> (2024)<br><i>Enables transitions for discrete properties such as display and content-visibility.</i></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <br><h3 class="auto-font-size-3">JavaScript &amp; Web APIs</h3>
+                                <br><h3>JavaScript &amp; Web APIs</h3>
                                 <ul role="list" class="lines lines-condensed">
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>CustomEvent</code></a> (2015, Safe)<br><i>Creates synthetic DOM events capable of transmitting payload data via the detail property.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Intl</code></a> (2015, Safe)<br><i>Provides language-sensitive string comparison, number, currency, and date/time formatting.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>import()</code></a> (2020, Safe)<br><i>Dynamically and asynchronously loads ECMAScript modules on demand.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>ResizeObserver</code></a> (2020, Safe)<br><i>Monitors and reports changes to the content or border-box dimensions of DOM elements.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Clipboard API</code></a> (2020, Safe)<br><i>Provides asynchronous system-level access to read and write clipboard data.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>navigator.clipboard.writeText()</code></a> (2020, Safe)<br><i>Asynchronously writes plain text directly to the system clipboard.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>matchMedia()</code></a> (with addEventListener: 2020, Safe)<br><i>Evaluates CSS media queries programmatically and listens for viewport/state changes.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>EventTarget</code></a> (standalone constructor: 2021, Safe)<br><i>Constructible native base to implement custom event-driven publish/subscribe architectures.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>AbortController</code></a> (event listener signal support: 2021, Safe)<br><i>Cancels async tasks (e.g., fetch) and cleans up event listeners via AbortSignal.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>structuredClone()</code></a> (2022, Safe)<br><i>Creates deep copies of JavaScript objects, cyclic references, and complex data types.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>HTMLDialogElement.showModal()</code></a> (2022, Safe)<br><i>Opens a &lt;dialog&gt; as a top-layer modal with native backdrop and focus containment.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Array.toSorted()</code></a> (2023)<br><i>Returns a new sorted copy of an array without mutating the original reference.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Array.toReversed()</code></a> (2023)<br><i>Returns a new reversed copy of an array without mutating the original reference.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Intl.Segmenter</code></a> (2024)<br><i>Performs locale-aware text segmentation into graphemes, words, or sentences.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse_static" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>URL.canParse()</code></a> (2024)<br><i>Returns a boolean indicating whether a string is a valid, parseable absolute/relative URL.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>navigator.clipboard.readText()</code></a> (2024)<br><i>Asynchronously resolves with the textual contents of the system clipboard.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent" target="_blank" rel="noopener noreferrer"><code>CustomEvent</code></a> (2015, Safe)<br><i>Creates synthetic DOM events capable of transmitting payload data via the detail property.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank" rel="noopener noreferrer"><code>Intl</code></a> (2015, Safe)<br><i>Provides language-sensitive string comparison, number, currency, and date/time formatting.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import" target="_blank" rel="noopener noreferrer"><code>import()</code></a> (2020, Safe)<br><i>Dynamically and asynchronously loads ECMAScript modules on demand.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver" target="_blank" rel="noopener noreferrer"><code>ResizeObserver</code></a> (2020, Safe)<br><i>Monitors and reports changes to the content or border-box dimensions of DOM elements.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API" target="_blank" rel="noopener noreferrer"><code>Clipboard API</code></a> (2020, Safe)<br><i>Provides asynchronous system-level access to read and write clipboard data.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText" target="_blank" rel="noopener noreferrer"><code>navigator.clipboard.writeText()</code></a> (2020, Safe)<br><i>Asynchronously writes plain text directly to the system clipboard.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia" target="_blank" rel="noopener noreferrer"><code>matchMedia()</code></a> (with addEventListener: 2020, Safe)<br><i>Evaluates CSS media queries programmatically and listens for viewport/state changes.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="noopener noreferrer"><code>EventTarget</code></a> (standalone constructor: 2021, Safe)<br><i>Constructible native base to implement custom event-driven publish/subscribe architectures.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener noreferrer"><code>AbortController</code></a> (event listener signal support: 2021, Safe)<br><i>Cancels async tasks (e.g., fetch) and cleans up event listeners via AbortSignal.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone" target="_blank" rel="noopener noreferrer"><code>structuredClone()</code></a> (2022, Safe)<br><i>Creates deep copies of JavaScript objects, cyclic references, and complex data types.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal" target="_blank" rel="noopener noreferrer"><code>HTMLDialogElement.showModal()</code></a> (2022, Safe)<br><i>Opens a &lt;dialog&gt; as a top-layer modal with native backdrop and focus containment.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" target="_blank" rel="noopener noreferrer"><code>Array.toSorted()</code></a> (2023)<br><i>Returns a new sorted copy of an array without mutating the original reference.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed" target="_blank" rel="noopener noreferrer"><code>Array.toReversed()</code></a> (2023)<br><i>Returns a new reversed copy of an array without mutating the original reference.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter" target="_blank" rel="noopener noreferrer"><code>Intl.Segmenter</code></a> (2024)<br><i>Performs locale-aware text segmentation into graphemes, words, or sentences.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse_static" target="_blank" rel="noopener noreferrer"><code>URL.canParse()</code></a> (2024)<br><i>Returns a boolean indicating whether a string is a valid, parseable absolute/relative URL.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText" target="_blank" rel="noopener noreferrer"><code>navigator.clipboard.readText()</code></a> (2024)<br><i>Asynchronously resolves with the textual contents of the system clipboard.</i></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <br><h3 class="auto-font-size-3">HTML &amp; Web Components</h3>
+                                <br><h3>HTML &amp; Web Components</h3>
                                 <ul role="list" class="lines lines-condensed">
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Shadow DOM</code></a> (v1 standard: 2020, Safe)<br><i>Encapsulates DOM trees and CSS scope inside self-contained web components and dom elements.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Web Components</code></a> (Custom Elements v1: 2020, Safe)<br><i>Standards-based APIs for registering and creating custom, reusable HTML tags.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>&lt;dialog&gt;</code></a> (2022, Safe)<br><i>Native semantic HTML element for interactive dialogs, modals, and alerts.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>&lt;img loading="lazy"&gt;</code></a> (2022, Safe)<br><i>Defers image downloading until the element approaches the calculated viewport margin.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>inert</code></a> (2023)<br><i>Removes an entire DOM subtree from user interaction, tab order, and the accessibility tree.</i></li>
-                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API" target="_blank" rel="noopener noreferrer" class="no-default-arrow"><code>Popover API</code></a> (2025)<br><i>Provides native top-layer overlays with built-in light-dismiss and focus management.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM" target="_blank" rel="noopener noreferrer"><code>Shadow DOM</code></a> (v1 standard: 2020, Safe)<br><i>Encapsulates DOM trees and CSS scope inside self-contained web components and DOM elements.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank" rel="noopener noreferrer"><code>Web Components</code></a> (Custom Elements v1: 2020, Safe)<br><i>Standards-based APIs for registering and creating custom, reusable HTML tags.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank" rel="noopener noreferrer"><code>&lt;dialog&gt;</code></a> (2022, Safe)<br><i>Native semantic HTML element for interactive dialogs, modals, and alerts.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank" rel="noopener noreferrer"><code>&lt;img loading="lazy"&gt;</code></a> (2022, Safe)<br><i>Defers image downloading until the element approaches the calculated viewport margin.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert" target="_blank" rel="noopener noreferrer"><code>inert</code></a> (2023)<br><i>Removes an entire DOM subtree from user interaction, tab order, and the accessibility tree.</i></li>
+                                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API" target="_blank" rel="noopener noreferrer"><code>Popover API</code></a> (2025)<br><i>Provides native top-layer overlays with built-in light-dismiss and focus management.</i></li>
                                 </ul>
                             </li>
                         </ul>
                         <hr>
                         <div>
-                            <strong>Together, aforementioned native primitives close the gap between what frameworks traditionally abstract and what the browser already provides, <i>without a single dependency, build step, or bundler</i>.</strong>
+                            <strong>Together, the aforementioned native primitives close the gap between what frameworks traditionally abstract and what the browser already provides, <i>without a single dependency, build step, or bundler</i>.</strong>
                         </div>
                     </div>
-                    <h2 class="auto-font-size-2">Upcoming Article</h2>
-                    <h3 class="auto-font-size-3">Steps to Bypass / Between Points 3 and 4</h3>
-                    <p>Point 3 bridges development with bundling (Point 4) — covered in the upcoming article, since it depends on that transition.</p>
-                    <p><strong>Key points and bypasses covered in the next article</strong> are bundling (point 4), the interpreter (point 5), and the end user (point 6), where additional tooling is optional.</p>
+                    <h2>Upcoming Article</h2>
+                    <h3>Steps to Bypass / Between Points 3 and 4</h3>
+                    <p>Point 3 bridges development with bundling (Point 4)—covered in the upcoming article, since it depends on that transition.</p>
+                    <p><strong>Key points and bypasses covered in the next article</strong> are bundling (Point 4), the interpreter (Point 5), and the end user (Point 6), where additional tooling is optional.</p>
                     <hr>
-                    <em id="EXT" aria-label="Extension footnote"><a class="no-default-arrow" href="#EXT"><sup>EXT</sup></a><strong>AN EXTENSION</strong> of the main <a class="no-default-arrow" href="https://estructura.okzgn.com/">Runtime-Type-Driven Multiple Dispatch JS Framework</a> implementation as a TypeScript compile-time alternative using ES3+, maintained by this article's author.</em>
-                    <em id="POC" aria-label="Proof of Concept footnote"><a class="no-default-arrow" href="#POC"><sup>POC</sup></a><strong>PROOF OF CONCEPT</strong>, a small-scale demonstration designed to verify that a specific technical idea or theory is feasible and actually works in real life.</em>
-                    <em id="GIT" aria-label="GitHub footnote"><a class="no-default-arrow" href="#GIT"><sup>GIT</sup></a><strong>GITHUB</strong> public repository of implementation shown as demonstration.</em>
+                    <em id="EXT" aria-label="Extension footnote"><a href="#EXT"><sup>EXT</sup></a><strong>AN EXTENSION</strong> of the main <a href="https://estructura.okzgn.com/">Runtime-Type-Driven Multiple Dispatch JS Framework</a> implementation as a TypeScript compile-time alternative using ES3+, maintained by this article's author.</em>
+                    <em id="POC" aria-label="Proof of Concept footnote"><a href="#POC"><sup>POC</sup></a><strong>PROOF OF CONCEPT</strong>, a small-scale demonstration designed to verify that a specific technical idea or theory is feasible and actually works in real life.</em>
+                    <em id="GIT" aria-label="GitHub footnote"><a href="#GIT"><sup>GIT</sup></a><strong>GITHUB</strong> public repository of implementation shown as demonstration.</em>
                 </div>
             </article>
 		</div>
 	</main>
 
-	<footer>
-	    &copy; 2026 <a class="no-default-arrow" href="https://okzgn.com">OKZGN</a>
+	<footer class="site-footer" data-nosnippet>
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-brand">
+					<img src="../../okzgn_logo_desktop.svg" width="299" height="71" alt="OKZGN logotype" loading="lazy" decoding="async">
+					<p>Applied AI, Platform &amp; Software Engineering</p><small>&copy; 2026 OKZGN</small>
+				</div>
+				<div class="footer-col">
+					<h2>Explore</h2>
+					<ul role="list">
+						<li><a href="/#articles">Articles</a></li>
+						<li><a href="/#services">Services</a></li>
+						<li><a href="/#projects">Projects</a></li>
+						<li><a href="/#contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Resources</h2>
+					<ul role="list">
+						<li><a href="/service-specifications/">Service Specifications</a></li>
+						<li><a href="/projects/all-open-source-projects/">All Open Source Projects</a></li>
+						<li><a href="/privacy/">Privacy Statement</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Connect</h2>
+					<ul role="list">
+						<li><a href="https://github.com/okzgn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+						<li><a href="https://www.npmjs.com/~elias_a_soshina" target="_blank" rel="noopener noreferrer">npm</a></li>
+						<li><a href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
+						<li><a href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</footer>
 
-	<a id="up" class="round-button" href="#" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+	<button data-nosnippet id="up" class="round-button" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
         </svg>
-    </a>
+    </button>
 
-	<div class="bg"></div>
-	<div class="bg bg-2"></div>
-	<div class="bg bg-3"></div>
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.12.0/build/styles/vs-dark.min.css">
 	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.12.0/build/highlight.min.js"></script>
 </body>
 </html>

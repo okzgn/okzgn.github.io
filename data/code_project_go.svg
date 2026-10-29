@@ -3,7 +3,8 @@
     .ic  { fill:none; stroke:#c6460c; stroke-width:3.876543210; stroke-linecap:round; stroke-linejoin:round }
     .lbl {
       font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-weight:700; fill:#c6460c; text-anchor:middle; dominant-baseline:central; letter-spacing:-0.5px
+      font-weight:700; fill:#c6460c; text-anchor:middle; dominant-baseline:central; letter-spacing:-0.5px;
+      stroke:#c6460c; stroke-width:1.1; stroke-linejoin:round; paint-order:stroke
     }
     .lbl2 { letter-spacing: 1px; }
   </style>

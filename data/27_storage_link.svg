@@ -1,19 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-    <style>
+  <style>
     .ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
     .ic2{stroke-width:calc(3.876543210 * 0.5);}
-    </style>
+    </style><g transform="translate(6.713,7.3689) scale(0.8199)">
+    
     <g transform="translate(-35, 0) scale(1.68, 2.2)">
         <g>
-            <path d="M 32 22 C 24 22 22 19 22 15 C 22 9 30 7 35 10 C 38 2 52 2 55 10 C 60 7 68 9 68 15 C 68 19 66 22 58 22 Z" class="ic ic2"/>
+            <path d="M 32 22 C 24 22 22 19 22 15 C 22 9 30 7 35 10 C 38 2 52 2 55 10 C 60 7 68 9 68 15 C 68 19 66 22 58 22 Z" class="ic ic2" style="stroke-width:calc(3.876543210 * 0.6344)"/>
         </g>
     </g>
 
-    <line x1="41" y1="30" x2="41" y2="54" class="ic" />
-    <polyline points="31, 40 41, 30 51,40" class="ic"/>
+    <line x1="41" y1="30" x2="41" y2="54" class="ic" style="stroke-width:calc(3.876543210 * 1.2197)"/>
+    <polyline points="31, 40 41, 30 51,40" class="ic" style="stroke-width:calc(3.876543210 * 1.2197)"/>
 
-    <line x1="18" y1="57" x2="65" y2="57" class="ic ic2" stroke-dasharray="5,5" />
-    <line x1="16" y1="62" x2="67" y2="62" class="ic ic2" stroke-dasharray="6,5" />
-    <line x1="14" y1="67" x2="69" y2="67" class="ic ic2" stroke-dasharray="7,5" />
-    <line x1="12" y1="72" x2="71" y2="72" class="ic ic2" stroke-dasharray="8,5" />
+    <line x1="18" y1="57" x2="65" y2="57" class="ic ic2" stroke-dasharray="6.1,6.1" style="stroke-width:calc(3.876543210 * 0.6098)"/>
+    <line x1="16" y1="62" x2="67" y2="62" class="ic ic2" stroke-dasharray="7.32,6.1" style="stroke-width:calc(3.876543210 * 0.6098)"/>
+    <line x1="14" y1="67" x2="69" y2="67" class="ic ic2" stroke-dasharray="8.54,6.1" style="stroke-width:calc(3.876543210 * 0.6098)"/>
+    <line x1="12" y1="72" x2="71" y2="72" class="ic ic2" stroke-dasharray="9.76,6.1" style="stroke-width:calc(3.876543210 * 0.6098)"/>
+</g>
 </svg>

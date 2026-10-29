@@ -80,8 +80,8 @@ function showProjects(container, responseContainer, projects){
   responseContainer.classList.add('hidden');
   container.textContent = '';
 
-  createProjectsLinks('Modern projects', container, projects, [], ['website', 'software-preservation']);
-  createProjectsLinks('Old projects', container, projects, ['software-preservation'], ['website'], true);
+  createProjectsLinks('Modern Projects', container, projects, [], ['website', 'software-preservation']);
+  createProjectsLinks('Old Projects', container, projects, ['software-preservation'], ['website'], true);
 
   if (typeof window['_TOC_OBSERVER_RESET'] === 'function'){
     window['_TOC_OBSERVER_RESET']();
@@ -93,7 +93,6 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
     container = document.createElement('ul'),
     sectionItem = document.createElement('h2');
 
-  sectionItem.className = 'auto-font-size-2';
   sectionItem.textContent = title;
 
   container.className = 'projects-list';
@@ -131,13 +130,13 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
 
     titleBoxItem.id = projects[i].name;
 
-    titleItem.className = 'link';
+    titleItem.className = 'link pill-link';
     titleItem.textContent = projects[i].name;
     titleItem.href = projects[i].html_url;
     titleItem.target = "_blank";
     titleItem.rel = "noopener noreferrer";
 
-    languageItem.className = 'language';
+    languageItem.className = 'tag language';
     languageItem.textContent = projects[i].language;
 
     detailsItem.className = 'details rounded-box';
@@ -149,7 +148,7 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
 
     while(k--){
       var topicItem = document.createElement('code');
-      topicItem.className = 'topic';
+      topicItem.className = 'tag topic';
       topicItem.textContent = filteredTopics[k];
       detailsItem.appendChild(topicItem);
     }
@@ -157,7 +156,7 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
     descriptionItem.setAttribute('tabindex', '0');
     descriptionItem.setAttribute('role', 'button');
     descriptionItem.setAttribute('aria-expanded', 'false');
-    descriptionItem.className = 'description collapsed';
+    descriptionItem.className = 'description badge-marker collapsed';
     descriptionItem.textContent = projects[i].description;
     descriptionItem.addEventListener('click', toggleDescription);
     descriptionItem.addEventListener('keydown', toggleByKeyboard);

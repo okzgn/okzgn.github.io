@@ -1,15 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
-  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.2);stroke-linecap:round;stroke-linejoin:round}
-  </style>
+  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.25);stroke-linecap:round;stroke-linejoin:round}
+  </style><g transform="translate(0.6,0.6)">
+  
     <g transform="translate(9, 9) scale(0.8)">
-      <rect x="8" y="8" width="64" height="64" rx="5" class="ic" />
-      <rect x="22" y="4" width="16" height="8" rx="2" class="ic" />
-      <rect x="42" y="4" width="16" height="8" rx="2" class="ic" />
-      <rect x="4" y="22" width="8" height="16" rx="2" class="ic" />
-      <rect x="4" y="42" width="8" height="16" rx="2" class="ic" />
-      <line x1="40" y1="30" x2="40" y2="50" class="ic" />
-      <line x1="30" y1="40" x2="50" y2="40" class="ic" />
+      <rect x="8" y="8" width="64" height="64" rx="5" class="ic"/>
+      <rect x="22" y="4" width="16" height="8" rx="2" class="ic"/>
+      <rect x="42" y="4" width="16" height="8" rx="2" class="ic"/>
+      <rect x="4" y="22" width="8" height="16" rx="2" class="ic"/>
+      <rect x="4" y="42" width="8" height="16" rx="2" class="ic"/>
+      <line x1="40" y1="30" x2="40" y2="50" class="ic"/>
+      <line x1="30" y1="40" x2="50" y2="40" class="ic"/>
     </g>
 
-  </svg>
+  </g>
+</svg>

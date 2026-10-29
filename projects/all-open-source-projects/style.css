@@ -1,150 +1,192 @@
+/* Open source projects: repository cards in a grid. */
+
 .hidden { display: none; }
-.repositories strong {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-}
+
 .projects-response.error, .projects-response.loading {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--danger);
+    background: var(--surface-2);
+    color: var(--danger);
     font-weight: bold;
-    padding: 0.5rem 1rem;
-    background: #c00;
-    color: var(--white);
-    border-radius: 1rem;
 }
+
 .projects-response.loading {
-    background: var(--blue);
+    border-left-color: var(--blue);
+    color: var(--blue);
 }
+
 .projects-response.loading::before,
 .projects-response.loading::after {
     content: '';
     display: inline-block;
-    width: 0.25rem;
-    height: 0.25rem;
-    background: var(--white);
-    border-radius: 0.125rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background: currentColor;
     position: relative;
     left: 0;
+    vertical-align: middle;
 }
+
 .projects-response.loading::before {
     animation: pow 2s ease-in-out infinite alternate;
     animation-delay: 1s;
-    margin-right: 0.5rem;
+    margin-right: var(--space-2);
 }
+
 .projects-response.loading::after {
     animation: pow 2s ease-in-out infinite alternate;
     animation-delay: 2s;
-    margin-left: 0.5rem;
+    margin-left: var(--space-2);
 }
-@keyframes pow {
-    100% {
-        left: 50%;
-        background: var(--white);
-    }
-}
-.projects-container .total {
-    display: block;
-    margin: 0.5rem 0 1.25rem 0;
-    color: var(--accentDark2);
-}
-.projects-container .total b {
-    display: inline-block;
-    margin-left: 0.5rem;
 
+@keyframes pow {
+    100% { left: 50%; }
 }
+
+.projects-container h2 {
+    font-size: var(--fs-2xl);
+}
+
+.projects-container .total {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1-5);
+    margin-top: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--r-full);
+    background: var(--accentTint);
+    color: var(--accentText);
+    font-size: var(--fs-sm);
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-6) 0 var(--space-4);
+}
+
 .projects-list li {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
     display: flex;
     flex-flow: column;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-5);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
 }
-.projects-list h3 { text-shadow: unset; }
+
+.projects-list li:hover,
+.projects-list li:focus-within {
+    border-color: var(--border-strong);
+    background: var(--surface);
+    box-shadow: var(--sh-1);
+}
+
+.projects-list h3 {
+    margin: 0;
+    font-size: var(--fs-base);
+}
+
 .projects-list .link {
-    align-self: flex-start;
-    font-weight: bold;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .projects-list .description {
-    margin: 0.5rem 0;
+    display: block;
+    color: var(--text);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
     cursor: pointer;
-    word-break: normal;
 }
-.projects-list .description:focus-visible {
-    margin: 0.5rem 0;
-    cursor: pointer;
-    word-break: normal;
-    outline: 2px solid var(--blueDark);
-    outline-offset: 2px;
-    border-radius: 1rem;
+
+.projects-list .description.collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
 }
+
+.projects-list .description:hover {
+    color: var(--ink);
+}
+
+/* Expand/collapse toggle drawn by the shared .badge-marker; expanded = open. */
 .projects-list .description::before {
-    content: '—';
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.5rem;
-    background: var(--softShadow);
-    color: var(--blue);
-    margin-right: 0.5rem;
-    flex-shrink: 0;
+    margin: calc(var(--space-1) * -1) var(--space-2) 0 0;
+    vertical-align: middle;
 }
-@media (prefers-color-scheme: dark) {
-    .projects-list .description::before {
-        background: var(--whiteTransparent2);
-        color: var(--white);
-    }
-    .projects-response.loading {
-        background: var(--themeColor);
-    }
-    .projects-response.loading::before,
-    .projects-response.loading::after {
-        background: var(--white);
-    }
+
+.projects-list .description:not(.collapsed)::before {
+    color: var(--on-accent);
+    border-color: var(--accentDark2);
+    background:
+        linear-gradient(currentColor, currentColor) center / 0.5625rem 1.5px no-repeat,
+        var(--accentDark2);
 }
-.projects-list .description.collapsed::before {
-    content: '+';
-}
-.projects-list .description:hover,
-.projects-list .description:active {
-    text-decoration: underline;
-}
-.projects-list .language {
-    margin-right: 0.5rem;
-    color: var(--accentDark3);
-    font-size: 0.95rem;
-}
-.projects-list .language,
-.projects-list .topic {
-    padding: 0.25rem 0.5rem;
-    font-weight: bold;
-    transition: 0.125s all;
-}
-.projects-list .topic {
-    font-size: 0.8rem;
-    align-self: center;
-}
-.projects-list .language:hover,
-.projects-list .topic:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
+
 .projects-list .details {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-1-5);
+    margin: auto 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    overflow: visible;
 }
-.repositories-urls h2 { margin-bottom: 1rem; }
+
+.projects-list .tag {
+    font-family: var(--mainFont), sans-serif;
+}
+
+.projects-list .tag.language {
+    color: var(--ink);
+}
+
+.projects-list .tag.language::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.repositories-urls {
+    font-size: var(--fs-md);
+    margin-top: var(--space-4);
+}
+
+.repositories-urls h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--space-5);
+}
+
+.repositories li + li {
+    margin-top: var(--space-5);
+}
+
+.repositories strong {
+    display: inline-block;
+    margin-bottom: var(--space-2);
+    color: var(--ink);
+}
+
+.repositories .cta-button {
+    white-space: normal;
+}
+
 @media screen and (max-width: 640px) {
     .repositories-urls a {
         word-break: break-all;
-    }
-}
-@media (prefers-color-scheme: dark) {
-    .projects-container .total {
-        color: var(--themeColor);
-    }
-    .projects-list .language {
-        color: var(--themeColor2);
-        background: var(--ghostBlueWhite3);
     }
 }

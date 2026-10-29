@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
-  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.125);stroke-linecap:round;stroke-linejoin:round}
+  .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.1428);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
-  </style>
+  </style><g transform="translate(-1.5,0)">
+  
   <g transform="translate(10,5) scale(0.875)">
     <rect x="4" y="4" width="60" height="44" rx="6" class="ic"/>
     <g transform="translate(1,0)">
@@ -15,4 +16,5 @@
     <line x1="57" y1="67" x2="63" y2="67" class="ic" stroke-width="1.3"/>
     <polyline points="44,68 47,72 54,61" class="ic" stroke-width="1.6"/>
   </g>
+</g>
 </svg>

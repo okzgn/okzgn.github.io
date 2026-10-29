@@ -13,7 +13,7 @@
 	<meta name="robots" content="index, follow, max-image-preview:large">
 	<meta name="author" content="OKZGN">
 
-	<meta name="theme-color" content="#ffdbb8" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#000d1a" media="(prefers-color-scheme: dark)">
 
 	<meta name="format-detection" content="telephone=no">
@@ -60,22 +60,37 @@
 	</script>
 </head>
 <body>
-	<header data-nosnippet>
-		<div class="logo"><a class="no-default arrow-reverse" href="https://okzgn.com"><img src="../icon.png" alt="OKZGN Isotype"></a></div>
+	<a href="#content" class="cta-button skip-link">Skip to content</a>
+	<header class="site-header" data-nosnippet>
+		<div class="container site-header-inner">
+			<a class="brand" href="/" aria-label="OKZGN home"><img src="../okzgn_logo_desktop.svg" width="299" height="71" alt="OKZGN logotype"></a>
+			<nav class="site-nav" id="site-nav" aria-label="Main">
+				<a href="/#articles">Articles</a>
+				<a href="/#services">Services</a>
+				<a href="/#projects">Projects</a>
+				<a href="/#contact">Contact</a>
+			</nav>
+			<a class="cta-button btn-sm site-cta" href="/#contact"><span>Book a Consult</span></a>
+			<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"></button>
+		</div>
 	</header>
-	<nav data-nosnippet>
-		<div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
-		<button id="menu" class="round-button" aria-label="Open menu" aria-expanded="false"></button>
-		<div class="menu-list menu-list-levels"><ol class="container auto-x-padding"></ol></div>
-	</nav>
-	<main class="auto-y-tiny-padding">
-		<div class="container auto-x-tiny-padding">
-			<h1 class="main-title auto-font-size auto-padding">Privacy Statement</h1>
+	<main id="content" class="page">
+		<div class="container page-hero">
+			<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a></nav>
+			<h1 class="main-title display">Privacy Statement</h1>
+			<p class="lead">Zero tracking, no cookies, hardened infrastructure, and client-side memory execution by design.</p>
+		</div>
+		<div class="container page-layout">
+			<nav class="toc" data-nosnippet aria-label="Table of contents">
+				<div class="nav-title" aria-live="polite" aria-atomic="true">Table of Contents</div>
+				<button id="menu" type="button" aria-label="Open menu" aria-expanded="false"></button>
+				<div class="menu-list"><ol></ol></div>
+			</nav>
 			<article class="card">
-				<div class="auto-x-padding paragraphs">
-					<p>Thanks for visiting the website and taking a moment to review privacy and security handling across platforms. As an engineering practice focused on high-performance architecture, applied AI, and clean software standards, privacy is an architectural requirement, not an afterthought.</p>
+				<div class="paragraphs">
+					<p>Thanks for visiting the website and taking a moment to review privacy and security handling across platforms. As an engineering practice focused on high-performance architecture, applied AI, and clean software standards, OKZGN treats privacy as an architectural requirement, not an afterthought.</p>
 
-					<h2 class="auto-font-size-2">Zero Tracking & No Cookies Policy</h2>
+					<h2>Zero Tracking & No Cookies Policy</h2>
 					<p><b>Cookies of any kind are not used.</b></p>
 					<ul class="lines">
 						<li>No tracking cookies, no session cookies, no profiling, and no third-party marketing beacons.</li>
@@ -83,51 +98,87 @@
 						<li>No browser or device fingerprinting.</li>
 					</ul>
 
-					<h2 class="auto-font-size-2">Infrastructure & Delivery</h2>
+					<h2>Infrastructure & Delivery</h2>
 					<ul class="lines">
 						<li><b>Static & Deterministic Delivery:</b> The frontend is delivered with standard web primitives (HTML5, CSS3, and modern vanilla JavaScript) over a hardened HTTPS configuration enforced with a strict Content Security Policy (<code>CSP</code>).</li>
-						<li><b>Edge & Proxy Security:</b> When traffic routes through edge caching or proxy networks (such as Cloudflare or dedicated edge nodes), requests are processed strictly for delivery acceleration and security (mitigating DDoS and malicious automated attacks). No persistent user-tracking identifiers are attached to the user visits or sessions.</li>
+						<li><b>Edge & Proxy Security:</b> When traffic routes through edge caching or proxy networks (such as Cloudflare or dedicated edge nodes), requests are processed strictly for delivery acceleration and security (mitigating DDoS and malicious automated attacks). No persistent user-tracking identifiers are attached to user visits or sessions.</li>
 					</ul>
 
-					<h2 class="auto-font-size-2">Client-Side Operations & Cart State</h2>
-					<p>Any dynamic state on this website (such as the on-page service cart or interface state) is handled <b>strictly client-side</b> in the user's device memory, without transmitting or persisting unsubmitted cart interactions or form states to any remote database.</p>
+					<h2>Client-Side Operations & Cart State</h2>
+					<p>Any dynamic state on this website (such as the on-page service cart or interface state) is handled <b>strictly client-side</b>, without transmitting or persisting unsubmitted cart interactions or form states to any remote database.</p>
+					<ul class="lines">
+						<li><b>Cart Session:</b> Selected services, the billing mode, and the optional client name are kept in the browser's <code>sessionStorage</code> on your device, so the cart survives page reloads. This data is discarded when the browser tab is closed and cleared after a successful inquiry submission.</li>
+						<li><b>Projects Cache:</b> The open source projects page requests the public repository list from the GitHub API (<code>api.github.com</code>) directly from your browser, and caches the response in <code>localStorage</code> for up to 24 hours to avoid repeated requests. As with any direct request, GitHub receives standard connection metadata (such as IP address and user agent) under its own privacy policy.</li>
+					</ul>
 
-					<h2 class="auto-font-size-2">Direct Communication & Data Exchange</h2>
+					<h2>Direct Communication & Data Exchange</h2>
 					<p>When reaching out via direct channels:</p>
 					<ul class="lines">
 						<li>You directly control what information is shared.</li>
+						<li><b>Project Inquiry Form:</b> On submission, the entered details (name, work email, company, phone, service of interest, engagement model, and project details), along with the selected cart services, the page address, the referring page, the browser language, and a timestamp, are sent over HTTPS to <code>inquiry.okzgn.com</code> and used solely to evaluate and respond to the inquiry.</li>
+						<li><b>WhatsApp & Email:</b> Messages sent through WhatsApp or email are also handled by those providers under their own privacy policies.</li>
 						<li>Any technical context, architectural requirements, or specifications provided are treated as strictly confidential and used solely to evaluate, scope, and execute your project or support inquiry.</li>
 						<li>Use pseudonyms or sanitized code samples if your organization requires strict privacy constraints.</li>
 					</ul>
 
-					<h2 class="auto-font-size-2">Server Logs & Maintenance</h2>
-					<p>Standard web server access logs (used strictly to monitor system availability, diagnose technical faults, and defend against malicious traffic) retain minimal technical metadata and are routinely purged/rotated, without correlating logs with identifiable personal identities.</p>
+					<h2>Server Logs & Maintenance</h2>
+					<p>Standard web server access logs (used strictly to monitor system availability, diagnose technical faults, and defend against malicious traffic) retain minimal technical metadata and are routinely rotated and purged, without correlating logs with personal identities.</p>
 
-					<h2 class="auto-font-size-2">Contact</h2>
-					<p>If you have specific security, NDA, or compliance requirements (such as isolated private cloud environments or on-premise model deployments), specify these requirements when initiating contact to accommodate your architecture.</p>
+					<h2>Contact</h2>
+					<p>If you have specific security, NDA, or compliance requirements (such as isolated private cloud environments or on-premises model deployments), specify these requirements when initiating contact to accommodate your architecture.</p>
 					<ul class="lines">
-						<li><b>Assistant:</b> <a class="no-default-arrow" href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">James Smith</a></li>
-						<li><b>Email:</b> <a class="no-default-arrow" href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
-						<li><b>Inquiries:</b> <a class="no-default-arrow" href="https://okzgn.com/#contact">https://okzgn.com/#contact</a></li>
+						<li><b>AI Assistant:</b> <a href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+						<li><b>Email:</b> <a href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
+						<li><b>Inquiries:</b> <a href="https://okzgn.com/#contact">https://okzgn.com/#contact</a></li>
 					</ul>
 				</div>
 			</article>
 		</div>
 	</main>
 
-	<footer>
-		&copy; 2026 <a class="no-default-arrow" href="https://okzgn.com">OKZGN</a>
+	<footer class="site-footer" data-nosnippet>
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-brand">
+					<img src="../okzgn_logo_desktop.svg" width="299" height="71" alt="OKZGN logotype" loading="lazy" decoding="async">
+					<p>Applied AI, Platform &amp; Software Engineering</p><small>&copy; 2026 OKZGN</small>
+				</div>
+				<div class="footer-col">
+					<h2>Explore</h2>
+					<ul role="list">
+						<li><a href="/#articles">Articles</a></li>
+						<li><a href="/#services">Services</a></li>
+						<li><a href="/#projects">Projects</a></li>
+						<li><a href="/#contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Resources</h2>
+					<ul role="list">
+						<li><a href="/service-specifications/">Service Specifications</a></li>
+						<li><a href="/projects/all-open-source-projects/">All Open Source Projects</a></li>
+						<li><a href="/privacy/">Privacy Statement</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Connect</h2>
+					<ul role="list">
+						<li><a href="https://github.com/okzgn" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+						<li><a href="https://www.npmjs.com/~elias_a_soshina" target="_blank" rel="noopener noreferrer">npm</a></li>
+						<li><a href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
+						<li><a href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</footer>
 
-	<a id="up" class="round-button" href="#" aria-label="Back to top">
-		<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+	<button data-nosnippet id="up" class="round-button" type="button" aria-label="Back to top">
+		<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
 			<line x1="12" y1="19" x2="12" y2="5"></line>
 			<polyline points="5 12 12 5 19 12"></polyline>
 		</svg>
-	</a>
+	</button>
 
-	<div class="bg"></div>
-	<div class="bg bg-2"></div>
-	<div class="bg bg-3"></div>
 </body>
 </html>

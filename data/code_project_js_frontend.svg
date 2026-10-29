@@ -4,7 +4,8 @@
     .icl { fill:none; stroke:#c6460c; stroke-linecap:round; stroke-linejoin:round }
     .lbl {
       font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-weight:700; fill:#c6460c; text-anchor:middle; dominant-baseline:central; letter-spacing:-0.5px
+      font-weight:700; fill:#c6460c; text-anchor:middle; dominant-baseline:central; letter-spacing:-0.5px;
+      stroke:#c6460c; stroke-width:1.1; stroke-linejoin:round; paint-order:stroke
     }
     .lbl2 { letter-spacing: 1px; }
   </style>
@@ -15,10 +16,10 @@
     <text x="39" y="32" class="lbl lbl2" font-size="10">script</text>
     <text x="47" y="51" class="lbl lbl2" font-size="16">JS</text>
     <g transform="translate(-30, 0)">
-      <polyline points="48,28 44,31 48,34" class="icl" stroke-width="1.2"/>
+      <polyline points="48,28 44,31 48,34" class="icl" stroke-width="2.35"/>
     </g>
     <g transform="translate(6, 0)">
-      <polyline points="53,28 57,31 53,34" class="icl" stroke-width="1.2"/>
+      <polyline points="53,28 57,31 53,34" class="icl" stroke-width="2.35"/>
     </g>
   </g>
 </svg>

@@ -2,22 +2,24 @@
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.11);stroke-linecap:round;stroke-linejoin:round}
   .ic2{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * (1.45 + 0.11));stroke-linecap:round;stroke-linejoin:round}
-  </style>
+  </style><g transform="translate(0.4,0.7)">
+  
   <g transform="translate(4.0212, 9.0190) scale(0.89)">
-    <rect x="4" y="4" width="72" height="60" rx="6" class="ic"/>
-    <line x1="4" y1="18" x2="76" y2="18" class="ic"/>
-    <circle cx="14" cy="11" r="3" class="ic"/>
-    <circle cx="24" cy="11" r="3" class="ic"/>
+    <rect x="4" y="4" width="72" height="60" rx="6" class="ic" style="stroke-width:calc(3.876543210 * 1.1236)"/>
+    <line x1="4" y1="18" x2="76" y2="18" class="ic" style="stroke-width:calc(3.876543210 * 1.1236)"/>
+    <circle cx="14" cy="11" r="3" class="ic" style="stroke-width:calc(3.876543210 * 1.1236)"/>
+    <circle cx="24" cy="11" r="3" class="ic" style="stroke-width:calc(3.876543210 * 1.1236)"/>
 
     <g transform="translate(19, 21) scale(0.55)">
-        <rect x="28" y="4" width="24" height="18" rx="4" class="ic2"/>
-        <line x1="40" y1="22" x2="40" y2="38" class="ic2"/>
-        <line x1="16" y1="38" x2="64" y2="38" class="ic2"/>
-        <line x1="16" y1="38" x2="16" y2="50" class="ic2"/>
-        <line x1="40" y1="38" x2="40" y2="50" class="ic2"/>
-        <line x1="64" y1="38" x2="64" y2="50" class="ic2"/>
-        <rect x="-2" y="50" width="24" height="18" rx="4" class="ic2"/>
-        <rect x="28" y="50" width="24" height="18" rx="4" class="ic2"/>
-        <rect x="58" y="50" width="24" height="18" rx="4" class="ic2"/>
+        <rect x="28" y="4" width="24" height="18" rx="4" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <line x1="40" y1="22" x2="40" y2="38" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <line x1="16" y1="38" x2="64" y2="38" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <line x1="16" y1="38" x2="16" y2="50" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <line x1="40" y1="38" x2="40" y2="50" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <line x1="64" y1="38" x2="64" y2="50" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <rect x="-2" y="50" width="24" height="18" rx="4" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <rect x="28" y="50" width="24" height="18" rx="4" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
+        <rect x="58" y="50" width="24" height="18" rx="4" class="ic2" style="stroke-width:calc(3.876543210 * 2.0429)"/>
     </g>
-</g></svg>
+</g></g>
+</svg>

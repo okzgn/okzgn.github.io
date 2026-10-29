@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
-  </style>
+  </style><g transform="translate(1,0)">
+  
   <g transform="translate(0.5,1.5)">
     <circle cx="34" cy="34" r="24" class="ic"/>
     <circle cx="34" cy="34" r="0" class="ic"/>
@@ -10,4 +11,5 @@
     <line x1="20" y1="34" x2="44" y2="34" class="ic" stroke-width="1.5"/>
     <line x1="20" y1="42" x2="46" y2="42" class="ic" stroke-width="1.5"/>
     </g>
+</g>
 </svg>

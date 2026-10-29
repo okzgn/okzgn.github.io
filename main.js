@@ -10,7 +10,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var STORAGE_KEY = 'okzgn_cart_session';
 
-    var menuButton = document.getElementById('menu');
     var checkoutButton = document.getElementById('checkout');
     var cart = document.getElementById('cart');
     var cartList = document.getElementById('cart-list');
@@ -125,29 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     }
 
+    // The back to top button (main_commons.js) appears past the same offset; lift the cart above it.
     function updateUp() {
         var up = window.scrollY > 480;
         checkoutButton.classList.toggle('up', up);
         cart.classList.toggle('up', up);
     }
 
-    function toggleMenu() {
-        menuButton.classList.toggle('show', window.scrollY > 480);
-    }
-
-    window.addEventListener('scroll', function () {
-        toggleMenu();
-        updateUp();
-    }, { passive: true });
-    toggleMenu();
+    window.addEventListener('scroll', updateUp, { passive: true });
     updateUp();
-
-    menuButton.addEventListener('click', function () {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
 
     function isCartOpen() {
         return cart.classList.contains('open');
@@ -278,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
             + 'Status: Pending confirmation\n\n'
             + 'Services requested:\n'
             + lastOrderLines.join('\n') + '\n\n'
-            + 'Total: ' + lastOrderLines.length + (lastOrderLines.length === 1 ? ' item' : ' items') + '\n\n'
+            + 'Total: ' + lastOrderLines.length + (lastOrderLines.length === 1 ? ' service' : ' services') + '\n\n'
             + 'I would like to receive a formal proposal covering scope, estimated timeline, and commercial terms for the services above, and to know the next steps.';
         cartContact.href = WHATSAPP_URL + '?text=' + encodeURIComponent(message);
     }
@@ -290,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var revealParagraphs = document.querySelectorAll('.services > p, .services .category > p, #articles > p, #projects > p');
+    var revealParagraphs = document.querySelectorAll('.services .category > p');
     var HINT_GAP = 650;
     var HINT_HOLD = 1400;
     var hintQueueTail = 0;
@@ -468,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 Array.prototype.forEach.call(selectedItems(), deselect);
                 syncCount();
 
-                setFormStatus('ok', 'Inquiry sent. A response typically arrives within 1-2 business days.');
+                setFormStatus('ok', 'Inquiry sent. A response typically arrives within 1–2 business days.');
             }).catch(function () {
                 setFormStatus('err', 'Connection failed. Retry, or use WhatsApp or email.');
             }).then(function () {
