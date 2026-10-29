@@ -85,8 +85,8 @@
 .projects-list li:hover,
 .projects-list li:focus-within {
     border-color: var(--border-strong);
-    background: var(--surface);
-    box-shadow: var(--sh-1);
+    background: var(--card-fill-raised);
+    box-shadow: var(--sh-1), var(--card-shine);
 }
 
 .projects-list h3 {
@@ -94,10 +94,23 @@
     font-size: var(--fs-base);
 }
 
+/* Long names read from the start and are cut with an ellipsis at the end; the arrows stay whole. */
 .projects-list .link {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
     max-width: 100%;
+}
+
+.projects-list .link > span {
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.projects-list .link::before,
+.projects-list .link::after {
+    flex: none;
 }
 
 .projects-list .description {

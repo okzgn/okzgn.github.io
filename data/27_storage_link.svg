@@ -2,7 +2,8 @@
   <style>
     .ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
     .ic2{stroke-width:calc(3.876543210 * 0.5);}
-    </style><g transform="translate(6.713,7.3689) scale(0.8199)">
+    @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
+    .ic2{stroke-width:calc(3.876543210 * 0.5);}}</style><g transform="translate(6.713,7.3689) scale(0.8199)">
     
     <g transform="translate(-35, 0) scale(1.68, 2.2)">
         <g>

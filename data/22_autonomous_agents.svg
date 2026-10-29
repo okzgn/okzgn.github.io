@@ -2,7 +2,8 @@
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
   .ic2{stroke-width:calc(3.876543210 * 1.4);}
-  </style><g transform="translate(8.534,8.534) scale(0.7867)">
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
+  .ic2{stroke-width:calc(3.876543210 * 1.4);}}</style><g transform="translate(8.534,8.534) scale(0.7867)">
   
 
   <line x1="40" y1="0" x2="40" y2="10" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210 * 1.2712)"/>

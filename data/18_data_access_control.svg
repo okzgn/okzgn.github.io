@@ -2,7 +2,8 @@
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.0309);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
-  </style><g transform="translate(-0.7,-0.7)">
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.0309);stroke-linecap:round;stroke-linejoin:round}
+  .icf{fill:#8ac4ff;stroke:none}}</style><g transform="translate(-0.7,-0.7)">
   
   <g transform="translate(-2.0115,-0.0575) scale(0.97)">
   <circle cx="22" cy="28" r="10" class="ic"/>

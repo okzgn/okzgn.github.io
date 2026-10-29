@@ -19,8 +19,8 @@ details:hover {
 details[open] {
     padding-bottom: var(--space-5);
     border-color: var(--border-strong);
-    background: var(--surface);
-    box-shadow: var(--sh-1);
+    background: var(--card-fill-raised);
+    box-shadow: var(--sh-1), var(--card-shine);
 }
 
 summary {

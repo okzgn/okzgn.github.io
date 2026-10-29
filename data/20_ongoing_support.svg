@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.0282);stroke-linecap:round;stroke-linejoin:round}
-  </style><g transform="translate(1.2903,-1.4194) scale(0.9677)">
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.0282);stroke-linecap:round;stroke-linejoin:round}}</style><g transform="translate(1.2903,-1.4194) scale(0.9677)">
   
   <g transform="translate(-0.2367, 8.5988) scale(1.005)">
     <path d="M8 13 Q8 7 14 7 L66 7 Q72 7 72 13 L72 43 Q72 49 66 49 L36 49 L24 61 L24 49 L14 49 Q8 49 8 43 Z" class="ic"/>

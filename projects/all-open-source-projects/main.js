@@ -124,6 +124,7 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
       listItem = document.createElement('li'),
       titleBoxItem = document.createElement('h3'),
       titleItem = document.createElement('a'),
+      titleTextItem = document.createElement('span'),
       detailsItem = document.createElement('div'),
       languageItem = document.createElement('code'),
       descriptionItem = document.createElement('span');
@@ -131,7 +132,8 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
     titleBoxItem.id = projects[i].name;
 
     titleItem.className = 'link pill-link';
-    titleItem.textContent = projects[i].name;
+    titleTextItem.textContent = projects[i].name;
+    titleItem.appendChild(titleTextItem);
     titleItem.href = projects[i].html_url;
     titleItem.target = "_blank";
     titleItem.rel = "noopener noreferrer";

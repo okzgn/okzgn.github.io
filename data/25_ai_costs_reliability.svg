@@ -2,7 +2,8 @@
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.2);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
-  </style><g transform="translate(3.92,5.504) scale(0.88)">
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.2);stroke-linecap:round;stroke-linejoin:round}
+  .icf{fill:#8ac4ff;stroke:none}}</style><g transform="translate(3.92,5.504) scale(0.88)">
   
   <g transform="translate(9,14) scale(0.8)">
     <path d="M40 6 L68 18 L68 44 C68 62 40 76 40 76 C40 76 12 62 12 44 L12 18 Z" class="ic" stroke-width="2" style="stroke-width:calc(3.876543210 * 1.4205)"/>

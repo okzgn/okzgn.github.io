@@ -2,7 +2,8 @@
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.25);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
-  </style>
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.25);stroke-linecap:round;stroke-linejoin:round}
+  .icf{fill:#8ac4ff;stroke:none}}</style>
   <g transform="translate(8.0185,7.3022) scale(0.8)">
   <rect x="28" y="4" width="24" height="16" rx="3" class="ic"/>
   <rect x="4" y="32" width="20" height="16" rx="3" class="ic"/>

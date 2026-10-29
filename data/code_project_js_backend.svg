@@ -7,7 +7,13 @@
       stroke:#c6460c; stroke-width:1.1; stroke-linejoin:round; paint-order:stroke
     }
     .lbl2 { letter-spacing: 1px; }
-  </style>
+  @media (prefers-color-scheme:dark){.ic  { fill:none; stroke:#ff962e; stroke-width:3.876543210; stroke-linecap:round; stroke-linejoin:round }
+    .lbl {
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-weight:700; fill:#ff962e; text-anchor:middle; dominant-baseline:central; letter-spacing:-0.5px;
+      stroke:#ff962e; stroke-width:1.1; stroke-linejoin:round; paint-order:stroke
+    }
+    .lbl2 { letter-spacing: 1px; }}</style>
   <g transform="translate(2, 0)">
     <path d="M8 22 Q8 18 12 18 L30 18 L33 14 L64 14 Q68 14 68 18 L68 22" class="ic"/>
     <rect x="8" y="22" width="60" height="44" rx="3" class="ic"/>

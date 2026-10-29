@@ -71,6 +71,8 @@
     --text: rgb(var(--fg-rgb) / 0.84);
     --muted: rgb(var(--fg-rgb) / 0.62);
     --surface: #ffffff;
+    /* Inset surface for boxes, chips and fields inside a card: a step toward the page, so darker
+       in light. Dark mode mirrors it and takes the same step lighter (see the dark block). */
     --surface-2: color-mix(in srgb, var(--surface) 55%, var(--bg));
     --border: rgb(var(--line-rgb) / 0.08);
     --border-strong: rgb(var(--line-rgb) / 0.15);
@@ -100,7 +102,7 @@
     --dur: 0.2s;
     --dur-press: 0.15s;
 
-    /* Tile fill (icon boxes and the secondary CTA) and the celeste feature fill. */
+    /* Tile fill (icon boxes) and the celeste feature fill. */
     --tile-fill: linear-gradient(160deg, var(--surface), var(--accentTint));
     --tile-ring: var(--accentTint);
     --feature-bg: color-mix(in srgb, var(--blueLight2) 15%, var(--surface));
@@ -110,6 +112,30 @@
     --feature-warm-line: color-mix(in srgb, var(--themeColor) 42%, var(--surface));
     /* Small warm controls on the page background need a firmer edge than panels. */
     --feature-warm-edge: color-mix(in srgb, var(--themeColor) 80%, var(--surface));
+    /* Card surfaces: a faint glow in the top right corner over a base that settles slightly toward
+       the page at the bottom, a lit top edge, and an accent line drawn on that edge. The glow and
+       the bottom fade have a fixed reach (radial sizes do not accept min()), so a long article card
+       keeps them at its corners. One recipe, three bases: white cards, warm features (cart,
+       featured card), cool features. */
+    --card-glow-size: 36rem 18rem at 100% 0%;
+    --card-fade-to: min(55%, 20rem);
+    --card-fill:
+        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.06), transparent 60%),
+        linear-gradient(0deg, color-mix(in srgb, var(--surface) 93%, var(--bg)), var(--surface) var(--card-fade-to));
+    --card-fill-warm:
+        radial-gradient(var(--card-glow-size), rgb(var(--accent-rgb) / 0.07), transparent 60%),
+        linear-gradient(0deg, color-mix(in srgb, var(--feature-warm-bg) 93%, var(--bg)), var(--feature-warm-bg) var(--card-fade-to));
+    /* Raised surface: what an inset box or field becomes on hover, open or focus. In light it is
+       the card white; in dark it is one more light step past the inset surface. */
+    --surface-raised: var(--surface);
+    --card-fill-raised:
+        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.06), transparent 60%),
+        linear-gradient(0deg, color-mix(in srgb, var(--surface-raised) 93%, var(--bg)), var(--surface-raised) var(--card-fade-to));
+    --card-fill-cool:
+        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.08), transparent 60%),
+        linear-gradient(0deg, color-mix(in srgb, var(--feature-bg) 93%, var(--bg)), var(--feature-bg) var(--card-fade-to));
+    --card-shine: inset 0 1px 0 rgb(255 255 255 / 0.9);
+    --card-edge: linear-gradient(90deg, transparent, var(--accentLine) 30%, rgb(var(--tint-rgb) / 0.3) 70%, transparent);
     --ghost-fill: rgb(var(--shadow-rgb) / calc(0.05 * var(--shadow-k)));
     --ghost-fill-hover: rgb(var(--shadow-rgb) / calc(0.08 * var(--shadow-k)));
 
@@ -366,7 +392,8 @@ main > .section {
     color: var(--muted);
 }
 
-/* Buttons. The ▸ arrow sliding from left to right on hover is the brand signature. */
+/* Buttons. The ▸ arrow sliding from left to right on hover is the brand signature; it points
+   up and right, like the text link arrows. */
 .cta-button, .btn-ghost, .pill-link {
     display: inline-flex;
     align-items: center;
@@ -456,7 +483,15 @@ button.tag:hover, button.tag:active,
     border-left: 0.7rem solid rgb(var(--paper-rgb) / 0.72);
     border-top: 0.35rem solid transparent;
     border-bottom: 0.35rem solid transparent;
+    /* Turned up and right, then nudged back up and right: a turned triangle's mass falls down
+       and left of its box, and the nudge recenters it between the margins. */
+    transform: translate(0.08rem, -0.08rem) rotate(-45deg);
     transition: all var(--dur);
+}
+
+/* The skip link jumps down the page, so an up and right arrow would point the wrong way. */
+.skip-link::before, .skip-link::after {
+    transform: none;
 }
 
 .cta-button::before, .btn-ghost::before, .pill-link::before {
@@ -497,25 +532,28 @@ button.tag:hover, button.tag:active,
 }
 
 .pill-link:hover::after, .pill-link:focus-visible::after, .pill-link:active::after {
-    border-left-color: var(--accent);
+    border-left-color: var(--accentText);
 }
 
-.btn-sm::before, .btn-sm::after {
+/* Small buttons and pill links share the smaller arrow and its spacing. */
+.btn-sm::before, .btn-sm::after,
+.pill-link::before, .pill-link::after {
     border-left-width: 0.6rem;
     border-top-width: 0.3rem;
     border-bottom-width: 0.3rem;
 }
 
-.btn-sm::before {
+.btn-sm::before, .pill-link::before {
     margin-left: var(--space-4);
     margin-right: var(--space-3);
 }
 
-.btn-sm::after {
+.btn-sm::after, .pill-link::after {
     margin-right: var(--space-4);
 }
 
-.btn-sm:hover::after, .btn-sm:focus-visible::after, .btn-sm:active::after {
+.btn-sm:hover::after, .btn-sm:focus-visible::after, .btn-sm:active::after,
+.pill-link:hover::after, .pill-link:focus-visible::after, .pill-link:active::after {
     margin-left: var(--space-3);
 }
 
@@ -532,22 +570,10 @@ button.tag:hover, button.tag:active,
     border: 1px solid transparent;
 }
 
-.pill-link::before {
-    margin-left: var(--space-4);
-    margin-right: var(--space-2);
-}
-
-.pill-link::after {
-    margin-right: var(--space-4);
-}
-
+/* Hover keeps the label color, as every other link does, and only rings the pill. */
 .pill-link:hover, .pill-link:focus-visible, .pill-link:active {
-    color: var(--accentDark3);
+    color: var(--accentText);
     border-color: var(--accent);
-}
-
-.pill-link:hover::after, .pill-link:focus-visible::after, .pill-link:active::after {
-    margin-left: var(--space-2);
 }
 
 /* Tag: small uppercase label. */
@@ -603,12 +629,27 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 }
 
 
-/* Card: crisp surface with a hairline border and soft shadow. */
+/* Card: a softly lit surface with a hairline border, a soft shadow and an accent line on its top edge. */
 .card {
-    background: var(--surface);
+    position: relative;
+    background: var(--card-fill);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
-    box-shadow: var(--sh-1);
+    box-shadow: var(--sh-1), var(--card-shine);
+}
+
+/* The edge line runs between the rounded corners and brightens when the card is hovered. */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: var(--r-xl);
+    right: var(--r-xl);
+    height: 1px;
+    background: var(--card-edge);
+    opacity: 0.55;
+    pointer-events: none;
+    transition: opacity var(--dur);
 }
 
 .card-hover {
@@ -621,7 +662,11 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 
 .card-hover:hover, .card-hover:focus-within {
     border-color: var(--border-strong);
-    box-shadow: var(--sh-2);
+    box-shadow: var(--sh-2), var(--card-shine);
+}
+
+.card-hover:hover::before, .card-hover:focus-within::before {
+    opacity: 1;
 }
 
 /* Floating round button (back to top, cart): the warm fill of the cart panel, with a dark orange icon. */
@@ -635,7 +680,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     color: var(--accentText);
     background: var(--feature-warm-bg);
     border: 1px solid var(--feature-warm-edge);
-    box-shadow: var(--sh-2);
+    box-shadow: var(--sh-2), var(--card-shine);
     cursor: pointer;
     transition: opacity var(--dur), visibility var(--dur), background var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-press);
 }
@@ -731,6 +776,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 
 .site-menu-toggle {
     display: none;
+    position: relative;
     transition: border-color var(--dur), transform var(--dur-press);
     width: 2.75rem;
     height: 2.75rem;
@@ -738,21 +784,28 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     border-radius: var(--r-full);
     border: 1px solid var(--feature-warm-edge);
     background: var(--feature-warm-bg);
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-1);
+    box-shadow: var(--card-shine);
 }
 
+/* Both bars sit on the exact center and are only offset by transform, so they cross
+   cleanly into an X at any pixel density. */
 .site-menu-toggle::before,
 .site-menu-toggle::after {
     content: '';
-    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 1.125rem;
     height: 2px;
+    margin: -1px 0 0 -0.5625rem;
     border-radius: 2px;
     background: var(--accentText);
+    transform: translateY(-3px);
     transition: transform var(--dur);
+}
+
+.site-menu-toggle::after {
+    transform: translateY(3px);
 }
 
 .site-menu-toggle:hover,
@@ -761,16 +814,16 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 }
 
 .site-header.open .site-menu-toggle::before {
-    transform: translateY(0.21875rem) rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .site-header.open .site-menu-toggle::after {
-    transform: translateY(-0.21875rem) rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 @media screen and (max-width: 860px) {
     .site-menu-toggle {
-        display: flex;
+        display: block;
     }
 
     .site-nav {
@@ -785,8 +838,9 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         padding: var(--space-2);
         border-radius: var(--r-lg);
         border: 1px solid var(--border);
-        background: var(--bg);
-        box-shadow: var(--sh-2);
+        /* A floating panel like the cart: the card surface, not the page behind it. */
+        background: var(--card-fill);
+        box-shadow: var(--sh-3), var(--card-shine);
     }
 
     .site-nav a {
@@ -831,10 +885,12 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     font-size: var(--fs-sm);
 }
 
+/* Link columns take their content width so every link stays on one line: a wrapped link
+   turns its round hover pill into a tall capsule whose corners eat the side padding. */
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.6fr repeat(3, 1fr);
-    gap: var(--space-10);
+    grid-template-columns: minmax(0, 1fr) repeat(3, max-content);
+    gap: var(--space-10) clamp(var(--space-8), 5vw, 4.5rem);
 }
 
 .footer-brand img {
@@ -874,6 +930,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     padding: var(--space-1) var(--space-3);
     border-radius: var(--r-full);
     color: var(--muted);
+    white-space: nowrap;
 }
 
 .footer-col a:hover,
@@ -884,11 +941,20 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 
 @media screen and (max-width: 860px) {
     .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-10);
     }
 
     .footer-brand {
         grid-column: 1 / -1;
+    }
+}
+
+/* Phones: Explore and Connect share a row; Resources, with the longest links, gets a full row below. */
+@media screen and (max-width: 560px) {
+    .footer-col:nth-child(3) {
+        grid-column: 1 / -1;
+        order: 1;
     }
 }
 
@@ -913,13 +979,23 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         --accentTint: rgb(var(--accent-rgb) / 0.15);
         --accentText: var(--themeColor0);
         --title-tone: color-mix(in srgb, var(--blueLight3) 55%, #ffffff);
-        --tile-fill: var(--themeColor3);
-        --tile-ring: transparent;
+        /* Secondary buttons lighten instead of darken: the light theme's 5% and 8% steps,
+           taken toward the light sky tone. */
+        --ghost-fill: rgb(var(--sky-rgb) / 0.08);
+        --ghost-fill-hover: rgb(var(--sky-rgb) / 0.13);
         --feature-bg: color-mix(in srgb, var(--blueLight2) 9%, var(--surface));
         --feature-line: rgb(var(--sky-rgb) / 0.2);
         --feature-warm-bg: color-mix(in srgb, var(--themeColor) 9%, var(--surface));
         --feature-warm-line: color-mix(in srgb, var(--themeColor) 22%, var(--surface));
         --feature-warm-edge: color-mix(in srgb, var(--themeColor) 45%, var(--surface));
+        --card-shine: inset 0 1px 0 rgb(var(--sky-rgb) / 0.08);
+        /* Inset surfaces lighten instead of darken: the same small step as in light, taken
+           toward the sky tone, and raised states take one more step. */
+        --surface-2: color-mix(in srgb, var(--surface) 96%, var(--blueLight2));
+        --surface-raised: color-mix(in srgb, var(--surface) 92%, var(--blueLight2));
+        /* Icon tiles: a muted celeste that matches the light icon strokes, not the warm tint. */
+        --tile-fill: linear-gradient(160deg, var(--surface-2), color-mix(in srgb, var(--surface) 84%, var(--blueLight2)));
+        --tile-ring: rgb(var(--sky-rgb) / 0.14);
     }
 
     *, ::after, ::before {
@@ -943,9 +1019,4 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     .footer-brand img {
         filter: brightness(0) invert(1);
     }
-
-    .pill-link:hover, .pill-link:focus-visible, .pill-link:active {
-        color: var(--themeColor);
-    }
-
 }

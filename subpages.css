@@ -87,28 +87,34 @@
 }
 
 #menu {
+    position: relative;
     flex-shrink: 0;
     transition: border-color var(--dur), transform var(--dur-press);
     width: 2.5rem;
     height: 2.5rem;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-1);
     border-radius: var(--r-full);
     border: 1px solid var(--feature-warm-edge);
     background: var(--feature-warm-bg);
+    box-shadow: var(--card-shine);
 }
 
+/* Bars centered and offset only by transform, as in the header toggle, so the X is exact. */
 #menu::before, #menu::after {
     content: '';
-    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 1rem;
     height: 2px;
+    margin: -1px 0 0 -0.5rem;
     border-radius: 2px;
     background: var(--accentText);
+    transform: translateY(-3px);
     transition: transform var(--dur);
+}
+
+#menu::after {
+    transform: translateY(3px);
 }
 
 #menu:hover,
@@ -121,11 +127,11 @@
 }
 
 .toc.expanded #menu::before {
-    transform: translateY(0.21875rem) rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .toc.expanded #menu::after {
-    transform: translateY(-0.21875rem) rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 .toc .menu-list {
