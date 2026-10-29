@@ -128,6 +128,12 @@
     box-shadow: inset 0 0 0 1px var(--tile-ring);
 }
 
+/* Warm tile: swaps the tile tokens, so .icon and .cart-ico keep one rule. */
+.icon-warm {
+    --tile-fill: var(--tile-fill-warm);
+    --tile-ring: var(--tile-ring-warm);
+}
+
 .icon {
     width: 3.5rem;
     height: 3.5rem;
@@ -1034,9 +1040,15 @@
     border-top: 1px solid var(--feature-warm-line);
 }
 
-/* On the warm panel the field steps up to the raised surface, as fields do when focused. */
+/* The cart field follows the landing fields (inset at rest, raised on focus) in the warm
+   panel's own tones, with a warm edge. */
 #cart .cart-client input {
-    background: var(--surface-raised);
+    background: var(--warm-inset);
+    border-color: var(--feature-warm-line);
+}
+
+#cart .cart-client input:focus {
+    background: var(--warm-raised);
 }
 
 #cart footer {

@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+<svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.1236);stroke-linecap:round;stroke-linejoin:round}
   .icf{fill:#004e9b;stroke:none}
+  :target .ic{fill:none;stroke:#c6460c;stroke-width:calc(3.876543210 * 1.1236);stroke-linecap:round;stroke-linejoin:round}
+  :target .icf{fill:#c6460c;stroke:none}
   @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.1236);stroke-linecap:round;stroke-linejoin:round}
-  .icf{fill:#8ac4ff;stroke:none}}</style><g transform="translate(0.4,1.3)">
+  .icf{fill:#8ac4ff;stroke:none}:target .ic{fill:none;stroke:#ff962e;stroke-width:calc(3.876543210 * 1.1236);stroke-linecap:round;stroke-linejoin:round}
+  :target .icf{fill:#ff962e;stroke:none}}</style><g transform="translate(0.4,1.3)">
   
 
   <g transform="translate(4.0212,4.0212) scale(0.89)">

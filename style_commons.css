@@ -105,6 +105,14 @@
     /* Tile fill (icon boxes) and the celeste feature fill. */
     --tile-fill: linear-gradient(160deg, var(--surface), var(--accentTint));
     --tile-ring: var(--accentTint);
+    /* Warm tile for orange icons and for tiles on the warm panel (cart). In light the base tile
+       is already warm, so they match; dark mode gives each its own tone. */
+    --tile-fill-warm: var(--tile-fill);
+    --tile-ring-warm: var(--tile-ring);
+    /* Field surfaces on the warm panel (cart): the same inset and raised steps as fields on
+       white cards (--surface-2, --surface-raised), taken from the warm panel instead. */
+    --warm-inset: color-mix(in srgb, var(--feature-warm-bg) 55%, var(--bg));
+    --warm-raised: var(--surface);
     --feature-bg: color-mix(in srgb, var(--blueLight2) 15%, var(--surface));
     --feature-line: rgb(var(--blue-rgb) / 0.14);
     /* The warm line is a deeper step of the warm fill itself, so edges stay in its tone. */
@@ -136,8 +144,18 @@
         linear-gradient(0deg, color-mix(in srgb, var(--feature-bg) 93%, var(--bg)), var(--feature-bg) var(--card-fade-to));
     --card-shine: inset 0 1px 0 rgb(255 255 255 / 0.9);
     --card-edge: linear-gradient(90deg, transparent, var(--accentLine) 30%, rgb(var(--tint-rgb) / 0.3) 70%, transparent);
-    --ghost-fill: rgb(var(--shadow-rgb) / calc(0.05 * var(--shadow-k)));
-    --ghost-fill-hover: rgb(var(--shadow-rgb) / calc(0.08 * var(--shadow-k)));
+    /* Secondary button fill and edge: a light tint and a hairline, with a 3-point hover step;
+       the shine and shadow below are what set it apart from the cards around it. */
+    --ghost-fill: rgb(var(--ink-rgb) / 0.05);
+    --ghost-fill-hover: rgb(var(--ink-rgb) / 0.08);
+    --ghost-line: rgb(var(--ink-rgb) / 0.06);
+    --ghost-line-hover: rgb(var(--ink-rgb) / 0.11);
+    /* The primary button's treatment at a quieter strength: lit from the top, deeper at the
+       bottom on hover, an inner shine and a soft neutral shadow. */
+    --fill-ghost: linear-gradient(180deg, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0)), var(--ghost-fill);
+    --fill-ghost-hover: linear-gradient(180deg, rgb(255 255 255 / 0.1), rgb(var(--ink-rgb) / 0.02)), var(--ghost-fill-hover);
+    --sh-ghost: 0 1px 2px rgb(var(--shadow-rgb) / calc(0.03 * var(--shadow-k))), 0 3px 8px -6px rgb(var(--shadow-rgb) / calc(0.1 * var(--shadow-k)));
+    --ghost-shine: inset 0 1px 0 rgb(255 255 255 / 0.45);
 
     /* Spacing scale: 4px grid with 2px and 6px fine steps. */
     --space-0-5: 0.125rem;
@@ -451,18 +469,21 @@ button.tag:hover, button.tag:active,
     border-color: var(--blue-deep);
 }
 
+/* A hairline edge sets the button apart from cards of a similar tone; it firms up on hover. */
 .btn-ghost {
     color: var(--ink);
-    background: var(--ghost-fill);
-    border: 1px solid transparent;
-    transition: background var(--dur), border-color var(--dur), transform var(--dur-press);
+    background: var(--fill-ghost);
+    border: 1px solid var(--ghost-line);
+    box-shadow: var(--sh-ghost), var(--ghost-shine);
+    transition: background var(--dur), border-color var(--dur), box-shadow var(--dur), transform var(--dur-press);
 }
 
 .btn-ghost:hover,
 .btn-ghost:focus-visible,
 .btn-ghost:active {
     color: var(--ink);
-    background: var(--ghost-fill-hover);
+    background: var(--fill-ghost-hover);
+    border-color: var(--ghost-line-hover);
 }
 
 .btn-sm {
@@ -979,10 +1000,14 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         --accentTint: rgb(var(--accent-rgb) / 0.15);
         --accentText: var(--themeColor0);
         --title-tone: color-mix(in srgb, var(--blueLight3) 55%, #ffffff);
-        /* Secondary buttons lighten instead of darken: the light theme's 5% and 8% steps,
-           taken toward the light sky tone. */
-        --ghost-fill: rgb(var(--sky-rgb) / 0.08);
-        --ghost-fill-hover: rgb(var(--sky-rgb) / 0.13);
+        /* Secondary buttons lighten instead of darken, by the same small amounts as in light. */
+        --ghost-fill: rgb(var(--sky-rgb) / 0.07);
+        --ghost-fill-hover: rgb(var(--sky-rgb) / 0.1);
+        --ghost-line: rgb(var(--sky-rgb) / 0.045);
+        --ghost-line-hover: rgb(var(--sky-rgb) / 0.08);
+        --fill-ghost: linear-gradient(180deg, rgb(var(--sky-rgb) / 0.035), rgb(var(--sky-rgb) / 0)), var(--ghost-fill);
+        --fill-ghost-hover: linear-gradient(180deg, rgb(var(--sky-rgb) / 0.02), rgb(0 0 0 / 0.06)), var(--ghost-fill-hover);
+        --ghost-shine: inset 0 1px 0 rgb(var(--sky-rgb) / 0.05);
         --feature-bg: color-mix(in srgb, var(--blueLight2) 9%, var(--surface));
         --feature-line: rgb(var(--sky-rgb) / 0.2);
         --feature-warm-bg: color-mix(in srgb, var(--themeColor) 9%, var(--surface));
@@ -996,6 +1021,10 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         /* Icon tiles: a muted celeste that matches the light icon strokes, not the warm tint. */
         --tile-fill: linear-gradient(160deg, var(--surface-2), color-mix(in srgb, var(--surface) 84%, var(--blueLight2)));
         --tile-ring: rgb(var(--sky-rgb) / 0.14);
+        --tile-fill-warm: linear-gradient(160deg, color-mix(in srgb, var(--surface) 84%, var(--accent)), color-mix(in srgb, var(--surface) 70%, var(--accent)));
+        --tile-ring-warm: rgb(var(--accent-rgb) / 0.3);
+        --warm-inset: color-mix(in srgb, var(--feature-warm-bg) 96%, var(--themeColor));
+        --warm-raised: color-mix(in srgb, var(--feature-warm-bg) 92%, var(--themeColor));
     }
 
     *, ::after, ::before {

@@ -201,10 +201,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var row = document.createElement('li');
 
             var ico = document.createElement('span');
-            ico.className = 'cart-ico';
+            ico.className = 'cart-ico icon-warm';
             if (icon) {
                 var img = document.createElement('img');
-                img.src = icon.getAttribute('src');
+                // #warm switches the icon to its orange stroke, to match the warm panel.
+                img.src = icon.getAttribute('src') + '#warm';
                 img.alt = '';
                 img.loading = 'lazy';
                 img.decoding = 'async';

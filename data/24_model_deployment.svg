@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+<svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
   .ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 0.925);stroke-linecap:round;stroke-linejoin:round}
   .ic2{stroke-width:calc(3.876543210 * 1.3);}
+  :target .ic{fill:none;stroke:#c6460c;stroke-width:calc(3.876543210 * 0.925);stroke-linecap:round;stroke-linejoin:round}
+  :target .ic2{stroke-width:calc(3.876543210 * 1.3);}
   @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 0.925);stroke-linecap:round;stroke-linejoin:round}
-  .ic2{stroke-width:calc(3.876543210 * 1.3);}}</style>
+  .ic2{stroke-width:calc(3.876543210 * 1.3);}:target .ic{fill:none;stroke:#ff962e;stroke-width:calc(3.876543210 * 0.925);stroke-linecap:round;stroke-linejoin:round}
+  :target .ic2{stroke-width:calc(3.876543210 * 1.3);}}</style>
   <g transform="translate(-3,-3) scale(1.075)">
     <rect x="22" y="22" width="36" height="36" rx="4" class="ic" style="stroke-width:calc(3.876543210 * 0.9302)"/>
     <rect x="26" y="26" width="28" height="28" rx="2" class="ic" style="stroke-width:calc(3.876543210 * 0.9302)"/>
