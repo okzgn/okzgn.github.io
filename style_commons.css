@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: "NotoSans";
-    src: url('/NotoSans-Bold.ttf') format('truetype');
+    src: url('/NotoSans-SemiBold.ttf') format('truetype');
     font-weight: bold;
     font-display: swap;
 }
