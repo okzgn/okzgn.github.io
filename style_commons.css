@@ -204,9 +204,10 @@
     --lh-ui: 1.5;
     --lh-body: 1.6;
     --lh-read: 1.7;
+    --ls-grl: 0.02em;
     --ls-caps: 0.06em;
-    --ls-snug: -0.01em;
-    --ls-heading: -0.02em;
+    --ls-snug: 0.03em;
+    --ls-heading: 0.03em;
     --fs-display: clamp(2.5rem, 4vw + 1.25rem, 4.5rem);
     --fs-h2: clamp(1.875rem, 2vw + 1.25rem, 2.75rem);
     --fs-h3: clamp(1.25rem, 0.5vw + 1.125rem, 1.5rem);
@@ -246,6 +247,7 @@ body {
     font-family: var(--mainFont), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", sans-serif;
     font-size: var(--fs-md);
     line-height: var(--lh-body);
+    letter-spacing: var(--ls-grl);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -401,8 +403,6 @@ main > .section {
 
 .display {
     font-size: var(--fs-display);
-    line-height: 1.04;
-    letter-spacing: -0.03em;
 }
 
 .lead {
