@@ -207,8 +207,8 @@
     --ls-grl: 0em;
     --ls-snug: 0.01em;
     --ls-caps: 0.02em;
-    --ls-heading: -0.01em;
-    --ls-display: -0.02em;
+    --ls-heading: -0.02em;
+    --ls-display: -0.04em;
     --fs-display: clamp(2.5rem, 4vw + 1.25rem, 4.5rem);
     --fs-h2: clamp(1.875rem, 2vw + 1.25rem, 2.75rem);
     --fs-h3: clamp(1.25rem, 0.5vw + 1.125rem, 1.5rem);
