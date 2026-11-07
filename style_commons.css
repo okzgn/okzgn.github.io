@@ -2,22 +2,22 @@
    Page stylesheets (landing.css, subpages.css) only add their own layouts and parts. */
 
 @font-face {
-    font-family: "IBM-Plex-Sans";
-    src: url('/ibm_plex_sans_regular.woff2') format('woff2');
+    font-family: "NotoSans";
+    src: url('/NotoSans-Regular.ttf') format('truetype');
     font-weight: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "IBM-Plex-Sans";
-    src: url('/ibm_plex_sans_bold.woff2') format('woff2');
+    font-family: "NotoSans";
+    src: url('/NotoSans-Bold.ttf') format('truetype');
     font-weight: bold;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "IBM-Plex-Mono";
-    src: url('/ibm_plex_mono.ttf') format('truetype');
+    font-family: "NotoSansMono";
+    src: url('/NotoSansMono-Regular.ttf') format('truetype');
     font-weight: normal;
     font-display: swap;
 }
@@ -189,8 +189,8 @@
     --header-h: 4rem;
 
     /* Typography: one size, line-height and tracking scale for the whole site. */
-    --mainFont: "IBM-Plex-Sans";
-    --monoFont: "IBM-Plex-Mono";
+    --mainFont: "NotoSans";
+    --monoFont: "NotoSansMono";
     --fs-2xs: 0.6875rem;
     --fs-xs: 0.8125rem;
     --fs-sm: 0.9375rem;
