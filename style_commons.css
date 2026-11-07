@@ -208,6 +208,7 @@
     --ls-caps: 0.03em;
     --ls-snug: 0em;
     --ls-heading: 0em;
+    --ls-display: -0.01em;
     --fs-display: clamp(2.5rem, 4vw + 1.25rem, 4.5rem);
     --fs-h2: clamp(1.875rem, 2vw + 1.25rem, 2.75rem);
     --fs-h3: clamp(1.25rem, 0.5vw + 1.125rem, 1.5rem);
@@ -403,6 +404,7 @@ main > .section {
 
 .display {
     font-size: var(--fs-display);
+    letter-spacing: var(--ls-display);
 }
 
 .lead {
