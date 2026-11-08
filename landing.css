@@ -225,7 +225,7 @@
     50% { opacity: 1; }
 }
 
-/* The core: an accent chip with an AI spark, and a halo that breathes out from it. */
+/* The core: an accent chip with the OKZGN mark, and a halo that breathes out from it. */
 .hero-halo {
     fill: none;
     stroke: rgb(var(--accent-rgb) / 0.25);
@@ -272,20 +272,8 @@
     stroke: rgb(255 255 255 / 0.28);
 }
 
-.hero-spark {
+.hero-mark {
     fill: var(--on-accent);
-}
-
-.hero-spark-small {
-    opacity: 0.8;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: hero-twinkle 2.8s ease-in-out infinite;
-}
-
-@keyframes hero-twinkle {
-    0%, 100% { transform: scale(0.7); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 1; }
 }
 
 /* Window: an agent run, replayed by main.js. Each step waits (gray disc), runs (pale blue disc with a
@@ -522,7 +510,6 @@
 
     .hero-orbit,
     .hero-node-led,
-    .hero-spark-small,
     .hero-run li.is-done .hero-step {
         animation: none;
     }
