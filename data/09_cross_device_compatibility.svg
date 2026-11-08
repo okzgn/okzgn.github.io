@@ -15,7 +15,6 @@
   <rect x="34" y="26" width="22" height="32" rx="3" class="ic"/>
   <line x1="40" y1="54" x2="50" y2="54" class="ic"/>
   <rect x="54" y="32" width="16" height="26" rx="3" class="ic"/>
-  <line x1="58" y1="54" x2="66" y2="54" class="ic"/>
-  <circle cx="62" cy="56" r="1.5" class="icf"/>
+  <circle cx="62" cy="53" r="1.9" class="icf"/>
 </g></g>
 </svg>
