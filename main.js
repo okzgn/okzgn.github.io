@@ -542,3 +542,80 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 });
+
+/* Hero window: replays an agent run. The first step shows done, and the next ones light up from top to
+   bottom at uneven intervals while a clock runs; after a pause on "done", the run starts over. It also
+   runs with reduced motion: the steps only change state, and the CSS drops the halo, pop and ripple.
+   Without this script the window shows the finished run (the CSS without .is-live).
+   It runs at once (this script loads at the end of the body), so the first paint already shows the run
+   starting rather than the finished one. */
+(function () {
+    var run = document.querySelector('.hero-run');
+    if (!run) { return; }
+
+    var steps = run.querySelectorAll('li');
+    var clock = run.querySelector('.hero-run-clock');
+    var timers = [];
+    var clockTimer = null;
+    var startedAt = 0;
+
+    function later(fn, ms) {
+        timers.push(setTimeout(fn, ms));
+    }
+
+    function stop() {
+        timers.forEach(clearTimeout);
+        timers = [];
+        clearInterval(clockTimer);
+    }
+
+    function tick() {
+        if (clock) { clock.textContent = ((Date.now() - startedAt) / 1000).toFixed(1) + 's'; }
+    }
+
+    function start() {
+        stop();
+        run.classList.remove('is-complete');
+        Array.prototype.forEach.call(steps, function (step) {
+            step.classList.remove('is-running', 'is-done');
+        });
+
+        startedAt = Date.now();
+        tick();
+        clockTimer = setInterval(tick, 100);
+
+        // The first step is already done; each next one runs for 1.1 to 1.8 s, so the checks light up
+        // one by one at an uneven pace.
+        var at = 0;
+        Array.prototype.forEach.call(steps, function (step, i) {
+            if (i === 0) {
+                step.classList.add('is-done');
+                at = 500;
+                return;
+            }
+            later(function () { step.classList.add('is-running'); }, at);
+            at += 1100 + Math.round(Math.random() * 700);
+            later(function () {
+                step.classList.remove('is-running');
+                step.classList.add('is-done');
+            }, at);
+        });
+
+        later(function () {
+            clearInterval(clockTimer);
+            tick();
+            run.classList.add('is-complete');
+        }, at + 150);
+
+        later(start, at + 4000);
+    }
+
+    // No replay in a hidden tab; it starts over when the tab is shown again.
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) { stop(); }
+        else { start(); }
+    });
+
+    run.classList.add('is-live');
+    start();
+})();

@@ -1,0 +1,259 @@
+/* About page: founder profile, career timeline and visual identity guide. Uses only shared tokens, so
+   the dark theme follows from style_commons.css without a block of its own. */
+
+/* Profile: the cut-out portrait stands on the bottom edge of a cool card, next to the intro. */
+.about-profile {
+    display: grid;
+    grid-template-columns: minmax(8rem, 11rem) 1fr;
+    gap: var(--space-6);
+    align-items: center;
+}
+
+.about-portrait {
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: var(--r-xl);
+    border: 1px solid var(--feature-line);
+    background: var(--card-fill-cool);
+    box-shadow: var(--card-shine), var(--sh-1);
+}
+
+.about-portrait img {
+    display: block;
+    width: 92%;
+    height: auto;
+}
+
+/* Timeline: a hairline joins the dots; the year leads each entry in the accent tone. */
+.timeline {
+    padding: 0;
+}
+
+.timeline li {
+    position: relative;
+    padding-left: var(--space-8);
+    padding-bottom: var(--space-7);
+}
+
+.timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: calc(0.375rem - 1px);
+    top: 0.75rem;
+    bottom: -0.25rem;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--border-strong);
+}
+
+.timeline li:last-child::before {
+    display: none;
+}
+
+.timeline li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--r-full);
+    border: 2px solid var(--accent);
+    background: var(--surface);
+}
+
+.timeline-year {
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: bold;
+    line-height: var(--lh-ui);
+    letter-spacing: var(--ls-caps);
+    color: var(--accentText);
+}
+
+.timeline-year + p {
+    margin-top: var(--space-1);
+}
+
+/* Tagline: set large, in the title tone, behind an accent rule. */
+.paragraphs .about-tagline {
+    padding-left: var(--space-5);
+    border-left: 3px solid var(--accent);
+    font-size: clamp(1.5rem, 1.5vw + 1.1rem, 2.125rem);
+    font-weight: bold;
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-heading);
+    color: var(--title-tone);
+}
+
+/* Logo tiles: the logotype on light and on dark, then the symbol. The tiles keep fixed brand colors in
+   both themes, since they show how the logo is used, not the page theme. */
+.about-logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 6.5rem;
+    gap: var(--space-3);
+}
+
+.about-logo-tile {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6.5rem;
+    padding: var(--space-5);
+    border-radius: var(--r-lg);
+    border: 1px solid rgb(var(--ink-rgb) / 0.08);
+}
+
+.about-logo-tile.is-light {
+    background: var(--realWhite);
+}
+
+.about-logo-tile.is-dark {
+    background: var(--realBlack);
+    border-color: rgb(var(--sky-rgb) / 0.14);
+}
+
+.about-logo-tile img {
+    display: block;
+    width: 100%;
+    max-width: 10rem;
+    height: auto;
+}
+
+.about-logo-tile.is-dark img {
+    filter: brightness(0) invert(1);
+}
+
+.about-logo-tile.is-symbol img {
+    max-width: 3rem;
+}
+
+/* Palette: one swatch card per color. The swatches are fixed brand colors in both themes. */
+.about-swatches {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: var(--space-3);
+}
+
+.paragraphs .about-swatches li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-0-5);
+    padding: var(--space-2) var(--space-2) var(--space-3);
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--card-shine), var(--sh-1);
+    line-height: var(--lh-ui);
+}
+
+.about-swatches b,
+.about-swatches .about-hex,
+.about-swatches small {
+    padding: 0 var(--space-1);
+}
+
+.about-swatches b {
+    font-size: var(--fs-sm);
+}
+
+.about-swatch {
+    display: block;
+    height: 4rem;
+    margin-bottom: var(--space-2);
+    border-radius: var(--r-sm);
+    box-shadow: inset 0 0 0 1px rgb(var(--line-rgb) / 0.1);
+}
+
+.about-swatch.is-blue { background: var(--realBlue); }
+.about-swatch.is-blue-bright { background: var(--realBlueLight); }
+.about-swatch.is-blue-deep { background: var(--realBlueDark); }
+.about-swatch.is-sky { background: var(--blueLight3); }
+.about-swatch.is-orange { background: var(--accent); }
+.about-swatch.is-orange-text { background: var(--accentDark2); }
+.about-swatch.is-ink { background: var(--realBlack); }
+.about-swatch.is-paper { background: var(--realWhite); }
+
+.about-hex {
+    font-family: var(--monoFont), ui-monospace, monospace;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+}
+
+.about-swatches small,
+.about-type-card small {
+    font-size: var(--fs-xs);
+    color: var(--muted);
+}
+
+/* Typography specimens. */
+.about-type {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: var(--space-3);
+}
+
+.about-type-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-5);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    background: var(--card-fill);
+    box-shadow: var(--card-shine), var(--sh-1);
+    line-height: var(--lh-ui);
+}
+
+.about-type-sample {
+    margin-bottom: var(--space-2);
+    font-size: 3.25rem;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+    color: var(--title-tone);
+}
+
+.about-type-sample.is-mono {
+    font-family: var(--monoFont), ui-monospace, monospace;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
+@media screen and (max-width: 560px) {
+    .about-profile {
+        grid-template-columns: 1fr;
+    }
+
+    .about-portrait {
+        width: min(100%, 12rem);
+    }
+
+    .about-logo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-logo-tile.is-light:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .about-swatches {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-swatch {
+        height: 3rem;
+    }
+}

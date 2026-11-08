@@ -2,6 +2,12 @@
 
 .hidden { display: none; }
 
+/* With JavaScript, the static copy of the list waits hidden behind "Updating..." until main.js has the
+   fresh list (or an error) and marks the container ready. */
+.projects-js .projects-container:not(.is-ready) {
+    display: none;
+}
+
 .projects-response.error, .projects-response.loading {
     margin-bottom: var(--space-6);
     padding: var(--space-4) var(--space-5);
@@ -31,15 +37,19 @@
     vertical-align: middle;
 }
 
-.projects-response.loading::before {
+/* Both dots move from the first frame; the second runs half a swing ahead (a negative delay starts it
+   mid-way instead of waiting). */
+.projects-response.loading::before,
+.projects-response.loading::after {
     animation: pow 2s ease-in-out infinite alternate;
-    animation-delay: 1s;
+}
+
+.projects-response.loading::before {
     margin-right: var(--space-2);
 }
 
 .projects-response.loading::after {
-    animation: pow 2s ease-in-out infinite alternate;
-    animation-delay: 2s;
+    animation-delay: -1s;
     margin-left: var(--space-2);
 }
 
@@ -70,23 +80,13 @@
     margin: var(--space-6) 0 var(--space-4);
 }
 
+/* Each repository is a shared .inset-card (style_commons.css); this sets only its inner layout. */
 .projects-list li {
     display: flex;
     flex-flow: column;
     gap: var(--space-3);
     min-width: 0;
     padding: var(--space-5);
-    border-radius: var(--r-lg);
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
-}
-
-.projects-list li:hover,
-.projects-list li:focus-within {
-    border-color: var(--border-strong);
-    background: var(--card-fill-raised);
-    box-shadow: var(--sh-1), var(--card-shine);
 }
 
 .projects-list h3 {
@@ -128,22 +128,15 @@
     white-space: normal;
 }
 
-.projects-list .description:hover {
+.projects-list .description:hover,
+.projects-list .description:focus-visible {
     color: var(--ink);
 }
 
-/* Expand/collapse toggle drawn by the shared .badge-marker; expanded = open. */
+/* Expand/collapse toggle drawn by the shared .badge-marker (its open state follows aria-expanded). */
 .projects-list .description::before {
     margin: calc(var(--space-1) * -1) var(--space-2) 0 0;
     vertical-align: middle;
-}
-
-.projects-list .description:not(.collapsed)::before {
-    color: var(--on-accent);
-    border-color: var(--accentDark2);
-    background:
-        linear-gradient(currentColor, currentColor) center / 0.5625rem 1.5px no-repeat,
-        var(--accentDark2);
 }
 
 .projects-list .details {
@@ -151,10 +144,6 @@
     flex-wrap: wrap;
     gap: var(--space-1-5);
     margin: auto 0 0;
-    padding: 0;
-    border: 0;
-    background: none;
-    overflow: visible;
 }
 
 .projects-list .tag {

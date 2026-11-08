@@ -1,26 +1,16 @@
-/* Service specifications: each service is an accordion card with a rotating chevron. */
+/* Service specifications: each service is an accordion on the shared .inset-card (style_commons.css),
+   the same card as the open source projects; the shared .badge-marker draws its +/- toggle. */
 
 details {
     padding: 0 var(--space-5);
-    border-radius: var(--r-lg);
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    transition: border-color var(--dur), background var(--dur);
-}
-
-.paragraphs details + details {
-    margin-top: var(--space-3);
-}
-
-details:hover {
-    border-color: var(--border-strong);
 }
 
 details[open] {
     padding-bottom: var(--space-5);
-    border-color: var(--border-strong);
-    background: var(--card-fill-raised);
-    box-shadow: var(--sh-1), var(--card-shine);
+}
+
+.paragraphs details + details {
+    margin-top: var(--space-3);
 }
 
 summary {
@@ -35,15 +25,6 @@ summary {
 
 summary::-webkit-details-marker {
     display: none;
-}
-
-/* Open state of the shared +/- toggle (same look as .badge-marker.is-open). */
-details[open] > summary.badge-marker::before {
-    color: var(--on-accent);
-    border-color: var(--accentDark2);
-    background:
-        linear-gradient(currentColor, currentColor) center / 0.5625rem 1.5px no-repeat,
-        var(--accentDark2);
 }
 
 .paragraphs summary h3 {

@@ -86,52 +86,56 @@
     font-weight: bold;
 }
 
+/* TOC toggle: unlike the warm header toggle, it keeps the bar's own neutral tones. Its mark
+   (data/39_toc_toggle.svg, drawn like the menu and footer icons) is a short line over a chevron that
+   points down to open the list; the whole mark turns over to point up to fold it. While the list is
+   open the button stays pressed and the mark takes the accent. The SVG works as a mask, so the mark
+   takes the button color. */
 #menu {
     position: relative;
     flex-shrink: 0;
-    transition: border-color var(--dur), transform var(--dur-press);
     width: 2.5rem;
     height: 2.5rem;
     border-radius: var(--r-full);
-    border: 1px solid var(--feature-warm-edge);
-    background: var(--feature-warm-bg);
-    box-shadow: var(--card-shine);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    transition: color var(--dur), background-color var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
-/* Bars centered and offset only by transform, as in the header toggle, so the X is exact. */
-#menu::before, #menu::after {
+#menu::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1rem;
-    height: 2px;
-    margin: -1px 0 0 -0.5rem;
-    border-radius: 2px;
-    background: var(--accentText);
-    transform: translateY(-3px);
-    transition: transform var(--dur);
-}
-
-#menu::after {
-    transform: translateY(3px);
-}
-
-#menu:hover,
-#menu:focus-visible {
-    border-color: var(--accent);
-}
-
-#menu:active {
-    transform: scale(0.97);
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: -0.625rem 0 0 -0.625rem;
+    background: currentColor;
+    -webkit-mask: url('data/39_toc_toggle.svg') center / contain no-repeat;
+    mask: url('data/39_toc_toggle.svg') center / contain no-repeat;
+    transition: transform 0.35s var(--ease-spring);
 }
 
 .toc.expanded #menu::before {
-    transform: rotate(45deg);
+    transform: rotate(180deg);
 }
 
-.toc.expanded #menu::after {
-    transform: rotate(-45deg);
+/* Hover, focus and the open index share the raised edge and soft fill; open keeps the accent color. */
+#menu:hover,
+#menu:focus-visible,
+.toc.expanded #menu {
+    color: var(--ink);
+    border-color: var(--border-strong);
+    background: var(--hover);
+}
+
+.toc.expanded #menu {
+    color: var(--accentText);
+}
+
+#menu:active {
+    transform: scale(var(--press-scale));
 }
 
 .toc .menu-list {
@@ -169,8 +173,8 @@
 }
 
 .toc a.H3 { padding-left: var(--space-6); }
-.toc a.H4 { padding-left: var(--space-10); font-size: var(--fs-sm); }
-.toc a.H5, .toc a.H6 { padding-left: var(--space-12); font-size: var(--fs-sm); }
+.toc a.H4 { padding-left: var(--space-10); }
+.toc a.H5, .toc a.H6 { padding-left: var(--space-12); }
 
 .toc a:hover,
 .toc a:focus-visible {
@@ -389,15 +393,25 @@
     text-overflow: ellipsis;
 }
 
+/* Reference markers (POC, EXT): secondary pointers, so they sit in neutral tones and only take the
+   accent when their link is hovered or focused. */
 sup {
     display: inline-block;
-    margin: 0 var(--space-1);
+    /* Room on each side, so two markers in a row read as separate pills. */
+    margin: 0 var(--space-1-5);
     padding: var(--space-0-5) var(--space-1-5);
     border-radius: var(--r-full);
-    background: var(--accentTint);
-    color: var(--accentText);
+    background: var(--hover);
+    color: var(--muted);
     font-size: var(--fs-2xs);
     font-weight: bold;
+    transition: color var(--dur), background-color var(--dur);
+}
+
+.paragraphs a:hover > sup,
+.paragraphs a:focus-visible > sup {
+    background: var(--accentTint);
+    color: var(--accentText);
 }
 
 /* Code: inline chips and framed blocks with the copy button in the corner. */
@@ -465,8 +479,8 @@ pre code::-webkit-scrollbar-thumb {
 
 button.copy {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: var(--space-3);
+    right: var(--space-3);
     z-index: 1;
 }
 

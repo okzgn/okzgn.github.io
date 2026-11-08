@@ -1,0 +1,10 @@
+<svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :target .ic{stroke:#c6460c}
+  @media (prefers-color-scheme:dark){.ic{stroke:#8ac4ff}:target .ic{stroke:#ff962e}}</style>
+  <!-- Articles (menu): a pen writing a line. Drawn on a 24-unit grid with rounded corners, scaled to the 80x80 canvas. -->
+  <g transform="translate(4,4) scale(3)">
+    <path d="M13 20h7" class="ic"/>
+    <path d="M16.2 4.3a2.1 2.1 0 0 1 3 3L8 18.5l-3.6.9a.4.4 0 0 1-.5-.5l.9-3.6z" class="ic"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :target .ic{stroke:#c6460c}
+  @media (prefers-color-scheme:dark){.ic{stroke:#8ac4ff}:target .ic{stroke:#ff962e}}</style>
+  <!-- TOC toggle: a short line with a chevron pointing down below it (the page turns it over to fold
+       the list). Drawn on a 24-unit grid, scaled to the 80x80 canvas. -->
+  <g transform="translate(4,4) scale(3)">
+    <path d="M7 7h10" class="ic"/>
+    <path d="M7 11.5l5 5 5-5" class="ic"/>
+  </g>
+</svg>

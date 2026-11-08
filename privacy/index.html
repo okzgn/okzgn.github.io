@@ -108,7 +108,7 @@
 					<p>Any dynamic state on this website (such as the on-page service cart or interface state) is handled <b>strictly client-side</b>, without transmitting or persisting unsubmitted cart interactions or form states to any remote database.</p>
 					<ul class="lines">
 						<li><b>Cart Session:</b> Selected services, the billing mode, and the optional client name are kept in the browser's <code>sessionStorage</code> on your device, so the cart survives page reloads. This data is discarded when the browser tab is closed and cleared after a successful inquiry submission.</li>
-						<li><b>Projects Cache:</b> The open source projects page requests the public repository list from the GitHub API (<code>api.github.com</code>) directly from your browser, and caches the response in <code>localStorage</code> for up to 24 hours to avoid repeated requests. As with any direct request, GitHub receives standard connection metadata (such as IP address and user agent) under its own privacy policy.</li>
+						<li><b>Projects Cache:</b> The open source projects page requests the public repository list from the GitHub API (<code>api.github.com</code>) directly from your browser, and caches the public fields it shows (repository name, link, language, topics and description) in <code>localStorage</code> for up to 24 hours to avoid repeated requests. Expired or outdated copies are removed automatically. As with any direct request, GitHub receives standard connection metadata (such as IP address and user agent) under its own privacy policy.</li>
 					</ul>
 
 					<h2>Direct Communication & Data Exchange</h2>
@@ -158,6 +158,7 @@
 						<li><a href="/service-specifications/">Service Specifications</a></li>
 						<li><a href="/projects/all-open-source-projects/">All Open Source Projects</a></li>
 						<li><a href="/privacy/">Privacy Statement</a></li>
+						<li><a href="/about/">About</a></li>
 					</ul>
 				</div>
 				<div class="footer-col">

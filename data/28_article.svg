@@ -1,11 +1,10 @@
 <svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
-  <style>.ic{fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.0591);stroke-linecap:round;stroke-linejoin:round}
-  :target .ic{fill:none;stroke:#c6460c;stroke-width:calc(3.876543210 * 1.0591);stroke-linecap:round;stroke-linejoin:round}
-  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.0591);stroke-linecap:round;stroke-linejoin:round}:target .ic{fill:none;stroke:#ff962e;stroke-width:calc(3.876543210 * 1.0591);stroke-linecap:round;stroke-linejoin:round}}</style><g transform="translate(1.9485,1.2876) scale(0.9442)">
-  
-    <ellipse cx="40" cy="15" rx="7" ry="7" class="ic"/>
-    <g transform="translate(0.3499, 34)">
-        <path d="M40 40 L32 35 L33 0 Q40 -5 47 0 L48 35 Z" class="ic"/>
-    </g>
-</g>
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
+  :target .ic{fill:none;stroke:#c6460c;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
+  @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}:target .ic{fill:none;stroke:#ff962e;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}}</style>
+  <!-- Article: a rounded page with three lines of text, centered on the 80x80 canvas. -->
+  <rect x="18" y="14" width="44" height="52" rx="9" class="ic"/>
+  <line x1="28" y1="30" x2="52" y2="30" class="ic"/>
+  <line x1="28" y1="40" x2="52" y2="40" class="ic"/>
+  <line x1="28" y1="50" x2="42" y2="50" class="ic"/>
 </svg>

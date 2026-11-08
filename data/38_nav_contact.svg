@@ -1,0 +1,10 @@
+<svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>.ic{fill:none;stroke:#004e9b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  :target .ic{stroke:#c6460c}
+  @media (prefers-color-scheme:dark){.ic{stroke:#8ac4ff}:target .ic{stroke:#ff962e}}</style>
+  <!-- Contact (menu): a paper plane. Drawn on a 24-unit grid with rounded corners, scaled to the 80x80 canvas. -->
+  <g transform="translate(4,4) scale(3)">
+    <path d="M19.9 3.5Q21.4 3 20.8 4.4L15.2 19.6Q14.6 21 14 19.6L11.3 13.1Q11.1 12.8 10.8 12.7L4.4 10Q3 9.4 4.4 8.9Z" class="ic"/>
+    <path d="M20.3 3.7L11.2 12.8" class="ic"/>
+  </g>
+</svg>

@@ -38,18 +38,14 @@
     --blueLight2: #8ac4ff;
     --blueLight3: #b8dbff;
     --blueDark2: #0052a3;
-    --blueDark3: #003b75;
     /* Accents (Orange) */
     --accent: #f26522;
-    --accent2: #f37439;
     --accentDark: #d95a1e;
     --accentDark2: #c6460c;
     --accentDark3: #9a3709;
     /* Theme / Gradient Colors */
     --themeColor0: #ff962e;
     --themeColor: #ffb164;
-    --themeColor2: #ffc482;
-    --themeColor3: #ffdbb8;
 
     /* Color channels. Every tint, line, shadow and fill below derives from them, so the dark
        theme only swaps channels. #004e9b (--realBlue) is the anchor. */
@@ -79,10 +75,12 @@
     --hover: rgb(var(--line-rgb) / 0.05);
     --accentTint: rgb(var(--accent-rgb) / 0.08);
     --accentLine: rgb(var(--accent-rgb) / 0.4);
+    /* A barely-there accent edge for tinted pills at rest (pill links and the +/- toggle). */
+    --accentEdge: rgb(var(--accent-rgb) / 0.18);
     --accentText: var(--accentDark2);
     --blueTint: rgb(var(--tint-rgb) / 0.07);
     --blueLine-strong: rgb(var(--tint-rgb) / 0.32);
-    --danger: var(--accentDark);
+    --danger: var(--accentDark2);
     --autofillBg: var(--surface-2);
     --bg-glass: rgb(var(--glass-rgb) / 0.88);
 
@@ -98,28 +96,44 @@
     /* Card titles: a deep tone of the anchor blue, so titles lead without shouting. */
     --title-tone: color-mix(in srgb, var(--realBlue) 72%, var(--realBlack));
 
-    /* Motion: state changes and the press feedback. */
+    /* Mobile menu icons: a deep blue at rest that brightens to the vivid blue on hover, focus and the
+       current section, matching the blue hover pill. */
+    --nav-icon-tone: var(--title-tone);
+    --nav-icon-active: var(--blueLight);
+
+    /* Motion: state changes and the press feedback; a spring that overshoots slightly (floating
+       buttons) and a soft ease-out for panels that slide in (cart). */
     --dur: 0.2s;
     --dur-press: 0.15s;
+    --ease-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
+    --ease-out: cubic-bezier(0.3, 0.8, 0.4, 1);
+    /* Press feedback: buttons and controls shrink a little more than whole cards. */
+    --press-scale: 0.97;
+    --press-scale-card: 0.985;
 
-    /* Tile fill (icon boxes) and the celeste feature fill. */
-    --tile-fill: linear-gradient(160deg, var(--surface), var(--accentTint));
-    --tile-ring: var(--accentTint);
-    /* Warm tile for orange icons and for tiles on the warm panel (cart). In light the base tile
-       is already warm, so they match; dark mode gives each its own tone. */
-    --tile-fill-warm: var(--tile-fill);
-    --tile-ring-warm: var(--tile-ring);
-    /* Field surfaces on the warm panel (cart): the same inset and raised steps as fields on
-       white cards (--surface-2, --surface-raised), taken from the warm panel instead. */
-    --warm-inset: color-mix(in srgb, var(--feature-warm-bg) 55%, var(--bg));
+    /* Icon tiles: a light blue tint behind the blue service icons, in both themes. */
+    --tile-fill: linear-gradient(160deg, var(--surface), var(--blueTint));
+    --tile-ring: var(--blueTint);
+    /* Warm tile (.icon-warm) for the orange icons (articles, projects) and for tiles on the warm cart
+       panel: the same peach as the pill links. */
+    --tile-fill-warm: linear-gradient(160deg, var(--surface), var(--accentTint));
+    --tile-ring-warm: var(--accentTint);
+    /* Field surfaces on the warm panel (cart): a see-through accent step at rest, so the field reads
+       as a slightly deeper shade of the panel (never a gray patch), and the raised surface on focus. */
+    --warm-inset: rgb(var(--accent-rgb) / 0.05);
+    /* The same look made opaque, for the browser's autofill paint (which shows through see-through
+       fills). */
+    --warm-inset-solid: color-mix(in srgb, var(--accent) 13%, var(--surface));
     --warm-raised: var(--surface);
     --feature-bg: color-mix(in srgb, var(--blueLight2) 15%, var(--surface));
     --feature-line: rgb(var(--blue-rgb) / 0.14);
-    /* The warm line is a deeper step of the warm fill itself, so edges stay in its tone. */
-    --feature-warm-bg: color-mix(in srgb, var(--themeColor) 15%, var(--surface));
-    --feature-warm-line: color-mix(in srgb, var(--themeColor) 42%, var(--surface));
+    /* Warm surfaces (cart panel, featured card, menu and back-to-top buttons) take the accent hue at
+       the --accentTint strength, made opaque, so every peach on the site is the same tone. The line
+       and the edge are deeper steps of the same hue. */
+    --feature-warm-bg: color-mix(in srgb, var(--accent) 8%, var(--surface));
+    --feature-warm-line: color-mix(in srgb, var(--accent) 22%, var(--surface));
     /* Small warm controls on the page background need a firmer edge than panels. */
-    --feature-warm-edge: color-mix(in srgb, var(--themeColor) 80%, var(--surface));
+    --feature-warm-edge: color-mix(in srgb, var(--accent) 40%, var(--surface));
     /* Card surfaces: a faint glow in the top right corner over a base that settles slightly toward
        the page at the bottom, a lit top edge, and an accent line drawn on that edge. The glow and
        the bottom fade have a fixed reach (radial sizes do not accept min()), so a long article card
@@ -143,6 +157,14 @@
         radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.08), transparent 60%),
         linear-gradient(0deg, color-mix(in srgb, var(--feature-bg) 93%, var(--bg)), var(--feature-bg) var(--card-fade-to));
     --card-shine: inset 0 1px 0 rgb(255 255 255 / 0.9);
+    /* Bars of the +/- toggle (.badge-marker). Each bar spans the whole box across its thickness and its
+       2.5px line is drawn with color stops around 50%, so it stays centered at any zoom or screen scale
+       (a thin tile gets rounded to whole device pixels and drifts off the center). */
+    --marker-bar-h: linear-gradient(to bottom, transparent calc(50% - 1.25px), currentColor calc(50% - 1.25px) calc(50% + 1.25px), transparent calc(50% + 1.25px)) center / 0.5625rem 100% no-repeat;
+    --marker-bar-v: linear-gradient(to right, transparent calc(50% - 1.25px), currentColor calc(50% - 1.25px) calc(50% + 1.25px), transparent calc(50% + 1.25px)) center / 100% 0.5625rem no-repeat;
+    /* The minus (open state) is a light bar on the dark accent fill, which reads heavier than the dark
+       plus on a light fill, so it is a quarter pixel thinner on each side to look the same weight. */
+    --marker-bar-minus: linear-gradient(to bottom, transparent calc(50% - 1px), currentColor calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)) center / 0.5625rem 100% no-repeat;
     --card-edge: linear-gradient(90deg, transparent, var(--accentLine) 30%, rgb(var(--tint-rgb) / 0.3) 70%, transparent);
     /* Secondary button fill and edge: a light tint and a hairline, with a 3-point hover step;
        the shine and shadow below are what set it apart from the cards around it. */
@@ -205,10 +227,9 @@
     --lh-body: 1.6;
     --lh-read: 1.7;
     --ls-grl: 0em;
-    --ls-snug: 0.01em;
-    --ls-caps: 0.02em;
+    --ls-caps: 0.04em;
     --ls-heading: -0.01em;
-    --ls-display: -0.02em;
+    --ls-display: -0.03em;
     --fs-display: clamp(2.5rem, 4vw + 1.25rem, 4.5rem);
     --fs-h2: clamp(1.875rem, 2vw + 1.25rem, 2.75rem);
     --fs-h3: clamp(1.25rem, 0.5vw + 1.125rem, 1.5rem);
@@ -289,7 +310,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     color: var(--blue);
     line-height: var(--lh-tight);
-    letter-spacing: var(--ls-snug);
+    letter-spacing: var(--ls-grl);
     text-wrap: balance;
 }
 
@@ -432,7 +453,8 @@ main > .section {
     background: var(--fill-accent);
     border: 1px solid var(--accentDark2);
     box-shadow: var(--sh-accent), var(--shine);
-    transition: background var(--dur), box-shadow var(--dur), transform var(--dur-press);
+    /* Both fills are gradients, which cannot be interpolated; only the edge and shadow animate. */
+    transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur-press);
 }
 
 .cta-button:hover,
@@ -449,8 +471,8 @@ main > .section {
 .round-button:hover, .round-button:active,
 .pill-link:hover, .pill-link:active,
 button.tag:hover, button.tag:active,
-.site-menu-toggle:active {
-    transform: scale(0.97);
+.site-menu-toggle:hover, .site-menu-toggle:active {
+    transform: scale(var(--press-scale));
 }
 
 .cta-button:disabled {
@@ -488,7 +510,8 @@ button.tag:hover, button.tag:active,
     border-color: var(--ghost-line-hover);
 }
 
-.btn-sm {
+/* Small buttons; pill links share the size. */
+.btn-sm, .pill-link {
     font-size: var(--fs-sm);
     padding: var(--space-2) 0;
 }
@@ -542,11 +565,15 @@ button.tag:hover, button.tag:active,
     margin-right: 0;
 }
 
+/* As the arrow appears on the right, it turns 45 degrees to point straight right. The turn starts
+   0.05s into the 0.2s slide (0.25 of --dur); on leave it turns back while it fades. */
 .cta-button:hover::after, .cta-button:focus-visible::after, .cta-button:active::after,
 .btn-ghost:hover::after, .btn-ghost:focus-visible::after, .btn-ghost:active::after,
 .pill-link:hover::after, .pill-link:focus-visible::after, .pill-link:active::after {
     border-left-color: var(--on-accent);
     margin-left: var(--space-3);
+    transform: none;
+    transition: all var(--dur), transform var(--dur) calc(var(--dur) * 0.25);
 }
 
 /* Like the primary CTA, the arrow settles in the label color as it slides. */
@@ -558,6 +585,14 @@ button.tag:hover, button.tag:active,
     border-left-color: var(--accentText);
 }
 
+/* The primary CTA's arrow is a touch smaller than the other buttons', so it does not compete with
+   the label on the strong fill. */
+.cta-button::before, .cta-button::after {
+    border-left-width: 0.66rem;
+    border-top-width: 0.33rem;
+    border-bottom-width: 0.33rem;
+}
+
 /* Small buttons and pill links share the smaller arrow and its spacing. */
 .btn-sm::before, .btn-sm::after,
 .pill-link::before, .pill-link::after {
@@ -566,18 +601,18 @@ button.tag:hover, button.tag:active,
     border-bottom-width: 0.3rem;
 }
 
+.cta-button.btn-sm::before, .cta-button.btn-sm::after {
+    border-left-width: 0.56rem;
+    border-top-width: 0.28rem;
+    border-bottom-width: 0.28rem;
+}
+
 .btn-sm::before, .pill-link::before {
     margin-left: var(--space-4);
-    margin-right: var(--space-3);
 }
 
 .btn-sm::after, .pill-link::after {
     margin-right: var(--space-4);
-}
-
-.btn-sm:hover::after, .btn-sm:focus-visible::after, .btn-sm:active::after,
-.pill-link:hover::after, .pill-link:focus-visible::after, .pill-link:active::after {
-    margin-left: var(--space-3);
 }
 
 .cta-button > *, .btn-ghost > * {
@@ -586,11 +621,9 @@ button.tag:hover, button.tag:active,
 
 /* Pill link: compact standalone link (project names, secondary actions). */
 .pill-link {
-    font-size: var(--fs-sm);
-    padding: var(--space-2) 0;
     color: var(--accentText);
     background: var(--accentTint);
-    border: 1px solid transparent;
+    border: 1px solid var(--accentEdge);
 }
 
 /* Hover keeps the label color, as every other link does, and only rings the pill. */
@@ -614,7 +647,7 @@ button.tag:hover, button.tag:active,
     border: 1px solid var(--border);
     background: var(--surface-2);
     color: var(--muted);
-    transition: color var(--dur), background var(--dur), border-color var(--dur), opacity var(--dur), transform var(--dur-press);
+    transition: color var(--dur), background var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
 .tag::before, .tag::after {
@@ -622,7 +655,8 @@ button.tag:hover, button.tag:active,
     content: none;
 }
 
-a.tag:hover, a.tag:focus-visible, a.tag:active,
+/* The landing's Spec links are tags styled as quiet text links (landing.css), so they skip the pill hover. */
+a.tag:not(.spec-link):hover, a.tag:not(.spec-link):focus-visible, a.tag:not(.spec-link):active,
 button.tag:hover, button.tag:focus-visible, button.tag:active {
     color: var(--accentText);
     border-color: var(--accent);
@@ -638,23 +672,93 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     width: 1.375rem;
     height: 1.375rem;
     border-radius: 50%;
-    border: 1px solid var(--border-strong);
-    color: var(--ink);
-    background:
-        linear-gradient(currentColor, currentColor) center / 0.5625rem 1.5px no-repeat,
-        linear-gradient(currentColor, currentColor) center / 1.5px 0.5625rem no-repeat;
+    /* Styled like the orange pill links (.pill-link): link orange on the light accent tint, with a
+       subtle accent ring that hover lights. */
+    border: 1px solid var(--accentEdge);
+    color: var(--accentText);
+    background: var(--marker-bar-h), var(--marker-bar-v), var(--accentTint);
     transition: background-color var(--dur), border-color var(--dur), color var(--dur);
 }
 
-.badge-marker:hover::before {
+.badge-marker:hover::before,
+.badge-marker:focus-visible::before {
     border-color: var(--accent);
-    color: var(--accentText);
+}
+
+/* Open: a filled accent disc with a light minus (an open <details>, or an expanded toggle). */
+details[open] > summary.badge-marker::before,
+.badge-marker[aria-expanded="true"]::before {
+    color: var(--on-accent);
+    border-color: var(--accentDark2);
+    background: var(--marker-bar-minus), var(--accentDark2);
+}
+
+/* Inset card: a box on the inset surface that, on hover, focus or open, raises its border, takes a
+   soft shadow and fades in the raised card fill (service specifications, open source projects).
+   The raised fill is a gradient and cannot be animated from the flat resting color, so it sits on
+   its own layer that fades in; animating the fill itself would make the card flash. */
+.inset-card {
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    transition: border-color var(--dur), box-shadow var(--dur);
+}
+
+.inset-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: calc(var(--r-lg) - 1px);
+    background: var(--card-fill-raised);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur);
+}
+
+.inset-card:hover,
+.inset-card:focus-within,
+.inset-card[open] {
+    border-color: var(--border-strong);
+    box-shadow: var(--sh-1), var(--card-shine);
+}
+
+.inset-card:hover::before,
+.inset-card:focus-within::before,
+.inset-card[open]::before {
+    opacity: 1;
+}
+
+/* The accent edge line of the other cards (.card::before), between the rounded corners; it brightens
+   on hover, focus and open. */
+.inset-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: var(--r-lg);
+    right: var(--r-lg);
+    height: 1px;
+    background: var(--card-edge);
+    opacity: 0.55;
+    pointer-events: none;
+    transition: opacity var(--dur);
+}
+
+.inset-card:hover::after,
+.inset-card:focus-within::after,
+.inset-card[open]::after {
+    opacity: 1;
 }
 
 
-/* Card: a softly lit surface with a hairline border, a soft shadow and an accent line on its top edge. */
-.card {
+/* Card: a softly lit surface with a hairline border, a soft shadow and an accent line on its top edge.
+   The landing's service cards (.service-card) share the surface; they and the cart panel (#cart)
+   share the edge line. Their states are in landing.css. */
+.card, .service-card {
     position: relative;
+    isolation: isolate;
     background: var(--card-fill);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
@@ -662,7 +766,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 }
 
 /* The edge line runs between the rounded corners and brightens when the card is hovered. */
-.card::before {
+.card::before, .service-card::before, #cart::before {
     content: '';
     position: absolute;
     top: -1px;
@@ -680,7 +784,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 }
 
 .card-hover:hover, .card-hover:active {
-    transform: scale(0.985);
+    transform: scale(var(--press-scale-card));
 }
 
 .card-hover:hover, .card-hover:focus-within {
@@ -692,7 +796,54 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     opacity: 1;
 }
 
-/* Floating round button (back to top, cart): the warm fill of the cart panel, with a dark orange icon. */
+/* Card icon backdrop: a large, very soft copy of the card's icon behind the content, bleeding off the
+   top-left corner. Markup, inside a card (.card or .service-card):
+   <span class="card-bg" aria-hidden="true"><img src="…"></span>
+   The span covers the card and crops the image to the card's rounded shape. The host card needs
+   `position: relative` and `isolation: isolate` (.card has both; .service-card sets them in landing.css).
+   Hover and selected states raise the opacity: .card-hover here, .service-card in landing.css.
+   The SVG already switches to its light stroke in dark mode, so only the opacity is tuned here. */
+.card-bg {
+    --card-bg-bleed: 2.5rem;
+    --card-bg-lift: 0rem;
+    --card-bg-size: 10.5rem;
+    --card-bg-opacity: 0.04;
+    --card-bg-opacity-active: 0.05;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    border-radius: calc(var(--r-xl) - 1px);
+    opacity: var(--card-bg-opacity);
+    pointer-events: none;
+    transition: opacity var(--dur);
+}
+
+.card-bg img {
+    position: absolute;
+    /* --card-bg-lift raises the icon without moving it sideways. */
+    top: calc(var(--card-bg-bleed) * -1 - var(--card-bg-lift));
+    left: calc(var(--card-bg-bleed) * -1);
+    width: var(--card-bg-size);
+    height: var(--card-bg-size);
+}
+
+/* Articles and projects (.card): the backdrop sits lower and further right and is smaller than on
+   the service cards; the opacity is shared. A negative bleed insets the icon from the corner: it is
+   0.5rem lower and 0.5rem further right than the old 0.25rem bleed. */
+.card .card-bg {
+    --card-bg-bleed: -0.25rem;
+    --card-bg-lift: 0.5rem;
+    --card-bg-size: 7.5rem;
+}
+
+.card-hover:hover .card-bg,
+.card-hover:focus-within .card-bg {
+    opacity: var(--card-bg-opacity-active);
+}
+
+/* Floating round button (back to top): the warm fill of the cart panel, with a dark orange icon.
+   .is-accent (the cart button) takes the primary CTA fill instead. */
 .round-button {
     width: 3rem;
     height: 3rem;
@@ -705,7 +856,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     border: 1px solid var(--feature-warm-edge);
     box-shadow: var(--sh-2), var(--card-shine);
     cursor: pointer;
-    transition: opacity var(--dur), visibility var(--dur), background var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-press);
+    transition: opacity var(--dur), visibility var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
 .round-button svg {
@@ -718,10 +869,23 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     border-color: var(--accent);
 }
 
+.round-button.is-accent {
+    color: var(--on-accent);
+    background: var(--fill-accent);
+    border-color: var(--accentDark2);
+    box-shadow: var(--sh-accent), var(--shine);
+}
+
+.round-button.is-accent:hover,
+.round-button.is-accent:focus-visible {
+    background: var(--fill-accent-hover);
+    border-color: var(--accent-deep);
+}
+
 #up {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: var(--space-6);
+    right: var(--space-6);
     opacity: 0;
     visibility: hidden;
     z-index: 99;
@@ -742,7 +906,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     background: var(--bg-glass);
     -webkit-backdrop-filter: saturate(1.2) blur(10px);
     backdrop-filter: saturate(1.2) blur(10px);
-    transition: background-color var(--dur), box-shadow var(--dur);
+    transition: box-shadow var(--dur);
 }
 
 .site-header.scrolled,
@@ -767,7 +931,7 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 .brand img {
     display: block;
     width: auto;
-    height: 1.375rem;
+    height: 1.5rem;
 }
 
 .site-nav {
@@ -785,13 +949,9 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     font-weight: bold;
 }
 
+/* Hover, focus and the current section share the ink text on a soft pill. */
 .site-nav a:hover,
-.site-nav a:focus-visible {
-    color: var(--ink);
-    background: var(--hover);
-}
-
-/* Current section: ink text on the same soft pill as the hover state. */
+.site-nav a:focus-visible,
 .site-nav a.is-current {
     color: var(--ink);
     background: var(--hover);
@@ -849,10 +1009,16 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         display: block;
     }
 
+    /* Without the text links, the logo is the only weight on the left of the bar. At the desktop
+       height its ring is half the 2.75rem menu button; this keeps it near two thirds. */
+    .brand img {
+        height: 1.75rem;
+    }
+
     .site-nav {
         display: none;
         position: absolute;
-        top: calc(100% + 0.5rem);
+        top: calc(100% + var(--space-2));
         left: 0;
         right: 0;
         flex-flow: column;
@@ -867,10 +1033,38 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     }
 
     .site-nav a {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
         padding: var(--space-4) var(--space-4);
         font-size: var(--fs-md);
         border-radius: var(--r-md);
     }
+
+    /* Menu icons, picked by the section each link opens (#articles on the landing, /#articles
+       elsewhere). The SVG works as a mask, so the color is set here (--nav-icon-tone at rest,
+       --nav-icon-active on hover, focus and the current section). Icons in data/ (35-38). */
+    .site-nav a::before {
+        content: '';
+        flex: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        background: var(--nav-icon-tone);
+        transition: background-color var(--dur);
+        -webkit-mask: var(--nav-icon) center / contain no-repeat;
+        mask: var(--nav-icon) center / contain no-repeat;
+    }
+
+    .site-nav a:hover::before,
+    .site-nav a:focus-visible::before,
+    .site-nav a.is-current::before {
+        background: var(--nav-icon-active);
+    }
+
+    .site-nav a[href$="#articles"] { --nav-icon: url('data/35_nav_articles.svg'); }
+    .site-nav a[href$="#services"] { --nav-icon: url('data/36_nav_services.svg'); }
+    .site-nav a[href$="#projects"] { --nav-icon: url('data/37_nav_projects.svg'); }
+    .site-nav a[href$="#contact"] { --nav-icon: url('data/38_nav_contact.svg'); }
 
     .site-header.open .site-nav {
         display: flex;
@@ -916,11 +1110,15 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     gap: var(--space-10) clamp(var(--space-8), 5vw, 4.5rem);
 }
 
+/* The footer logo is set in the muted text tone (black, or white in dark mode, at the --muted alpha),
+   so it reads as part of the footer rather than as a second brand mark. */
 .footer-brand img {
     display: block;
     width: auto;
     height: 1.5rem;
     margin-bottom: var(--space-4);
+    filter: brightness(0);
+    opacity: 0.62;
 }
 
 .footer-brand p {
@@ -962,14 +1160,46 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
     background: var(--hover);
 }
 
+/* Connect links: an icon before the label, picked by the link target, so the footer markup in every
+   page stays as is. The SVG works as a mask, so the icon takes the link color (and its hover color).
+   The icons live in data/ (31_github, 32_npm, 33_email, 34_whatsapp). */
+.footer-col a[href^="https://github.com/"],
+.footer-col a[href^="https://www.npmjs.com/"],
+.footer-col a[href^="mailto:"],
+.footer-col a[href^="https://wa.me/"] {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.footer-col a[href^="https://github.com/"]::before,
+.footer-col a[href^="https://www.npmjs.com/"]::before,
+.footer-col a[href^="mailto:"]::before,
+.footer-col a[href^="https://wa.me/"]::before {
+    content: '';
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    background: currentColor;
+    -webkit-mask: var(--footer-icon) center / contain no-repeat;
+    mask: var(--footer-icon) center / contain no-repeat;
+}
+
+.footer-col a[href^="https://github.com/"] { --footer-icon: url('data/31_github.svg'); }
+.footer-col a[href^="https://www.npmjs.com/"] { --footer-icon: url('data/32_npm.svg'); }
+.footer-col a[href^="mailto:"] { --footer-icon: url('data/33_email.svg'); }
+.footer-col a[href^="https://wa.me/"] { --footer-icon: url('data/34_whatsapp.svg'); }
+
 @media screen and (max-width: 860px) {
     .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--space-10);
     }
 
+    /* Below the link columns, so the links come first and the logo and copyright close the page. */
     .footer-brand {
         grid-column: 1 / -1;
+        order: 2;
     }
 }
 
@@ -1002,6 +1232,8 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         --accentTint: rgb(var(--accent-rgb) / 0.15);
         --accentText: var(--themeColor0);
         --title-tone: color-mix(in srgb, var(--blueLight3) 55%, #ffffff);
+        --nav-icon-tone: var(--blueLight2);
+        --nav-icon-active: var(--blueLight3);
         /* Secondary buttons lighten instead of darken, by the same small amounts as in light. */
         --ghost-fill: rgb(var(--sky-rgb) / 0.07);
         --ghost-fill-hover: rgb(var(--sky-rgb) / 0.1);
@@ -1012,9 +1244,9 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         --ghost-shine: inset 0 1px 0 rgb(var(--sky-rgb) / 0.05);
         --feature-bg: color-mix(in srgb, var(--blueLight2) 9%, var(--surface));
         --feature-line: rgb(var(--sky-rgb) / 0.2);
-        --feature-warm-bg: color-mix(in srgb, var(--themeColor) 9%, var(--surface));
-        --feature-warm-line: color-mix(in srgb, var(--themeColor) 22%, var(--surface));
-        --feature-warm-edge: color-mix(in srgb, var(--themeColor) 45%, var(--surface));
+        --feature-warm-bg: color-mix(in srgb, var(--accent) 15%, var(--surface));
+        --feature-warm-line: color-mix(in srgb, var(--accent) 26%, var(--surface));
+        --feature-warm-edge: color-mix(in srgb, var(--accent) 42%, var(--surface));
         --card-shine: inset 0 1px 0 rgb(var(--sky-rgb) / 0.08);
         /* Inset surfaces lighten instead of darken: the same small step as in light, taken
            toward the sky tone, and raised states take one more step. */
@@ -1023,10 +1255,11 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
         /* Icon tiles: a muted celeste that matches the light icon strokes, not the warm tint. */
         --tile-fill: linear-gradient(160deg, var(--surface-2), color-mix(in srgb, var(--surface) 84%, var(--blueLight2)));
         --tile-ring: rgb(var(--sky-rgb) / 0.14);
-        --tile-fill-warm: linear-gradient(160deg, color-mix(in srgb, var(--surface) 84%, var(--accent)), color-mix(in srgb, var(--surface) 70%, var(--accent)));
-        --tile-ring-warm: rgb(var(--accent-rgb) / 0.3);
-        --warm-inset: color-mix(in srgb, var(--feature-warm-bg) 96%, var(--themeColor));
-        --warm-raised: color-mix(in srgb, var(--feature-warm-bg) 92%, var(--themeColor));
+        --tile-fill-warm: linear-gradient(160deg, color-mix(in srgb, var(--surface) 96%, var(--accent)), color-mix(in srgb, var(--surface) 84%, var(--accent)));
+        --tile-ring-warm: rgb(var(--accent-rgb) / 0.14);
+        --warm-inset: rgb(var(--accent-rgb) / 0.06);
+        --warm-inset-solid: color-mix(in srgb, var(--accent) 20%, var(--surface));
+        --warm-raised: color-mix(in srgb, var(--feature-warm-bg) 84%, var(--accent));
     }
 
     *, ::after, ::before {
@@ -1039,7 +1272,6 @@ button.tag:hover, button.tag:focus-visible, button.tag:active {
 
     ::selection {
         background: var(--realBlue);
-        color: var(--white);
     }
 
     :focus-visible {

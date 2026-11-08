@@ -1,3 +1,60 @@
+/* All open source projects: lists the public repositories from the GitHub API, cached in localStorage.
+   The page ships a static copy of the list (for search engines and visitors without JavaScript). */
+
+// Hides that static copy until the fresh list is ready, so the page shows "Updating..." instead of
+// flashing the old cards. This runs before the first paint: the script is loaded without defer.
+document.documentElement.classList.add('projects-js');
+
+var
+  PROJECTS_CACHE_KEY = 'okzgn-projects-v2',
+  PROJECTS_CACHE_TTL = 86400000, // 24 h for a good response
+  PROJECTS_ERROR_TTL = 600000;   // 10 min for an error
+
+// Returns the cached list while it is fresh. This page is the only user of localStorage on the site
+// (see the privacy statement), so any other entry is a leftover of an older version of this cache
+// (other keys, or the whole API response) and is removed; an expired entry is removed too.
+function readProjectsCache() {
+  try {
+    for (var i = localStorage.length - 1; i >= 0; i--) {
+      var key = localStorage.key(i);
+      if (key !== PROJECTS_CACHE_KEY) { localStorage.removeItem(key); }
+    }
+
+    var cache = JSON.parse(localStorage.getItem(PROJECTS_CACHE_KEY) || 'null');
+    if (cache && cache.content && cache.expires > Date.now()) { return cache.content; }
+    localStorage.removeItem(PROJECTS_CACHE_KEY);
+  }
+  catch (e) {}
+  return null;
+}
+
+function writeProjectsCache(content, ttl) {
+  try {
+    localStorage.setItem(PROJECTS_CACHE_KEY, JSON.stringify({ expires: Date.now() + ttl, content: content }));
+  }
+  catch (e) {}
+}
+
+// Keeps only the fields the list shows, not the whole API payload (about 150 KB for 30 repositories).
+function trimProjects(response) {
+  try {
+    var repos = JSON.parse(response);
+    if (!Array.isArray(repos)) { return response; }
+    return JSON.stringify(repos.map(function (repo) {
+      return {
+        name: repo.name,
+        html_url: repo.html_url,
+        language: repo.language,
+        topics: repo.topics,
+        description: repo.description
+      };
+    }));
+  }
+  catch (e) {
+    return response;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var descriptions = document.querySelectorAll('.projects-container .description');
   descriptions.forEach(function (description) {
@@ -8,37 +65,39 @@ document.addEventListener('DOMContentLoaded', function () {
   var
     projectsContainer = document.querySelector('.projects-container'),
     projectsResponseContainer = document.querySelector('.projects-response'),
-    alreadyRequestedProjects = localStorage.getItem('all-oss-projects'),
-    alreadyRequestedProjectsDate = Number(localStorage.getItem('all-oss-projects-date') || 0),
-    projectsDiffDate = (Date.now() > alreadyRequestedProjectsDate),
-    projectsContent = '{"error":"Projects not found."}';
+    cachedProjects = readProjectsCache();
 
-  if (projectsContainer && projectsResponseContainer &&
-    (!alreadyRequestedProjects || !alreadyRequestedProjectsDate || projectsDiffDate)) {
-    projectsResponseContainer.classList.add('loading');
-    projectsResponseContainer.textContent = 'Updating...';
+  if (!projectsContainer || !projectsResponseContainer) { return; }
 
-    _http({
-      url: 'https://api.github.com/users/okzgn/repos?sort=pushed&per_page=30',
-      onSuccess: function (r) {
-        projectsContent = r;
-        localStorage.setItem('all-oss-projects', projectsContent);
-        localStorage.setItem('all-oss-projects-date', Date.now() + 86400000);
-        showProjects(projectsContainer, projectsResponseContainer, projectsContent);
-      },
-      onError: function (e) {
-        projectsContent = '{"error":"' + e.message + '"}';
-        localStorage.setItem('all-oss-projects', projectsContent);
-        localStorage.setItem('all-oss-projects-date', Date.now() + 600000);
-        showProjects(projectsContainer, projectsResponseContainer, projectsContent);
-      }
-    });
-  }
-  else if (alreadyRequestedProjects) {
+  projectsResponseContainer.classList.add('loading');
+  projectsResponseContainer.textContent = 'Updating...';
+
+  if (cachedProjects) {
     setTimeout(function () {
-      showProjects(projectsContainer, projectsResponseContainer, alreadyRequestedProjects);
+      showProjects(projectsContainer, projectsResponseContainer, cachedProjects);
     }, 2345);
+    return;
   }
+
+  // Without the HTTP helper (estructura.okzgn.com did not load) there is nothing to wait for.
+  if (typeof _http !== 'function') {
+    showProjects(projectsContainer, projectsResponseContainer, '{"error":"Cannot load the projects list right now."}');
+    return;
+  }
+
+  _http({
+    url: 'https://api.github.com/users/okzgn/repos?sort=pushed&per_page=30',
+    onSuccess: function (r) {
+      var projectsContent = trimProjects(r);
+      writeProjectsCache(projectsContent, PROJECTS_CACHE_TTL);
+      showProjects(projectsContainer, projectsResponseContainer, projectsContent);
+    },
+    onError: function (e) {
+      var projectsContent = JSON.stringify({ error: e.message });
+      writeProjectsCache(projectsContent, PROJECTS_ERROR_TTL);
+      showProjects(projectsContainer, projectsResponseContainer, projectsContent);
+    }
+  });
 });
 
 function toggleByKeyboard(e) {
@@ -67,18 +126,23 @@ function showProjects(container, responseContainer, projects){
     projects = { error: 'Cannot read the projects (JSON).' };
   }
 
+  responseContainer.classList.remove('loading');
+
+  // On error, the message shows above the static copy of the list, which is revealed again.
   if (projects.error || !projects.length) {
-    if (!projects.length) {
+    if (!projects.error) {
       projects.error = 'Cannot update projects list (empty).';
     }
 
     responseContainer.classList.add('error');
     responseContainer.textContent = projects.error;
+    container.classList.add('is-ready');
     return;
   }
 
   responseContainer.classList.add('hidden');
   container.textContent = '';
+  container.classList.add('is-ready');
 
   createProjectsLinks('Modern Projects', container, projects, [], ['website', 'software-preservation']);
   createProjectsLinks('Old Projects', container, projects, ['software-preservation'], ['website'], true);
@@ -141,7 +205,7 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
     languageItem.className = 'tag language';
     languageItem.textContent = projects[i].language;
 
-    detailsItem.className = 'details rounded-box';
+    detailsItem.className = 'details';
     if (projects[i].language) { detailsItem.appendChild(languageItem); }
 
     var
@@ -163,6 +227,7 @@ function createProjectsLinks(title, projectsContainer, projects, included, exclu
     descriptionItem.addEventListener('click', toggleDescription);
     descriptionItem.addEventListener('keydown', toggleByKeyboard);
 
+    listItem.className = 'inset-card';
     titleBoxItem.className = 'title';
     titleBoxItem.appendChild(titleItem);
     listItem.appendChild(titleBoxItem);
