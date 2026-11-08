@@ -61,6 +61,8 @@
     font-size: var(--fs-2xl);
 }
 
+/* Count chip: the same pill as the card links (.pill-link): accent text on the accent tint, with its
+   subtle accent ring. */
 .projects-container .total {
     display: inline-flex;
     align-items: center;
@@ -68,6 +70,7 @@
     margin-top: var(--space-3);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--r-full);
+    border: 1px solid var(--accentEdge);
     background: var(--accentTint);
     color: var(--accentText);
     font-size: var(--fs-sm);

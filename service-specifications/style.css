@@ -33,6 +33,7 @@ summary::-webkit-details-marker {
 }
 
 details p,
-details ul {
+details ul,
+details dl {
     margin-top: var(--space-3);
 }

@@ -1,5 +1,8 @@
-/* About page: founder profile, career timeline and visual identity guide. Uses only shared tokens, so
-   the dark theme follows from style_commons.css without a block of its own. */
+/* About section: shared by /about/ (portrait, tagline), /about/history/ (portrait and timeline),
+   /about/cv/ (timelines) and /about/brand/ (logo, palette, typography). Uses only shared
+   tokens, so the dark theme follows from style_commons.css without a block of its own. Blocks nested
+   in the article sit on the inset surface, like .inset-card, without its hover state: they are not
+   interactive. */
 
 /* Profile: the cut-out portrait stands on the bottom edge of a cool card, next to the intro. */
 .about-profile {
@@ -33,17 +36,17 @@
     padding: 0;
 }
 
-.timeline li {
+.timeline > li {
     position: relative;
     padding-left: var(--space-8);
     padding-bottom: var(--space-7);
 }
 
-.timeline li:last-child {
+.timeline > li:last-child {
     padding-bottom: 0;
 }
 
-.timeline li::before {
+.timeline > li::before {
     content: '';
     position: absolute;
     left: calc(0.375rem - 1px);
@@ -54,11 +57,11 @@
     background: var(--border-strong);
 }
 
-.timeline li:last-child::before {
+.timeline > li:last-child::before {
     display: none;
 }
 
-.timeline li::after {
+.timeline > li::after {
     content: '';
     position: absolute;
     left: 0;
@@ -84,11 +87,23 @@
     margin-top: var(--space-1);
 }
 
+/* Curriculum vitae: an entry may carry its own bullet list (the direct-child selectors above keep the
+   timeline dots off these items). */
+.timeline > li > .lines {
+    margin-top: var(--space-3);
+}
+
+/* Curriculum vitae: the PDF button under the summary (cv-pdf.js shows it; it stays hidden without
+   JavaScript). */
+.cv-actions {
+    margin-top: var(--space-6);
+}
+
 /* Tagline: set large, in the title tone, behind an accent rule. */
 .paragraphs .about-tagline {
     padding-left: var(--space-5);
     border-left: 3px solid var(--accent);
-    font-size: clamp(1.5rem, 1.5vw + 1.1rem, 2.125rem);
+    font-size: var(--fs-2xl);
     font-weight: bold;
     line-height: var(--lh-tight);
     letter-spacing: var(--ls-heading);
@@ -154,8 +169,7 @@
     padding: var(--space-2) var(--space-2) var(--space-3);
     border-radius: var(--r-md);
     border: 1px solid var(--border);
-    background: var(--surface);
-    box-shadow: var(--card-shine), var(--sh-1);
+    background: var(--surface-2);
     line-height: var(--lh-ui);
 }
 
@@ -212,14 +226,13 @@
     padding: var(--space-5);
     border-radius: var(--r-lg);
     border: 1px solid var(--border);
-    background: var(--card-fill);
-    box-shadow: var(--card-shine), var(--sh-1);
+    background: var(--surface-2);
     line-height: var(--lh-ui);
 }
 
 .about-type-sample {
     margin-bottom: var(--space-2);
-    font-size: 3.25rem;
+    font-size: var(--fs-h2);
     font-weight: bold;
     line-height: 1;
     letter-spacing: var(--ls-display);

@@ -378,6 +378,69 @@
     margin-top: var(--space-2);
 }
 
+/* Key-value table (service specifications, privacy contact, CV details and skills, brand specs): a
+   definition list with a hairline between rows only, none above the first or below the last. The
+   rows are display: contents, so every label and value share one grid. The space between the
+   columns is the label's own right padding, not a grid gap, so each hairline runs unbroken under the
+   label, the space and the value. The label column has one fixed width in every table (11rem of text
+   plus the space), so the values line up from section to section (a longer label wraps); on phones
+   each label sits above its value. */
+.key-values {
+    display: grid;
+    grid-template-columns: calc(11rem + var(--space-6)) 1fr;
+    line-height: var(--lh-body);
+}
+
+.key-values > div {
+    display: contents;
+}
+
+.key-values dt,
+.key-values dd {
+    margin: 0;
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--border);
+}
+
+.key-values dt {
+    padding-right: var(--space-6);
+    color: var(--muted);
+}
+
+.key-values dd {
+    color: var(--text);
+}
+
+.key-values > div:first-child > dt,
+.key-values > div:first-child > dd {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.key-values > div:last-child > dt,
+.key-values > div:last-child > dd {
+    padding-bottom: 0;
+}
+
+@media screen and (max-width: 560px) {
+    .key-values {
+        grid-template-columns: 1fr;
+    }
+
+    .key-values dt {
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+
+    /* The value sits right under its label, also in the first row. */
+    .key-values > div > dd,
+    .key-values > div:first-child > dd {
+        padding-top: var(--space-0-5);
+        border-top: 0;
+    }
+}
+
+
 .rounded-box {
     margin: var(--space-3) 0;
     padding: var(--space-4);

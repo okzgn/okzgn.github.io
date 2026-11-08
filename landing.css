@@ -129,10 +129,13 @@
 }
 
 /* Satellites: beads in the line's tone, ringed by the surface so they stand clear of the line. */
+/* Satellites: gray dots the size of the node LEDs (r 2.5). The surface ring that sets them apart from
+   the orbit line is painted behind the fill, so it adds outside the dot instead of eating into it. */
 .hero-satellite {
     fill: var(--border-strong);
     stroke: var(--surface);
     stroke-width: 2;
+    paint-order: stroke;
 }
 
 @keyframes hero-orbit {

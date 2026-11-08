@@ -1064,7 +1064,9 @@ details[open] > summary.badge-marker::before,
     .site-nav a[href$="#articles"] { --nav-icon: url('data/35_nav_articles.svg'); }
     .site-nav a[href$="#services"] { --nav-icon: url('data/36_nav_services.svg'); }
     .site-nav a[href$="#projects"] { --nav-icon: url('data/37_nav_projects.svg'); }
-    .site-nav a[href$="#contact"] { --nav-icon: url('data/38_nav_contact.svg'); }
+    /* The contact icon was redrawn under the same file name; the version query makes browsers and
+       caches fetch the new drawing instead of a stored copy of the old one. */
+    .site-nav a[href$="#contact"] { --nav-icon: url('data/38_nav_contact.svg?v=2'); }
 
     .site-header.open .site-nav {
         display: flex;
@@ -1163,19 +1165,13 @@ details[open] > summary.badge-marker::before,
 /* Connect links: an icon before the label, picked by the link target, so the footer markup in every
    page stays as is. The SVG works as a mask, so the icon takes the link color (and its hover color).
    The icons live in data/ (31_github, 32_npm, 33_email, 34_whatsapp). */
-.footer-col a[href^="https://github.com/"],
-.footer-col a[href^="https://www.npmjs.com/"],
-.footer-col a[href^="mailto:"],
-.footer-col a[href^="https://wa.me/"] {
+.footer-col a:is([href^="https://github.com/"], [href^="https://www.npmjs.com/"], [href^="mailto:"], [href^="https://wa.me/"]) {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
 }
 
-.footer-col a[href^="https://github.com/"]::before,
-.footer-col a[href^="https://www.npmjs.com/"]::before,
-.footer-col a[href^="mailto:"]::before,
-.footer-col a[href^="https://wa.me/"]::before {
+.footer-col a:is([href^="https://github.com/"], [href^="https://www.npmjs.com/"], [href^="mailto:"], [href^="https://wa.me/"])::before {
     content: '';
     flex: none;
     width: 1rem;
@@ -1203,7 +1199,8 @@ details[open] > summary.badge-marker::before,
     }
 }
 
-/* Phones: Explore and Connect share a row; Resources, with the longest links, gets a full row below. */
+/* Phones: Explore and Connect share a row; Resources (the second column, with the longest links) gets
+   a full row below them. */
 @media screen and (max-width: 560px) {
     .footer-col:nth-child(3) {
         grid-column: 1 / -1;

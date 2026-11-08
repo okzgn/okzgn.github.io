@@ -99,17 +99,17 @@
 					</ul>
 
 					<h2>Infrastructure & Delivery</h2>
-					<ul class="lines">
-						<li><b>Static & Deterministic Delivery:</b> The frontend is delivered with standard web primitives (HTML5, CSS3, and modern vanilla JavaScript) over a hardened HTTPS configuration enforced with a strict Content Security Policy (<code>CSP</code>).</li>
-						<li><b>Edge & Proxy Security:</b> When traffic routes through edge caching or proxy networks (such as Cloudflare or dedicated edge nodes), requests are processed strictly for delivery acceleration and security (mitigating DDoS and malicious automated attacks). No persistent user-tracking identifiers are attached to user visits or sessions.</li>
-					</ul>
+					<dl class="key-values">
+						<div><dt>Static & Deterministic Delivery</dt><dd>The frontend is delivered with standard web primitives (HTML5, CSS3, and modern vanilla JavaScript) over a hardened HTTPS configuration enforced with a strict Content Security Policy (<code>CSP</code>).</dd></div>
+						<div><dt>Edge & Proxy Security</dt><dd>When traffic routes through edge caching or proxy networks (such as Cloudflare or dedicated edge nodes), requests are processed strictly for delivery acceleration and security (mitigating DDoS and malicious automated attacks). No persistent user-tracking identifiers are attached to user visits or sessions.</dd></div>
+					</dl>
 
 					<h2>Client-Side Operations & Cart State</h2>
 					<p>Any dynamic state on this website (such as the on-page service cart or interface state) is handled <b>strictly client-side</b>, without transmitting or persisting unsubmitted cart interactions or form states to any remote database.</p>
-					<ul class="lines">
-						<li><b>Cart Session:</b> Selected services, the billing mode, and the optional client name are kept in the browser's <code>sessionStorage</code> on your device, so the cart survives page reloads. This data is discarded when the browser tab is closed and cleared after a successful inquiry submission.</li>
-						<li><b>Projects Cache:</b> The open source projects page requests the public repository list from the GitHub API (<code>api.github.com</code>) directly from your browser, and caches the public fields it shows (repository name, link, language, topics and description) in <code>localStorage</code> for up to 24 hours to avoid repeated requests. Expired or outdated copies are removed automatically. As with any direct request, GitHub receives standard connection metadata (such as IP address and user agent) under its own privacy policy.</li>
-					</ul>
+					<dl class="key-values">
+						<div><dt>Cart Session</dt><dd>Selected services, the billing mode, and the optional client name are kept in the browser's <code>sessionStorage</code> on your device, so the cart survives page reloads. This data is discarded when the browser tab is closed and cleared after a successful inquiry submission.</dd></div>
+						<div><dt>Projects Cache</dt><dd>The open source projects page requests the public repository list from the GitHub API (<code>api.github.com</code>) directly from your browser, and caches the public fields it shows (repository name, link, language, topics and description) in <code>localStorage</code> for up to 24 hours to avoid repeated requests. Expired or outdated copies are removed automatically. As with any direct request, GitHub receives standard connection metadata (such as IP address and user agent) under its own privacy policy.</dd></div>
+					</dl>
 
 					<h2>Direct Communication & Data Exchange</h2>
 					<p>When reaching out via direct channels:</p>
@@ -126,11 +126,11 @@
 
 					<h2>Contact</h2>
 					<p>If you have specific security, NDA, or compliance requirements (such as isolated private cloud environments or on-premises model deployments), specify these requirements when initiating contact to accommodate your architecture.</p>
-					<ul class="lines">
-						<li><b>AI Assistant:</b> <a href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-						<li><b>Email:</b> <a href="mailto:hello@okzgn.com">hello@okzgn.com</a></li>
-						<li><b>Inquiries:</b> <a href="https://okzgn.com/#contact">https://okzgn.com/#contact</a></li>
-					</ul>
+					<dl class="key-values">
+						<div><dt>AI Assistant</dt><dd><a href="https://wa.me/593979522180" target="_blank" rel="noopener noreferrer">WhatsApp</a></dd></div>
+						<div><dt>Email</dt><dd><a href="mailto:hello@okzgn.com">hello@okzgn.com</a></dd></div>
+						<div><dt>Inquiries</dt><dd><a href="https://okzgn.com/#contact">https://okzgn.com/#contact</a></dd></div>
+					</dl>
 				</div>
 			</article>
 		</div>
@@ -158,6 +158,7 @@
 						<li><a href="/service-specifications/">Service Specifications</a></li>
 						<li><a href="/projects/all-open-source-projects/">All Open Source Projects</a></li>
 						<li><a href="/privacy/">Privacy Statement</a></li>
+						<li><a href="/about/brand/">Brand Guidelines</a></li>
 						<li><a href="/about/">About</a></li>
 					</ul>
 				</div>
