@@ -526,7 +526,8 @@
 
     .hero-visual {
         justify-self: center;
-        max-width: 24rem;
+        /* Up to 640px this is the fixed 24rem; from there it grows with the viewport (60vw) up to 34rem. */
+        max-width: clamp(24rem, 60vw, 34rem);
     }
 
     /* The window's text keeps a 10px floor, so it is relatively taller here; the diagram gives way. */
@@ -725,8 +726,11 @@
     margin-top: var(--space-5);
 }
 
+/* Category CTA: centered under its cards at every width. */
 .category-cta {
-    margin-top: var(--space-5);
+    display: flex;
+    width: fit-content;
+    margin: var(--space-5) auto 0;
 }
 
 /* "Select to add to cart." hint, revealed in a cascade by main.js. */
@@ -1056,13 +1060,6 @@
     }
 
     .service-group > p[data-billing-copy] {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .category-cta {
-        display: flex;
-        width: fit-content;
         margin-left: auto;
         margin-right: auto;
     }
