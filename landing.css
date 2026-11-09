@@ -1007,6 +1007,17 @@
     margin-top: var(--space-5);
 }
 
+/* The billing switch and its copy sit centered at every width, like the category CTAs. */
+.service-group > h2:has(.billing-switch),
+.service-group > p[data-billing-copy] {
+    text-align: center;
+}
+
+.service-group > p[data-billing-copy] {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .billing-switch {
     display: inline-flex;
     align-items: center;
@@ -1053,16 +1064,6 @@
         gap: 0;
     }
 
-    /* In a single column the billing switch, its copy and the closing CTAs read better centered. */
-    .service-group > h2:has(.billing-switch),
-    .service-group > p[data-billing-copy] {
-        text-align: center;
-    }
-
-    .service-group > p[data-billing-copy] {
-        margin-left: auto;
-        margin-right: auto;
-    }
 }
 
 /* Contact */
