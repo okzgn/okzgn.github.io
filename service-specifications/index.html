@@ -78,7 +78,7 @@
 		<div class="container page-hero">
 			<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a></nav>
 			<h1 class="main-title display">Service Specifications</h1>
-			<p class="lead">Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all OKZGN services.</p>
+			<p class="lead">Technical intake requirements, deliverable formats, execution procedures, realistic timelines, and operational caveats across all services.</p>
 		</div>
 		<div class="container page-layout">
 			<nav class="toc" data-nosnippet aria-label="Table of contents">
@@ -88,7 +88,7 @@
 			</nav>
 			<article class="card">
 				<div class="paragraphs">
-					<p>This document details the operational scope, required client inputs, technical delivery standards, handoff formats, realistic turnaround times, and known edge-case constraints across the OKZGN service catalog. Every engagement is executed under strict software engineering principles: reproducible environments, deterministic delivery, and hardened infrastructure.</p>
+					<p>This document details the operational scope, required client inputs, technical delivery standards, handoff formats, realistic turnaround times, and known edge-case constraints across the service catalog. Every engagement is executed under strict software engineering principles: reproducible environments, deterministic delivery, and hardened infrastructure.</p>
 
 					<h2>Standard Engagement Protocol</h2>
 					<p>To avoid scope creep, technical friction, and operational bottlenecks, all projects follow an established four-stage intake and delivery lifecycle:</p>
@@ -131,7 +131,7 @@
 						<dl class="key-values">
 							<div><dt>Required Client Inputs</dt><dd>Peak concurrent user projections (RPS/QPS), payload profiles (average token length, image dimensions), latency SLAs (Time to First Token, total request duration), and cloud/hardware infrastructure budgets.</dd></div>
 							<div><dt>Deliverables & Formats</dt><dd>Reverse proxy and worker pool architecture (Go, Redis, RabbitMQ, or Celery), Server-Sent Events (SSE) streaming infrastructure, Locust/k6 benchmark load scripts, and Prometheus/Grafana metric collectors.</dd></div>
-							<div><dt>Contact Point</dt><dd>Direct architecture review with OKZGN platform engineering to evaluate edge vs. centralized compute topology.</dd></div>
+							<div><dt>Contact Point</dt><dd>Direct architecture review with platform engineering to evaluate edge vs. centralized compute topology.</dd></div>
 							<div><dt>Estimated Timelines</dt><dd>2 to 4 weeks for architecture design, stress testing, and staging rollout.</dd></div>
 							<div><dt>Caveats & Operational Constraints</dt><dd>Total system throughput is fundamentally governed by hardware GPU VRAM bounds or external API provider rate limits (TPM/RPM tiers).</dd></div>
 						</dl>
@@ -155,7 +155,7 @@
 						<dl class="key-values">
 							<div><dt>Required Client Inputs</dt><dd>30–60 days of itemized billing records, API gateway request logs, and acceptable quality degradation thresholds for fallback models.</dd></div>
 							<div><dt>Deliverables & Formats</dt><dd>Dynamic semantic caching layer (Redis / vector index), dynamic multi-vendor fallback gateway, cost attribution telemetry dashboards, and optimization audit report.</dd></div>
-							<div><dt>Contact Point</dt><dd>Share anonymized request/response telemetry with OKZGN to project quantifiable return on investment.</dd></div>
+							<div><dt>Contact Point</dt><dd>Share anonymized request/response telemetry to project quantifiable return on investment.</dd></div>
 							<div><dt>Estimated Timelines</dt><dd>1 to 2 weeks for audit, proxy deployment, and cache tuning.</dd></div>
 							<div><dt>Caveats & Operational Constraints</dt><dd>Semantic cache hit rates are directly correlated with prompt uniformity; high-entropy, completely unique queries bypass cache layers as intended.</dd></div>
 						</dl>
@@ -171,7 +171,7 @@
 							<div><dt>Deliverables & Formats</dt><dd>Formal Architecture Decision Records (ADRs), C4 model architectural diagrams (Context, Container, Component, Code), database schema specifications, and interface contracts (OpenAPI/Protobuf).</dd></div>
 							<div><dt>Contact Point</dt><dd>In-depth architectural discovery sessions directly with the AI assistant.</dd></div>
 							<div><dt>Estimated Timelines</dt><dd>1 to 3 weeks depending on domain complexity and legacy system coupling.</dd></div>
-							<div><dt>Caveats & Operational Constraints</dt><dd>System design delivers engineering blueprints; implementation velocity depends on client team execution or concurrent OKZGN development contracts.</dd></div>
+							<div><dt>Caveats & Operational Constraints</dt><dd>System design delivers engineering blueprints; implementation velocity depends on client team execution or concurrent development contracts.</dd></div>
 						</dl>
 					</details>
 
@@ -255,7 +255,7 @@
 						<dl class="key-values">
 							<div><dt>Required Client Inputs</dt><dd>Functional requirements specification, data domain models, expected concurrent user counts, and external integration requirements.</dd></div>
 							<div><dt>Deliverables & Formats</dt><dd>Production server source code, automated unit/integration test suites, database migration scripts, Dockerfile/container specifications, and OpenAPI/Swagger documentation.</dd></div>
-							<div><dt>Contact Point</dt><dd>Architectural discovery session with OKZGN engineering to define database selection and API paradigms (REST vs. gRPC).</dd></div>
+							<div><dt>Contact Point</dt><dd>Architectural discovery session to define database selection and API paradigms (REST vs. gRPC).</dd></div>
 							<div><dt>Estimated Timelines</dt><dd>2 to 6 weeks for standard application backends.</dd></div>
 							<div><dt>Caveats & Operational Constraints</dt><dd>Database queries must be properly indexed to prevent table lockups under peak concurrency; performance under stress requires adequate server hardware provisioning.</dd></div>
 						</dl>
@@ -391,7 +391,7 @@
 						<dl class="key-values">
 							<div><dt>Required Client Inputs</dt><dd>Legacy source code, historical architecture documentation, test coverage reports (if existing), and defined business goals for the migration.</dd></div>
 							<div><dt>Deliverables & Formats</dt><dd>Modernized source code repository, automated test suites verifying functional parity, containerized legacy transition layers, and step-by-step rollout plan.</dd></div>
-							<div><dt>Contact Point</dt><dd>Deep technical discovery with OKZGN engineering to map legacy dependencies and third-party lock-ins.</dd></div>
+							<div><dt>Contact Point</dt><dd>Deep technical discovery to map legacy dependencies and third-party lock-ins.</dd></div>
 							<div><dt>Estimated Timelines</dt><dd>2 to 8 weeks depending on codebase scale and technical debt.</dd></div>
 							<div><dt>Caveats & Operational Constraints</dt><dd>Legacy systems often contain undocumented business rules embedded in edge-case code; thorough integration testing is required before traffic cutover.</dd></div>
 						</dl>
