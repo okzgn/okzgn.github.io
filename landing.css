@@ -654,7 +654,6 @@
 }
 
 .relate .featured {
-    grid-column: 1 / -1;
     background: var(--card-fill-warm);
     border-color: var(--feature-warm-line);
 }
