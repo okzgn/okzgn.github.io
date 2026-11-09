@@ -4,10 +4,10 @@
   :target .ic{fill:none;stroke:#c6460c;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}
   @media (prefers-color-scheme:dark){.ic{fill:none;stroke:#8ac4ff;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}:target .ic{fill:none;stroke:#ff962e;stroke-width:3.876543210;stroke-linecap:round;stroke-linejoin:round}}</style><g transform="translate(8.534,8.534) scale(0.7867)">
 
-  <line x1="40" y1="0" x2="40" y2="6" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210 * 1.2712)"/>
-  <circle cx="40" cy="13" r="4" class="ic" style="stroke-width:calc(3.876543210 * 1.2712)"/>
+  <line x1="40" y1="0" x2="40" y2="6" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210px * 1.2712)"/>
+  <circle cx="40" cy="13" r="4" class="ic" style="stroke-width:calc(3.876543210px * 1.2712)"/>
 
-  <path d="M33.5 54V48.26A13 13 0 1 1 46.5 48.26V54Z" class="ic" style="stroke-width:calc(3.876543210 * 1.2712)"/>
+  <path d="M33.5 54V48.26A13 13 0 1 1 46.5 48.26V54Z" class="ic" style="stroke-width:calc(3.876543210px * 1.2712)"/>
 
   <g>
     <polyline points="33.75,43 36.75,31 39.75,43" class="ic" style="stroke-width:2.9"/>
@@ -17,13 +17,13 @@
     <line x1="43.25" y1="43" x2="46.25" y2="43" class="ic" style="stroke-width:2.9"/>
   </g>
 
-  <circle cx="40" cy="66" r="4" class="ic" style="stroke-width:calc(3.876543210 * 1.2712)"/>
-  <line x1="40" y1="74" x2="40" y2="80" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210 * 1.2712)"/>
+  <circle cx="40" cy="66" r="4" class="ic" style="stroke-width:calc(3.876543210px * 1.2712)"/>
+  <line x1="40" y1="74" x2="40" y2="80" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210px * 1.2712)"/>
 
-  <circle cx="17" cy="53" r="4" class="ic" style="stroke-width:calc(3.876543210 * 1.2712)"/>
-  <line x1="11" y1="56" x2="0" y2="61.5" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210 * 1.2712)"/>
+  <circle cx="17" cy="53" r="4" class="ic" style="stroke-width:calc(3.876543210px * 1.2712)"/>
+  <line x1="11" y1="56" x2="0" y2="61.5" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210px * 1.2712)"/>
 
-  <circle cx="63" cy="53" r="4" class="ic" style="stroke-width:calc(3.876543210 * 1.2712)"/>
-  <line x1="69" y1="56" x2="80" y2="61.5" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210 * 1.2712)"/>
+  <circle cx="63" cy="53" r="4" class="ic" style="stroke-width:calc(3.876543210px * 1.2712)"/>
+  <line x1="69" y1="56" x2="80" y2="61.5" class="ic" stroke-dasharray="3.81,3.81" style="stroke-width:calc(3.876543210px * 1.2712)"/>
 </g>
 </svg>

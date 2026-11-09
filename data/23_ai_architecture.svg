@@ -1,24 +1,24 @@
 <svg id="warm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
   <style>
-  .ic {fill:none;stroke:#004e9b;stroke-width:calc(3.876543210 * 1.15);stroke-linecap:round;stroke-linejoin:round}
-  .ic2 {stroke-width:calc(3.876543210 * 1.5);}
+  .ic {fill:none;stroke:#004e9b;stroke-width:calc(3.876543210px * 1.15);stroke-linecap:round;stroke-linejoin:round}
+  .ic2 {stroke-width:calc(3.876543210px * 1.5);}
   .ic3 { fill:#004e9b; }
-  :target .ic{fill:none;stroke:#c6460c;stroke-width:calc(3.876543210 * 1.15);stroke-linecap:round;stroke-linejoin:round}
-  :target .ic2{stroke-width:calc(3.876543210 * 1.5);}
+  :target .ic{fill:none;stroke:#c6460c;stroke-width:calc(3.876543210px * 1.15);stroke-linecap:round;stroke-linejoin:round}
+  :target .ic2{stroke-width:calc(3.876543210px * 1.5);}
   :target .ic3{ fill:#c6460c; }
-  @media (prefers-color-scheme:dark){.ic {fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210 * 1.15);stroke-linecap:round;stroke-linejoin:round}
-  .ic2 {stroke-width:calc(3.876543210 * 1.5);}
-  .ic3 { fill:#8ac4ff; }:target .ic{fill:none;stroke:#ff962e;stroke-width:calc(3.876543210 * 1.15);stroke-linecap:round;stroke-linejoin:round}
-  :target .ic2{stroke-width:calc(3.876543210 * 1.5);}
+  @media (prefers-color-scheme:dark){.ic {fill:none;stroke:#8ac4ff;stroke-width:calc(3.876543210px * 1.15);stroke-linecap:round;stroke-linejoin:round}
+  .ic2 {stroke-width:calc(3.876543210px * 1.5);}
+  .ic3 { fill:#8ac4ff; }:target .ic{fill:none;stroke:#ff962e;stroke-width:calc(3.876543210px * 1.15);stroke-linecap:round;stroke-linejoin:round}
+  :target .ic2{stroke-width:calc(3.876543210px * 1.5);}
   :target .ic3{ fill:#ff962e; }}</style><g transform="translate(-0.5064,1.6652) scale(0.9442)">
   
 
   <g transform="translate(-2,9) scale(0.85)">
-    <polygon points="44,6 26,42 40,42 24,76 58,34 42,34" class="ic" stroke-width="2" style="stroke-width:calc(3.876543210 * 1.246)"/>
+    <polygon points="44,6 26,42 40,42 24,76 58,34 42,34" class="ic" stroke-width="2" style="stroke-width:calc(3.876543210px * 1.246)"/>
   </g>
 
    <g transform="translate(43,5) scale(0.105)">
-       <path class="ic ic3" d="M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z" style="stroke-width:calc(3.876543210 * 1.2179)"/>
+       <path class="ic ic3" d="M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z" style="stroke-width:calc(3.876543210px * 1.2179)"/>
    </g>
 
 </g>
