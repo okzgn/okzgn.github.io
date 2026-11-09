@@ -719,12 +719,31 @@
     color: var(--muted);
 }
 
+/* Service cards: same column count as an auto-fill grid (15rem minimum), but a partial last row is
+   centered instead of left-aligned. Flex can't derive the column count itself, so the category is a
+   size container and each width step sets --cols; cards are sized from it. */
+.category {
+    container-type: inline-size;
+}
+
 .category .list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    --cols: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-4);
     margin-top: var(--space-5);
 }
+
+.category .list > li {
+    flex: 0 0 auto;
+    width: calc((100% - (var(--cols) - 1) * var(--space-4)) / var(--cols));
+}
+
+@container (min-width: 31rem) { .category .list { --cols: 2; } }
+@container (min-width: 47rem) { .category .list { --cols: 3; } }
+@container (min-width: 63rem) { .category .list { --cols: 4; } }
+@container (min-width: 79rem) { .category .list { --cols: 5; } }
 
 /* Category CTA: centered under its cards at every width. */
 .category-cta {
