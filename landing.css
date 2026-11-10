@@ -239,41 +239,125 @@
     to { transform: scale(1.6); opacity: 0; }
 }
 
+/* Pins: plated metal legs, lit from the top. */
 .hero-pins {
     fill: none;
-    stroke: var(--accentLine);
-    stroke-width: 2;
+    stroke: var(--chip-pin);
+    stroke-width: 2.2;
     stroke-linecap: round;
 }
 
-.hero-core-top {
-    stop-color: color-mix(in srgb, var(--accent) 82%, var(--surface));
+/* The chip reads as a metal part: an anodized accent body with a diagonal sheen band and a bevelled
+   edge (lit top, shaded bottom), a pin-1 dot, and a brushed steel lid with the mark engraved in it.
+   Every tone derives from the accent or the --chip-* steel tokens below (set on the SVG, so the
+   gradient stops in <defs> inherit them too). */
+.hero-graph {
+    --chip-pin: #a7afb9;
+    /* The lid is the body's toned accent, a few steps lighter, with the same brushed bands. */
+    --chip-tone: color-mix(in srgb, var(--accent) 80%, #8c949e);
+    --chip-steel-0: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
+    --chip-steel-1: color-mix(in srgb, var(--chip-tone) 72%, #ffffff);
+    --chip-steel-2: color-mix(in srgb, var(--chip-tone) 54%, #ffffff);
+    --chip-steel-3: color-mix(in srgb, var(--chip-tone) 66%, #ffffff);
+    --chip-steel-4: color-mix(in srgb, var(--chip-tone) 82%, #ffffff);
+    --chip-steel-5: color-mix(in srgb, var(--chip-tone) 70%, #ffffff);
+    --chip-mark-0: color-mix(in srgb, var(--chip-tone) 88%, #ffffff);
+    --chip-mark-1: var(--chip-tone);
 }
 
-.hero-core-bottom {
-    stop-color: var(--accent);
-}
+/* The body's accent is toned down with a little steel gray, so it reads as anodized metal rather
+   than a flat brand fill. */
+.hero-core-s0 { stop-color: color-mix(in srgb, color-mix(in srgb, var(--accent) 80%, #8c949e) 70%, #ffffff); }
+.hero-core-s1 { stop-color: color-mix(in srgb, var(--accent) 80%, #8c949e); }
+.hero-core-s2 { stop-color: color-mix(in srgb, color-mix(in srgb, var(--accent) 80%, #8c949e) 88%, #ffffff); }
+.hero-core-s3 { stop-color: color-mix(in srgb, var(--accentDark) 82%, #6b737d); }
+.hero-core-s4 { stop-color: color-mix(in srgb, var(--accentDark2) 82%, #4b535c); }
+
+/* The bevel is even on all sides (a light rim fading to a faint dark one), so the frame around the lid
+   reads the same thickness top and bottom. */
+.hero-bevel-top { stop-color: #ffffff; stop-opacity: 0.28; }
+.hero-bevel-mid { stop-color: #ffffff; stop-opacity: 0.12; }
+.hero-bevel-bottom { stop-color: #000000; stop-opacity: 0.12; }
+
+.hero-lid-s0 { stop-color: var(--chip-steel-0); }
+.hero-lid-s1 { stop-color: var(--chip-steel-1); }
+.hero-lid-s2 { stop-color: var(--chip-steel-2); }
+.hero-lid-s3 { stop-color: var(--chip-steel-3); }
+.hero-lid-s4 { stop-color: var(--chip-steel-4); }
+.hero-lid-s5 { stop-color: var(--chip-steel-5); }
+
+.hero-sheen-in { stop-color: #ffffff; stop-opacity: 0.35; }
+.hero-sheen-out { stop-color: #ffffff; stop-opacity: 0; }
+
+.hero-mark-top { stop-color: var(--chip-mark-0); }
+.hero-mark-bottom { stop-color: var(--chip-mark-1); }
 
 .hero-chip {
     fill: url(#hero-core-fill);
-    filter: drop-shadow(0 4px 8px rgb(var(--accent-rgb) / 0.16));
+    /* Neutral shadows kept close to centered: an accent shadow read as extra frame at the bottom. */
+    filter: drop-shadow(0 0 0.75px rgb(0 0 0 / 0.2)) drop-shadow(0 1px 3px rgb(0 0 0 / 0.14));
 }
 
-/* The core stays the focal point without pulling the eye from the copy: a bit smaller, a softer glow
-   and shadow, and a lighter fill. */
+.hero-chip-bevel {
+    fill: none;
+    stroke: url(#hero-core-bevel);
+    stroke-width: 1.5;
+}
+
+.hero-chip-dot {
+    fill: rgb(0 0 0 / 0.22);
+    stroke: rgb(255 255 255 / 0.35);
+    stroke-width: 0.5;
+}
+
+/* The core stays the focal point without pulling the eye from the copy: a bit smaller than the
+   drawing. */
 .hero-core {
     transform-box: view-box;
     transform-origin: 200px 110px;
     transform: scale(0.88);
 }
 
+/* The lid sits in a shallow recess: a dark rim below it and a soft shadow on the body. */
 .hero-die {
-    fill: rgb(255 255 255 / 0.12);
-    stroke: rgb(255 255 255 / 0.28);
+    fill: url(#hero-lid-fill);
+    stroke: rgb(0 0 0 / 0.14);
+    stroke-width: 0.75;
+    /* Centered, so the lid casts no thicker shadow on one side of the frame. */
+    filter: drop-shadow(0 0 1.2px rgb(0 0 0 / 0.22));
 }
 
+/* Fine horizontal brush strokes over the steel. */
+.hero-die-brush {
+    fill: url(#hero-lid-brush);
+    stroke: rgb(255 255 255 / 0.7);
+    stroke-width: 0.5;
+    pointer-events: none;
+}
+
+/* A soft specular spot near the top left corner, and a bevel on the lid's edge. */
+.hero-die-sheen {
+    fill: url(#hero-lid-sheen);
+    pointer-events: none;
+}
+
+.hero-die-bevel {
+    fill: none;
+    stroke: url(#hero-core-bevel);
+    stroke-width: 1;
+    pointer-events: none;
+}
+
+.hero-lid-line {
+    fill: #ffffff;
+    opacity: 0.08;
+}
+
+/* Engraved in the body's own tone (a step deeper than the lid), with a light catch on its lower edge,
+   so it reads clearly without pulling focus. */
 .hero-mark {
-    fill: var(--on-accent);
+    fill: url(#hero-mark-fill);
+    filter: drop-shadow(0 0.6px 0 rgb(255 255 255 / 0.4));
 }
 
 /* Window: an agent run, replayed by main.js. Each step waits (gray disc), runs (pale blue disc with a
@@ -1036,15 +1120,17 @@
     margin-right: auto;
 }
 
+/* The switch is a recessed track like the form fields; options hover as the quiet ghost pill of the
+   header and footer links, and the selected one is the primary button. */
 .billing-switch {
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
     padding: var(--space-1);
     border-radius: var(--r-full);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    box-shadow: var(--sh-1), var(--card-shine);
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    box-shadow: var(--field-recess);
     vertical-align: middle;
 }
 
@@ -1066,14 +1152,21 @@
 .billing-opt:hover,
 .billing-opt:focus-visible {
     color: var(--ink);
-    background: var(--hover);
+    background: var(--fill-ghost-quiet);
+    box-shadow: var(--sh-ghost-quiet);
+}
+
+.billing-opt:not(.selected):hover {
+    transform: scale(var(--press-scale-card));
 }
 
 .billing-opt.selected,
 .billing-opt.selected:hover {
     color: var(--on-accent);
     background: var(--fill-accent);
-    box-shadow: var(--sh-accent), var(--shine), inset 0 0 0 1px var(--accentDark2);
+    /* The edge is an inner hairline (no layout shift), so the primary button's shine goes just under
+       it: a 2px inset band whose first pixel the hairline covers. */
+    box-shadow: inset 0 0 0 1px var(--accentDark2), inset 0 2px 0 rgb(255 255 255 / 0.12), var(--sh-accent);
 }
 
 @media screen and (max-width: 720px) {
@@ -1182,6 +1275,22 @@
     margin-left: var(--space-0-5);
 }
 
+/* Fields follow the inset boxes inside cards (.inset-card): a recessed surface at rest (a soft
+   inner shadow at the top and a light catch on the lower edge), a firmer edge on hover, and on focus
+   they rise to the raised card surface with the card shine, a soft shadow, the accent edge line on
+   top and a faint neutral ring; the edge itself keeps its color. The warm cart field swaps the surfaces and the edge (see #cart below). */
+.form-field,
+#cart .cart-client,
+.billing-switch {
+    --field-rest: var(--surface-2);
+    --field-raised: var(--card-fill-raised);
+    --field-line: var(--border-strong);
+    --field-line-hover: rgb(var(--line-rgb) / 0.24);
+    --field-deco: none;
+    --field-recess: inset 0 1px 2px rgb(var(--shadow-rgb) / calc(0.05 * var(--shadow-k))), 0 1px 0 var(--field-catch);
+    --field-catch: rgb(255 255 255 / 0.85);
+}
+
 .form-field input,
 .form-field select,
 .form-field textarea,
@@ -1189,11 +1298,25 @@
     width: 100%;
     font-size: var(--fs-base);
     color: var(--ink);
-    background: var(--surface-2);
-    border: 1px solid var(--border-strong);
+    background: var(--field-deco), var(--field-rest);
+    border: 1px solid var(--field-line);
     border-radius: var(--r-md);
     padding: var(--space-3) var(--space-4);
+    box-shadow: var(--field-recess);
     transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
+}
+
+/* The select draws its own chevron in the muted text tone, so it matches the fields in both themes.
+   It is two diagonal strokes drawn with gradients (the page CSP allows no data: images), each in a
+   0.375rem square, side by side. */
+.form-field select {
+    --chev: transparent calc(50% - 0.8px), var(--muted) calc(50% - 0.8px) calc(50% + 0.8px), transparent calc(50% + 0.8px);
+    --field-deco:
+        linear-gradient(45deg, var(--chev)) right calc(var(--space-4) + 0.375rem) center / 0.375rem 0.375rem no-repeat,
+        linear-gradient(135deg, var(--chev)) right var(--space-4) center / 0.375rem 0.375rem no-repeat;
+    appearance: none;
+    padding-right: var(--space-10);
+    cursor: pointer;
 }
 
 .form-field textarea {
@@ -1211,14 +1334,24 @@
     color: var(--muted);
 }
 
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover,
+#cart .cart-client input:hover {
+    border-color: var(--field-line-hover);
+}
+
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus,
 #cart .cart-client input:focus {
     outline: none;
-    border-color: var(--accent);
-    background: var(--surface-raised);
-    box-shadow: 0 0 0 0.25rem var(--accentTint);
+    border-color: var(--field-line-hover);
+    background:
+        var(--field-deco),
+        var(--card-edge) top center / calc(100% - 2 * var(--r-md)) 1px no-repeat,
+        var(--field-raised);
+    box-shadow: 0 0 0 0.25rem rgb(var(--line-rgb) / 0.04), var(--sh-1), var(--card-shine);
 }
 
 .form-field input:required:invalid:not(:placeholder-shown),
@@ -1505,13 +1638,11 @@
 
 /* The cart field follows the landing fields (inset at rest, raised on focus) in the warm
    panel's own tones, with a warm edge. */
-#cart .cart-client input {
-    background: var(--warm-inset);
-    border-color: var(--feature-warm-line);
-}
-
-#cart .cart-client input:focus {
-    background: var(--warm-raised);
+#cart .cart-client {
+    --field-rest: var(--warm-inset);
+    --field-raised: var(--warm-raised);
+    --field-line: var(--feature-warm-line);
+    --field-line-hover: var(--feature-warm-edge);
 }
 
 #cart footer {
@@ -1542,6 +1673,19 @@
 }
 
 @media (prefers-color-scheme: dark) {
+    /* The whole chip takes a dimmer step on the dark page, like the other surfaces, keeping its
+       tones in the same relation as in light. */
+    .hero-core {
+        filter: brightness(0.8);
+    }
+
+    /* Fields: the light catch under the recess takes the sky tone. */
+    .form-field,
+    #cart .cart-client,
+    .billing-switch {
+        --field-catch: rgb(var(--sky-rgb) / 0.05);
+    }
+
     .hero-visual::before {
         background-image: url('data/production-0-dark.svg');
         opacity: 0.6;
