@@ -252,24 +252,28 @@
    Every tone comes from the --chip-* tokens below (set on the SVG, so the
    gradient stops in <defs> inherit them too). */
 .hero-graph {
-    --chip-pin: #a7afb9;
+    /* Pins are the line color at a low alpha, so they read lighter on the light page and darker on
+       the dark one with no override. */
+    --chip-pin: rgb(var(--line-rgb) / 0.26);
+    /* Brush strokes on the lid: a faint shade on the light lid, a faint light on the dark one. */
+    --chip-brush: rgb(0 36 71 / 0.09);
     /* The brand blue with a touch of steel gray: an anodized tone rather than a flat fill. The body
        runs from a lit edge to a soft shade; the lid is the same tone a few steps lighter. Kept light
        so the chip does not outweigh the CTAs beside it. */
     --chip-tone: color-mix(in srgb, var(--realBlueLight) 85%, #8c949e);
-    --chip-body-0: color-mix(in srgb, var(--chip-tone) 52%, #ffffff);
-    --chip-body-1: color-mix(in srgb, var(--chip-tone) 76%, #ffffff);
-    --chip-body-2: color-mix(in srgb, var(--chip-tone) 64%, #ffffff);
-    --chip-body-3: color-mix(in srgb, var(--chip-tone) 90%, #ffffff);
-    --chip-body-4: var(--chip-tone);
-    --chip-steel-0: color-mix(in srgb, var(--chip-tone) 38%, #ffffff);
-    --chip-steel-1: color-mix(in srgb, var(--chip-tone) 50%, #ffffff);
-    --chip-steel-2: color-mix(in srgb, var(--chip-tone) 32%, #ffffff);
-    --chip-steel-3: color-mix(in srgb, var(--chip-tone) 44%, #ffffff);
-    --chip-steel-4: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
-    --chip-steel-5: color-mix(in srgb, var(--chip-tone) 48%, #ffffff);
-    --chip-mark-0: color-mix(in srgb, var(--chip-tone) 68%, #ffffff);
-    --chip-mark-1: color-mix(in srgb, var(--chip-tone) 82%, #ffffff);
+    --chip-body-0: color-mix(in srgb, var(--chip-tone) 44%, #ffffff);
+    --chip-body-1: color-mix(in srgb, var(--chip-tone) 66%, #ffffff);
+    --chip-body-2: color-mix(in srgb, var(--chip-tone) 55%, #ffffff);
+    --chip-body-3: color-mix(in srgb, var(--chip-tone) 78%, #ffffff);
+    --chip-body-4: color-mix(in srgb, var(--chip-tone) 88%, #ffffff);
+    --chip-steel-0: color-mix(in srgb, var(--chip-tone) 30%, #ffffff);
+    --chip-steel-1: color-mix(in srgb, var(--chip-tone) 41%, #ffffff);
+    --chip-steel-2: color-mix(in srgb, var(--chip-tone) 25%, #ffffff);
+    --chip-steel-3: color-mix(in srgb, var(--chip-tone) 36%, #ffffff);
+    --chip-steel-4: color-mix(in srgb, var(--chip-tone) 50%, #ffffff);
+    --chip-steel-5: color-mix(in srgb, var(--chip-tone) 39%, #ffffff);
+    --chip-mark-0: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
+    --chip-mark-1: color-mix(in srgb, var(--chip-tone) 74%, #ffffff);
     --chip-sheen: 0.35;
     /* The halo and the soft light behind the core follow the chip's blue. */
     --chip-glow-rgb: var(--blue-rgb);
@@ -357,8 +361,7 @@
 }
 
 .hero-lid-line {
-    fill: #ffffff;
-    opacity: 0.08;
+    fill: var(--chip-brush);
 }
 
 /* Engraved in the body's own tone (a step deeper than the lid), with a light catch on its lower edge,
@@ -1684,7 +1687,7 @@
     /* Dark mode has its own chip palette instead of a dimmed copy: a deep blue body, a lid one step
        above it, a mark lit in a soft sky tone, quieter sheen, pins and glow. */
     .hero-graph {
-        --chip-pin: #5f6b79;
+        --chip-brush: rgb(255 255 255 / 0.08);
         --chip-tone: color-mix(in srgb, var(--realBlue) 80%, var(--realBlack));
         --chip-body-0: color-mix(in srgb, var(--realBlueLight) 62%, var(--realBlack));
         --chip-body-1: var(--chip-tone);
