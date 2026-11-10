@@ -79,18 +79,18 @@
     overflow: visible;
 }
 
-/* Soft accent light behind the core. */
+/* Soft light behind the core, in the chip's blue. */
 .hero-glow {
     fill: url(#hero-core-glow);
 }
 
 .hero-glow-in {
-    stop-color: var(--accent);
+    stop-color: rgb(var(--chip-glow-rgb));
     stop-opacity: 0.12;
 }
 
 .hero-glow-out {
-    stop-color: var(--accent);
+    stop-color: rgb(var(--chip-glow-rgb));
     stop-opacity: 0;
 }
 
@@ -225,10 +225,10 @@
     50% { opacity: 1; }
 }
 
-/* The core: an accent chip with the OKZGN mark, and a halo that breathes out from it. */
+/* The core: a blue metal chip with the OKZGN mark, and a halo that breathes out from it. */
 .hero-halo {
     fill: none;
-    stroke: rgb(var(--accent-rgb) / 0.25);
+    stroke: rgb(var(--chip-glow-rgb) / 0.25);
     transform-box: fill-box;
     transform-origin: center;
     animation: hero-halo 2.8s ease-out infinite;
@@ -247,31 +247,39 @@
     stroke-linecap: round;
 }
 
-/* The chip reads as a metal part: an anodized accent body with a diagonal sheen band and a bevelled
+/* The chip reads as a metal part: an anodized blue body with a diagonal sheen band and a bevelled
    edge (lit top, shaded bottom), a pin-1 dot, and a brushed steel lid with the mark engraved in it.
-   Every tone derives from the accent or the --chip-* steel tokens below (set on the SVG, so the
+   Every tone comes from the --chip-* tokens below (set on the SVG, so the
    gradient stops in <defs> inherit them too). */
 .hero-graph {
     --chip-pin: #a7afb9;
-    /* The lid is the body's toned accent, a few steps lighter, with the same brushed bands. */
-    --chip-tone: color-mix(in srgb, var(--accent) 80%, #8c949e);
-    --chip-steel-0: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
-    --chip-steel-1: color-mix(in srgb, var(--chip-tone) 72%, #ffffff);
-    --chip-steel-2: color-mix(in srgb, var(--chip-tone) 54%, #ffffff);
-    --chip-steel-3: color-mix(in srgb, var(--chip-tone) 66%, #ffffff);
-    --chip-steel-4: color-mix(in srgb, var(--chip-tone) 82%, #ffffff);
-    --chip-steel-5: color-mix(in srgb, var(--chip-tone) 70%, #ffffff);
-    --chip-mark-0: color-mix(in srgb, var(--chip-tone) 88%, #ffffff);
-    --chip-mark-1: var(--chip-tone);
+    /* The brand blue with a touch of steel gray: an anodized tone rather than a flat fill. The body
+       runs from a lit edge to a soft shade; the lid is the same tone a few steps lighter. Kept light
+       so the chip does not outweigh the CTAs beside it. */
+    --chip-tone: color-mix(in srgb, var(--realBlueLight) 85%, #8c949e);
+    --chip-body-0: color-mix(in srgb, var(--chip-tone) 52%, #ffffff);
+    --chip-body-1: color-mix(in srgb, var(--chip-tone) 76%, #ffffff);
+    --chip-body-2: color-mix(in srgb, var(--chip-tone) 64%, #ffffff);
+    --chip-body-3: color-mix(in srgb, var(--chip-tone) 90%, #ffffff);
+    --chip-body-4: var(--chip-tone);
+    --chip-steel-0: color-mix(in srgb, var(--chip-tone) 38%, #ffffff);
+    --chip-steel-1: color-mix(in srgb, var(--chip-tone) 50%, #ffffff);
+    --chip-steel-2: color-mix(in srgb, var(--chip-tone) 32%, #ffffff);
+    --chip-steel-3: color-mix(in srgb, var(--chip-tone) 44%, #ffffff);
+    --chip-steel-4: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
+    --chip-steel-5: color-mix(in srgb, var(--chip-tone) 48%, #ffffff);
+    --chip-mark-0: color-mix(in srgb, var(--chip-tone) 68%, #ffffff);
+    --chip-mark-1: color-mix(in srgb, var(--chip-tone) 82%, #ffffff);
+    --chip-sheen: 0.35;
+    /* The halo and the soft light behind the core follow the chip's blue. */
+    --chip-glow-rgb: var(--blue-rgb);
 }
 
-/* The body's accent is toned down with a little steel gray, so it reads as anodized metal rather
-   than a flat brand fill. */
-.hero-core-s0 { stop-color: color-mix(in srgb, color-mix(in srgb, var(--accent) 80%, #8c949e) 70%, #ffffff); }
-.hero-core-s1 { stop-color: color-mix(in srgb, var(--accent) 80%, #8c949e); }
-.hero-core-s2 { stop-color: color-mix(in srgb, color-mix(in srgb, var(--accent) 80%, #8c949e) 88%, #ffffff); }
-.hero-core-s3 { stop-color: color-mix(in srgb, var(--accentDark) 82%, #6b737d); }
-.hero-core-s4 { stop-color: color-mix(in srgb, var(--accentDark2) 82%, #4b535c); }
+.hero-core-s0 { stop-color: var(--chip-body-0); }
+.hero-core-s1 { stop-color: var(--chip-body-1); }
+.hero-core-s2 { stop-color: var(--chip-body-2); }
+.hero-core-s3 { stop-color: var(--chip-body-3); }
+.hero-core-s4 { stop-color: var(--chip-body-4); }
 
 /* The bevel is even on all sides (a light rim fading to a faint dark one), so the frame around the lid
    reads the same thickness top and bottom. */
@@ -286,7 +294,7 @@
 .hero-lid-s4 { stop-color: var(--chip-steel-4); }
 .hero-lid-s5 { stop-color: var(--chip-steel-5); }
 
-.hero-sheen-in { stop-color: #ffffff; stop-opacity: 0.35; }
+.hero-sheen-in { stop-color: #ffffff; stop-opacity: var(--chip-sheen); }
 .hero-sheen-out { stop-color: #ffffff; stop-opacity: 0; }
 
 .hero-mark-top { stop-color: var(--chip-mark-0); }
@@ -1673,10 +1681,36 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    /* The whole chip takes a dimmer step on the dark page, like the other surfaces, keeping its
-       tones in the same relation as in light. */
-    .hero-core {
-        filter: brightness(0.8);
+    /* Dark mode has its own chip palette instead of a dimmed copy: a deep blue body, a lid one step
+       above it, a mark lit in a soft sky tone, quieter sheen, pins and glow. */
+    .hero-graph {
+        --chip-pin: #5f6b79;
+        --chip-tone: color-mix(in srgb, var(--realBlue) 80%, var(--realBlack));
+        --chip-body-0: color-mix(in srgb, var(--realBlueLight) 62%, var(--realBlack));
+        --chip-body-1: var(--chip-tone);
+        --chip-body-2: color-mix(in srgb, var(--realBlueLight) 55%, var(--realBlack));
+        --chip-body-3: color-mix(in srgb, var(--realBlue) 58%, var(--realBlack));
+        --chip-body-4: color-mix(in srgb, var(--realBlueDark) 75%, var(--realBlack));
+        --chip-steel-0: color-mix(in srgb, var(--realBlueLight) 52%, var(--realBlack));
+        --chip-steel-1: color-mix(in srgb, var(--realBlueLight) 42%, var(--realBlack));
+        --chip-steel-2: color-mix(in srgb, var(--realBlueLight) 56%, var(--realBlack));
+        --chip-steel-3: color-mix(in srgb, var(--realBlueLight) 48%, var(--realBlack));
+        --chip-steel-4: color-mix(in srgb, var(--realBlueLight) 36%, var(--realBlack));
+        --chip-steel-5: color-mix(in srgb, var(--realBlueLight) 44%, var(--realBlack));
+        --chip-mark-0: color-mix(in srgb, var(--blueLight2) 50%, var(--realBlueLight));
+        --chip-mark-1: color-mix(in srgb, var(--blueLight2) 30%, var(--realBlueLight));
+        --chip-sheen: 0.12;
+        --chip-glow-rgb: var(--sky-rgb);
+    }
+
+    /* The lit mark sits on the darker lid, so its edge catch is a shade below instead of a light. */
+    .hero-mark {
+        filter: drop-shadow(0 0.6px 0 rgb(0 0 0 / 0.35));
+    }
+
+    /* The lid's light rim is quieter too. */
+    .hero-die-brush {
+        stroke: rgb(255 255 255 / 0.22);
     }
 
     /* Fields: the light catch under the recess takes the sky tone. */
