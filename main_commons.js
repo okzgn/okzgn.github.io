@@ -7,6 +7,61 @@ document.addEventListener('DOMContentLoaded', function () {
   initBackToTop();
   initCopyButtons();
   initToc();
+  initReveal();
+  initSpotlight();
+
+  // Entrance on scroll: blocks below the fold fade and rise in as they enter the viewport (the .reveal
+  // rules in style_commons.css). Blocks that enter together follow each other 60 ms apart. Whatever is
+  // already on screen when the page loads is left as it is, so nothing flickers.
+  function initReveal() {
+    if (reduceMotion || !('IntersectionObserver' in window)) { return; }
+
+    var
+      targets = document.querySelectorAll('.section-head, .card-grid > li, .service-group > h2, .service-group > p, .category > h3, .category > p, .service-card, .category-cta, .contact-grid > .card'),
+      viewport = window.innerHeight,
+      revealObserver = new IntersectionObserver(function (entries) {
+        var order = 0;
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) { return; }
+          entry.target.style.setProperty('--reveal-delay', (Math.min(order++, 6) * 60) + 'ms');
+          entry.target.classList.add('is-in');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -6% 0px' });
+
+    Array.prototype.forEach.call(targets, function (target) {
+      if (target.getBoundingClientRect().top < viewport) { return; }
+      target.classList.add('reveal');
+      revealObserver.observe(target);
+    });
+  }
+
+  // Pointer light on cards: tracks the mouse over a card and hands its position to the CSS
+  // (--spot-x and --spot-y, read by the card's ::after in style_commons.css).
+  function initSpotlight() {
+    if (!window.matchMedia || !window.matchMedia('(hover: hover)').matches) { return; }
+
+    var last = null, ticking = false;
+
+    function update() {
+      ticking = false;
+      var card = last.target && last.target.closest ? last.target.closest('.card-hover, .service-card') : null;
+      if (!card) { return; }
+
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--spot-x', (last.clientX - rect.left) + 'px');
+      card.style.setProperty('--spot-y', (last.clientY - rect.top) + 'px');
+    }
+
+    document.addEventListener('pointermove', function (event) {
+      if (event.pointerType === 'touch') { return; }
+      last = event;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+  }
 
   // Site header: frosted once the page scrolls, mobile menu, and the current section on the landing.
   function initHeader() {

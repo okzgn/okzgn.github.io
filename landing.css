@@ -37,6 +37,19 @@
     margin-top: var(--space-2);
 }
 
+/* Entrance on load: the title, the lead, the actions and the visual rise in one after another (the
+   shared rise-in of style_commons.css). */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-copy > *,
+    .hero-visual {
+        animation: rise-in 0.7s var(--ease-out) backwards;
+    }
+
+    .hero-copy > :nth-child(2) { animation-delay: 0.08s; }
+    .hero-copy > :nth-child(3) { animation-delay: 0.16s; }
+    .hero-visual { animation-delay: 0.22s; }
+}
+
 /* Hero visual: a system diagram (an AI core wired to agents, models, apps and infra, with requests
    going out and results coming back along the links) above a window that traces an agent run step by
    step. Everything is sized from the card width (container units), so the composition scales as one
@@ -52,9 +65,13 @@
     overflow: hidden;
     border-radius: var(--r-xl);
     border: 1px solid transparent;
+    /* A step lighter than the page, so the card stands on the ambient light behind the hero instead
+       of cutting a page-colored hole in it. */
     background:
-        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(var(--hero-visual-bg), var(--hero-visual-bg)) padding-box,
         linear-gradient(140deg, var(--accentLine), var(--border) 38%, var(--border) 62%, var(--blueLine-strong)) border-box;
+    box-shadow: var(--sh-2);
+    --hero-visual-bg: color-mix(in srgb, var(--surface) 45%, var(--bg));
 }
 
 /* Code pattern behind the composition, fading out toward the card edges. */
@@ -591,7 +608,7 @@
 /* Bottom edge: a static 1px line, the same gradient as the hero card's edge (.hero-visual). */
 .hero-run-progress {
     height: 1px;
-    background: linear-gradient(90deg, var(--accentLine), var(--border) 38%, var(--border) 62%, var(--blueLine-strong));
+    background: var(--rule-line);
 }
 
 /* Reduced motion: no moving parts in the diagram. The window still steps through the run (main.js),
@@ -801,9 +818,21 @@
     margin-top: clamp(2.75rem, 5vw, 4rem);
 }
 
+/* The category title is followed by a hairline that fades out to the right, so each category reads
+   as a labeled row of the catalog. */
 .category > h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
     font-size: var(--fs-xl);
     color: var(--ink);
+}
+
+.category > h3::after {
+    content: '';
+    flex: 1 1 var(--space-6);
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-strong), transparent);
 }
 
 .category > p {
