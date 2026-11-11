@@ -24,10 +24,48 @@
     max-width: 38rem;
 }
 
+/* The lead's key words are set in the title's deep blue: emphasis, not action, so the accent is left
+   to the button below them. */
 .hero .lead i {
     font-style: normal;
     font-weight: bold;
-    color: var(--accentText);
+    color: var(--title-tone);
+}
+
+/* While the page rests at the top, the hero's own button is the one call to action in view, so the
+   header's copy of it rests as a secondary button; it takes the accent fill once the header floats
+   (.scrolled, see the site header in style_commons.css). Only the landing has the copy in its hero. */
+@media (scripting: enabled) {
+    .site-header:not(.scrolled):not(.open) .site-cta {
+        color: var(--ink);
+        background: var(--fill-ghost);
+        border-color: var(--ghost-line);
+        box-shadow: var(--sh-ghost), var(--ghost-shine);
+    }
+
+    .site-header:not(.scrolled):not(.open) .site-cta:hover,
+    .site-header:not(.scrolled):not(.open) .site-cta:focus-visible,
+    .site-header:not(.scrolled):not(.open) .site-cta:active {
+        color: var(--ink);
+        background: var(--fill-ghost-hover);
+        border-color: var(--ghost-line-hover);
+    }
+
+    .site-header:not(.scrolled):not(.open) .site-cta::before {
+        border-left-color: var(--muted);
+    }
+
+    .site-header:not(.scrolled):not(.open) .site-cta:hover::before,
+    .site-header:not(.scrolled):not(.open) .site-cta:focus-visible::before,
+    .site-header:not(.scrolled):not(.open) .site-cta:active::before {
+        border-left-color: transparent;
+    }
+
+    .site-header:not(.scrolled):not(.open) .site-cta:hover::after,
+    .site-header:not(.scrolled):not(.open) .site-cta:focus-visible::after,
+    .site-header:not(.scrolled):not(.open) .site-cta:active::after {
+        border-left-color: var(--ink);
+    }
 }
 
 .hero-actions {
@@ -169,9 +207,11 @@
     stroke: var(--blueLine-strong);
 }
 
-/* Requests (accent) run from the core out to each node, and results (blue) come back. */
+/* Requests run from the core out to each node in the vivid blue, and results come back in a lighter
+   one. The whole diagram keeps to the blue family: it is scenery, and moving accent marks would pull
+   the eye from the copy and its button. */
 .hero-pulses path {
-    stroke: var(--accent);
+    stroke: var(--pulse-out);
     stroke-width: 2.5;
     stroke-dasharray: 10 90;
     stroke-dashoffset: 100;
@@ -179,7 +219,7 @@
 }
 
 .hero-pulses-in path {
-    stroke: var(--blue);
+    stroke: var(--pulse-in);
     animation-direction: reverse;
     animation-duration: 3.6s;
 }
@@ -229,7 +269,7 @@
 }
 
 .hero-node-led {
-    fill: var(--accent);
+    fill: var(--signal);
     animation: hero-led 2.8s ease-in-out infinite;
 }
 
@@ -294,6 +334,9 @@
     --chip-sheen: 0.35;
     /* The halo and the soft light behind the core follow the chip's blue. */
     --chip-glow-rgb: var(--blue-rgb);
+    /* Pulses along the links: outgoing in the signal blue, incoming a step lighter. */
+    --pulse-out: var(--signal);
+    --pulse-in: var(--blueLight0);
 }
 
 .hero-core-s0 { stop-color: var(--chip-body-0); }
@@ -440,7 +483,7 @@
     font-variant-numeric: tabular-nums;
 }
 
-/* Status: "running" (accent, pulsing dot) until the last step ends, then "done" (blue). */
+/* Status: "running" (neutral, pulsing dot) until the last step ends, then "done" (blue). */
 .hero-run-bar em {
     display: grid;
     margin-left: 0.6em;
@@ -469,8 +512,8 @@
 }
 
 .hero-run-live {
-    color: var(--accentText);
-    background: var(--accentTint);
+    color: var(--muted);
+    background: var(--hover);
 }
 
 .hero-run-live::before {
@@ -765,7 +808,10 @@
     transform: translate(calc(0.07em + 2px), calc(-0.07em - 2px)) rotate(-45deg);
 }
 
+/* The featured card is the one warm card of the grid: warm surface, warm icon tile (.icon-warm) and a
+   warm pointer light. The other cards keep the blue icons of the service cards. */
 .relate .featured {
+    --spot-rgb: var(--accent-rgb);
     background: var(--card-fill-warm);
     border-color: var(--feature-warm-line);
 }
@@ -1733,6 +1779,7 @@
         --chip-mark-1: color-mix(in srgb, var(--blueLight2) 30%, var(--realBlueLight));
         --chip-sheen: 0.12;
         --chip-glow-rgb: var(--sky-rgb);
+        --pulse-in: var(--blueLight3);
     }
 
     /* The lit mark sits on the darker lid, so its edge catch is a shade below instead of a light. */

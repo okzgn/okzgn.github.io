@@ -31,7 +31,7 @@
     height: auto;
 }
 
-/* Timeline: a hairline joins the dots; the year leads each entry in the accent tone. */
+/* Timeline: a hairline joins the dots; the year leads each entry in the heading blue. */
 .timeline {
     padding: 0;
 }
@@ -70,7 +70,7 @@
     height: 0.75rem;
     box-sizing: border-box;
     border-radius: var(--r-full);
-    border: 2px solid var(--accent);
+    border: 2px solid var(--signal);
     background: var(--surface);
 }
 
@@ -80,7 +80,7 @@
     font-weight: bold;
     line-height: var(--lh-ui);
     letter-spacing: var(--ls-caps);
-    color: var(--accentText);
+    color: var(--blue);
 }
 
 .timeline-year + p {

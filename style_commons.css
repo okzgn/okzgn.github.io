@@ -84,6 +84,18 @@
     --autofillBg: var(--surface-2);
     --bg-glass: rgb(var(--glass-rgb) / 0.88);
 
+    /* Color roles. Blue is the brand: it carries titles, icons, structure, status and progress. The
+       accent is kept for action and selection (primary buttons, text links, hover and selected
+       states, required marks), so an orange mark always means "something to act on here". Passive
+       marks take the blue tokens below; the only resting accents are the hairline gradients that
+       pair both brand colors (--card-edge, --rule-line).
+       --signal: small vivid marks (status lights, the current step). --mark: quiet marks (bullets,
+       lines already read). --progress-ink: the reading progress line. --scroll-thumb: scrollbars. */
+    --signal: var(--realBlueLight);
+    --mark: rgb(var(--tint-rgb) / 0.5);
+    --progress-ink: linear-gradient(90deg, rgb(var(--tint-rgb) / 0.3), var(--signal));
+    --scroll-thumb: rgb(var(--tint-rgb) / 0.38);
+
     /* Button fills: the same lighten and darken step for both brand colors. */
     --accent-deep: color-mix(in srgb, var(--accentDark2) 90%, #000000);
     --blue-deep: color-mix(in srgb, var(--realBlue) 90%, #000000);
@@ -127,7 +139,7 @@
     --warm-raised: var(--surface);
     --feature-bg: color-mix(in srgb, var(--blueLight2) 15%, var(--surface));
     --feature-line: rgb(var(--blue-rgb) / 0.14);
-    /* Warm surfaces (cart panel, featured card, menu and back-to-top buttons) take the accent hue at
+    /* Warm surfaces (cart panel, featured card) take the accent hue at
        the --accentTint strength, made opaque, so every peach on the site is the same tone. The line
        and the edge are deeper steps of the same hue. */
     --feature-warm-bg: color-mix(in srgb, var(--accent) 8%, var(--surface));
@@ -259,7 +271,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scrollbar-color: var(--accent) transparent;
+    scrollbar-color: var(--scroll-thumb) transparent;
     scrollbar-width: thin;
     accent-color: var(--accent);
     outline: 1px dashed transparent;
@@ -365,7 +377,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent);
+    background: var(--scroll-thumb);
     border-radius: var(--r-full);
 }
 
@@ -374,7 +386,7 @@ a {
 }
 
 ::selection {
-    background: var(--accentDark);
+    background: var(--realBlue);
     color: var(--white);
 }
 
@@ -418,15 +430,17 @@ main {
     counter-reset: section;
 }
 
+/* Both layers start at the top of the page, behind the site header (which is clear while the page
+   rests at the top), so the light is not cut off in a line under it. */
 main::before,
 main::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: calc(var(--header-h) * -1 - 1px);
     left: 0;
     right: 0;
     z-index: -1;
-    height: min(100%, 46rem);
+    height: calc(min(100%, 46rem) + var(--header-h) + 1px);
     pointer-events: none;
 }
 
@@ -472,8 +486,9 @@ main > .section::before {
     counter-increment: section;
 }
 
-/* Section index: a small mono number (01, 02, ...) and a short accent line above each section title.
-   It is decoration, so the second declaration gives it an empty text alternative where supported. */
+/* Section index: a small mono number (01, 02, ...) and a short blue line above each section title,
+   both quiet: the section's rule line above already pairs the brand colors. It is decoration, so the
+   second declaration gives it an empty text alternative where supported. */
 .section-head h2::before {
     content: counter(section, decimal-leading-zero);
     content: counter(section, decimal-leading-zero) / "";
@@ -481,8 +496,8 @@ main > .section::before {
     width: fit-content;
     margin-bottom: var(--space-4);
     padding-right: calc(var(--space-8) + var(--space-3));
-    background: linear-gradient(90deg, var(--accentLine), transparent) right center / var(--space-8) 1px no-repeat;
-    color: var(--accentText);
+    background: linear-gradient(90deg, var(--blueLine-strong), transparent) right center / var(--space-8) 1px no-repeat;
+    color: var(--muted);
     font-family: var(--monoFont), ui-monospace, monospace;
     font-size: var(--fs-sm);
     font-weight: normal;
@@ -928,13 +943,9 @@ details[open] > summary.badge-marker::before,
 }
 
 /* Pointer light: a soft glow that follows the mouse across a card (main_commons.js sets --spot-x and
-   --spot-y). It takes the hue of the card's icon: warm on article and project cards, blue on service
-   cards. Mouse only; without the script it rests at the top edge. */
-.card-hover {
-    --spot-rgb: var(--accent-rgb);
-}
-
-.service-card {
+   --spot-y). It takes the hue of the card's icon: blue, and warm on the featured card (landing.css).
+   Mouse only; without the script it rests at the top edge. */
+.card-hover, .service-card {
     --spot-rgb: var(--tint-rgb);
 }
 
@@ -1002,7 +1013,8 @@ details[open] > summary.badge-marker::before,
     opacity: var(--card-bg-opacity-active);
 }
 
-/* Floating round button (back to top): the warm fill of the cart panel, with a dark orange icon.
+/* Floating round button (back to top): a neutral raised surface with a blue icon, so it stays out
+   of the way while it floats over the page; like every control, it takes the accent on hover.
    .is-accent (the cart button) takes the primary CTA fill instead. */
 .round-button {
     width: 3rem;
@@ -1011,12 +1023,12 @@ details[open] > summary.badge-marker::before,
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--accentText);
-    background: var(--feature-warm-bg);
-    border: 1px solid var(--feature-warm-edge);
+    color: var(--title-tone);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
     box-shadow: var(--sh-2), var(--card-shine);
     cursor: pointer;
-    transition: opacity var(--dur), visibility var(--dur), border-color var(--dur), transform var(--dur-press);
+    transition: opacity var(--dur), visibility var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
 .round-button svg {
@@ -1026,7 +1038,13 @@ details[open] > summary.badge-marker::before,
 
 .round-button:hover,
 .round-button:focus-visible {
+    color: var(--accentText);
     border-color: var(--accent);
+}
+
+.round-button.is-accent:hover,
+.round-button.is-accent:focus-visible {
+    color: var(--on-accent);
 }
 
 .round-button.is-accent {
@@ -1056,7 +1074,12 @@ details[open] > summary.badge-marker::before,
     visibility: visible;
 }
 
-/* Site header: sticky and frosted, closed by a hairline like the footer; a soft shadow once it floats. */
+/* Site header: sticky. While the page rests at the top it is clear, so the hero and its ambient light
+   run to the top edge. Once the first content is about to slide under the bar (.scrolled, set by
+   main_commons.js), or the mobile menu opens, it turns into frosted glass closed by a hairline, like
+   the footer, with a soft shadow. The clear state is the default wherever scripts run, so the page
+   never loads frosted and then clears; without JavaScript (or in a browser that cannot tell) the bar
+   is always glass. */
 .site-header {
     position: sticky;
     top: 0;
@@ -1066,16 +1089,23 @@ details[open] > summary.badge-marker::before,
     background: var(--bg-glass);
     -webkit-backdrop-filter: saturate(1.2) blur(10px);
     backdrop-filter: saturate(1.2) blur(10px);
-    transition: box-shadow var(--dur);
-}
-
-.site-header.scrolled,
-.site-header.open {
     box-shadow: var(--sh-1);
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, -webkit-backdrop-filter 0.3s, backdrop-filter 0.3s;
 }
 
-/* Reading progress: an accent line that grows along the header's bottom edge as the page scrolls.
-   It is driven by the scroll position itself (no script), where scroll timelines are supported. */
+@media (scripting: enabled) {
+    .site-header:not(.scrolled):not(.open) {
+        border-bottom-color: transparent;
+        background: transparent;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+}
+
+/* Reading progress: a line that grows along the header's bottom edge as the page scrolls. It is a
+   passive indicator, so it is drawn in the brand blue (--progress-ink), not the accent. It is driven
+   by the scroll position itself (no script), where scroll timelines are supported. */
 @supports (animation-timeline: scroll()) {
     .site-header::after {
         content: '';
@@ -1084,7 +1114,7 @@ details[open] > summary.badge-marker::before,
         right: 0;
         bottom: -1px;
         height: 2px;
-        background: linear-gradient(90deg, var(--accentLine), var(--accent));
+        background: var(--progress-ink);
         transform: scaleX(0);
         transform-origin: 0 50%;
         pointer-events: none;
@@ -1155,8 +1185,9 @@ details[open] > summary.badge-marker::before,
     height: 2.75rem;
     margin-left: auto;
     border-radius: var(--r-full);
-    border: 1px solid var(--feature-warm-edge);
-    background: var(--feature-warm-bg);
+    /* Neutral, like the back to top button: the primary button beside it keeps the accent. */
+    border: 1px solid var(--border-strong);
+    background: var(--surface-raised);
     box-shadow: var(--card-shine);
 }
 
@@ -1172,9 +1203,9 @@ details[open] > summary.badge-marker::before,
     height: 2px;
     margin: -1px 0 0 -0.5625rem;
     border-radius: 2px;
-    background: var(--accentText);
+    background: var(--title-tone);
     transform: translateY(-3px);
-    transition: transform var(--dur);
+    transition: transform var(--dur), background-color var(--dur);
 }
 
 .site-menu-toggle::after {
@@ -1184,6 +1215,11 @@ details[open] > summary.badge-marker::before,
 .site-menu-toggle:hover,
 .site-menu-toggle:focus-visible {
     border-color: var(--accent);
+}
+
+.site-menu-toggle:hover::before, .site-menu-toggle:hover::after,
+.site-menu-toggle:focus-visible::before, .site-menu-toggle:focus-visible::after {
+    background: var(--accentText);
 }
 
 .site-header.open .site-menu-toggle::before {
@@ -1422,6 +1458,7 @@ details[open] > summary.badge-marker::before,
         --title-tone: color-mix(in srgb, var(--blueLight3) 55%, #ffffff);
         --nav-icon-tone: var(--blueLight2);
         --nav-icon-active: var(--blueLight3);
+        --signal: var(--blueLight0);
         /* Secondary buttons lighten instead of darken, by the same small amounts as in light. */
         --ghost-fill: rgb(var(--sky-rgb) / 0.07);
         --ghost-fill-hover: rgb(var(--sky-rgb) / 0.1);
@@ -1456,18 +1493,6 @@ details[open] > summary.badge-marker::before,
         --ambient-warm: rgb(var(--accent-rgb) / 0.07);
         --ambient-dot: rgb(var(--sky-rgb) / 0.13);
         --spot-k: 0.07;
-    }
-
-    *, ::after, ::before {
-        scrollbar-color: var(--realBlueLight) transparent;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: var(--realBlueLight);
-    }
-
-    ::selection {
-        background: var(--realBlue);
     }
 
     :focus-visible {

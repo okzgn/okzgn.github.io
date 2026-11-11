@@ -182,15 +182,17 @@
     border-left-color: var(--border-strong);
 }
 
-/* Sections already read keep an accent line; the current one is highlighted. */
+/* Sections already read keep a blue line, like the reading progress in the header; the current one
+   is set in the title tone with the vivid blue line. */
 .toc a.is-active {
     color: var(--text);
-    border-left-color: var(--accent);
+    border-left-color: var(--mark);
 }
 
 .toc li:has(> a.is-active):not(:has(~ li > a.is-active)) > a {
-    color: var(--accentText);
+    color: var(--title-tone);
     font-weight: bold;
+    border-left-color: var(--signal);
 }
 
 @media screen and (max-width: 1099px) {
@@ -367,7 +369,7 @@
     width: 0.75rem;
     height: 2px;
     border-radius: 2px;
-    background: var(--accent);
+    background: var(--mark);
 }
 
 .lines li ul {

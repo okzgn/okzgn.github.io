@@ -61,8 +61,8 @@
     font-size: var(--fs-2xl);
 }
 
-/* Count chip: the same pill as the card links (.pill-link): accent text on the accent tint, with its
-   subtle accent ring. */
+/* Count chip: a label, not a link, so it takes the blue tint of the billing pills rather than the
+   accent pill of the card links (.pill-link). */
 .projects-container .total {
     display: inline-flex;
     align-items: center;
@@ -70,9 +70,9 @@
     margin-top: var(--space-3);
     padding: var(--space-1) var(--space-3);
     border-radius: var(--r-full);
-    border: 1px solid var(--accentEdge);
-    background: var(--accentTint);
-    color: var(--accentText);
+    border: 1px solid var(--tile-ring);
+    background: var(--blueTint);
+    color: var(--title-tone);
     font-size: var(--fs-sm);
 }
 
@@ -163,7 +163,7 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--signal);
 }
 
 .repositories-urls {

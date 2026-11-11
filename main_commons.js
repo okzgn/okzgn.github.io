@@ -63,24 +63,43 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
-  // Site header: frosted once the page scrolls, mobile menu, and the current section on the landing.
+  // Site header: clear while the page rests at the top, frosted once it scrolls (.scrolled); mobile
+  // menu, and the current section on the landing.
   function initHeader() {
     var header = document.querySelector('.site-header');
     if (!header) { return; }
 
-    var toggle = header.querySelector('.site-menu-toggle'), ticking = false;
+    var
+      toggle = header.querySelector('.site-menu-toggle'),
+      lead = document.querySelector('main > :first-child'),
+      topLimit = 8,
+      ticking = false;
+
+    // The bar stays clear for half of the top padding of the page's first block (the hero), so it
+    // frosts before the title slides under it. The padding follows the viewport width.
+    function measure() {
+      var pad = lead ? parseFloat(window.getComputedStyle(lead).paddingTop) : 0;
+      topLimit = Math.max(8, Math.round((pad || 0) / 2));
+    }
 
     function update() {
-      header.classList.toggle('scrolled', window.scrollY > 8);
+      header.classList.toggle('scrolled', window.scrollY > topLimit);
       ticking = false;
     }
 
-    window.addEventListener('scroll', function () {
+    function request() {
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(update);
       }
+    }
+
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', function () {
+      measure();
+      request();
     }, { passive: true });
+    measure();
     update();
 
     function setOpen(open) {
