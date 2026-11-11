@@ -251,7 +251,7 @@
     --sh-blue: 0 1px 2px rgb(var(--blue-rgb) / 0.16), 0 4px 10px -6px rgb(var(--blue-rgb) / 0.36);
     --container: 1200px;
     --gutter: clamp(1rem, 3vw, 2rem);
-    --section-y: clamp(4rem, 8vw, 7rem);
+    --section-y: clamp(3.5rem, 7vw, 6rem);
     --header-h: 4rem;
 
     /* Typography: one size, line-height and tracking scale for the whole site. */
@@ -440,7 +440,6 @@ a {
 main {
     position: relative;
     isolation: isolate;
-    counter-reset: section;
 }
 
 /* The light starts at the top of the page, behind the site header (which is clear while the page
@@ -462,22 +461,6 @@ main::before {
 /* Sections are set apart by their vertical padding alone: no divider is drawn between them. */
 .section-head {
     margin-bottom: clamp(2rem, 4vw, 3.5rem);
-    counter-increment: section;
-}
-
-/* Section index: a small mono number (01, 02, ...) above each section title, in the muted text tone.
-   It is decoration, so the second declaration gives it an empty text alternative where supported. */
-.section-head h2::before {
-    content: counter(section, decimal-leading-zero);
-    content: counter(section, decimal-leading-zero) / "";
-    display: block;
-    margin-bottom: var(--space-4);
-    color: var(--muted);
-    font-family: var(--monoFont), ui-monospace, monospace;
-    font-size: var(--fs-sm);
-    font-weight: normal;
-    line-height: 1;
-    letter-spacing: var(--ls-caps);
 }
 
 .section-head p {
@@ -488,17 +471,18 @@ main::before {
     text-wrap: pretty;
 }
 
+/* Two columns with the gap of the card grids below, so the text starts on the same line as the
+   right column of cards. */
 @media screen and (min-width: 861px) {
     .section-head {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: var(--space-10);
+        gap: var(--space-5);
         align-items: end;
     }
 
     .section-head p {
         margin-top: 0;
-        justify-self: end;
     }
 }
 

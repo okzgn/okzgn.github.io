@@ -956,7 +956,23 @@
 .service-group > section:not(.ondemand) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-6);
+    gap: 0 var(--space-6);
+}
+
+/* Categories side by side share the rows of their grid (title, text, cards), so the titles, the
+   texts and the cards line up across the columns and every card in the row has one height, however
+   each text wraps. Without subgrid, the cards still take the free space, so the row ends level. */
+.service-group > section:not(.ondemand) > .category {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-row: span 3;
+    grid-template-rows: auto auto 1fr;
+}
+
+@supports (grid-template-rows: subgrid) {
+    .service-group > section:not(.ondemand) > .category {
+        grid-template-rows: subgrid;
+    }
 }
 
 .category {
@@ -976,14 +992,11 @@
 }
 
 /* Service cards: same column count as an auto-fill grid (15rem minimum), but a partial last row is
-   centered instead of left-aligned. Flex can't derive the column count itself, so the category is a
-   size container and each width step sets --cols; cards are sized from it. */
-.category {
-    container-type: inline-size;
-}
-
+   centered instead of left-aligned. Flex can't derive the column count itself, so the list is a
+   size container and each width step sets --cols on its cards, which are sized from it. (The list,
+   not the category, is the container: a container cannot share the rows of its parent grid.) */
 .category .list {
-    --cols: 1;
+    container-type: inline-size;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -992,14 +1005,15 @@
 }
 
 .category .list > li {
+    --cols: 1;
     flex: 0 0 auto;
     width: calc((100% - (var(--cols) - 1) * var(--space-4)) / var(--cols));
 }
 
-@container (min-width: 31rem) { .category .list { --cols: 2; } }
-@container (min-width: 47rem) { .category .list { --cols: 3; } }
-@container (min-width: 63rem) { .category .list { --cols: 4; } }
-@container (min-width: 79rem) { .category .list { --cols: 5; } }
+@container (min-width: 31rem) { .category .list > li { --cols: 2; } }
+@container (min-width: 47rem) { .category .list > li { --cols: 3; } }
+@container (min-width: 63rem) { .category .list > li { --cols: 4; } }
+@container (min-width: 79rem) { .category .list > li { --cols: 5; } }
 
 /* Category CTA: centered under its cards at every width. */
 .category-cta {
