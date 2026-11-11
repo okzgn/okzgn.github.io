@@ -29,15 +29,15 @@
     .c { fill: rgba(0, 78, 155, 0.4); }
 
     @keyframes z {
-      100% { fill: #ffb164; }
+      100% { fill: #5cadff; }
     }
 
     @keyframes x {
-      100% { fill: #ffc482; }
+      100% { fill: #8ac4ff; }
     }
 
     @keyframes y {
-      100% { fill: #ffdbb8; }
+      100% { fill: #b8dbff; }
     }
 
     .a { animation: z 20s infinite alternate 1s; }

@@ -4,7 +4,8 @@
    in the article sit on the inset surface, like .inset-card, without its hover state: they are not
    interactive. */
 
-/* Profile: the cut-out portrait stands on the bottom edge of a cool card, next to the intro. */
+/* Profile: the cut-out portrait stands on the bottom edge of a cool card (.card.card-cool in
+   style_commons.css, which gives it the surface, edge, radius and shadow), next to the intro. */
 .about-profile {
     display: grid;
     grid-template-columns: minmax(8rem, 11rem) 1fr;
@@ -19,10 +20,6 @@
     justify-content: center;
     align-items: flex-end;
     overflow: hidden;
-    border-radius: var(--r-xl);
-    border: 1px solid var(--feature-line);
-    background: var(--card-fill-cool);
-    box-shadow: var(--card-shine), var(--sh-1);
 }
 
 .about-portrait img {

@@ -87,8 +87,9 @@
     /* Color roles. Blue is the brand: it carries titles, icons, structure, status and progress. The
        accent is kept for action and selection (primary buttons, text links, hover and selected
        states, required marks), so an orange mark always means "something to act on here". Passive
-       marks take the blue tokens below; the only resting accents are the hairline gradients that
-       pair both brand colors (--card-edge, --rule-line).
+       marks take the blue tokens below. The edge line of a card (--card-edge) pairs both brand
+       colors and is a state, not a decoration: it shows only while the card is hovered, focused or
+       open.
        --signal: small vivid marks (status lights, the current step). --mark: quiet marks (bullets,
        lines already read). --progress-ink: the reading progress line. --scroll-thumb: scrollbars. */
     --signal: var(--realBlueLight);
@@ -126,8 +127,8 @@
     /* Icon tiles: a light blue tint behind the blue service icons, in both themes. */
     --tile-fill: linear-gradient(160deg, var(--surface), var(--blueTint));
     --tile-ring: var(--blueTint);
-    /* Warm tile (.icon-warm) for the orange icons (articles, projects) and for tiles on the warm cart
-       panel: the same peach as the pill links. */
+    /* Warm tile (.icon-warm) for the orange icons on the two warm surfaces (the featured card and
+       the cart panel): the same peach as the pill links. */
     --tile-fill-warm: linear-gradient(160deg, var(--surface), var(--accentTint));
     --tile-ring-warm: var(--accentTint);
     /* Field surfaces on the warm panel (cart): a see-through accent step at rest, so the field reads
@@ -146,27 +147,27 @@
     --feature-warm-line: color-mix(in srgb, var(--accent) 22%, var(--surface));
     /* Small warm controls on the page background need a firmer edge than panels. */
     --feature-warm-edge: color-mix(in srgb, var(--accent) 40%, var(--surface));
-    /* Card surfaces: a faint glow in the top right corner over a base that settles slightly toward
-       the page at the bottom, a lit top edge, and an accent line drawn on that edge. The glow and
+    /* Card surfaces: a faint glow in the top right corner (--card-glow, see the lights below) over a
+       base that settles slightly toward the page at the bottom, and a lit top edge. The glow and
        the bottom fade have a fixed reach (radial sizes do not accept min()), so a long article card
        keeps them at its corners. One recipe, three bases: white cards, warm features (cart,
        featured card), cool features. */
     --card-glow-size: 36rem 18rem at 100% 0%;
     --card-fade-to: min(55%, 20rem);
     --card-fill:
-        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.06), transparent 60%),
+        radial-gradient(var(--card-glow-size), var(--card-glow), transparent 60%),
         linear-gradient(0deg, color-mix(in srgb, var(--surface) 93%, var(--bg)), var(--surface) var(--card-fade-to));
     --card-fill-warm:
-        radial-gradient(var(--card-glow-size), rgb(var(--accent-rgb) / 0.07), transparent 60%),
+        radial-gradient(var(--card-glow-size), var(--card-glow-warm), transparent 60%),
         linear-gradient(0deg, color-mix(in srgb, var(--feature-warm-bg) 93%, var(--bg)), var(--feature-warm-bg) var(--card-fade-to));
     /* Raised surface: what an inset box or field becomes on hover, open or focus. In light it is
        the card white; in dark it is one more light step past the inset surface. */
     --surface-raised: var(--surface);
     --card-fill-raised:
-        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.06), transparent 60%),
+        radial-gradient(var(--card-glow-size), var(--card-glow), transparent 60%),
         linear-gradient(0deg, color-mix(in srgb, var(--surface-raised) 93%, var(--bg)), var(--surface-raised) var(--card-fade-to));
     --card-fill-cool:
-        radial-gradient(var(--card-glow-size), rgb(var(--tint-rgb) / 0.08), transparent 60%),
+        radial-gradient(var(--card-glow-size), var(--card-glow-cool), transparent 60%),
         linear-gradient(0deg, color-mix(in srgb, var(--feature-bg) 93%, var(--bg)), var(--feature-bg) var(--card-fade-to));
     --card-shine: inset 0 1px 0 rgb(255 255 255 / 0.9);
     /* Bars of the +/- toggle (.badge-marker). Each bar spans the whole box across its thickness and its
@@ -178,18 +179,30 @@
        plus on a light fill, so it is a quarter pixel thinner on each side to look the same weight. */
     --marker-bar-minus: linear-gradient(to bottom, transparent calc(50% - 1px), currentColor calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)) center / 0.5625rem 100% no-repeat;
     --card-edge: linear-gradient(90deg, transparent, var(--accentLine) 30%, rgb(var(--tint-rgb) / 0.3) 70%, transparent);
-    /* Rule line: the hero card's edge laid flat (accent, the neutral hairline, blue). It opens every
-       section and closes the hero window, so the page's dividers share one line. */
-    --rule-line: linear-gradient(90deg, var(--accentLine), var(--border) 38%, var(--border) 62%, var(--blueLine-strong));
-    /* Display ink: page titles run from a deep tone of the anchor blue to the vivid blue. */
-    --display-ink: linear-gradient(150deg, var(--title-tone) 12%, var(--realBlue) 48%, var(--realBlueLight) 92%);
-    /* Ambient light behind the top of every page: a cool glow on the right (where the hero visual
-       sits), a faint warm one on the left, and a dot grid that fades out around the cool glow. */
-    --ambient-cool: rgb(var(--tint-rgb) / 0.1);
-    --ambient-warm: rgb(var(--accent-rgb) / 0.06);
-    --ambient-dot: rgb(var(--line-rgb) / 0.12);
+    /* Display ink: page titles are lit from the top. They start in the logo's blue, so the title
+       picks up the color of the logo above it, and settle into the deep title tone. */
+    --display-ink: linear-gradient(180deg, var(--realBlue) 14%, var(--title-tone) 100%);
+    /* Lights. Every glow on the site is the same light at a few strengths: the ambient light behind
+       the top of each page, the corner glow of the cards, the pointer light and the glow behind the
+       hero's core. The hue is the vivid blue, a step brighter than the anchor, so a glow lifts the
+       surface it falls on instead of graying it; warm surfaces take the accent hue. The strengths
+       are kept low: each light should be noticed only when looked for. */
+    --light-rgb: 0 101 202;
+    --light-warm-rgb: var(--accent-rgb);
+    /* Ambient light: a cool glow on the right (where the hero visual sits) and a fainter warm one
+       on the left. */
+    --ambient-cool: rgb(var(--light-rgb) / 0.08);
+    --ambient-warm: rgb(var(--light-warm-rgb) / 0.045);
+    /* Corner glow of the card surfaces (--card-fill and its warm and cool variants). */
+    --card-glow: rgb(var(--light-rgb) / 0.045);
+    --card-glow-cool: rgb(var(--light-rgb) / 0.06);
+    --card-glow-warm: rgb(var(--light-warm-rgb) / 0.055);
     /* Pointer light on cards: its strength; the hue is set per card (--spot-rgb). */
-    --spot-k: 0.08;
+    --spot-k: 0.065;
+    /* Glow behind the hero's core (landing.css). */
+    --core-glow-k: 0.1;
+    /* Frosted glass (site header, table of contents bar): the filter that goes with --bg-glass. */
+    --glass-filter: saturate(1.2) blur(10px);
     /* Secondary button fill and edge: a light tint and a hairline, with a 3-point hover step;
        the shine and shadow below are what set it apart from the cards around it. */
     --ghost-fill: rgb(var(--ink-rgb) / 0.05);
@@ -422,18 +435,17 @@ a {
     padding: var(--section-y) 0;
 }
 
-/* Ambient light at the top of every page (landing hero and subpage heroes): two soft glows and a dot
-   grid, drawn behind the content and clear of the layout. The values are the --ambient-* tokens. */
+/* Ambient light at the top of every page (landing hero and subpage heroes): two soft glows drawn
+   behind the content and clear of the layout. The values are the --ambient-* tokens. */
 main {
     position: relative;
     isolation: isolate;
     counter-reset: section;
 }
 
-/* Both layers start at the top of the page, behind the site header (which is clear while the page
-   rests at the top), so the light is not cut off in a line under it. */
-main::before,
-main::after {
+/* The light starts at the top of the page, behind the site header (which is clear while the page
+   rests at the top), so it is not cut off in a line under it. */
+main::before {
     content: '';
     position: absolute;
     top: calc(var(--header-h) * -1 - 1px);
@@ -441,62 +453,25 @@ main::after {
     right: 0;
     z-index: -1;
     height: calc(min(100%, 46rem) + var(--header-h) + 1px);
-    pointer-events: none;
-}
-
-main::before {
     background:
         radial-gradient(52rem 30rem at 82% 0%, var(--ambient-cool), transparent 70%),
         radial-gradient(40rem 26rem at 4% 0%, var(--ambient-warm), transparent 70%);
+    pointer-events: none;
 }
 
-main::after {
-    background: radial-gradient(circle at center, var(--ambient-dot) 1px, transparent 1.5px) 0 0 / 1.5rem 1.5rem;
-    -webkit-mask-image: radial-gradient(56rem 32rem at 80% 0%, black, transparent 72%);
-    mask-image: radial-gradient(56rem 32rem at 80% 0%, black, transparent 72%);
-}
-
-/* Single column: the title runs the full width, so the dot grid keeps to a band under the header. */
-@media screen and (max-width: 860px) {
-    main::after {
-        -webkit-mask-image: radial-gradient(30rem 11rem at 85% 0%, black, transparent 72%);
-        mask-image: radial-gradient(30rem 11rem at 85% 0%, black, transparent 72%);
-    }
-}
-
-/* Every content section opens with the rule line, including the first one after the hero. It spans
-   the container, like the hairlines between the service groups. */
-main > .section {
-    position: relative;
-}
-
-main > .section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: min(100% - 2 * var(--gutter), var(--container));
-    height: 1px;
-    background: var(--rule-line);
-    transform: translateX(-50%);
-}
-
+/* Sections are set apart by their vertical padding alone: no divider is drawn between them. */
 .section-head {
     margin-bottom: clamp(2rem, 4vw, 3.5rem);
     counter-increment: section;
 }
 
-/* Section index: a small mono number (01, 02, ...) and a short blue line above each section title,
-   both quiet: the section's rule line above already pairs the brand colors. It is decoration, so the
-   second declaration gives it an empty text alternative where supported. */
+/* Section index: a small mono number (01, 02, ...) above each section title, in the muted text tone.
+   It is decoration, so the second declaration gives it an empty text alternative where supported. */
 .section-head h2::before {
     content: counter(section, decimal-leading-zero);
     content: counter(section, decimal-leading-zero) / "";
     display: block;
-    width: fit-content;
     margin-bottom: var(--space-4);
-    padding-right: calc(var(--space-8) + var(--space-3));
-    background: linear-gradient(90deg, var(--blueLine-strong), transparent) right center / var(--space-8) 1px no-repeat;
     color: var(--muted);
     font-family: var(--monoFont), ui-monospace, monospace;
     font-size: var(--fs-sm);
@@ -533,9 +508,15 @@ main > .section::before {
 }
 
 /* Page titles are filled with the display ink. Without support for clipping a background to the
-   text, or with forced colors, the title keeps its plain heading color. */
+   text, or with forced colors, the title keeps its plain heading color.
+   The ink is only painted inside the title's box, and at this line height the descenders of the last
+   line (g, p, y) and the overhang of a first or last letter (j, f) reach past it and would be cut
+   off. The padding extends the box to cover them, and the equal negative margin keeps the title
+   where it was. */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
     .display {
+        margin: 0 -0.08em -0.12em;
+        padding: 0 0.08em 0.12em;
         background: var(--display-ink);
         -webkit-background-clip: text;
         background-clip: text;
@@ -617,7 +598,8 @@ main > .section::before {
 .round-button:hover, .round-button:active,
 .pill-link:hover, .pill-link:active,
 button.tag:hover, button.tag:active,
-.site-menu-toggle:hover, .site-menu-toggle:active {
+.site-menu-toggle:hover, .site-menu-toggle:active,
+#menu:hover, #menu:active {
     transform: scale(var(--press-scale));
 }
 
@@ -877,8 +859,8 @@ details[open] > summary.badge-marker::before,
     opacity: 1;
 }
 
-/* The accent edge line of the other cards (.card::before), between the rounded corners; it brightens
-   on hover, focus and open. */
+/* The edge line of the other cards (.card::before), between the rounded corners. It is a state, not
+   a decoration: hidden at rest, it lights up on hover, focus and open. */
 .inset-card::after {
     content: '';
     position: absolute;
@@ -887,7 +869,7 @@ details[open] > summary.badge-marker::before,
     right: var(--r-lg);
     height: 1px;
     background: var(--card-edge);
-    opacity: 0.55;
+    opacity: 0;
     pointer-events: none;
     transition: opacity var(--dur);
 }
@@ -899,9 +881,8 @@ details[open] > summary.badge-marker::before,
 }
 
 
-/* Card: a softly lit surface with a hairline border, a soft shadow and an accent line on its top edge.
-   The landing's service cards (.service-card) share the surface; they and the cart panel (#cart)
-   share the edge line. Their states are in landing.css. */
+/* Card: a softly lit surface with a hairline border and a soft shadow. The landing's service cards
+   (.service-card) share the surface and the edge line. Their states are in landing.css. */
 .card, .service-card {
     position: relative;
     isolation: isolate;
@@ -911,8 +892,9 @@ details[open] > summary.badge-marker::before,
     box-shadow: var(--sh-1), var(--card-shine);
 }
 
-/* The edge line runs between the rounded corners and brightens when the card is hovered. */
-.card::before, .service-card::before, #cart::before {
+/* The edge line runs between the rounded corners. Hidden at rest, it lights up when the card is
+   hovered or focused: a resting card carries no accent. */
+.card::before, .service-card::before {
     content: '';
     position: absolute;
     top: -1px;
@@ -920,7 +902,7 @@ details[open] > summary.badge-marker::before,
     right: var(--r-xl);
     height: 1px;
     background: var(--card-edge);
-    opacity: 0.55;
+    opacity: 0;
     pointer-events: none;
     transition: opacity var(--dur);
 }
@@ -943,10 +925,10 @@ details[open] > summary.badge-marker::before,
 }
 
 /* Pointer light: a soft glow that follows the mouse across a card (main_commons.js sets --spot-x and
-   --spot-y). It takes the hue of the card's icon: blue, and warm on the featured card (landing.css).
+   --spot-y). It is the site's one light (--light-rgb), and the warm one on a warm card (.card-warm).
    Mouse only; without the script it rests at the top edge. */
 .card-hover, .service-card {
-    --spot-rgb: var(--tint-rgb);
+    --spot-rgb: var(--light-rgb);
 }
 
 @media (hover: hover) {
@@ -965,6 +947,25 @@ details[open] > summary.badge-marker::before,
     .card-hover:hover::after, .service-card:hover::after {
         opacity: 1;
     }
+}
+
+/* Surface variants, for any card or panel: the cool feature surface (.card-cool: the contact card,
+   the portraits) and the warm one (.card-warm: the featured card, the cart panel). A warm card also
+   warms its pointer light and its hover edge; its icon tile takes .icon-warm (landing.css). */
+.card-cool {
+    background: var(--card-fill-cool);
+    border-color: var(--feature-line);
+}
+
+.card-warm {
+    --spot-rgb: var(--light-warm-rgb);
+    background: var(--card-fill-warm);
+    border-color: var(--feature-warm-line);
+}
+
+.card-warm.card-hover:hover,
+.card-warm.card-hover:focus-within {
+    border-color: var(--feature-warm-edge);
 }
 
 /* Card icon backdrop: a large, very soft copy of the card's icon behind the content, bleeding off the
@@ -1013,33 +1014,42 @@ details[open] > summary.badge-marker::before,
     opacity: var(--card-bg-opacity-active);
 }
 
-/* Floating round button (back to top): a neutral raised surface with a blue icon, so it stays out
-   of the way while it floats over the page; like every control, it takes the accent on hover.
-   .is-accent (the cart button) takes the primary CTA fill instead. */
+/* Round icon buttons share one look: the floating back to top button (.round-button), the header's
+   menu toggle (.site-menu-toggle) and the table of contents toggle (#menu, subpages.css). A neutral
+   raised disc with a blue mark, so it stays out of the way; like every control, it takes the accent
+   on hover and focus. Each one sets only its own size, mark and placement. */
+.round-button, .site-menu-toggle, #menu {
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: var(--title-tone);
+    background: var(--surface-raised);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--card-shine);
+    cursor: pointer;
+    transition: opacity var(--dur), visibility var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-press);
+}
+
+.round-button:hover, .round-button:focus-visible,
+.site-menu-toggle:hover, .site-menu-toggle:focus-visible,
+#menu:hover, #menu:focus-visible {
+    color: var(--accentText);
+    border-color: var(--accent);
+}
+
+/* Floating round button: it floats over the page, so it adds a soft shadow. .is-accent (the cart
+   button) takes the primary CTA fill instead. */
 .round-button {
     width: 3rem;
     height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    color: var(--title-tone);
-    background: var(--surface-raised);
-    border: 1px solid var(--border-strong);
     box-shadow: var(--sh-2), var(--card-shine);
-    cursor: pointer;
-    transition: opacity var(--dur), visibility var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
 .round-button svg {
     width: 1.25rem;
     height: 1.25rem;
-}
-
-.round-button:hover,
-.round-button:focus-visible {
-    color: var(--accentText);
-    border-color: var(--accent);
 }
 
 .round-button.is-accent:hover,
@@ -1087,8 +1097,8 @@ details[open] > summary.badge-marker::before,
     width: 100%;
     border-bottom: 1px solid var(--border);
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(1.2) blur(10px);
-    backdrop-filter: saturate(1.2) blur(10px);
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
     box-shadow: var(--sh-1);
     transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, -webkit-backdrop-filter 0.3s, backdrop-filter 0.3s;
 }
@@ -1177,18 +1187,14 @@ details[open] > summary.badge-marker::before,
     transform: scale(var(--press-scale-card));
 }
 
+/* Menu toggle: a round icon button (see .round-button); the primary button beside it keeps the
+   accent. */
 .site-menu-toggle {
     display: none;
     position: relative;
-    transition: border-color var(--dur), transform var(--dur-press);
     width: 2.75rem;
     height: 2.75rem;
     margin-left: auto;
-    border-radius: var(--r-full);
-    /* Neutral, like the back to top button: the primary button beside it keeps the accent. */
-    border: 1px solid var(--border-strong);
-    background: var(--surface-raised);
-    box-shadow: var(--card-shine);
 }
 
 /* Both bars sit on the exact center and are only offset by transform, so they cross
@@ -1203,23 +1209,13 @@ details[open] > summary.badge-marker::before,
     height: 2px;
     margin: -1px 0 0 -0.5625rem;
     border-radius: 2px;
-    background: var(--title-tone);
+    background: currentColor;
     transform: translateY(-3px);
-    transition: transform var(--dur), background-color var(--dur);
+    transition: transform var(--dur);
 }
 
 .site-menu-toggle::after {
     transform: translateY(3px);
-}
-
-.site-menu-toggle:hover,
-.site-menu-toggle:focus-visible {
-    border-color: var(--accent);
-}
-
-.site-menu-toggle:hover::before, .site-menu-toggle:hover::after,
-.site-menu-toggle:focus-visible::before, .site-menu-toggle:focus-visible::after {
-    background: var(--accentText);
 }
 
 .site-header.open .site-menu-toggle::before {
@@ -1487,12 +1483,16 @@ details[open] > summary.badge-marker::before,
         --warm-inset: rgb(var(--accent-rgb) / 0.06);
         --warm-inset-solid: color-mix(in srgb, var(--accent) 20%, var(--surface));
         --warm-raised: color-mix(in srgb, var(--feature-warm-bg) 84%, var(--accent));
-        /* Titles are lit from the top left: white settling into the sky tones. */
-        --display-ink: linear-gradient(150deg, #ffffff 10%, var(--blueLight3) 50%, var(--blueLight2) 95%);
-        --ambient-cool: rgb(var(--blue-rgb) / 0.34);
-        --ambient-warm: rgb(var(--accent-rgb) / 0.07);
-        --ambient-dot: rgb(var(--sky-rgb) / 0.13);
-        --spot-k: 0.07;
+        /* Titles are lit from the top: the white of the logo settling into the sky tones. */
+        --display-ink: linear-gradient(180deg, #ffffff 14%, var(--blueLight3) 60%, var(--blueLight2) 100%);
+        /* The same light on a dark surface needs more strength to read the same. */
+        --ambient-cool: rgb(var(--light-rgb) / 0.27);
+        --ambient-warm: rgb(var(--light-warm-rgb) / 0.07);
+        --card-glow: rgb(var(--light-rgb) / 0.11);
+        --card-glow-cool: rgb(var(--light-rgb) / 0.14);
+        --card-glow-warm: rgb(var(--light-warm-rgb) / 0.07);
+        --spot-k: 0.13;
+        --core-glow-k: 0.2;
     }
 
     :focus-visible {

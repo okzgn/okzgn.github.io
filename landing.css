@@ -102,14 +102,11 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: var(--r-xl);
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
     /* A step lighter than the page, so the card stands on the ambient light behind the hero instead
        of cutting a page-colored hole in it. */
-    background:
-        linear-gradient(var(--hero-visual-bg), var(--hero-visual-bg)) padding-box,
-        linear-gradient(140deg, var(--accentLine), var(--border) 38%, var(--border) 62%, var(--blueLine-strong)) border-box;
+    background: color-mix(in srgb, var(--surface) 45%, var(--bg));
     box-shadow: var(--sh-2);
-    --hero-visual-bg: color-mix(in srgb, var(--surface) 45%, var(--bg));
 }
 
 /* Code pattern behind the composition, fading out toward the card edges. */
@@ -134,23 +131,23 @@
     overflow: visible;
 }
 
-/* Soft light behind the core, in the chip's blue. */
+/* Soft light behind the core: the site's one light (--light-rgb, style_commons.css). */
 .hero-glow {
     fill: url(#hero-core-glow);
 }
 
 .hero-glow-in {
-    stop-color: rgb(var(--chip-glow-rgb));
-    stop-opacity: 0.12;
+    stop-color: rgb(var(--light-rgb));
+    stop-opacity: var(--core-glow-k);
 }
 
 .hero-glow-out {
-    stop-color: rgb(var(--chip-glow-rgb));
+    stop-color: rgb(var(--light-rgb));
     stop-opacity: 0;
 }
 
 /* Structural lines of the diagram (orbit, links, node cards, halo) share one hairline width, kept at
-   1px on screen whatever the diagram's scale; the window's edge and progress line match it. */
+   1px on screen whatever the diagram's scale; the window's edge matches it. */
 .hero-orbit-line,
 .hero-links path,
 .hero-node-card,
@@ -332,7 +329,7 @@
     --chip-mark-0: color-mix(in srgb, var(--chip-tone) 60%, #ffffff);
     --chip-mark-1: color-mix(in srgb, var(--chip-tone) 74%, #ffffff);
     --chip-sheen: 0.35;
-    /* The halo and the soft light behind the core follow the chip's blue. */
+    /* The halo that breathes out from the core follows the chip's blue. */
     --chip-glow-rgb: var(--blue-rgb);
     /* Pulses along the links: outgoing in the signal blue, incoming a step lighter. */
     --pulse-out: var(--signal);
@@ -648,12 +645,6 @@
     45% { transform: scale(1.18); }
 }
 
-/* Bottom edge: a static 1px line, the same gradient as the hero card's edge (.hero-visual). */
-.hero-run-progress {
-    height: 1px;
-    background: var(--rule-line);
-}
-
 /* Reduced motion: no moving parts in the diagram. The window still steps through the run (main.js),
    but each change is a plain color fade: a running step only breathes in color, with no halo, pop or
    ripple. */
@@ -717,7 +708,9 @@
     box-shadow: inset 0 0 0 1px var(--tile-ring);
 }
 
-/* Warm tile: swaps the tile tokens, so .icon and .cart-ico keep one rule. */
+/* Warm tile: swaps the tile tokens, so .icon and .cart-ico keep one rule. It goes on the two warm
+   surfaces (.card-warm in style_commons.css): the featured card, the one warm card of its grid, and
+   the cart panel. */
 .icon-warm {
     --tile-fill: var(--tile-fill-warm);
     --tile-ring: var(--tile-ring-warm);
@@ -808,19 +801,6 @@
     transform: translate(calc(0.07em + 2px), calc(-0.07em - 2px)) rotate(-45deg);
 }
 
-/* The featured card is the one warm card of the grid: warm surface, warm icon tile (.icon-warm) and a
-   warm pointer light. The other cards keep the blue icons of the service cards. */
-.relate .featured {
-    --spot-rgb: var(--accent-rgb);
-    background: var(--card-fill-warm);
-    border-color: var(--feature-warm-line);
-}
-
-.relate .featured:hover,
-.relate .featured:focus-within {
-    border-color: var(--feature-warm-edge);
-}
-
 @media screen and (max-width: 720px) {
     .card-grid {
         grid-template-columns: 1fr;
@@ -832,8 +812,9 @@
     }
 }
 
-/* Services */
-.service-group {
+/* Services. The first group follows the section title directly; a hairline sets each further group
+   apart from the one before it. */
+.service-group + .service-group {
     margin-top: clamp(2.5rem, 5vw, 4rem);
     padding-top: clamp(2rem, 4vw, 3rem);
     border-top: 1px solid var(--border);
@@ -864,21 +845,9 @@
     margin-top: clamp(2.75rem, 5vw, 4rem);
 }
 
-/* The category title is followed by a hairline that fades out to the right, so each category reads
-   as a labeled row of the catalog. */
 .category > h3 {
-    display: flex;
-    align-items: center;
-    gap: var(--space-4);
     font-size: var(--fs-xl);
     color: var(--ink);
-}
-
-.category > h3::after {
-    content: '';
-    flex: 1 1 var(--space-6);
-    height: 1px;
-    background: linear-gradient(90deg, var(--border-strong), transparent);
 }
 
 .category > p {
@@ -967,12 +936,10 @@
     transform: scale(var(--press-scale-card));
 }
 
-/* The accent edge line (shared with .card in style_commons.css) brightens on hover, focus and
-   selection, and stays bright on the cart panel. */
+/* The edge line (shared with .card in style_commons.css) lights up on hover and focus. A selected
+   card needs none: its whole edge takes the accent. */
 .service-card:hover::before,
-.service-card:has(> a:focus-visible)::before,
-.service-card.selected::before,
-#cart::before {
+.service-card:has(> a:focus-visible)::before {
     opacity: 1;
 }
 
@@ -1269,11 +1236,6 @@
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: var(--space-6);
     align-items: start;
-}
-
-.contact-card {
-    background: var(--card-fill-cool);
-    border-color: var(--feature-line);
 }
 
 /* The cut-out portrait stands on the bottom edge at a reduced scale, leaving air above the head.
@@ -1593,8 +1555,9 @@
     max-height: min(70vh, 34rem);
     display: flex;
     flex-flow: column;
-    background: var(--card-fill-warm);
-    border: 1px solid var(--feature-warm-line);
+    /* The warm surface and the edge color come from .card-warm (style_commons.css). */
+    border-width: 1px;
+    border-style: solid;
     border-radius: var(--r-xl);
     box-shadow: var(--sh-3), var(--card-shine);
     transform-origin: bottom right;

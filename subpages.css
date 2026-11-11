@@ -70,8 +70,8 @@
     border-radius: var(--r-xl);
     border: 1px solid var(--border);
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(1.2) blur(10px);
-    backdrop-filter: saturate(1.2) blur(10px);
+    -webkit-backdrop-filter: var(--glass-filter);
+    backdrop-filter: var(--glass-filter);
     box-shadow: var(--sh-1);
 }
 
@@ -86,21 +86,14 @@
     font-weight: bold;
 }
 
-/* TOC toggle: unlike the warm header toggle, it keeps the bar's own neutral tones. Its mark
-   (data/39_toc_toggle.svg, drawn like the menu and footer icons) is a short line over a chevron that
-   points down to open the list; the whole mark turns over to point up to fold it. While the list is
-   open the button stays pressed and the mark takes the accent. The SVG works as a mask, so the mark
-   takes the button color. */
+/* TOC toggle: a round icon button (the shared look is with .round-button in style_commons.css), like
+   the header's menu toggle above it. Its mark (data/39_toc_toggle.svg, drawn like the menu and footer
+   icons) is a short line over a chevron that points down to open the list; the whole mark turns over
+   to point up to fold it. The SVG works as a mask, so the mark takes the button color. */
 #menu {
     position: relative;
-    flex-shrink: 0;
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: var(--r-full);
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    transition: color var(--dur), background-color var(--dur), border-color var(--dur), transform var(--dur-press);
 }
 
 #menu::before {
@@ -121,31 +114,15 @@
     transform: rotate(180deg);
 }
 
-/* Hover, focus and the open index share the raised edge and soft fill; open keeps the accent color. */
-#menu:hover,
-#menu:focus-visible,
-.toc.expanded #menu {
-    color: var(--ink);
-    border-color: var(--border-strong);
-    background: var(--hover);
-}
-
+/* While the index is open the button keeps the accent: it is the selected state. */
 .toc.expanded #menu {
     color: var(--accentText);
-}
-
-#menu:active {
-    transform: scale(var(--press-scale));
+    border-color: var(--accent);
 }
 
 .toc .menu-list {
     display: none;
     width: 100%;
-    scrollbar-color: var(--border-strong) transparent;
-}
-
-.toc .menu-list::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
 }
 
 .toc.expanded .menu-list {
@@ -512,11 +489,6 @@ pre code {
     font-size: var(--fs-sm);
     line-height: var(--lh-body);
     white-space: pre;
-    scrollbar-color: var(--border-strong) transparent;
-}
-
-pre code::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
 }
 
 /* A box that only frames code blocks would draw a second frame: let the blocks stand alone. */
