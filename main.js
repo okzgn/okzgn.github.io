@@ -573,6 +573,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (clock) { clock.textContent = ((Date.now() - startedAt) / 1000).toFixed(1) + 's'; }
     }
 
+    // Share of the steps that have ended, read by the progress line under the window's header.
+    function progress(done) {
+        run.style.setProperty('--run-progress', (done / steps.length).toFixed(3));
+    }
+
     function start() {
         stop();
         run.classList.remove('is-complete');
@@ -590,6 +595,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Array.prototype.forEach.call(steps, function (step, i) {
             if (i === 0) {
                 step.classList.add('is-done');
+                progress(1);
                 at = 500;
                 return;
             }
@@ -598,6 +604,7 @@ document.addEventListener('DOMContentLoaded', function () {
             later(function () {
                 step.classList.remove('is-running');
                 step.classList.add('is-done');
+                progress(i + 1);
             }, at);
         });
 

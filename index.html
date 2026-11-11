@@ -169,7 +169,7 @@
 					</div>
 				</div>
 				<div class="hero-visual" aria-hidden="true">
-					<svg class="hero-graph" viewBox="0 10 400 200" preserveAspectRatio="xMidYMin meet">
+					<svg class="hero-graph" viewBox="0 26 400 168" preserveAspectRatio="xMidYMin meet">
 						<defs>
 							<linearGradient id="hero-core-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6fa6dc" class="hero-core-s0" offset="0"/><stop stop-color="#6fa6dc" class="hero-core-s1" offset="0.4"/><stop stop-color="#6fa6dc" class="hero-core-s2" offset="0.52"/><stop stop-color="#6fa6dc" class="hero-core-s3" offset="0.64"/><stop stop-color="#6fa6dc" class="hero-core-s4" offset="1"/></linearGradient>
 							<linearGradient id="hero-core-bevel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity="0" class="hero-bevel-top" offset="0"/><stop stop-color="#fff" stop-opacity="0" class="hero-bevel-mid" offset="0.5"/><stop stop-color="#000" stop-opacity="0" class="hero-bevel-bottom" offset="1"/></linearGradient>
@@ -180,53 +180,65 @@
 							<radialGradient id="hero-core-glow"><stop class="hero-glow-in" offset="0"/><stop class="hero-glow-out" offset="1"/></radialGradient>
 							<radialGradient id="hero-orbit-fill"><stop class="hero-orbit-in" offset="0"/><stop class="hero-orbit-out" offset="1"/></radialGradient>
 						</defs>
-						<g class="hero-orbit"><circle class="hero-orbit-line" cx="200" cy="110" r="76"/><circle class="hero-satellite" cx="200" cy="34" r="2.5"/><circle class="hero-satellite" cx="276" cy="110" r="2.5"/><circle class="hero-satellite" cx="200" cy="186" r="2.5"/><circle class="hero-satellite" cx="124" cy="110" r="2.5"/></g>
+						<circle class="hero-disc" cx="200" cy="110" r="76"/>
 						<circle class="hero-glow" cx="200" cy="110" r="70"/>
+						<circle class="hero-ring" cx="200" cy="110" r="50"/>
+						<circle class="hero-orbit" cx="200" cy="110" r="76" pathLength="288"/>
 						<g class="hero-links">
-							<path d="M200 110C162 110 164 40 126 40"/>
-							<path d="M200 110C238 110 236 40 274 40"/>
-							<path d="M200 110C162 110 164 180 126 180"/>
-							<path d="M200 110C238 110 236 180 274 180"/>
+							<path d="M200 110C162 110 164 50 126 50"/>
+							<path d="M200 110C238 110 236 50 274 50"/>
+							<path d="M200 110C162 110 164 170 126 170"/>
+							<path d="M200 110C238 110 236 170 274 170"/>
 						</g>
-						<g class="hero-pulses">
-							<path d="M200 110C162 110 164 40 126 40" pathLength="100"/>
-							<path d="M200 110C238 110 236 40 274 40" pathLength="100"/>
-							<path d="M200 110C162 110 164 180 126 180" pathLength="100"/>
-							<path d="M200 110C238 110 236 180 274 180" pathLength="100"/>
+						<g class="hero-beams">
+							<path d="M200 110C162 110 164 50 126 50" pathLength="100"/>
+							<path d="M200 110C238 110 236 50 274 50" pathLength="100"/>
+							<path d="M200 110C162 110 164 170 126 170" pathLength="100"/>
+							<path d="M200 110C238 110 236 170 274 170" pathLength="100"/>
 						</g>
-						<g class="hero-pulses hero-pulses-in">
-							<path d="M200 110C162 110 164 40 126 40" pathLength="100"/>
-							<path d="M200 110C238 110 236 40 274 40" pathLength="100"/>
-							<path d="M200 110C162 110 164 180 126 180" pathLength="100"/>
-							<path d="M200 110C238 110 236 180 274 180" pathLength="100"/>
+						<g class="hero-beams hero-beams-core">
+							<path d="M200 110C162 110 164 50 126 50" pathLength="100"/>
+							<path d="M200 110C238 110 236 50 274 50" pathLength="100"/>
+							<path d="M200 110C162 110 164 170 126 170" pathLength="100"/>
+							<path d="M200 110C238 110 236 170 274 170" pathLength="100"/>
 						</g>
-						<g class="hero-node ">
-							<rect class="hero-node-card" x="14" y="20" width="112" height="40" rx="12"/>
-							<rect class="hero-node-tile" x="22" y="28" width="24" height="24" rx="7"/>
-							<g class="hero-node-icon" transform="translate(26 32) scale(0.6667)"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4.5"/><circle class="fill" cx="12" cy="3.5" r="1.2"/><circle class="fill" cx="9" cy="14" r="1.3"/><circle class="fill" cx="15" cy="14" r="1.3"/></g>
-							<text x="54" y="40">Agents</text>
-							<circle class="hero-node-led" cx="114" cy="40" r="2.5"/>
-						</g>
-						<g class="hero-node ">
-							<rect class="hero-node-card" x="274" y="20" width="112" height="40" rx="12"/>
-							<rect class="hero-node-tile" x="282" y="28" width="24" height="24" rx="7"/>
-							<g class="hero-node-icon" transform="translate(286 32) scale(0.6667)"><path d="M10 6C10.75 10.6 12.9 12.75 17.5 13.5C12.9 14.25 10.75 16.4 10 21C9.25 16.4 7.1 14.25 2.5 13.5C7.1 12.75 9.25 10.6 10 6Z"/><path d="M18.5 2.75C18.78 4.4 19.6 5.23 21.25 5.5C19.6 5.78 18.78 6.6 18.5 8.25C18.23 6.6 17.4 5.78 15.75 5.5C17.4 5.23 18.23 4.4 18.5 2.75Z"/></g>
-							<text x="314" y="40">Models</text>
-							<circle class="hero-node-led" cx="374" cy="40" r="2.5"/>
-						</g>
-						<g class="hero-node ">
-							<rect class="hero-node-card" x="14" y="160" width="112" height="40" rx="12"/>
-							<rect class="hero-node-tile" x="22" y="168" width="24" height="24" rx="7"/>
-							<g class="hero-node-icon" transform="translate(26 172) scale(0.6667)"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle class="fill" cx="6" cy="6.5" r="0.9"/><circle class="fill" cx="8.6" cy="6.5" r="0.9"/></g>
-							<text x="54" y="180">Apps</text>
-							<circle class="hero-node-led" cx="114" cy="180" r="2.5"/>
-						</g>
-						<g class="hero-node ">
-							<rect class="hero-node-card" x="274" y="160" width="112" height="40" rx="12"/>
-							<rect class="hero-node-tile" x="282" y="168" width="24" height="24" rx="7"/>
-							<g class="hero-node-icon" transform="translate(286 172) scale(0.6667)"><rect x="4" y="3.5" width="16" height="7.5" rx="2"/><rect x="4" y="13" width="16" height="7.5" rx="2"/><circle class="fill" cx="8" cy="7.25" r="1.1"/><circle class="fill" cx="8" cy="16.75" r="1.1"/></g>
-							<text x="314" y="180">Infra</text>
-							<circle class="hero-node-led" cx="374" cy="180" r="2.5"/>
+						<g class="hero-nodes">
+							<g class="hero-node">
+								<rect class="hero-node-card" x="28" y="30" width="98" height="40" rx="12"/>
+								<rect class="hero-node-tile" x="36" y="38" width="24" height="24" rx="7"/>
+								<g class="hero-node-icon" transform="translate(40 42) scale(0.6667)"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4.5"/><circle class="fill" cx="12" cy="3.5" r="1.2"/><circle class="fill" cx="9" cy="14" r="1.3"/><circle class="fill" cx="15" cy="14" r="1.3"/></g>
+								<text x="68" y="50">Agents</text>
+								<circle class="hero-port-ring" cx="126" cy="50" r="4"/>
+								<circle class="hero-port" cx="126" cy="50" r="4"/>
+								<circle class="hero-port-dot" cx="126" cy="50" r="1.75"/>
+							</g>
+							<g class="hero-node">
+								<rect class="hero-node-card" x="274" y="30" width="98" height="40" rx="12"/>
+								<rect class="hero-node-tile" x="282" y="38" width="24" height="24" rx="7"/>
+								<g class="hero-node-icon" transform="translate(286 42) scale(0.6667)"><path d="M10 6C10.75 10.6 12.9 12.75 17.5 13.5C12.9 14.25 10.75 16.4 10 21C9.25 16.4 7.1 14.25 2.5 13.5C7.1 12.75 9.25 10.6 10 6Z"/><path d="M18.5 2.75C18.78 4.4 19.6 5.23 21.25 5.5C19.6 5.78 18.78 6.6 18.5 8.25C18.23 6.6 17.4 5.78 15.75 5.5C17.4 5.23 18.23 4.4 18.5 2.75Z"/></g>
+								<text x="314" y="50">Models</text>
+								<circle class="hero-port-ring" cx="274" cy="50" r="4"/>
+								<circle class="hero-port" cx="274" cy="50" r="4"/>
+								<circle class="hero-port-dot" cx="274" cy="50" r="1.75"/>
+							</g>
+							<g class="hero-node">
+								<rect class="hero-node-card" x="28" y="150" width="98" height="40" rx="12"/>
+								<rect class="hero-node-tile" x="36" y="158" width="24" height="24" rx="7"/>
+								<g class="hero-node-icon" transform="translate(40 162) scale(0.6667)"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><circle class="fill" cx="6" cy="6.5" r="0.9"/><circle class="fill" cx="8.6" cy="6.5" r="0.9"/></g>
+								<text x="68" y="170">Apps</text>
+								<circle class="hero-port-ring" cx="126" cy="170" r="4"/>
+								<circle class="hero-port" cx="126" cy="170" r="4"/>
+								<circle class="hero-port-dot" cx="126" cy="170" r="1.75"/>
+							</g>
+							<g class="hero-node">
+								<rect class="hero-node-card" x="274" y="150" width="98" height="40" rx="12"/>
+								<rect class="hero-node-tile" x="282" y="158" width="24" height="24" rx="7"/>
+								<g class="hero-node-icon" transform="translate(286 162) scale(0.6667)"><rect x="4" y="3.5" width="16" height="7.5" rx="2"/><rect x="4" y="13" width="16" height="7.5" rx="2"/><circle class="fill" cx="8" cy="7.25" r="1.1"/><circle class="fill" cx="8" cy="16.75" r="1.1"/></g>
+								<text x="314" y="170">Infra</text>
+								<circle class="hero-port-ring" cx="274" cy="170" r="4"/>
+								<circle class="hero-port" cx="274" cy="170" r="4"/>
+								<circle class="hero-port-dot" cx="274" cy="170" r="1.75"/>
+							</g>
 						</g>
 						<circle class="hero-halo" cx="200" cy="110" r="40"/>
 						<g class="hero-core">
@@ -242,7 +254,7 @@
 						</g>
 					</svg>
 					<div class="hero-run">
-						<div class="hero-run-bar"><span></span><span></span><span></span><b>agent.run</b><time class="hero-run-clock">5.8s</time><em><i class="hero-run-live">running</i><i class="hero-run-done">done</i></em></div>
+						<div class="hero-run-bar"><span class="hero-run-mark"></span><b>agent.run</b><time class="hero-run-clock">5.8s</time><em><i class="hero-run-live">running</i><i class="hero-run-done">done</i></em></div>
 						<ol>
 							<li><span class="hero-step"></span>Plan the task<small>plan</small></li>
 							<li><span class="hero-step"></span>Retrieve context<small>rag</small></li>

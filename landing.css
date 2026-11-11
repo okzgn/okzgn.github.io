@@ -106,28 +106,36 @@
     /* A step lighter than the page, so the card stands on the ambient light behind the hero instead
        of cutting a page-colored hole in it. */
     background: color-mix(in srgb, var(--surface) 45%, var(--bg));
-    box-shadow: var(--sh-2);
+    box-shadow: var(--sh-2), var(--card-shine);
+    --hero-grid: rgb(var(--line-rgb) / 0.05);
+    /* Height of the core's center in the card (the diagram's top plus half its height). */
+    --hero-core-y: 27cqw;
 }
 
-/* Code pattern behind the composition, fading out toward the card edges. */
+/* Drawing board behind the diagram: a grid of fine hairlines, 16 cells across the card, set so that
+   two lines cross exactly at the core. It fades out around the core, so the window below stands on
+   the clean surface. */
 .hero-visual::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: url('data/production-0-light.svg') 0 0 / 420px 420px repeat;
-    opacity: 0.75;
-    -webkit-mask-image: radial-gradient(closest-side, black 70%, transparent 100%);
-    mask-image: radial-gradient(closest-side, black 70%, transparent 100%);
+    background:
+        linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px) calc(50cqw - 0.5px) 0 / 6.25cqw 6.25cqw,
+        linear-gradient(var(--hero-grid) 1px, transparent 1px) 0 calc(var(--hero-core-y) - 0.5px) / 6.25cqw 6.25cqw;
+    -webkit-mask-image: radial-gradient(54cqw 38cqw at 50% var(--hero-core-y), black 25%, transparent 100%);
+    mask-image: radial-gradient(54cqw 38cqw at 50% var(--hero-core-y), black 25%, transparent 100%);
 }
 
-/* Diagram: the upper half of the card, clear of the window. */
+/* Diagram: the upper part of the card, clear of the window. It spans the card's width, so its node
+   cards line up with the window's edges, and the card keeps one margin all around: 7% at the top,
+   the sides and the bottom, and between the diagram and the window. */
 .hero-graph {
     position: absolute;
-    top: 4%;
+    top: 6%;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 42%;
     overflow: visible;
 }
 
@@ -146,28 +154,23 @@
     stop-opacity: 0;
 }
 
-/* Structural lines of the diagram (orbit, links, node cards, halo) share one hairline width, kept at
-   1px on screen whatever the diagram's scale; the window's edge matches it. */
-.hero-orbit-line,
+/* Structural lines of the diagram (rings, links, node cards, ports, halo) share one hairline width,
+   kept at 1px on screen whatever the diagram's scale; the window's edge matches it. */
+.hero-ring,
 .hero-links path,
 .hero-node-card,
+.hero-port,
 .hero-halo {
     stroke-width: 1px;
     vector-effect: non-scaling-stroke;
 }
 
-/* The orbit turns slowly around the core, with four satellites a quarter turn apart. Inside it, the
-   surface tone fades out from the center to the line, a soft disc that lifts the core off the code
-   pattern behind it. */
-.hero-orbit {
-    transform-box: view-box;
-    transform-origin: 200px 110px;
-    animation: hero-orbit 16s linear infinite reverse;
-}
-
-.hero-orbit-line {
+/* Around the core, two rings repeat the concentric O of the logo engraved on the chip: a solid
+   hairline, and a dotted one that turns slowly. Its 72 dots are zero-length dashes with round ends,
+   spaced by the pathLength set in the markup, so the ring closes without a seam. Under them, the
+   surface tone fades out from the center: a soft disc that lifts the core off the grid. */
+.hero-disc {
     fill: url(#hero-orbit-fill);
-    stroke: var(--border-strong);
 }
 
 .hero-orbit-in {
@@ -180,14 +183,20 @@
     stop-opacity: 0;
 }
 
-/* Satellites: beads in the line's tone, ringed by the surface so they stand clear of the line. */
-/* Satellites: gray dots the size of the node LEDs (r 2.5). The surface ring that sets them apart from
-   the orbit line is painted behind the fill, so it adds outside the dot instead of eating into it. */
-.hero-satellite {
-    fill: var(--border-strong);
-    stroke: var(--surface);
-    stroke-width: 2;
-    paint-order: stroke;
+.hero-ring {
+    fill: none;
+    stroke: var(--border);
+}
+
+.hero-orbit {
+    fill: none;
+    stroke: rgb(var(--line-rgb) / 0.3);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-dasharray: 0.001 3.999;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hero-orbit 90s linear infinite;
 }
 
 @keyframes hero-orbit {
@@ -195,7 +204,7 @@
 }
 
 .hero-links path,
-.hero-pulses path {
+.hero-beams path {
     fill: none;
     stroke-linecap: round;
 }
@@ -204,40 +213,53 @@
     stroke: var(--blueLine-strong);
 }
 
-/* Requests run from the core out to each node in the vivid blue, and results come back in a lighter
-   one. The whole diagram keeps to the blue family: it is scenery, and moving accent marks would pull
-   the eye from the copy and its button. */
-.hero-pulses path {
-    stroke: var(--pulse-out);
-    stroke-width: 2.5;
-    stroke-dasharray: 10 90;
-    stroke-dashoffset: 100;
-    animation: hero-pulse 2.8s linear infinite;
+/* Beams: one soft light per link. It leaves the core, eases into the node's port (which answers with
+   a ripple), rests there and comes back: a request and its result. Each beam is two strokes that
+   move together, a wide faint glow and a thin bright center inside it. The dash pattern is longer
+   than the link, so the light enters and leaves at the ends instead of wrapping around. The four
+   links run the same 7 s cycle a quarter apart, so two lights are in view at most.
+   The whole diagram keeps to the blue family: it is scenery, and moving accent marks would pull the
+   eye from the copy and its button. */
+.hero-beams path {
+    --beam-rest: 24;
+    --beam-far: -100;
+    stroke: rgb(var(--beam-rgb) / 0.2);
+    stroke-width: 4.5;
+    stroke-dasharray: 24 226;
+    stroke-dashoffset: var(--beam-rest);
+    animation: hero-beam 7s infinite;
+    animation-delay: var(--beam-delay, 0s);
 }
 
-.hero-pulses-in path {
-    stroke: var(--pulse-in);
-    animation-direction: reverse;
-    animation-duration: 3.6s;
+.hero-beams-core path {
+    --beam-rest: 16;
+    --beam-far: -108;
+    stroke: rgb(var(--beam-rgb));
+    stroke-width: 1.75;
+    stroke-dasharray: 8 242;
 }
 
-.hero-pulses path:nth-child(2) { animation-delay: -0.7s; }
-.hero-pulses path:nth-child(3) { animation-delay: -1.4s; }
-.hero-pulses path:nth-child(4) { animation-delay: -2.1s; }
-.hero-pulses-in path:nth-child(1) { animation-delay: -1.8s; }
-.hero-pulses-in path:nth-child(2) { animation-delay: -0.3s; }
-.hero-pulses-in path:nth-child(3) { animation-delay: -2.6s; }
-.hero-pulses-in path:nth-child(4) { animation-delay: -1.1s; }
+/* A link, its beam and its node's port share one delay (the links and the nodes are listed in the
+   same order in the markup). */
+.hero-beams path:nth-child(2), .hero-nodes > :nth-child(2) { --beam-delay: -3.5s; }
+.hero-beams path:nth-child(3), .hero-nodes > :nth-child(3) { --beam-delay: -5.25s; }
+.hero-beams path:nth-child(4), .hero-nodes > :nth-child(4) { --beam-delay: -1.75s; }
 
-@keyframes hero-pulse {
-    to { stroke-dashoffset: 0; }
+@keyframes hero-beam {
+    0% { stroke-dashoffset: var(--beam-rest); animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    30% { stroke-dashoffset: var(--beam-far); }
+    48% { stroke-dashoffset: var(--beam-far); animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1); }
+    78%, 100% { stroke-dashoffset: var(--beam-rest); }
 }
 
-/* Nodes: small cards with an icon tile, a label and a status light. */
+/* Nodes: small cards with an icon tile and a label, lifted off the board by a soft two-layer shadow.
+   Their outer edges line up with the window below. */
 .hero-node-card {
     fill: var(--surface);
     stroke: var(--border-strong);
-    filter: drop-shadow(0 2px 4px rgb(var(--shadow-rgb) / calc(0.06 * var(--shadow-k))));
+    filter:
+        drop-shadow(0 1px 1px rgb(var(--shadow-rgb) / calc(0.04 * var(--shadow-k))))
+        drop-shadow(0 4px 6px rgb(var(--shadow-rgb) / calc(0.05 * var(--shadow-k))));
 }
 
 .hero-node-tile {
@@ -265,15 +287,45 @@
     dominant-baseline: central;
 }
 
-.hero-node-led {
-    fill: var(--signal);
-    animation: hero-led 2.8s ease-in-out infinite;
+/* Ports: where a link meets its node. A small socket on the card's edge with a status light in it.
+   When the node's beam arrives, the light brightens and a ring ripples out from the socket (the
+   beam's own cycle and delay). */
+.hero-port {
+    fill: var(--surface);
+    stroke: var(--border-strong);
 }
 
-.hero-node:nth-of-type(2) .hero-node-led { animation-delay: -0.7s; }
-.hero-node:nth-of-type(3) .hero-node-led { animation-delay: -1.4s; }
-.hero-node:nth-of-type(4) .hero-node-led { animation-delay: -2.1s; }
+.hero-port-dot {
+    fill: var(--signal);
+    opacity: 0.5;
+    animation: hero-port-dot 7s infinite;
+    animation-delay: var(--beam-delay, 0s);
+}
 
+.hero-port-ring {
+    fill: none;
+    stroke: rgb(var(--beam-rgb) / 0.5);
+    stroke-width: 1;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hero-port-ring 7s ease-out infinite;
+    animation-delay: var(--beam-delay, 0s);
+}
+
+@keyframes hero-port-dot {
+    0%, 24% { opacity: 0.5; }
+    30%, 48% { opacity: 1; }
+    62%, 100% { opacity: 0.5; }
+}
+
+@keyframes hero-port-ring {
+    0%, 26% { transform: scale(1); opacity: 0; }
+    28% { transform: scale(1); opacity: 1; }
+    46%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Pulse of the window's "running" status dot. */
 @keyframes hero-led {
     0%, 100% { opacity: 0.35; }
     50% { opacity: 1; }
@@ -285,7 +337,7 @@
     stroke: rgb(var(--chip-glow-rgb) / 0.25);
     transform-box: fill-box;
     transform-origin: center;
-    animation: hero-halo 2.8s ease-out infinite;
+    animation: hero-halo 3.5s ease-out infinite;
 }
 
 @keyframes hero-halo {
@@ -331,9 +383,8 @@
     --chip-sheen: 0.35;
     /* The halo that breathes out from the core follows the chip's blue. */
     --chip-glow-rgb: var(--blue-rgb);
-    /* Pulses along the links: outgoing in the signal blue, incoming a step lighter. */
-    --pulse-out: var(--signal);
-    --pulse-in: var(--blueLight0);
+    /* The beams that travel along the links are the site's one light. */
+    --beam-rgb: var(--light-rgb);
 }
 
 .hero-core-s0 { stop-color: var(--chip-body-0); }
@@ -428,7 +479,8 @@
     filter: drop-shadow(0 0.6px 0 rgb(255 255 255 / 0.4));
 }
 
-/* Window: an agent run, replayed by main.js. Each step waits (gray disc), runs (pale blue disc with a
+/* Window: an agent run, replayed by main.js. Its header carries the run mark, the name, a clock, the
+   status and, along its bottom edge, the progress line. Each step waits (gray disc), runs (pale blue disc with a
    spreading halo) and ends (blue disc with a white check, with a pop and a ripple), from top to bottom
    at uneven intervals; a clock and the status follow, and the run starts over after a pause. main.js marks the window .is-live; without
    it (no JavaScript, or reduced motion) the window shows the finished run. */
@@ -436,17 +488,18 @@
     position: absolute;
     left: 7%;
     right: 7%;
-    bottom: 5%;
+    bottom: 7%;
     overflow: hidden;
     border-radius: var(--r-md);
     border: 1px solid var(--border);
     background: var(--card-fill);
     box-shadow: var(--sh-2), var(--card-shine);
-    font-size: clamp(0.625rem, 2.7cqw, 0.8125rem);
+    font-size: clamp(0.625rem, 2.7cqw, 0.875rem);
     line-height: 1.5;
 }
 
 .hero-run-bar {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -457,19 +510,46 @@
     font-family: var(--monoFont), ui-monospace, monospace;
 }
 
-.hero-run-bar > span {
-    width: 0.7em;
-    height: 0.7em;
-    border-radius: 50%;
-    background: var(--border-strong);
+/* Progress of the run: a line that grows along the header's bottom edge as the steps end, like the
+   reading progress under the site header and in the same ink. main.js sets --run-progress (the share
+   of steps done); without it the line is full, as the finished run is. */
+.hero-run-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--progress-ink);
+    transform: scaleX(var(--run-progress, 1));
+    transform-origin: 0 50%;
+    transition: transform 0.6s var(--ease-out);
 }
 
-.hero-run-bar > span:first-child {
-    background: var(--accent);
+/* Run mark: a small icon tile with the brand's arrow as a "run" sign. It is as wide as the step
+   markers below and sits in their column; the title starts in the column of the step names. */
+.hero-run-mark {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 0.3em;
+    background: var(--blueTint);
+    box-shadow: inset 0 0 0 1px var(--tile-ring);
+}
+
+.hero-run-mark::before {
+    content: '';
+    margin-left: 0.1em;
+    border-left: 0.42em solid var(--blue);
+    border-top: 0.27em solid transparent;
+    border-bottom: 0.27em solid transparent;
 }
 
 .hero-run-bar b {
-    margin-left: 0.4em;
+    margin-left: 0.25em;
+    color: var(--text);
     font-weight: normal;
 }
 
@@ -561,6 +641,24 @@
     color: var(--ink);
 }
 
+/* A short hairline joins each step marker to the next, so the list reads as one trace. It turns
+   blue once its step has ended. */
+.hero-run li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(1.15em / 2 - 0.5px);
+    top: calc(50% + 1.15em / 2 + 0.2em);
+    width: 1px;
+    height: calc(100% - 1.15em - 0.4em);
+    background: var(--border-strong);
+    transition: background-color 0.35s var(--ease-out);
+}
+
+.hero-run li.is-done:not(:last-child)::after,
+.hero-run:not(.is-live) li:not(:last-child)::after {
+    background: var(--mark);
+}
+
 .hero-run small {
     margin-left: auto;
     padding: 0 0.5em;
@@ -645,19 +743,45 @@
     45% { transform: scale(1.18); }
 }
 
+/* On a very small card the window's text keeps its 10px floor, so the window is relatively taller:
+   the diagram gives way (it shrinks, centered), and the grid and its fade follow the core up. */
+@container (max-width: 21rem) {
+    .hero-graph {
+        top: 4%;
+        height: 38%;
+    }
+
+    .hero-run {
+        bottom: 4%;
+    }
+
+    .hero-visual::before {
+        --hero-core-y: 23cqw;
+    }
+}
+
 /* Reduced motion: no moving parts in the diagram. The window still steps through the run (main.js),
    but each change is a plain color fade: a running step only breathes in color, with no halo, pop or
-   ripple. */
+   ripple, and the progress line jumps to its new length. */
 @media (prefers-reduced-motion: reduce) {
-    .hero-pulses,
+    .hero-beams,
+    .hero-port-ring,
     .hero-halo {
         display: none;
     }
 
     .hero-orbit,
-    .hero-node-led,
+    .hero-port-dot,
     .hero-run li.is-done .hero-step {
         animation: none;
+    }
+
+    .hero-port-dot {
+        opacity: 1;
+    }
+
+    .hero-run-bar::after {
+        transition: none;
     }
 
     .hero-run li.is-running .hero-step {
@@ -674,12 +798,6 @@
         justify-self: center;
         /* Up to 640px this is the fixed 24rem; from there it grows with the viewport (60vw) up to 34rem. */
         max-width: clamp(24rem, 60vw, 34rem);
-    }
-
-    /* The window's text keeps a 10px floor, so it is relatively taller here; the diagram gives way. */
-    .hero-graph {
-        top: 3%;
-        height: 46%;
     }
 
     /* Single column: the text stays left-aligned like the rest of the page; only the actions are centered. */
@@ -1742,7 +1860,7 @@
         --chip-mark-1: color-mix(in srgb, var(--blueLight2) 30%, var(--realBlueLight));
         --chip-sheen: 0.12;
         --chip-glow-rgb: var(--sky-rgb);
-        --pulse-in: var(--blueLight3);
+        --beam-rgb: 92 173 255;
     }
 
     /* The lit mark sits on the darker lid, so its edge catch is a shade below instead of a light. */
@@ -1760,10 +1878,5 @@
     #cart .cart-client,
     .billing-switch {
         --field-catch: rgb(var(--sky-rgb) / 0.05);
-    }
-
-    .hero-visual::before {
-        background-image: url('data/production-0-dark.svg');
-        opacity: 0.6;
     }
 }
