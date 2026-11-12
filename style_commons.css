@@ -866,7 +866,8 @@ details[open] > summary.badge-marker::before,
 
 
 /* Card: a softly lit surface with a hairline border and a soft shadow. The landing's service cards
-   (.service-card) share the surface and the edge line. Their states are in landing.css. */
+   (.service-card) share the surface and the edge line; they also take .card-hover, and only their
+   selected state is in landing.css. */
 .card, .service-card {
     position: relative;
     isolation: isolate;
@@ -891,32 +892,36 @@ details[open] > summary.badge-marker::before,
     transition: opacity var(--dur);
 }
 
+/* Interactive card (.card-hover): every card that leads somewhere or toggles something (articles,
+   projects, services) shares these states. The card is active on hover and on keyboard focus of a
+   link inside it (:focus-visible, so a card clicked with the mouse does not stay lit when the page is
+   shown again). What each card does on top (its title, icon, CTA, selection) is in landing.css. */
 .card-hover {
     transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur-press);
 }
 
-.card-hover:hover, .card-hover:active {
+.card-hover:hover, .card-hover:active, .card-hover:has(:focus-visible) {
     transform: scale(var(--press-scale-card));
 }
 
-.card-hover:hover, .card-hover:focus-within {
+.card-hover:hover, .card-hover:has(:focus-visible) {
     border-color: var(--border-strong);
     box-shadow: var(--sh-2), var(--card-shine);
 }
 
-.card-hover:hover::before, .card-hover:focus-within::before {
+.card-hover:hover::before, .card-hover:has(:focus-visible)::before {
     opacity: 1;
 }
 
 /* Pointer light: a soft glow that follows the mouse across a card (main_commons.js sets --spot-x and
    --spot-y). It is the site's one light (--light-rgb), and the warm one on a warm card (.card-warm).
    Mouse only; without the script it rests at the top edge. */
-.card-hover, .service-card {
+.card-hover {
     --spot-rgb: var(--light-rgb);
 }
 
 @media (hover: hover) {
-    .card-hover::after, .service-card::after {
+    .card-hover::after {
         content: '';
         position: absolute;
         inset: 0;
@@ -928,7 +933,7 @@ details[open] > summary.badge-marker::before,
         transition: opacity var(--dur);
     }
 
-    .card-hover:hover::after, .service-card:hover::after {
+    .card-hover:hover::after {
         opacity: 1;
     }
 }
@@ -948,7 +953,7 @@ details[open] > summary.badge-marker::before,
 }
 
 .card-warm.card-hover:hover,
-.card-warm.card-hover:focus-within {
+.card-warm.card-hover:has(:focus-visible) {
     border-color: var(--feature-warm-edge);
 }
 
@@ -957,7 +962,7 @@ details[open] > summary.badge-marker::before,
    <span class="card-bg" aria-hidden="true"><img src="…"></span>
    The span covers the card and crops the image to the card's rounded shape. The host card needs
    `position: relative` and `isolation: isolate` (.card has both; .service-card sets them in landing.css).
-   Hover and selected states raise the opacity: .card-hover here, .service-card in landing.css.
+   The active states raise the opacity: .card-hover here, a selected .service-card in landing.css.
    The SVG already switches to its light stroke in dark mode, so only the opacity is tuned here. */
 .card-bg {
     --card-bg-bleed: 2.5rem;
@@ -994,7 +999,7 @@ details[open] > summary.badge-marker::before,
 }
 
 .card-hover:hover .card-bg,
-.card-hover:focus-within .card-bg {
+.card-hover:has(:focus-visible) .card-bg {
     opacity: var(--card-bg-opacity-active);
 }
 
